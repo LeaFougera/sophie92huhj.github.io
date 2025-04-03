@@ -35,8 +35,9 @@
             <div class="split-box stat-box">
                 <div class="compact-stats">
                     <span id="typing-text" class="typing-text"></span><br>
-                    <span class="normal-text">dans le monde sont touchées par une maladie rénale chronique.</span>
+                    <span class="normal-text">De plus en plus de personnes sont touchées par l’insuffisance rénale, en grande partie à cause du vieillissement de la population, de la progression du diabète, de l’hypertension et des modes de vie de moins en moins sains.</span>
                 </div>
+                
             </div>
         </section>
 
@@ -88,22 +89,5 @@
         </section>
     </div>
 
-    <!-- Scripts -->
-    <script src="scripts/barre-navigation.js"></script>
-    <script>
-        const fullText = "+850 millions de personnes";
-        const element = document.getElementById("typing-text");
-        let index = 0;
-
-        function typeWriter() {
-            if (index < fullText.length) {
-                element.textContent += fullText.charAt(index);
-                index++;
-                setTimeout(typeWriter, 35);
-            }
-        }
-
-        setTimeout(typeWriter, 400);
-    </script>
 </body>
 </html>
