@@ -1,0 +1,114 @@
+/* Mise en page */
+.intro-section,
+.type-section,
+.symptoms-section,
+.insuffisance-conclusion {
+    margin: 40px auto;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+.intro-section h2,
+.type-section h2,
+.symptoms-section h2,
+.insuffisance-conclusion h2 {
+    text-align: center;
+    color: #02084b;
+    margin-bottom: 20px;
+}
+
+/* Cartes façon accueil */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.grid-item {
+    background: linear-gradient(135deg, #ffffff, #f0f4ff);
+    padding: 25px 20px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    cursor: default;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item h3 {
+    color: #02084b;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.grid-item p {
+    color: #333;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Symptômes */
+.symptom-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.symptom-card {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    font-size: 15px;
+    color: #333;
+    min-width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.symptom-card:hover {
+    background: linear-gradient(135deg, #ffe5e5, #ffdddd);
+    transform: scale(1.04);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Fancy wrapper comme sur la page d'accueil */
+.fancy-intro {
+    background: linear-gradient(135deg, #f5faff, #eef6ff);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    padding: 30px 30px;
+}
+
+.intro-section .desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.functions-intro {
+    max-width: 1000px;
+    margin: 0 auto 10px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.functions-intro .desc {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+

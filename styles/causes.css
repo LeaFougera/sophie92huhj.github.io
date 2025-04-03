@@ -1,0 +1,81 @@
+/* Section d'introduction et de conclusion */
+.intro-section,
+.causes-conclusion {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, #eef6ff, #f9fbff);
+    border-radius: 16px;
+    margin: 40px auto;
+    max-width: 1000px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Grille des cartes */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 30px 10px;
+}
+
+.grid-item {
+    background: linear-gradient(135deg, #ffffff, #f0f4ff);
+    padding: 25px 20px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item h3 {
+    color: #02084b;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.grid-item p {
+    color: #333;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Risques façon "cartes de symptômes" */
+.risks-section {
+    text-align: center;
+    padding: 40px;
+    background-color: #f5faff;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 1000px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.symptom-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.symptom-card {
+    background: white;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, background 0.3s;
+    font-size: 15px;
+    cursor: default;
+}
+
+.symptom-card:hover {
+    background: linear-gradient(to right, #ffecec, #fff5f5);
+    transform: scale(1.03);
+}

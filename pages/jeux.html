@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirection - Jeux</title>
+    <script>
+        const isConnected = localStorage.getItem("isLoggedIn");
+
+        if (isConnected === "true") {
+            window.location.href = "jeux-debut.html";
+        } else {
+            window.location.href = "connexion.html";
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

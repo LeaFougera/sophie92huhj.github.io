@@ -2,15 +2,108 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'Accueil</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="styles/principal.css">
+    <link rel="stylesheet" href="styles/index.css"> <!-- Si tu sépares CSS par page -->
 </head>
 <body>
-    <div class="container">
-        <h1>Page d'Accueil</h1>
-        <p>Bienvenue sur notre site !</p>
-        <a href="connexion.html" class="btn">Se connecter</a>
+
+    <!-- En-tête -->
+    <div class="header-top">
+        <h1>Bienvenue sur le portail de sensibilisation à l'insuffisance rénale</h1>
+        <p>Comprenez, prévenez et agissez pour protéger votre santé rénale.</p>
     </div>
+
+    <!-- Barre de navigation (chargée dynamiquement) -->
+    <div id="navbar-placeholder"></div>
+
+        <!-- Intro compacte + Stat -->
+        <section class="split-section">
+            <!-- Bloc gauche : Intro complète -->
+            <div class="split-box">
+                <h2>Pourquoi ce site ?</h2>
+                <p class="desc">
+                    L’insuffisance rénale est une maladie silencieuse qui touche des millions de personnes sans symptômes apparents.
+                    <br><br>
+                    Ce site a été conçu pour vous aider à comprendre ce qu’est l’insuffisance rénale, en repérer les signes,
+                    connaître les causes, et surtout apprendre à la prévenir. Informez-vous, testez vos connaissances, 
+                    et devenez acteur de votre santé rénale.
+                </p>
+            </div>
+        
+            <!-- Bloc droit : Stat -->
+            <div class="split-box stat-box">
+                <div class="compact-stats">
+                    <span id="typing-text" class="typing-text"></span><br>
+                    <span class="normal-text">dans le monde sont touchées par une maladie rénale chronique.</span>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- Contenu principal -->
+    <div class="content">
+
+
+        
+        
+        
+
+        <!-- Blocs cliquables -->
+        <section class="grid-container">
+            <div class="grid-item text-block" onclick="window.location.href='pages/insuffisance.html';">
+                <h3>❓ Qu’est-ce que l’insuffisance rénale ?</h3>
+                <p>Découvrez le rôle des reins et ce qui se passe quand ils ne fonctionnent plus correctement.</p>
+            </div>
+
+            <div class="grid-item text-block" onclick="window.location.href='pages/causes.html';">
+                <h3>⚠️ Causes et facteurs de risque</h3>
+                <p>Hypertension, diabète, antécédents familiaux... Informez-vous sur les principaux facteurs de risque.</p>
+            </div>
+
+            <div class="grid-item text-block" onclick="window.location.href='pages/symptomes.html';">
+                <h3>🩺 Symptômes à surveiller</h3>
+                <p>
+                    Reconnaissez les signes d’alerte : fatigue, 
+                    <span class="tooltip">œdèmes
+                        <span class="tooltiptext">Accumulation anormale de liquide dans les tissus du corps</span>
+                    </span>, troubles urinaires... Pour agir à temps.
+                </p>
+            </div>
+
+            <div class="grid-item text-block" onclick="window.location.href='pages/prevention.html';">
+                <h3>🛡️ Prévention et traitements</h3>
+                <p>Découvrez les gestes simples pour préserver vos reins et les solutions thérapeutiques existantes.</p>
+            </div>
+
+            <div class="grid-item text-block" onclick="window.location.href='pages/jeux.html';">
+                <h3>🎮 Quiz et mini-jeux</h3>
+                <p>Testez vos connaissances de manière ludique et apprenez tout en vous amusant !</p>
+            </div>
+
+            <div class="grid-item text-block" onclick="window.location.href='pages/ressources.html';">
+                <h3>📚 Ressources et aide</h3>
+                <p>Accédez à des liens utiles, des vidéos explicatives, des associations et des contacts pour approfondir votre démarche et mieux comprendre l’insuffisance rénale.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/barre-navigation.js"></script>
+    <script>
+        const fullText = "+850 millions de personnes";
+        const element = document.getElementById("typing-text");
+        let index = 0;
+
+        function typeWriter() {
+            if (index < fullText.length) {
+                element.textContent += fullText.charAt(index);
+                index++;
+                setTimeout(typeWriter, 35);
+            }
+        }
+
+        setTimeout(typeWriter, 400);
+    </script>
 </body>
 </html>

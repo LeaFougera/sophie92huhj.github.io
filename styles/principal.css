@@ -1,0 +1,52 @@
+@import url('base.css');
+@import url('mise-en-page.css');
+@import url('barre-navigation.css');
+@import url('index.css');
+@import url('connexion.css');
+@import url('inscription.css');
+@import url('causes.css');
+@import url('symptomes.css');
+@import url('prevention.css');
+@import url('jeux.css');
+@import url('insuffisance.css');
+
+.tooltip {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted #333;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position au-dessus */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Pointe de la bulle */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

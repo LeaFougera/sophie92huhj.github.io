@@ -1,0 +1,8 @@
+/* En attente de contenus interactifs — minimal pour l’instant */
+
+.content p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px;
+    color: #333;
+}
