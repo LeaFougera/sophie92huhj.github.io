@@ -77,20 +77,17 @@
     }
 
     .completed {
-      stroke-dasharray: none;
       stroke-opacity: 1;
       stroke-width: 6;
-      stroke-linecap: round;
-      stroke-dashoffset: 1000;
-      animation: drawLine 5s ease forwards;
+      animation: colorPulse 2.5s ease forwards;
     }
 
-    @keyframes drawLine {
+    @keyframes colorPulse {
       from {
-        stroke-dashoffset: 1000;
+        stroke-opacity: 0.2;
       }
       to {
-        stroke-dashoffset: 0;
+        stroke-opacity: 1;
       }
     }
   </style>
@@ -113,34 +110,47 @@
     </svg>
 
     <!-- Étapes -->
-    <div class="etape debutant" style="top:20px; left:40px;" onclick="completer(1, this)">1</div>
-    <div class="etape debutant" style="top:120px; left:265px;" onclick="completer(2, this)">2</div>
-    <div class="etape debutant" style="top:220px; left:490px;" onclick="completer(3, this)">3</div>
+    <a href="../jeux/quiz.html" class="etape debutant" id="etape1" style="top:20px; left:40px;">1</a>
+    <div id="score-quiz" style="position:absolute; top:95px; left:40px; width:70px; font-size: 0.9em;"></div>
 
-    <div class="etape intermediaire" style="top:320px; left:265px;" onclick="completer(4, this)">4</div>
-    <div class="etape intermediaire" style="top:420px; left:40px;" onclick="completer(5, this)">5</div>
-    <div class="etape intermediaire" style="top:520px; left:265px;" onclick="completer(6, this)">6</div>
+    <a href="../jeux/memoire.html" class="etape debutant" id="etape2" style="top:120px; left:265px;">2</a>
+    <div class="etape debutant" style="top:220px; left:490px;">3</div>
 
-    <div class="etape difficile" style="top:620px; left:490px;" onclick="completer(7, this)">7</div>
-    <div class="etape difficile" style="top:720px; left:265px;" onclick="completer(8, this)">8</div>
-    <div class="etape difficile" style="top:820px; left:40px;" onclick="completer(9, this)">9</div>
+    <div class="etape intermediaire" style="top:320px; left:265px;">4</div>
+    <div class="etape intermediaire" style="top:420px; left:40px;">5</div>
+    <div class="etape intermediaire" style="top:520px; left:265px;">6</div>
+
+    <div class="etape difficile" style="top:620px; left:490px;">7</div>
+    <div class="etape difficile" style="top:720px; left:265px;">8</div>
+    <div class="etape difficile" style="top:820px; left:40px;">9</div>
   </div>
 
   <script>
-    function completer(num, el) {
+    function completer(num, el, couleur) {
       const ligne = document.querySelector(`.line.c${num}`);
-      let couleur = "#66bb6a"; // vert par défaut
-
-      if (el.classList.contains("intermediaire")) couleur = "#ffa726";
-      if (el.classList.contains("difficile")) couleur = "#ef5350";
-
       if (ligne && !ligne.classList.contains("completed")) {
         ligne.style.stroke = couleur;
         ligne.classList.add("completed");
       }
-
       if (!el.classList.contains("etape-complete")) {
         el.classList.add("etape-complete");
+      }
+    }
+
+    // Affichage du score et coloration si score existe
+    const bestScore = localStorage.getItem("bestScoreQuiz");
+    const maxScore = localStorage.getItem("maxScoreQuiz");
+
+    if (bestScore && maxScore) {
+      const scoreDiv = document.getElementById("score-quiz");
+      if (scoreDiv) {
+        scoreDiv.textContent = `Meilleur score : ${bestScore}/${maxScore}`;
+      }
+
+      const etape1 = document.getElementById("etape1");
+      const ligne1 = document.querySelector(".line.c1");
+      if (etape1 && ligne1 && !ligne1.classList.contains("completed")) {
+        completer(1, etape1, "#66bb6a");
       }
     }
   </script>

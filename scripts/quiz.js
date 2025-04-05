@@ -83,7 +83,15 @@ const questions = [
     answersEl.classList.add("hidden");
     scoreEl.textContent = `Votre score : ${score} / ${questions.length}`;
     scoreEl.classList.remove("hidden");
+  
+    // Stocker le meilleur score dans le localStorage
+    const previousBest = localStorage.getItem("bestScoreQuiz");
+    if (!previousBest || score > parseInt(previousBest)) {
+      localStorage.setItem("bestScoreQuiz", score);
+    }
+    localStorage.setItem("maxScoreQuiz", questions.length); // utile pour l'affichage
   }
+  
   
   // Lancement
   showQuestion();
