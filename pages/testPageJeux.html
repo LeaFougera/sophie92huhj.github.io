@@ -109,11 +109,15 @@
       <line x1="300" y1="755" x2="75" y2="855" class="line c8" />
     </svg>
 
-    <!-- Étapes -->
+    <!-- Étape 1 : Quiz -->
     <a href="../jeux/quiz.html" class="etape debutant" id="etape1" style="top:20px; left:40px;">1</a>
     <div id="score-quiz" style="position:absolute; top:95px; left:40px; width:70px; font-size: 0.9em;"></div>
 
+    <!-- Étape 2 : Mémoire -->
     <a href="../jeux/memoire.html" class="etape debutant" id="etape2" style="top:120px; left:265px;">2</a>
+    <div id="score-memoire" style="position:absolute; top:195px; left:265px; width:70px; font-size: 0.9em;"></div>
+
+    <!-- Autres étapes -->
     <div class="etape debutant" style="top:220px; left:490px;">3</div>
 
     <div class="etape intermediaire" style="top:320px; left:265px;">4</div>
@@ -137,7 +141,7 @@
       }
     }
 
-    // Affichage du score et coloration si score existe
+    // === Étape 1 : Quiz ===
     const bestScore = localStorage.getItem("bestScoreQuiz");
     const maxScore = localStorage.getItem("maxScoreQuiz");
 
@@ -153,6 +157,23 @@
         completer(1, etape1, "#66bb6a");
       }
     }
+
+    // === Étape 2 : Mémoire ===
+    const bestMemo = localStorage.getItem("bestScoreMemoire");
+
+if (bestMemo) {
+  const scoreMemoDiv = document.getElementById("score-memoire");
+  if (scoreMemoDiv) {
+    scoreMemoDiv.textContent = `Meilleur score : ${bestMemo} essais`;
+  }
+
+  const etape2 = document.getElementById("etape2");
+  const ligne2 = document.querySelector(".line.c2");
+  if (etape2 && ligne2 && !ligne2.classList.contains("completed")) {
+    completer(2, etape2, "#66bb6a");
+  }
+}
+
   </script>
 
 </body>

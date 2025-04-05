@@ -5,6 +5,7 @@ const symbols = ['🍎', '🍌', '🍇', '🍒', '🍉', '🥝', '🍍', '🥥']
 let cards = [...symbols, ...symbols]; // 8 paires = 16 cartes
 let flippedCards = [];
 let matchedPairs = 0;
+let attempts = 0;
 
 shuffle(cards);
 createBoard();
@@ -14,7 +15,7 @@ function shuffle(array) {
 }
 
 function createBoard() {
-    cards.forEach((symbol, index) => {
+    cards.forEach(symbol => {
         const card = document.createElement('div');
         card.classList.add('card');
         card.dataset.symbol = symbol;
@@ -42,15 +43,17 @@ function flipCard(card) {
     flippedCards.push(card);
 
     if (flippedCards.length === 2) {
-        const [first, second] = flippedCards;
-        const match = first.dataset.symbol === second.dataset.symbol;
+        attempts++;
 
-        if (match) {
+        const [first, second] = flippedCards;
+        const isMatch = first.dataset.symbol === second.dataset.symbol;
+
+        if (isMatch) {
             matchedPairs++;
             flippedCards = [];
 
             if (matchedPairs === symbols.length) {
-                statusMessage.textContent = "🎉 Bravo ! Vous avez trouvé toutes les paires !";
+                endGame();
             }
         } else {
             setTimeout(() => {
@@ -60,4 +63,15 @@ function flipCard(card) {
             }, 1000);
         }
     }
+}
+
+function endGame() {
+    statusMessage.textContent = `🎉 Bravo ! Tu as terminé en ${attempts} essais.`;
+
+    const previousBest = localStorage.getItem('bestScoreMemoire');
+    if (!previousBest || attempts < parseInt(previousBest)) {
+        localStorage.setItem('bestScoreMemoire', attempts);
+    }
+
+    localStorage.setItem('maxScoreMemoire', symbols.length); // utile si tu veux afficher le total aussi
 }
