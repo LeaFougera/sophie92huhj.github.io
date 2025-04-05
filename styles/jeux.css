@@ -1,8 +1,58 @@
-/* En attente de contenus interactifs — minimal pour l’instant */
+/* Styles spécifiques à la page Jeux */
+
+.games-list {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.quiz-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.quiz-button:hover {
+    background-color: #45a049;
+}
 
 .content p {
     text-align: center;
     font-size: 18px;
     margin-top: 40px;
     color: #333;
+}
+
+.games-list {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.quiz-button,
+.memoire-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.quiz-button:hover,
+.memoire-button:hover {
+    background-color: #45a049;
 }

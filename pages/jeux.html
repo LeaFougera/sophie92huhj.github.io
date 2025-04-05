@@ -2,18 +2,29 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Redirection - Jeux</title>
-    <script>
-        const isConnected = localStorage.getItem("isLoggedIn");
-
-        if (isConnected === "true") {
-            window.location.href = "jeux-debut.html";
-        } else {
-            window.location.href = "connexion.html";
-        }
-    </script>
+    <title>Jeux</title>
+    <link rel="stylesheet" href="../styles/principal.css">
+    <link rel="stylesheet" href="../styles/jeux.css">
 </head>
 <body>
 
+    <div class="header-top">
+        <h1>Bienvenue dans l’espace Jeux</h1>
+        <p>Testez vos connaissances avec nos activités interactives</p>
+    </div>
+
+    <div id="navbar-placeholder"></div>
+
+    <div class="content">
+        <h2>🎮 Jeux disponibles</h2>
+        <div class="games-list">
+            <a href="../pages/testPageJeux.html" class="quiz-button">Parcours de Progression</a>
+            <a href="../jeux/quiz.html" class="quiz-button">Accéder au Quiz</a>
+            <a href="../jeux/memoire.html" class="memoire-button">Jouer au Mémoire</a>
+        </div>
+        <p>Plus de jeux éducatifs arrivent très bientôt...</p>
+    </div>
+
+    <script src="../scripts/barre-navigation.js"></script>
 </body>
 </html>
