@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f6fc;
+    margin: 0;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .conseils li,
+  .draggable-list li {
+    background: #e0f7fa;
+    margin: 10px 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: grab;
+  }
+  
+  button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #388e3c;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .score {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    background-color: #ffffffcc;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #countdown {
+    font-weight: bold;
+    margin: 20px 0;
+    font-size: 1.2em;
+  }
+  
+  #drag-zone h2 {
+    margin-bottom: 10px;
+  }
+  

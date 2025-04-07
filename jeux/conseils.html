@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jeu de Conseils</title>
+  <link rel="stylesheet" href="../styles/conseils.css">
+</head>
+<body>
+
+  <a href="../pages/testPageJeux.html" class="back-button">← Retour</a>
+
+  <div class="container">
+    <h1>🧠 Mémorise les conseils !</h1>
+    <div id="countdown" class="hidden">Temps restant : <span id="timer">10</span>s</div>
+    <ul id="display-list" class="conseils visible"></ul>
+
+    <button id="start-btn">Commencer</button>
+
+    <div id="drag-zone" class="hidden">
+      <h2>Replace les conseils dans le bon ordre</h2>
+      <ul id="drag-list" class="draggable-list"></ul>
+      <button id="validate-btn">Valider</button>
+    </div>
+
+    <div id="result" class="score hidden"></div>
+  </div>
+
+  <script src="../scripts/conseils.js"></script>
+</body>
+</html>
