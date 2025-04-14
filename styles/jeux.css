@@ -3,23 +3,52 @@
 .games-list {
     text-align: center;
     margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
 }
 
-.quiz-button {
-    display: inline-block;
+.games-list p {
+    font-size: 16px;
+    color: #ddd;
+    margin: 10px 0;
+}
+
+/* Bouton principal : Parcours de progression */
+.progression-button {
+    background-color: #2b3dff;
+    color: white;
     padding: 15px 30px;
     font-size: 18px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 10px;
     text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-.quiz-button:hover {
-    background-color: #45a049;
+.progression-button:hover {
+    background-color: #1a2ed8;
+    transform: scale(1.05);
+}
+
+/* Couleur rose commune pour tous les jeux */
+.quiz-button,
+.memoire-button,
+.conseils-button {
+    background-color: #d81b60;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.quiz-button:hover,
+.memoire-button:hover,
+.conseils-button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .content p {
@@ -27,32 +56,4 @@
     font-size: 18px;
     margin-top: 40px;
     color: #333;
-}
-
-.games-list {
-    text-align: center;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-}
-
-.quiz-button,
-.memoire-button {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-decoration: none;
-}
-
-.quiz-button:hover,
-.memoire-button:hover {
-    background-color: #45a049;
 }

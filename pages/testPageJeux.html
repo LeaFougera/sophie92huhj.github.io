@@ -4,48 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Parcours Ludique Animé</title>
+  <link rel="stylesheet" href="../styles/principal.css" />
   <link rel="stylesheet" href="../styles/testPageJeux.css" />
 </head>
 <body>
 
-  <h1>Parcours Ludique Animé</h1>
-  <p>Le chemin est visible dès le départ, et se colore lentement à chaque étape !</p>
+  <div class="header-top">
+    <h1>Parcours Ludique Animé</h1>
+    <p>Le chemin est visible dès le départ, et se colore lentement à chaque étape !</p>
+  </div>
 
-  <div class="parcours-wrapper">
-    <svg width="600" height="900" style="position:absolute; top:0; left:0; z-index:1;">
-      <line x1="75" y1="55" x2="300" y2="155" class="line c1" />
-      <line x1="300" y1="155" x2="525" y2="255" class="line c2" />
-      <line x1="525" y1="255" x2="300" y2="355" class="line c3" />
-      <line x1="300" y1="355" x2="75" y2="455" class="line c4" />
-      <line x1="75" y1="455" x2="300" y2="555" class="line c5" />
-      <line x1="300" y1="555" x2="525" y2="655" class="line c6" />
-      <line x1="525" y1="655" x2="300" y2="755" class="line c7" />
-      <line x1="300" y1="755" x2="75" y2="855" class="line c8" />
-    </svg>
+  <div id="navbar-placeholder"></div>
 
-    <!-- Étapes -->
-    <a href="../jeux/quiz.html" class="etape debutant" id="etape1" style="top:20px; left:40px;">1</a>
-    <a href="../jeux/memoire.html" class="etape debutant" id="etape2" style="top:120px; left:265px;">2</a>
-    <a href="../jeux/conseils.html" class="etape debutant" id="etape3" style="top:220px; left:490px;">3</a>
+  <div class="content">
+    <div class="parcours-wrapper">
+      <svg width="600" height="900" style="position:absolute; top:0; left:0; z-index:1;">
+        <line x1="75" y1="55" x2="300" y2="155" class="line c1" />
+        <line x1="300" y1="155" x2="525" y2="255" class="line c2" />
+        <line x1="525" y1="255" x2="300" y2="355" class="line c3" />
+        <line x1="300" y1="355" x2="75" y2="455" class="line c4" />
+        <line x1="75" y1="455" x2="300" y2="555" class="line c5" />
+        <line x1="300" y1="555" x2="525" y2="655" class="line c6" />
+        <line x1="525" y1="655" x2="300" y2="755" class="line c7" />
+        <line x1="300" y1="755" x2="75" y2="855" class="line c8" />
+      </svg>
 
-    <div class="etape intermediaire" style="top:320px; left:265px;">4</div>
-    <div class="etape intermediaire" style="top:420px; left:40px;">5</div>
-    <div class="etape intermediaire" style="top:520px; left:265px;">6</div>
-    <div class="etape difficile" style="top:620px; left:490px;">7</div>
-    <div class="etape difficile" style="top:720px; left:265px;">8</div>
-    <div class="etape difficile" style="top:820px; left:40px;">9</div>
+      <!-- Étapes -->
+      <a href="../jeux/quiz.html" class="etape debutant" id="etape1" style="top:20px; left:40px;">1</a>
+      <a href="../jeux/memoire.html" class="etape debutant" id="etape2" style="top:120px; left:265px;">2</a>
+      <a href="../jeux/conseils.html" class="etape debutant" id="etape3" style="top:220px; left:490px;">3</a>
 
-    <!-- Panneau d'infos -->
-    <div class="info-panel" id="info-panel">
-      <h3>Infos du mini-jeu</h3>
-      <p><strong>Thème :</strong> <span id="info-theme">-</span></p>
-      <p><strong>Niveau :</strong> <span id="info-niveau">-</span></p>
-      <p><strong>Durée estimée :</strong> <span id="info-duree">-</span></p>
-      <p><strong>Type :</strong> <span id="info-type">-</span></p>
-      <p><strong>Meilleur score :</strong> <span id="info-score">-</span></p>
+      <div class="etape intermediaire" style="top:320px; left:265px;">4</div>
+      <div class="etape intermediaire" style="top:420px; left:40px;">5</div>
+      <div class="etape intermediaire" style="top:520px; left:265px;">6</div>
+      <div class="etape difficile" style="top:620px; left:490px;">7</div>
+      <div class="etape difficile" style="top:720px; left:265px;">8</div>
+      <div class="etape difficile" style="top:820px; left:40px;">9</div>
+
+      <!-- Panneau d'infos -->
+      <div class="info-panel" id="info-panel">
+        <h3>Infos du mini-jeu</h3>
+        <p><strong>Thème :</strong> <span id="info-theme">-</span></p>
+        <p><strong>Niveau :</strong> <span id="info-niveau">-</span></p>
+        <p><strong>Durée estimée :</strong> <span id="info-duree">-</span></p>
+        <p><strong>Type :</strong> <span id="info-type">-</span></p>
+        <p><strong>Meilleur score :</strong> <span id="info-score">-</span></p>
+      </div>
     </div>
   </div>
 
+  <script src="../scripts/barre-navigation.js"></script>
   <script src="../scripts/testPageJeux.js"></script>
 </body>
 </html>

@@ -1,18 +1,42 @@
 .navbar {
     background-color: #02084b;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    padding: 10px 0;
+    overflow-x: auto;         /* Scroll horizontal si nécessaire */
+    white-space: nowrap;      /* Empêche les retours à la ligne */
+    -ms-overflow-style: none; /* Cache la scrollbar IE */
+    scrollbar-width: none;    /* Cache la scrollbar Firefox */
 }
 
+/* Cache la scrollbar sur WebKit (Chrome, Safari, etc.) */
+.navbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ligne contenant tous les liens */
+.nav-ligne {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 0 10px;
+}
+
+/* Liens de navigation */
 .navbar a {
     color: white;
-    padding: 14px 20px;
+    padding: 10px 16px;
     text-decoration: none;
     text-align: center;
+    font-size: 15px;
+    flex: 0 0 auto;            /* Empêche de se réduire ou s'étendre */
+    white-space: nowrap;
+    border-radius: 20px;       /* Coins arrondis 🎯 */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Douceur */
 }
 
-.navbar a:hover {
+/* Effet au survol ET lien actif */
+.navbar a:hover,
+.navbar a.active {
     background-color: #2b3dff;
+    transform: scale(1.05);    /* Petit zoom 💫 */
 }
