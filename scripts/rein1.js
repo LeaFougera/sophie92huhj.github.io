@@ -1,8 +1,8 @@
 const organs = [
-    { img: "../photos/rein.png", name: "Rein" },
-    { img: "../photos/vessie.png", name: "Vessie" },
-    { img: "../photos/uretères.png", name: "Uretères" },
-    { img: "../photos/uretre.png", name: "Urètre" }
+    { img: "../photos/rein.png", name: "Rein", count: 0 },
+    { img: "../photos/vessie.png", name: "Vessie", count: 0 },
+    { img: "../photos/uretères.png", name: "Uretères", count: 0 },
+    { img: "../photos/uretre.png", name: "Urètre", count: 0 }
   ];
   
   const phrases = [
@@ -16,7 +16,10 @@ const organs = [
     { text: "L'urètre est un tube qui relie la vessie à l'extérieur.", organ: "Urètre" }
   ];
   
-  // Mélanger les phrases
+  let selections = []; // Enregistrer les sélections de l'utilisateur
+  let matchedCards = 0;
+  let totalCards = phrases.length;
+  
   function shuffle(phrases) {
     for (let i = phrases.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -25,7 +28,6 @@ const organs = [
     return phrases;
   }
   
-  // Créer les cartes de phrases (en haut)
   function createCards() {
     const cardsContainer = document.getElementById("cards-container");
     shuffle(phrases);
@@ -34,19 +36,18 @@ const organs = [
       const cardElement = document.createElement("div");
       cardElement.classList.add("card");
       cardElement.setAttribute("data-organe", phrase.organ);
-      cardElement.setAttribute("data-matched", "false");
+      cardElement.setAttribute("data-index", index);
   
       const cardText = document.createElement("div");
       cardText.textContent = phrase.text;
       cardElement.appendChild(cardText);
   
-      cardElement.addEventListener("click", () => flipCard(cardElement, phrase));
+      cardElement.addEventListener("click", () => flipCard(cardElement));
   
       cardsContainer.appendChild(cardElement);
     });
   }
   
-  // Créer les images des organes (en bas)
   function createOrgans() {
     const organsContainer = document.getElementById("organs-container");
   
@@ -56,56 +57,104 @@ const organs = [
       organElement.alt = organ.name;
       organElement.setAttribute("data-name", organ.name);
   
-      organElement.addEventListener("click", () => checkMatch(organElement));
+      // Créer un compteur pour chaque organe
+      const countDisplay = document.createElement("span");
+      countDisplay.classList.add("count-display");
+      countDisplay.textContent = organ.count;
   
-      organsContainer.appendChild(organElement);
+      const organContainer = document.createElement("div");
+      organContainer.classList.add("organ-container");
+      organContainer.appendChild(organElement);
+      organContainer.appendChild(countDisplay);
+  
+      organElement.addEventListener("click", () => selectOrgane(organElement, countDisplay));
+  
+      organsContainer.appendChild(organContainer);
     });
   }
   
-  let flippedCard = null; // Carte retournée en attente de correspondance
-  let matchedCards = 0;
+  let flippedCard = null;
   
-  // Retourner une carte
-  function flipCard(cardElement, phrase) {
+  function flipCard(cardElement) {
     if (!flippedCard) {
-      flippedCard = { cardElement, phrase };
-      cardElement.style.backgroundColor = "#fff"; // Retourner la carte (révéler le texte)
+      flippedCard = cardElement;
+      cardElement.style.backgroundColor = "#fff"; // Retourner la carte
     }
   }
   
-  // Vérifier si l'organe sélectionné correspond à la phrase retournée
-  function checkMatch(organElement) {
+  function selectOrgane(organElement, countDisplay) {
     if (flippedCard) {
-      const selectedOrgan = organElement.getAttribute("data-name");
-      const flippedCardOrgane = flippedCard.phrase.organ;
+      const selectedOrgane = organElement.getAttribute("data-name");
+      const flippedCardOrgane = flippedCard.getAttribute("data-organe");
   
-      if (selectedOrgan === flippedCardOrgane) {
-        flippedCard.cardElement.style.backgroundColor = "#c8e6c9"; // Réussite : carte correctement associée
-        flippedCard.cardElement.setAttribute("data-matched", "true");
-        matchedCards++;
+      // Mettre à jour le compteur pour cet organe
+      const organ = organs.find(o => o.name === selectedOrgane);
+      organ.count++;
+      countDisplay.textContent = organ.count;
   
-        if (matchedCards === phrases.length / 2) {
-          document.getElementById("message").textContent = "Félicitations, vous avez gagné !";
-          document.getElementById("restart-btn").classList.remove("hidden");
-        }
-      } else {
-        flippedCard.cardElement.style.backgroundColor = "#f44336"; // Echec : mauvaise association
-      }
+      selections.push({
+        cardElement: flippedCard,
+        organElement: organElement,
+        selectedOrgane: selectedOrgane,
+        correct: selectedOrgane === flippedCardOrgane
+      });
   
-      flippedCard = null; // Réinitialiser la carte retournée
+      organElement.classList.add("selected"); // Marquer l'organe sélectionné
+  
+      flippedCard.style.backgroundColor = "#f4f4f9"; // Réinitialiser la couleur de fond de la carte
+      flippedCard = null;
     }
   }
+  
+  document.getElementById("validate-btn").addEventListener("click", () => {
+    let correctCount = 0;
+    let incorrectAnswers = [];
+  
+    // Effacer le contenu du message précédent
+    document.getElementById("result-message").innerHTML = "";
+  
+    selections.forEach((selection) => {
+      if (selection.correct) {
+        correctCount++;
+        selection.cardElement.style.backgroundColor = "#c8e6c9"; // Correct : vert
+      } else {
+        selection.cardElement.style.backgroundColor = "#f44336"; // Incorrect : rouge
+        // Explication pour chaque réponse incorrecte
+        const explanation = `La phrase "${selection.cardElement.querySelector('div').textContent}" ne correspond pas à ${selection.selectedOrgane}. Ce n'est pas le bon organe.`;
+        incorrectAnswers.push(explanation);
+      }
+    });
+  
+    // Afficher les bonnes et mauvaises réponses directement sur la page
+    const resultMessage = `
+      <h3>Réponses incorrectes:</h3>
+      ${incorrectAnswers.length > 0 ? `<p>${incorrectAnswers.join("<br>")}</p>` : '<p>Aucune erreur !</p>'}
+    `;
+  
+    document.getElementById("result-message").innerHTML = resultMessage;
+    document.getElementById("score-message").textContent = `Score final : ${correctCount} sur ${totalCards / 2}`;
+  
+    // Afficher les résultats directement sur la page
+    document.getElementById("result-container").classList.remove("hidden");
+  });
   
   // Redémarrer le jeu
   document.getElementById("restart-btn").addEventListener("click", () => {
+    resetGame(); // Réinitialiser le jeu
+    createCards();
+    createOrgans();
+  });
+  
+  // Réinitialiser le jeu après avoir fermé le pop-up ou redémarré
+  function resetGame() {
+    selections = [];
     matchedCards = 0;
     document.getElementById("message").textContent = "";
     document.getElementById("restart-btn").classList.add("hidden");
     document.getElementById("cards-container").innerHTML = "";
     document.getElementById("organs-container").innerHTML = "";
-    createCards();
-    createOrgans();
-  });
+    document.getElementById("result-container").classList.add("hidden");
+  }
   
   // Initialiser le jeu
   createCards();

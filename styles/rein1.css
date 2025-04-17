@@ -16,15 +16,15 @@ body {
   
   .cards-container {
     display: grid;
-    grid-template-columns: repeat(4, 200px); /* Ajuster la taille des cartes de phrases */
+    grid-template-columns: repeat(4, 200px);
     gap: 20px;
     justify-content: center;
     margin-top: 20px;
   }
   
   .card {
-    width: 200px; /* Taille de la carte */
-    height: 150px; /* Hauteur des cartes */
+    width: 200px;
+    height: 150px;
     background-color: #d3d3d3;
     display: flex;
     justify-content: center;
@@ -38,7 +38,7 @@ body {
   .card img {
     width: 80%;
     height: auto;
-    display: none; /* Cacher l'image au début */
+    display: none;
   }
   
   .card div {
@@ -56,11 +56,38 @@ body {
   }
   
   .organs-container img {
-    width: 80px; /* Taille des images des organes */
+    width: 80px;
     height: auto;
     cursor: pointer;
     border-radius: 10px;
     transition: transform 0.3s ease;
+  }
+  
+  .organs-container img.selected {
+    border: 3px solid #4CAF50; /* Marque l'organe sélectionné */
+  }
+  
+  /* Positionner le compteur en haut à gauche de chaque organe */
+  .organ-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .count-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .hidden {
@@ -80,4 +107,9 @@ body {
   
   button:hover {
     background-color: #45a049;
+  }
+  
+  .result-container {
+    margin-top: 30px;
+    text-align: left;
   }
