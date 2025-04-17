@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 200px); /* Augmenté la largeur des cartes */
+    gap: 30px; /* Espacement entre les cartes */
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .card {
+    width: 200px; /* Agrandi la taille des cartes */
+    height: 200px; /* Agrandi la hauteur des cartes */
+    background-color: #d3d3d3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px; /* Agrandi la taille du texte */
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* Ajout d'une transition pour l'animation */
+  }
+  
+  .card img {
+    width: 80%;
+    height: auto;
+    display: none; /* Cache l'image au début */
+  }
+  
+  .card div {
+    font-size: 14px; /* Taille du texte */
+    display: none; /* Cache le texte au début */
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
