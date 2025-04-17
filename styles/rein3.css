@@ -78,9 +78,21 @@ button:hover {
     font-weight: bold;
 }
 
-.line {
-    position: absolute;
-    width: 2px;
-    background-color: #3498db;
-    z-index: 1;
+.selected {
+    border: 2px dashed #e67e22;
+    background-color: #fdf2e9;
+}
+
+.matched {
+    cursor: default;
+    opacity: 0.8;
+}
+
+.item img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
