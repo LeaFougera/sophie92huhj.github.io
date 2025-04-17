@@ -10,36 +10,57 @@ body {
     padding: 20px;
   }
   
-  .game-board {
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  .cards-container {
     display: grid;
-    grid-template-columns: repeat(4, 200px); /* Augmenté la largeur des cartes */
-    gap: 30px; /* Espacement entre les cartes */
+    grid-template-columns: repeat(4, 200px); /* Ajuster la taille des cartes de phrases */
+    gap: 20px;
     justify-content: center;
     margin-top: 20px;
   }
   
   .card {
-    width: 200px; /* Agrandi la taille des cartes */
-    height: 200px; /* Agrandi la hauteur des cartes */
+    width: 200px; /* Taille de la carte */
+    height: 150px; /* Hauteur des cartes */
     background-color: #d3d3d3;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px; /* Agrandi la taille du texte */
+    font-size: 16px;
     cursor: pointer;
     border-radius: 10px;
-    transition: transform 0.3s ease; /* Ajout d'une transition pour l'animation */
+    transition: transform 0.3s ease;
   }
   
   .card img {
     width: 80%;
     height: auto;
-    display: none; /* Cache l'image au début */
+    display: none; /* Cacher l'image au début */
   }
   
   .card div {
-    font-size: 14px; /* Taille du texte */
-    display: none; /* Cache le texte au début */
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    padding: 10px;
+  }
+  
+  .organs-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .organs-container img {
+    width: 80px; /* Taille des images des organes */
+    height: auto;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
   }
   
   .hidden {
@@ -47,13 +68,14 @@ body {
   }
   
   button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     margin-top: 20px;
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    border-radius: 5px;
   }
   
   button:hover {

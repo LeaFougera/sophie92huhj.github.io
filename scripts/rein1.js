@@ -1,97 +1,98 @@
-// Les cartes et leurs définitions
-const cards = [
-    { img: "../photos/rein.png", text: "Un organe qui filtre le sang et élimine les toxines." },
-    { img: "../photos/vessie.png", text: "Un organe qui stocke l'urine avant l'élimination." },
-    { img: "../photos/uretères.png", text: "Les tubes qui transportent l'urine des reins à la vessie." },
-    { img: "../photos/uretre.png", text: "Le canal qui permet à l'urine de sortir du corps." },
-    { img: "../photos/rein.png", text: "Un organe qui filtre le sang et élimine les toxines." },
-    { img: "../photos/vessie.png", text: "Un organe qui stocke l'urine avant l'élimination." },
-    { img: "../photos/uretères.png", text: "Les tubes qui transportent l'urine des reins à la vessie." },
-    { img: "../photos/uretre.png", text: "Le canal qui permet à l'urine de sortir du corps." }
+const organs = [
+    { img: "../photos/rein.png", name: "Rein" },
+    { img: "../photos/vessie.png", name: "Vessie" },
+    { img: "../photos/uretères.png", name: "Uretères" },
+    { img: "../photos/uretre.png", name: "Urètre" }
   ];
   
-  // Mélanger les cartes
-  function shuffle(cards) {
-    for (let i = cards.length - 1; i > 0; i--) {
+  const phrases = [
+    { text: "Un organe qui filtre le sang et élimine les toxines.", organ: "Rein" },
+    { text: "Les reins sont responsables de la production de l'urine.", organ: "Rein" },
+    { text: "Un organe qui stocke l'urine avant l'élimination.", organ: "Vessie" },
+    { text: "La vessie est une poche musculaire qui contient l'urine.", organ: "Vessie" },
+    { text: "Les tubes qui transportent l'urine des reins à la vessie.", organ: "Uretères" },
+    { text: "Les uretères sont des conduits qui permettent le passage de l'urine.", organ: "Uretères" },
+    { text: "Le canal qui permet à l'urine de sortir du corps.", organ: "Urètre" },
+    { text: "L'urètre est un tube qui relie la vessie à l'extérieur.", organ: "Urètre" }
+  ];
+  
+  // Mélanger les phrases
+  function shuffle(phrases) {
+    for (let i = phrases.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [cards[i], cards[j]] = [cards[j], cards[i]]; // Swap
+      [phrases[i], phrases[j]] = [phrases[j], phrases[i]]; // Swap
     }
-    return cards;
+    return phrases;
   }
   
-  // Créer le tableau de jeu
-  function createBoard() {
-    const gameBoard = document.getElementById("game-board");
-    shuffle(cards);
+  // Créer les cartes de phrases (en haut)
+  function createCards() {
+    const cardsContainer = document.getElementById("cards-container");
+    shuffle(phrases);
   
-    cards.forEach((card, index) => {
+    phrases.forEach((phrase, index) => {
       const cardElement = document.createElement("div");
       cardElement.classList.add("card");
-      cardElement.setAttribute("data-id", index);
+      cardElement.setAttribute("data-organe", phrase.organ);
       cardElement.setAttribute("data-matched", "false");
   
-      // Créer une image pour la carte
-      const cardImage = document.createElement("img");
-      cardImage.src = card.img;
-      cardImage.alt = card.text;
-      cardImage.style.display = "none"; // Cache l'image au début
-  
-      // Créer un élément de texte pour la carte
       const cardText = document.createElement("div");
-      cardText.textContent = card.text;
-      cardText.style.display = "none"; // Cache le texte au début
-  
-      cardElement.appendChild(cardImage);
+      cardText.textContent = phrase.text;
       cardElement.appendChild(cardText);
   
-      cardElement.addEventListener("click", () => flipCard(cardElement, card, index));
+      cardElement.addEventListener("click", () => flipCard(cardElement, phrase));
   
-      gameBoard.appendChild(cardElement);
+      cardsContainer.appendChild(cardElement);
     });
   }
   
-  // Logique du jeu - retourner une carte
-  let flippedCards = [];
+  // Créer les images des organes (en bas)
+  function createOrgans() {
+    const organsContainer = document.getElementById("organs-container");
+  
+    organs.forEach((organ) => {
+      const organElement = document.createElement("img");
+      organElement.src = organ.img;
+      organElement.alt = organ.name;
+      organElement.setAttribute("data-name", organ.name);
+  
+      organElement.addEventListener("click", () => checkMatch(organElement));
+  
+      organsContainer.appendChild(organElement);
+    });
+  }
+  
+  let flippedCard = null; // Carte retournée en attente de correspondance
   let matchedCards = 0;
   
-  function flipCard(cardElement, card, index) {
-    if (flippedCards.length < 2 && cardElement.getAttribute("data-matched") === "false") {
-      const cardImage = cardElement.querySelector("img");
-      const cardText = cardElement.querySelector("div");
-  
-      cardImage.style.display = "block"; // Afficher l'image de la carte
-      cardText.style.display = "block"; // Afficher le texte de la carte
-      flippedCards.push({ cardElement, card, index });
-  
-      if (flippedCards.length === 2) {
-        checkMatch();
-      }
+  // Retourner une carte
+  function flipCard(cardElement, phrase) {
+    if (!flippedCard) {
+      flippedCard = { cardElement, phrase };
+      cardElement.style.backgroundColor = "#fff"; // Retourner la carte (révéler le texte)
     }
   }
   
-  function checkMatch() {
-    const [firstCard, secondCard] = flippedCards;
+  // Vérifier si l'organe sélectionné correspond à la phrase retournée
+  function checkMatch(organElement) {
+    if (flippedCard) {
+      const selectedOrgan = organElement.getAttribute("data-name");
+      const flippedCardOrgane = flippedCard.phrase.organ;
   
-    if (firstCard.card.text === secondCard.card.text) {
-      firstCard.cardElement.setAttribute("data-matched", "true");
-      secondCard.cardElement.setAttribute("data-matched", "true");
-      matchedCards += 2;
-      flippedCards = [];
+      if (selectedOrgan === flippedCardOrgane) {
+        flippedCard.cardElement.style.backgroundColor = "#c8e6c9"; // Réussite : carte correctement associée
+        flippedCard.cardElement.setAttribute("data-matched", "true");
+        matchedCards++;
   
-      if (matchedCards === cards.length) {
-        setTimeout(() => {
+        if (matchedCards === phrases.length / 2) {
           document.getElementById("message").textContent = "Félicitations, vous avez gagné !";
           document.getElementById("restart-btn").classList.remove("hidden");
-        }, 500);
+        }
+      } else {
+        flippedCard.cardElement.style.backgroundColor = "#f44336"; // Echec : mauvaise association
       }
-    } else {
-      setTimeout(() => {
-        firstCard.cardElement.querySelector("img").style.display = "none";
-        secondCard.cardElement.querySelector("img").style.display = "none";
-        firstCard.cardElement.querySelector("div").style.display = "none";
-        secondCard.cardElement.querySelector("div").style.display = "none";
-        flippedCards = [];
-      }, 1000);
+  
+      flippedCard = null; // Réinitialiser la carte retournée
     }
   }
   
@@ -100,9 +101,12 @@ const cards = [
     matchedCards = 0;
     document.getElementById("message").textContent = "";
     document.getElementById("restart-btn").classList.add("hidden");
-    document.getElementById("game-board").innerHTML = "";
-    createBoard();
+    document.getElementById("cards-container").innerHTML = "";
+    document.getElementById("organs-container").innerHTML = "";
+    createCards();
+    createOrgans();
   });
   
   // Initialiser le jeu
-  createBoard();
+  createCards();
+  createOrgans();

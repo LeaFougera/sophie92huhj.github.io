@@ -4,21 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeu de Mémoire - Les Reins</title>
-  <link rel="stylesheet" href="../styles/base.css">
   <link rel="stylesheet" href="../styles/rein1.css">
 </head>
 <body>
 
   <div class="container">
     <h1>Jeu de Mémoire - Les Reins</h1>
-    <p>Associez les images avec leurs définitions !</p>
+    <p>Associez les phrases aux organes correspondants !</p>
 
-    <div id="game-board" class="game-board">
-      <!-- Cartes du jeu ici -->
+    <!-- Cartes de phrases (en haut) -->
+    <div id="cards-container" class="cards-container">
+      <!-- Les cartes de phrases seront générées ici -->
+    </div>
+
+    <!-- Organes (en bas) -->
+    <div id="organs-container" class="organs-container">
+      <!-- Les images des organes seront générées ici -->
     </div>
 
     <div id="message"></div>
-
     <button id="restart-btn" class="hidden">Recommencer le jeu</button>
   </div>
 
