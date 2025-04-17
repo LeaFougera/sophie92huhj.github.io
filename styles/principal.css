@@ -1,4 +1,7 @@
 @import url('base.css');
+@import url('hygiene.css');
+@import url('quiz.css');
+@import url('alimentation.css');
 @import url('mise-en-page.css');
 @import url('barre-navigation.css');
 @import url('index.css');
@@ -9,6 +12,7 @@
 @import url('prevention.css');
 @import url('jeux.css');
 @import url('insuffisance.css');
+@import url('rein.css');
 
 .tooltip {
     position: relative;
