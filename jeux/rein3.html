@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeu de Liaison - Rein 3</title>
+  <link rel="stylesheet" href="../styles/rein3.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Jeu de Liaison - Rein 3</h1>
+    <p>Relie chaque texte à sa bonne définition en cliquant sur les éléments.</p>
+
+      <!-- Colonne Termes -->
+      <div class="column">
+        <h2>Termes</h2>
+        <div class="item" data-id="1">Test</div>
+        <div class="item" data-id="2">Médecin</div>
+        <div class="item" data-id="3">Reins</div>
+      </div>
+
+      <!-- Colonne Définitions -->
+      <div class="column">
+        <h2>Définitions</h2>
+        <div class="item" data-id="1">Ce test permet de mesurer la créatinine dans le sang.</div>
+        <div class="item" data-id="2">Un suivi médical régulier est nécessaire pour prévenir l’aggravation de l’insuffisance rénale.</div>
+        <div class="item" data-id="3">Les reins filtrent le sang pour éliminer les toxines.</div>
+      </div>
+    </div>
+
+    <button onclick="checkMatches()">Vérifier</button>
+    <div id="result"></div>
+  </div>
+
+  <script src="../scripts/rein3.js"></script>
+</body>
+</html>
