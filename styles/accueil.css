@@ -1,0 +1,39 @@
+/* Styles pour la page Accueil */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f7f7; /* Fond clair */
+    margin: 0;
+    padding: 0;
+}
+
+.header-top {
+    background-color: #4a148c; /* Couleur principale */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header-top h1 {
+    font-size: 2em;
+}
+
+.header-top p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.content {
+    padding: 40px;
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2em;
+    color: #555;
+}
