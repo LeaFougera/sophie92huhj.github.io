@@ -155,3 +155,21 @@ button:hover {
     font-size: 16px;
     line-height: 1.6;
 }
+
+#nextPart {
+    position: absolute;
+    bottom: 20px;
+    right: 70px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* ou une couleur de ton choix */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#nextPart:hover {
+    background-color: #45a049; /* couleur de survol */
+}
+
