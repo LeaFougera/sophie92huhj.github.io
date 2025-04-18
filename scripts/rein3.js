@@ -123,6 +123,17 @@
                 showModal(erreurs.join("\n"));
             }
             resultDiv.textContent = `Score final : ${score} / 10`;
+
+            // Afficher le bouton "Terminer" après la partie 2
+            const finishButton = document.getElementById("finishButton");
+            finishButton.style.display = "block";
+            
+            if (!finishButton.dataset.listenerAdded) {
+                finishButton.addEventListener("click", function () {
+                    window.location.href = "../jeux/resultat.html";
+                });
+                finishButton.dataset.listenerAdded = "true";
+            }
             }
         }
 
@@ -168,3 +179,23 @@
                     canGoToNextPart = false;
                 });
                 
+// Après la vérification des réponses de la partie 2
+if (currentPart === "part2") {
+    if (erreurs.length > 0) {
+        showModal(erreurs.join("\n"));
+    }
+    resultDiv.textContent = `Score final : ${score} / 10`;
+
+    // Afficher le bouton "Terminer"
+    document.getElementById("finishButton").addEventListener("click", function() {
+        window.location.href = "../jeux/resultat.html";  // Redirige vers la page "resultat.html"
+    });
+    
+} else {
+    // Assurez-vous que la partie 1 est terminée avant de pouvoir aller à la partie suivante
+    if (canGoToNextPart) {
+        document.getElementById("nextPart").style.display = "block";
+    }
+}
+
+

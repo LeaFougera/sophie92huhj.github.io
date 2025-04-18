@@ -186,3 +186,19 @@ button:hover {
     background-color: #45a049; /* couleur de survol */
 }
 
+
+#finishButton {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#finishButton:hover {
+    background-color: #2980b9;
+}

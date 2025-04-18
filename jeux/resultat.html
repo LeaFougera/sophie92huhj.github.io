@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Résultats - Jeu de Liaison</title>
+    <link rel="stylesheet" href="../styles/resultat_rein3.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats du Jeu de Liaison</h1>
+        <p id="score"></p>
+        <h2>À retenir</h2>
+        <pre id="explications"></pre>
+        <button onclick="window.location.href='../pages/jeux.html'">Retour au parcours</button>
+    </div>
+
+    <script>
+        // Récupérer le score depuis localStorage
+        const scoreFinal = localStorage.getItem("scoreFinal");
+        document.getElementById("score").textContent = `Votre score : ${scoreFinal} / 10`;
+
+        // Texte explicatif enrichi
+        const recapitulatif = `
+🧠 À retenir sur le fonctionnement des reins et leur suivi médical :
+
+- Le test sanguin permet de mesurer la créatinine, un indicateur essentiel pour évaluer la santé rénale.
+- Les reins filtrent le sang pour éliminer les toxines et les déchets, ensuite évacués dans l’urine.
+- Une tension artérielle élevée est un facteur de risque important pour les maladies rénales. Il est donc crucial de bien la surveiller.
+- Les reins produisent l’EPO (érythropoïétine), une hormone qui stimule la production de globules rouges.
+- Un suivi médical régulier permet de détecter tôt les signes de dégradation et de mieux prendre en charge la fonction rénale.
+
+🔎 Sur les outils de diagnostic et les indicateurs à connaître :
+
+- Les bandelettes urinaires peuvent révéler la présence de protéines ou de sang, signes d’un dysfonctionnement rénal.
+- Le DFG (Débit de Filtration Glomérulaire) est un indicateur-clé : s’il est faible, cela signifie que les reins filtrent moins bien.
+- Un taux élevé de créatinine dans le sang signale souvent une altération de la fonction des reins.
+- Lorsqu’un rein est endommagé, il ne parvient plus à filtrer efficacement, ce qui provoque une accumulation de toxines dans le corps.
+- La maladie rénale chronique évolue lentement, mais un diagnostic précoce permet de ralentir sa progression et de préserver la qualité de vie.
+
+🩺 En résumé : Comprendre les fonctions des reins et surveiller les bons indicateurs permet une meilleure prévention et un suivi adapté en cas de problème rénal.
+`;
+
+        document.getElementById("explications").textContent = recapitulatif;
+    </script>
+</body>
+</html>
