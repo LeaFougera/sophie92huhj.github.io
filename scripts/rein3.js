@@ -69,9 +69,7 @@
     }
     }
 
-    document.getElementById("nextPart").addEventListener("click", () => {
-    checkMatches(); // vérifie partie 1
-    });
+
 
         function checkMatches() {
 
