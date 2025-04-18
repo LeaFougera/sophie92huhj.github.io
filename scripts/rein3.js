@@ -63,17 +63,57 @@
 
         selectedTerme = null;
         selectedDefinition = null;
-    }
-    }
 
-    function checkMatches() {
-    let score = 0;
-
-    matchedPairs.forEach(([termeID, defID]) => {
-        if (termeID === defID) {
-        score++;
+        if (matchedPairs.length === 5) {
+        document.getElementById("nextPart").style.display = "block";
         }
+    }
+    }
+
+    document.getElementById("nextPart").addEventListener("click", () => {
+    checkMatches(); // vérifie partie 1
     });
 
-    resultDiv.textContent = `Score : ${score} / ${termes.length}`;
-    }
+        function checkMatches() {
+            let score = 0;
+            let erreurs = [];
+            let currentPart = "part1";
+        
+            matchedPairs.forEach(([termeID, defID]) => {
+            const termeEl = document.querySelector(`.item[data-id="${termeID}"]`);
+            if (termeEl.classList.contains("part2")) currentPart = "part2";
+        
+            if (termeID === defID) {
+                score++;
+            } else if (termeEl.classList.contains(currentPart)) {
+                const termeText = termeEl.alt || termeEl.textContent.trim();
+                const defText = document.querySelector(`.item[data-id="${defID}"]`).textContent.trim();
+                erreurs.push(`Erreur : "${termeText}" n'est pas bien associé à "${defText}"`);
+            }
+            });
+        
+            if (currentPart === "part1") {
+            if (erreurs.length === 0) {
+                alert("Bravo, on passe à la suite !");
+            } else {
+                alert(erreurs.join("\n"));
+            }
+        
+            // Masquer les éléments de la première partie
+            document.querySelectorAll(".part1").forEach(el => el.style.display = "none");
+        
+            // Afficher les éléments de la deuxième partie avec une animation
+            document.querySelectorAll(".part2").forEach(el => {
+                el.style.display = "block";
+                el.classList.add("fade-in");
+            });
+        
+            document.getElementById("nextPart").style.display = "none";
+            } else {
+            if (erreurs.length > 0) {
+                alert(erreurs.join("\n"));
+            }
+            resultDiv.textContent = `Score final : ${score} / 10`;
+            }
+        }
+
