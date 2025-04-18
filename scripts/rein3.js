@@ -123,6 +123,7 @@
                 showModal(erreurs.join("\n"));
             }
             resultDiv.textContent = `Score final : ${score} / 10`;
+            localStorage.setItem("scoreFinal", score);
 
             // Afficher le bouton "Terminer" après la partie 2
             const finishButton = document.getElementById("finishButton");
