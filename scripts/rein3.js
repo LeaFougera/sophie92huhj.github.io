@@ -75,9 +75,28 @@
     });
 
         function checkMatches() {
+
+            if (matchedPairs.length === 0) {
+                showModal("Essaye de remplir quelques associations avant de vérifier.");
+                return;
+            }
+
+            const explications = {
+                1: "Ce test mesure la créatinine, un déchet filtré par les reins. Un taux élevé peut indiquer une insuffisance rénale.",
+                2: "Un suivi médical régulier permet de détecter une dégradation de la fonction rénale à temps.",
+                3: "Les reins sont des organes vitaux qui filtrent le sang et produisent l’urine.",
+                4: "Une tension artérielle élevée abîme les vaisseaux sanguins dans les reins.",
+                5: "Les reins produisent une hormone (EPO) qui stimule la production de globules rouges.",
+                6: "La bandelette urinaire permet une détection simple de protéines ou de sang dans l'urine.",
+                7: "Le DFG (Débit de Filtration Glomérulaire) estime la capacité des reins à filtrer le sang.",
+                8: "La créatinine est un marqueur de la fonction rénale ; son excès est un signe d’insuffisance.",
+                9: "Un rein endommagé filtre mal le sang, causant une accumulation de déchets dans l'organisme.",
+                10: "L’insuffisance rénale chronique évolue lentement, nécessitant une prise en charge précoce."
+            };
             let score = 0;
             let erreurs = [];
             let currentPart = "part1";
+            let currentPartIDs = [];
         
             matchedPairs.forEach(([termeID, defID]) => {
             const termeEl = document.querySelector(`.item[data-id="${termeID}"]`);
@@ -88,15 +107,18 @@
             } else if (termeEl.classList.contains(currentPart)) {
                 const termeText = termeEl.alt || termeEl.textContent.trim();
                 const defText = document.querySelector(`.item[data-id="${defID}"]`).textContent.trim();
-                erreurs.push(`Erreur : "${termeText}" n'est pas bien associé à "${defText}"`);
+                const bonneDef = document.querySelector(`.item[data-id="${termeID}"]`).textContent.trim();
+                const explication = explications[termeID] || "Pas d'explication disponible.";
+
+                erreurs.push(`❌ "${termeText}" est mal associé à "${defText}".\n✅ Bonne réponse : "${bonneDef}".\nℹ️ ${explication}`);
             }
             });
         
             if (currentPart === "part1") {
             if (erreurs.length === 0) {
-                alert("Bravo, on passe à la suite !");
+                showModal("Bravo, on passe à la suite !");
             } else {
-                alert(erreurs.join("\n"));
+                showModal(erreurs.join("\n"));
             }
         
             // Masquer les éléments de la première partie
@@ -111,9 +133,26 @@
             document.getElementById("nextPart").style.display = "none";
             } else {
             if (erreurs.length > 0) {
-                alert(erreurs.join("\n"));
+                showModal(erreurs.join("\n"));
             }
             resultDiv.textContent = `Score final : ${score} / 10`;
             }
         }
 
+            function showModal(content) {
+                const modal = document.getElementById("customModal");
+                const modalText = document.getElementById("modalText");
+                modalText.textContent = content;
+                modal.style.display = "block";
+            }
+            
+            document.querySelector(".close-button").addEventListener("click", () => {
+                document.getElementById("customModal").style.display = "none";
+            });
+            
+            window.addEventListener("click", event => {
+                const modal = document.getElementById("customModal");
+                if (event.target === modal) {
+                modal.style.display = "none";
+                }
+            });
