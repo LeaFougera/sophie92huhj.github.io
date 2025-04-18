@@ -1,5 +1,5 @@
     const termes = document.querySelectorAll(".column:first-child .item");
-    const definitions = document.querySelectorAll(".column:last-child .item");
+    const definitions = document.querySelectorAll(".column:last-child .item2");
     const resultDiv = document.getElementById("result");
 
     let selectedTerme = null;
@@ -31,16 +31,12 @@
     });
 
     function resetSelection(type) {
-    const items = document.querySelectorAll(".item");
-    items.forEach(item => {
-        if (!item.classList.contains("matched")) {
-        if (type === "terme" && item.parentElement.previousElementSibling?.textContent === "Termes") {
-            item.classList.remove("selected");
-        } else if (type === "definition" && item.parentElement.previousElementSibling?.textContent === "Définitions") {
-            item.classList.remove("selected");
-        }
-        }
-    });
+        const items = document.querySelectorAll(type === "terme" ? ".item" : ".item2");
+        items.forEach(item => {
+            if (!item.classList.contains("matched")) {
+                item.classList.remove("selected");
+            }
+        });
     }
 
     function tryMatch() {
@@ -103,8 +99,8 @@
                 score++;
             } else if (termeEl.classList.contains(currentPart)) {
                 const termeText = termeEl.alt || termeEl.textContent.trim();
-                const defText = document.querySelector(`.item[data-id="${defID}"]`).textContent.trim();
-                const bonneDef = document.querySelector(`.item[data-id="${termeID}"]`).textContent.trim();
+                const defText = document.querySelector(`.item2.${currentPart}[data-id="${defID}"]`).textContent.trim();
+                const bonneDef = document.querySelector(`.item2.${currentPart}[data-id="${termeID}"]`).textContent.trim();
                 const explication = explications[termeID] || "Pas d'explication disponible.";
 
                 erreurs.push(`❌ "${termeText}" est mal associé à "${defText}".\n✅ Bonne réponse : "${bonneDef}".\nℹ️ ${explication}`);
