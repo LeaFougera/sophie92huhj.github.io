@@ -5,8 +5,9 @@
     let selectedTerme = null;
     let selectedDefinition = null;
     let matchedPairs = [];
+    let canGoToNextPart = false;
 
-    const colors = ["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#a0c4ff", "#bdb2ff", "#ffc6ff"];
+    const colors = ["#e3ecff", "#bfd7ff", "#a0c4ff", "#7094cc", "#406499"];
     let currentColorIndex = 0;
 
     termes.forEach(terme => {
@@ -64,9 +65,7 @@
         selectedTerme = null;
         selectedDefinition = null;
 
-        if (matchedPairs.length === 5) {
-        document.getElementById("nextPart").style.display = "block";
-        }
+
     }
     }
 
@@ -114,24 +113,18 @@
             }
             });
         
-            if (currentPart === "part1") {
-            if (erreurs.length === 0) {
-                showModal("Bravo, on passe à la suite !");
-            } else {
-                showModal(erreurs.join("\n"));
-            }
-        
-            // Masquer les éléments de la première partie
-            document.querySelectorAll(".part1").forEach(el => el.style.display = "none");
-        
-            // Afficher les éléments de la deuxième partie avec une animation
-            document.querySelectorAll(".part2").forEach(el => {
-                el.style.display = "block";
-                el.classList.add("fade-in");
-            });
-        
-            document.getElementById("nextPart").style.display = "none";
-            } else {
+                if (currentPart === "part1") {
+                    if (erreurs.length === 0) {
+                    showModal("Bravo, on passe à la suite !");
+                    } else {
+                    showModal(erreurs.join("\n"));
+                    }
+                
+                    // Autoriser l’accès au bouton "Partie suivante"
+                    canGoToNextPart = true;
+                
+                } else {
+                
             if (erreurs.length > 0) {
                 showModal(erreurs.join("\n"));
             }
@@ -148,7 +141,12 @@
             
             document.querySelector(".close-button").addEventListener("click", () => {
                 document.getElementById("customModal").style.display = "none";
+            
+                if (canGoToNextPart) {
+                    document.getElementById("nextPart").style.display = "block";
+                }
             });
+            
             
             window.addEventListener("click", event => {
                 const modal = document.getElementById("customModal");
@@ -156,3 +154,23 @@
                 modal.style.display = "none";
                 }
             });
+
+                document.getElementById("nextPart").addEventListener("click", () => {
+                    if (!canGoToNextPart) return;
+                
+                    // Cacher la partie 1
+                    document.querySelectorAll(".part1").forEach(el => el.style.display = "none");
+                
+                    // Afficher la partie 2
+                    document.querySelectorAll(".part2").forEach(el => {
+                    el.style.display = "block";
+                    el.classList.add("fade-in");
+                    });
+                
+                    // Cacher le bouton
+                    document.getElementById("nextPart").style.display = "none";
+
+                    // On réinitialise
+                    canGoToNextPart = false;
+                });
+                
