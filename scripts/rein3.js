@@ -90,6 +90,7 @@
             let erreurs = [];
             let currentPart = "part1";
             let currentPartIDs = [];
+            let nbErreurs = 0;
         
             matchedPairs.forEach(([termeID, defID]) => {
             const termeEl = document.querySelector(`.item[data-id="${termeID}"]`);
@@ -103,15 +104,28 @@
                 const bonneDef = document.querySelector(`.item2.${currentPart}[data-id="${termeID}"]`).textContent.trim();
                 const explication = explications[termeID] || "Pas d'explication disponible.";
 
-                erreurs.push(`❌ "${termeText}" est mal associé à "${defText}".\n✅ Bonne réponse : "${bonneDef}".\nℹ️ ${explication}`);
+                const message = `
+                    <div class="erreur-item">
+                        <p><strong>Tu as fait une erreur ici :</strong> "${termeText}" ne correspond pas à cette définition.</p>
+                        <p><strong>Ce qu’il fallait associer :</strong> "${bonneDef}".</p>
+                        <p><strong>Pourquoi ?</strong> ${explication}</p>
+                    </div>
+                `;
+                erreurs.push(message);
+
+                nbErreurs++;
+
+                //erreurs.push(`❌ "${termeText}" est mal associé à "${defText}".\n✅ Bonne réponse : "${bonneDef}".\nℹ️ ${explication}`);
             }
             });
         
                 if (currentPart === "part1") {
                     if (erreurs.length === 0) {
-                    showModal("Bravo, on passe à la suite !");
+                    showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.");
                     } else {
-                    showModal(erreurs.join("\n"));
+                        const compteurErreur = `<div class="erreur-item"><p><strong>Tu as fait ${nbErreurs} erreur${nbErreurs > 1 ? 's' : ''}.</strong></p></div>`;
+                        showModal(compteurErreur + erreurs.join("\n"));
+                        
                     }
                 
                     // Autoriser l’accès au bouton "Partie suivante"
@@ -141,7 +155,7 @@
             function showModal(content) {
                 const modal = document.getElementById("customModal");
                 const modalText = document.getElementById("modalText");
-                modalText.textContent = content;
+                modalText.innerHTML = content;
                 modal.style.display = "block";
             }
             
