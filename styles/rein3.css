@@ -73,7 +73,7 @@ button {
     display: block;
     margin: 30px auto;
     padding: 10px 20px;
-    background-color: #2ecc71;
+    background-color: #3498db;
     color: white;
     font-size: 16px;
     border: none;
@@ -82,7 +82,7 @@ button {
 }
 
 button:hover {
-    background-color: #27ae60;
+    background-color: #2e86c1;
 }
 
 #result {
@@ -174,7 +174,7 @@ button:hover {
     bottom: 20px;
     right: 70px;
     padding: 10px 20px;
-    background-color: #4CAF50; /* ou une couleur de ton choix */
+    background-color: #3498db; /* ou une couleur de ton choix */
     color: white;
     border: none;
     border-radius: 5px;
@@ -183,7 +183,7 @@ button:hover {
 }
 
 #nextPart:hover {
-    background-color: #45a049; /* couleur de survol */
+    background-color: #2e86c1; /* couleur de survol */
 }
 
 
@@ -200,5 +200,5 @@ button:hover {
 }
 
 #finishButton:hover {
-    background-color: #2980b9;
+    background-color: #2e86c1;
 }
