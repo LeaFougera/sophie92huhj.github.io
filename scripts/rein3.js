@@ -98,7 +98,7 @@
             if (termeID === defID) {
                 score++;
             } else if (termeEl.classList.contains(currentPart)) {
-                const termeText = termeEl.alt || termeEl.textContent.trim();
+                const termeText = termeEl.querySelector("img")?.alt || termeEl.textContent.trim();
                 const defText = document.querySelector(`.item2.${currentPart}[data-id="${defID}"]`).textContent.trim();
                 const bonneDef = document.querySelector(`.item2.${currentPart}[data-id="${termeID}"]`).textContent.trim();
                 const explication = explications[termeID] || "Pas d'explication disponible.";

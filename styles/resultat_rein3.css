@@ -1,60 +1,76 @@
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #2e86c1;
+/* Général */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4faff;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2d3d;
 }
 
-/* Mise en page générale */
+/* Conteneur principal */
 .container {
     max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Style du bloc des explications */
-#explications {
-    background-color: #f9f9f9;
-    border-left: 5px solid #3498db;
-    padding: 20px;
-    white-space: pre-wrap; /* pour garder les sauts de ligne mais permettre le retour à la ligne */
-    font-size: 1rem;
-    color: #333;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    margin-top: 20px;
+/* Titres */
+h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    border-left: 6px solid #3498db;
+    padding-left: 12px;
 }
 
-/* Style du score */
-#score {
-    font-size: 1.2rem;
-    font-weight: bold;
+h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-top: 40px;
     margin-bottom: 10px;
 }
 
-/* Style du bouton de retour */
+/* Score */
+#score {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2980b9;
+}
+
+/* Bloc explications */
+#explications {
+    background-color: #ecf6fd;
+    border-left: 5px solid #3498db;
+    padding: 20px 24px;
+    border-radius: 12px;
+    white-space: pre-wrap;
+    font-size: 1rem;
+    color: #34495e;
+    line-height: 1.6;
+}
+
+/* Bouton de retour */
 button {
     display: inline-block;
-    margin-top: 30px;
-    padding: 12px 24px;
+    display: block; /* permet de gérer le centrage */
+    margin: 40px auto 0 auto;
+    margin-top: 40px;
+    padding: 14px 28px;
     font-size: 1rem;
+    font-weight: 500;
     background-color: #3498db;
-    color: white;
+    color: #ffffff;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
     background-color: #2e86c1;
+    transform: scale(1.03);
 }
