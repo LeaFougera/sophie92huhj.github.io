@@ -106,7 +106,7 @@
 
                 const message = `
                     <div class="erreur-item">
-                        <p><strong>Tu as fait une erreur ici :</strong> "${termeText}" ne correspond pas à cette définition.</p>
+                        <p><strong>Tu as fait une erreur ici :</strong> L'image "${termeText}" ne correspond pas à cette définition.</p>
                         <p><strong>Ce qu’il fallait associer :</strong> "${bonneDef}".</p>
                         <p><strong>Pourquoi ?</strong> ${explication}</p>
                     </div>
@@ -123,8 +123,8 @@
                     if (erreurs.length === 0) {
                     showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.");
                     } else {
-                        const compteurErreur = `<div class="erreur-item"><p><strong>Tu as fait ${nbErreurs} erreur${nbErreurs > 1 ? 's' : ''}.</strong></p></div>`;
-                        showModal(compteurErreur + erreurs.join("\n"));
+                        //const compteurErreur = `<div class="erreur-item"><p><strong>Tu as fait ${nbErreurs} erreur${nbErreurs > 1 ? 's' : ''}.</strong></p></div>`;
+                        showModal(erreurs.join("\n"));
                         
                     }
                 
