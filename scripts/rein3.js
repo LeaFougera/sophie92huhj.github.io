@@ -183,6 +183,9 @@
                 
                     // Cacher la partie 1
                     document.querySelectorAll(".part1").forEach(el => el.style.display = "none");
+
+                    document.getElementById("checkButton").disabled = true;  // Désactiver le bouton au début de la partie 2
+
                 
                     // Afficher la partie 2
                     document.querySelectorAll(".part2").forEach(el => {
@@ -226,7 +229,18 @@ function updateCheckButtonState() {
 
     // Si toutes les associations sont faites, active le bouton
     checkButton.disabled = matchedCount < totalItems;
-}
 
+    // Vérifie pour la partie 2
+    const totalItemsPart2 = document.querySelectorAll(".item.part2").length;
+    const matchedCountPart2 = matchedPairs.filter(([termeID, defID]) => {
+        const termeEl = document.querySelector(`.item[data-id="${termeID}"]`);
+        return termeEl && termeEl.classList.contains("part2");
+    }).length;
+
+    // Si toutes les associations de la partie 2 sont faites, active le bouton de la partie 2
+    if (document.querySelector(".part2").style.display === "block") {
+        document.getElementById("checkButton").disabled = matchedCountPart2 < totalItemsPart2;
+    }
+}
 
 
