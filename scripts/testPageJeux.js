@@ -1,7 +1,8 @@
 function completer(num, el, couleur) {
   const ligne = document.querySelector(`.line.c${num}`);
   if (ligne && !ligne.classList.contains("completed")) {
-    ligne.style.stroke = couleur;
+    // Applique la couleur appropriée en fonction du jeu terminé
+    ligne.style.stroke = couleur; // Utilise la couleur en fonction du groupe d'étapes
     ligne.classList.add("completed");
   }
   if (!el.classList.contains("etape-complete")) {
@@ -9,37 +10,26 @@ function completer(num, el, couleur) {
   }
 }
 
-// === Étape 1 : Quiz ===
+// === Étape 1 : Quiz (VIDE) ===
+// (Aucun changement ici, le jeu 1 ne fait rien)
+
+// === Étape 2 : Mémoire (VIDE) ===
+// (Aucun changement ici, le jeu 2 ne fait rien)
+
+// === Étape 3 : Conseils (VIDE) ===
+// (Aucun changement ici, le jeu 3 ne fait rien)
+
+// === Étape 4 : Quiz sur les reins ===
 const bestScore = localStorage.getItem("bestScoreQuiz");
 const maxScore = localStorage.getItem("maxScoreQuiz");
 
 if (bestScore && maxScore) {
-  const etape1 = document.getElementById("etape1");
-  const ligne1 = document.querySelector(".line.c1");
-  if (etape1 && ligne1 && !ligne1.classList.contains("completed")) {
-    completer(1, etape1, "#66bb6a");
-  }
-}
-
-// === Étape 2 : Mémoire ===
-const bestMemo = localStorage.getItem("bestScoreMemoire");
-
-if (bestMemo) {
-  const etape2 = document.getElementById("etape2");
-  const ligne2 = document.querySelector(".line.c2");
-  if (etape2 && ligne2 && !ligne2.classList.contains("completed")) {
-    completer(2, etape2, "#66bb6a");
-  }
-}
-
-// === Étape 3 : Conseils ===
-const bestConseils = localStorage.getItem("bestScoreConseils");
-
-if (bestConseils) {
-  const etape3 = document.getElementById("etape3");
-  const ligne3 = document.querySelector(".line.c3");
-  if (etape3 && ligne3 && !ligne3.classList.contains("completed")) {
-    completer(3, etape3, "#66bb6a");
+  const etape4 = document.getElementById("etape4");
+  const ligne4 = document.querySelector(".line.c4"); // Ligne qui relie le jeu 4 au jeu 5
+  
+  // Compléter la ligne du jeu 4 -> jeu 5 avec la couleur après avoir terminé le jeu 4
+  if (etape4 && ligne4 && !ligne4.classList.contains("completed")) {
+    completer(4, etape4, "#ffa726"); // Utilise la couleur orange pour le lien entre 4 et 5
   }
 }
 
@@ -60,41 +50,15 @@ function cacherInfoJeu() {
   document.getElementById("info-panel").style.display = "none";
 }
 
-// === Quiz
-const etapeQuiz = document.getElementById("etape1");
+// === Étape 4 : Quiz sur les reins (seule étape active) ===
+const etapeQuiz = document.getElementById("etape4");
 etapeQuiz.addEventListener("mouseenter", () => {
-  afficherInfoJeu(20, {
-    theme: "Capitales",
-    niveau: "Débutant",
-    duree: "5 min",
-    type: "Quizz",
+  afficherInfoJeu(320, { // Carte descriptive pour le jeu 4
+    theme: "Insuffisance rénale",
+    niveau: "Intermédiaire",
+    duree: "4-5 min",
+    type: "Quiz",
     score: bestScore && maxScore ? `${bestScore}/${maxScore}` : "Non joué"
   });
 });
 etapeQuiz.addEventListener("mouseleave", cacherInfoJeu);
-
-// === Mémoire
-const etapeMemoire = document.getElementById("etape2");
-etapeMemoire.addEventListener("mouseenter", () => {
-  afficherInfoJeu(120, {
-    theme: "Mémoire visuelle",
-    niveau: "Débutant",
-    duree: "8 min",
-    type: "Jeu de mémoire",
-    score: bestMemo ? `${bestMemo} essais` : "Non joué"
-  });
-});
-etapeMemoire.addEventListener("mouseleave", cacherInfoJeu);
-
-// === Conseils
-const etapeConseils = document.getElementById("etape3");
-etapeConseils.addEventListener("mouseenter", () => {
-  afficherInfoJeu(220, {
-    theme: "Ordre logique / Mémoire",
-    niveau: "Débutant",
-    duree: "6 min",
-    type: "Remettre en ordre",
-    score: bestConseils ? `${bestConseils} / 5` : "Non joué"
-  });
-});
-etapeConseils.addEventListener("mouseleave", cacherInfoJeu);

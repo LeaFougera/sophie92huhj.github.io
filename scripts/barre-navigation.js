@@ -2,10 +2,11 @@
 const path = window.location.pathname;
 let navPath = "";
 
-if (path.includes("/pages/")) {
-    navPath = "../composants/barre-navigation.html";
+// Vérifie si l'URL contient "/pages/" ou "/jeux/"
+if (path.includes("/pages/") || path.includes("/jeux/")) {
+    navPath = "../composants/barre-navigation.html";  // Remonte d'un dossier pour accéder à "composants"
 } else {
-    navPath = "composants/barre-navigation.html";
+    navPath = "composants/barre-navigation.html";  // Utilise ce chemin si on est déjà au bon niveau
 }
 
 fetch(navPath)
@@ -22,4 +23,7 @@ fetch(navPath)
                 link.classList.add("active");
             }
         });
+    })
+    .catch(error => {
+        console.error('Erreur de chargement de la barre de navigation:', error);
     });
