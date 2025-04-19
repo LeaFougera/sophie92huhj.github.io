@@ -93,9 +93,11 @@
         };
     
         let score = 0;
-        let erreurs = [];
+        let erreursPart1 = [];
+        let erreursPart2 = [];
         let currentPart = "part1";
-        let nbErreurs = 0;
+        let nbErreursPart1 = 0;
+        let nbErreursPart2 = 0;
     
         matchedPairs.forEach(([termeID, defID]) => {
             const termeEl = document.querySelector(`.item[data-id="${termeID}"]`);
@@ -103,7 +105,7 @@
     
             if (termeID === defID) {
                 score++;
-            } else if (termeEl.classList.contains(currentPart)) {
+            } else {
                 const termeText = termeEl.querySelector("img")?.alt || termeEl.textContent.trim();
                 const defText = document.querySelector(`.item2.${currentPart}[data-id="${defID}"]`).textContent.trim();
                 const bonneDef = document.querySelector(`.item2.${currentPart}[data-id="${termeID}"]`).textContent.trim();
@@ -116,27 +118,41 @@
                         <p><strong>Pourquoi ?</strong> ${explication}</p>
                     </div>
                 `;
-                erreurs.push(message);
-                nbErreurs++;
+    
+                if (termeEl.classList.contains("part1")) {
+                    erreursPart1.push(message);
+                    nbErreursPart1++;
+                } else if (termeEl.classList.contains("part2")) {
+                    erreursPart2.push(message);
+                    nbErreursPart2++;
+                }
             }
         });
     
         // Vérification pour la partie 1
         if (currentPart === "part1") {
-            if (erreurs.length === 0) {
+            if (erreursPart1.length === 0) {
                 showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.");
             } else {
-                showModal(erreurs.join("\n"));
+                showModal(erreursPart1.join("\n"));
             }
     
             // Autoriser l’accès au bouton "Partie suivante"
             canGoToNextPart = true;
         } else {
             // Vérification pour la partie 2
-            if (erreurs.length === 0) {
-                showModal("Félicitations ! Toutes les associations sont correctes.");
+            if (erreursPart2.length === 0) {
+                // Afficher uniquement le message de félicitations pour la partie 2, sans erreurs de la partie 1
+                showModal("Félicitations ! Toutes les associations de la partie 2 sont correctes.");
             } else {
-                showModal(erreurs.join("\n"));
+                showModal(erreursPart2.join("\n"));
+            }
+    
+            // Si toutes les associations de la partie 2 sont correctes, on n'affiche pas les erreurs de la partie 1
+            if (erreursPart2.length === 0) {
+                if (erreursPart1.length === 0) {
+                    showModal("Félicitations ! Toutes les associations sont correctes.");
+                }
             }
     
             // Mettre à jour le score
@@ -154,6 +170,7 @@
             }
         }
     }
+    
     
     
 
