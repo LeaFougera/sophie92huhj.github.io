@@ -133,7 +133,9 @@
             // Autoriser l’accès au bouton "Partie suivante"
             canGoToNextPart = true;
         } else {
-            if (erreurs.length > 0) {
+            if (erreurs.length === 0) {
+                showModal("Félicitations ! Toutes les associations sont correctes.");
+            } else {
                 showModal(erreurs.join("\n"));
             }
     
