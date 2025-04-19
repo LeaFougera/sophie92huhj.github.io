@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #02084b;
+    background-color: #d5bdaf;
     padding: 10px 0;
     overflow-x: auto;         /* Scroll horizontal si nécessaire */
     white-space: nowrap;      /* Empêche les retours à la ligne */
@@ -23,20 +23,22 @@
 
 /* Liens de navigation */
 .navbar a {
-    color: white;
+    color: #4a536b;
     padding: 10px 16px;
     text-decoration: none;
     text-align: center;
     font-size: 15px;
-    flex: 0 0 auto;            /* Empêche de se réduire ou s'étendre */
+    flex: 0 0 auto;
     white-space: nowrap;
-    border-radius: 20px;       /* Coins arrondis 🎯 */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Douceur */
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold; /* Ajoute cette ligne pour mettre le texte en gras */
 }
+
 
 /* Effet au survol ET lien actif */
 .navbar a:hover,
 .navbar a.active {
-    background-color: #2b3dff;
-    transform: scale(1.05);    /* Petit zoom 💫 */
+    background-color: #e3d5ca;
+    transform: scale(1.05); 
 }
