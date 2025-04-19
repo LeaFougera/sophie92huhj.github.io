@@ -78,8 +78,6 @@
             showModal("Essaye de remplir quelques associations avant de vérifier.");
             return;
         }
-
-        
     
         const explications = {
             1: "Ce test mesure la créatinine, un déchet filtré par les reins. Un taux élevé peut indiquer une insuffisance rénale.",
@@ -123,6 +121,7 @@
             }
         });
     
+        // Vérification pour la partie 1
         if (currentPart === "part1") {
             if (erreurs.length === 0) {
                 showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.");
@@ -133,26 +132,29 @@
             // Autoriser l’accès au bouton "Partie suivante"
             canGoToNextPart = true;
         } else {
+            // Vérification pour la partie 2
             if (erreurs.length === 0) {
                 showModal("Félicitations ! Toutes les associations sont correctes.");
             } else {
                 showModal(erreurs.join("\n"));
             }
     
-            //resultDiv.textContent = `Score final : ${score} / 10`;
+            // Mettre à jour le score
             localStorage.setItem("scoreFinal", score);
     
+            // Afficher toujours le bouton "Terminer"
             const finishButton = document.getElementById("finishButton");
             finishButton.style.display = "block";
     
             if (!finishButton.dataset.listenerAdded) {
                 finishButton.addEventListener("click", function () {
-                    window.location.href = "../jeux/resultat.html";
+                    window.location.href = "../jeux/resultat.html";  // Redirige vers la page "resultat.html"
                 });
                 finishButton.dataset.listenerAdded = "true";
             }
         }
     }
+    
     
 
             function showModal(content) {
