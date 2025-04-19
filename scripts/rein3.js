@@ -1,3 +1,7 @@
+    const checkButton = document.getElementById("checkButton");
+    checkButton.disabled = true;  // Désactive le bouton au début
+
+    
     const termes = document.querySelectorAll(".column:first-child .item");
     const definitions = document.querySelectorAll(".column:last-child .item2");
     const resultDiv = document.getElementById("result");
@@ -61,6 +65,8 @@
         selectedTerme = null;
         selectedDefinition = null;
 
+
+        updateCheckButtonState();
 
     }
     }
@@ -131,7 +137,7 @@
                 showModal(erreurs.join("\n"));
             }
     
-            resultDiv.textContent = `Score final : ${score} / 10`;
+            //resultDiv.textContent = `Score final : ${score} / 10`;
             localStorage.setItem("scoreFinal", score);
     
             const finishButton = document.getElementById("finishButton");
@@ -194,7 +200,7 @@ if (currentPart === "part2") {
     if (erreurs.length > 0) {
         showModal(erreurs.join("\n"));
     }
-    resultDiv.textContent = `Score final : ${score} / 10`;
+    //resultDiv.textContent = `Score final : ${score} / 10`;
 
     // Afficher le bouton "Terminer"
     document.getElementById("finishButton").addEventListener("click", function() {
@@ -207,5 +213,18 @@ if (currentPart === "part2") {
         document.getElementById("nextPart").style.display = "block";
     }
 }
+
+function updateCheckButtonState() {
+    // Vérifie si toutes les associations ont été faites
+    const totalItems = document.querySelectorAll(".item.part1").length;
+    const matchedCount = matchedPairs.filter(([termeID, defID]) => {
+        const termeEl = document.querySelector(`.item[data-id="${termeID}"]`);
+        return termeEl && termeEl.classList.contains("part1");
+    }).length;
+
+    // Si toutes les associations sont faites, active le bouton
+    checkButton.disabled = matchedCount < totalItems;
+}
+
 
 
