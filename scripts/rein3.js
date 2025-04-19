@@ -67,35 +67,36 @@
 
 
 
-        function checkMatches() {
+    function checkMatches() {
+        if (matchedPairs.length === 0) {
+            showModal("Essaye de remplir quelques associations avant de vérifier.");
+            return;
+        }
 
-            if (matchedPairs.length === 0) {
-                showModal("Essaye de remplir quelques associations avant de vérifier.");
-                return;
-            }
-
-            const explications = {
-                1: "Ce test mesure la créatinine, un déchet filtré par les reins. Un taux élevé peut indiquer une insuffisance rénale.",
-                2: "Un suivi médical régulier permet de détecter une dégradation de la fonction rénale à temps.",
-                3: "Les reins sont des organes vitaux qui filtrent le sang et produisent l’urine.",
-                4: "Une tension artérielle élevée abîme les vaisseaux sanguins dans les reins.",
-                5: "Les reins produisent une hormone (EPO) qui stimule la production de globules rouges.",
-                6: "La bandelette urinaire permet une détection simple de protéines ou de sang dans l'urine.",
-                7: "Le DFG (Débit de Filtration Glomérulaire) estime la capacité des reins à filtrer le sang.",
-                8: "La créatinine est un marqueur de la fonction rénale ; son excès est un signe d’insuffisance.",
-                9: "Un rein endommagé filtre mal le sang, causant une accumulation de déchets dans l'organisme.",
-                10: "L’insuffisance rénale chronique évolue lentement, nécessitant une prise en charge précoce."
-            };
-            let score = 0;
-            let erreurs = [];
-            let currentPart = "part1";
-            let currentPartIDs = [];
-            let nbErreurs = 0;
         
-            matchedPairs.forEach(([termeID, defID]) => {
+    
+        const explications = {
+            1: "Ce test mesure la créatinine, un déchet filtré par les reins. Un taux élevé peut indiquer une insuffisance rénale.",
+            2: "Un suivi médical régulier permet de détecter une dégradation de la fonction rénale à temps.",
+            3: "Les reins sont des organes vitaux qui filtrent le sang et produisent l’urine.",
+            4: "Une tension artérielle élevée abîme les vaisseaux sanguins dans les reins.",
+            5: "Les reins produisent une hormone (EPO) qui stimule la production de globules rouges.",
+            6: "La bandelette urinaire permet une détection simple de protéines ou de sang dans l'urine.",
+            7: "Le DFG (Débit de Filtration Glomérulaire) estime la capacité des reins à filtrer le sang.",
+            8: "La créatinine est un marqueur de la fonction rénale ; son excès est un signe d’insuffisance.",
+            9: "Un rein endommagé filtre mal le sang, causant une accumulation de déchets dans l'organisme.",
+            10: "L’insuffisance rénale chronique évolue lentement, nécessitant une prise en charge précoce."
+        };
+    
+        let score = 0;
+        let erreurs = [];
+        let currentPart = "part1";
+        let nbErreurs = 0;
+    
+        matchedPairs.forEach(([termeID, defID]) => {
             const termeEl = document.querySelector(`.item[data-id="${termeID}"]`);
             if (termeEl.classList.contains("part2")) currentPart = "part2";
-        
+    
             if (termeID === defID) {
                 score++;
             } else if (termeEl.classList.contains(currentPart)) {
@@ -103,7 +104,7 @@
                 const defText = document.querySelector(`.item2.${currentPart}[data-id="${defID}"]`).textContent.trim();
                 const bonneDef = document.querySelector(`.item2.${currentPart}[data-id="${termeID}"]`).textContent.trim();
                 const explication = explications[termeID] || "Pas d'explication disponible.";
-
+    
                 const message = `
                     <div class="erreur-item">
                         <p><strong>Tu as fait une erreur ici :</strong> L'image "${termeText}" ne correspond pas à cette définition.</p>
@@ -112,45 +113,39 @@
                     </div>
                 `;
                 erreurs.push(message);
-
                 nbErreurs++;
-
-                //erreurs.push(`❌ "${termeText}" est mal associé à "${defText}".\n✅ Bonne réponse : "${bonneDef}".\nℹ️ ${explication}`);
             }
-            });
-        
-                if (currentPart === "part1") {
-                    if (erreurs.length === 0) {
-                    showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.");
-                    } else {
-                        //const compteurErreur = `<div class="erreur-item"><p><strong>Tu as fait ${nbErreurs} erreur${nbErreurs > 1 ? 's' : ''}.</strong></p></div>`;
-                        showModal(erreurs.join("\n"));
-                        
-                    }
-                
-                    // Autoriser l’accès au bouton "Partie suivante"
-                    canGoToNextPart = true;
-                
-                } else {
-                
+        });
+    
+        if (currentPart === "part1") {
+            if (erreurs.length === 0) {
+                showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.");
+            } else {
+                showModal(erreurs.join("\n"));
+            }
+    
+            // Autoriser l’accès au bouton "Partie suivante"
+            canGoToNextPart = true;
+        } else {
             if (erreurs.length > 0) {
                 showModal(erreurs.join("\n"));
             }
-            //resultDiv.textContent = `Score final : ${score} / 10`;
+    
+            resultDiv.textContent = `Score final : ${score} / 10`;
             localStorage.setItem("scoreFinal", score);
-
-            // Afficher le bouton "Terminer" après la partie 2
+    
             const finishButton = document.getElementById("finishButton");
             finishButton.style.display = "block";
-            
+    
             if (!finishButton.dataset.listenerAdded) {
                 finishButton.addEventListener("click", function () {
                     window.location.href = "../jeux/resultat.html";
                 });
                 finishButton.dataset.listenerAdded = "true";
             }
-            }
         }
+    }
+    
 
             function showModal(content) {
                 const modal = document.getElementById("customModal");
