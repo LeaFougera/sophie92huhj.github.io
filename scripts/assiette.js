@@ -1,52 +1,87 @@
-// Sélectionner les éléments
 const ingredients = document.querySelectorAll('.ingredient');
-const plates = document.querySelectorAll('.plate');
+const plate = document.getElementById('patient-plate');
+const feedback = document.getElementById('feedback');
+const checkBtn = document.getElementById('check-btn');
 
-// Ajouter des événements de glissement sur les ingrédients
+// Base de données des aliments
+const alimentData = {
+  viande: { bon: false, suggestion: "Poisson maigre" },
+  oeuf: { bon: true },
+  sel: { bon: false, suggestion: "Herbes aromatiques" },
+  courgette: { bon: true },
+  riz: { bon: false, suggestion: "Riz blanc (moins de phosphore)" },
+  pain: { bon: true },
+  poisson: { bon: true },
+  huile_olive: { bon: true },
+  chocolat: { bon: false, suggestion: "Fruits frais comme la pomme" },
+  pomme: { bon: true },
+  herbes : { bon: true },
+  charcuterie : { bon: false, suggestion:"?" },
+  pâtes : { bon: true },
+  fromages : { bon: false },
+  plat_industriel : { bon: false },
+  viande_blanche : { bon: true },
+
+};
+
+let alimentsChoisis = [];
+
+// Drag start
 ingredients.forEach(ingredient => {
   ingredient.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text', e.target.id);
   });
 });
 
-// Ajouter un événement de survol pour chaque assiette afin de pouvoir déposer l'aliment
-plates.forEach(plate => {
-  plate.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    plate.classList.add('dragover');
-  });
-
-  plate.addEventListener('dragleave', () => {
-    plate.classList.remove('dragover');
-  });
-
-  plate.addEventListener('drop', (e) => {
-    e.preventDefault();
-    const ingredientId = e.dataTransfer.getData('text');
-    const ingredient = document.getElementById(ingredientId);
-
-    // Vérifier la catégorie de l'aliment et afficher un message si l'aliment est bien placé
-    if (plate.id === "proteins" && (ingredientId === "viande" || ingredientId === "oeuf" || ingredientId === "poisson")) {
-      dropIngredient(ingredient, plate);
-    } else if (plate.id === "carbs" && (ingredientId === "riz" || ingredientId === "pain" || ingredientId === "pomme")) {
-      dropIngredient(ingredient, plate);
-    } else if (plate.id === "fats" && (ingredientId === "huile_olive" || ingredientId === "chocolat")) {
-      dropIngredient(ingredient, plate);
-    } else {
-      alert("Cet aliment ne correspond pas à cette catégorie!");
-    }
-  });
+// Drag and drop
+plate.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  plate.classList.add('dragover');
 });
 
-function dropIngredient(ingredient, plate) {
-  // Cloner l'élément et l'ajouter à l'assiette
-  const clonedIngredient = ingredient.cloneNode(true);
-  clonedIngredient.setAttribute('draggable', false);
-  clonedIngredient.style.margin = '10px';
-  clonedIngredient.style.backgroundColor = '#e0e0e0'; // Changer la couleur une fois déposé
-  plate.appendChild(clonedIngredient);
+plate.addEventListener('dragleave', () => {
+  plate.classList.remove('dragover');
+});
 
-  // Optionnel : Remplacer le texte de l'assiette pour donner un message
+plate.addEventListener('drop', (e) => {
+  e.preventDefault();
+  const id = e.dataTransfer.getData('text');
+  const ingredient = document.getElementById(id);
+
+  if (!ingredient) return;
+
+  // Ajoute l’ingrédient dans l’assiette
+  const clone = ingredient.cloneNode(true);
+  clone.setAttribute('draggable', false);
+  clone.style.margin = '5px';
+  plate.appendChild(clone);
+
+  // Supprime de la liste originale
+  ingredient.remove();
+
+  // Ajoute à la liste des aliments choisis
+  alimentsChoisis.push(id);
+
   plate.querySelector('p').style.display = 'none';
-  plate.querySelector('h3').style.fontSize = '1rem'; // Changer la taille de titre après ajout
-}
+});
+
+// Vérification des choix
+checkBtn.addEventListener('click', () => {
+  feedback.innerHTML = "<h3>Résultat :</h3>";
+  let erreurs = 0;
+
+  alimentsChoisis.forEach(id => {
+    if (!alimentData[id].bon) {
+      erreurs++;
+      feedback.innerHTML += `<p>❌ ${document.getElementById(id)?.textContent || id} n’est pas recommandé. Essayez plutôt : <strong>${alimentData[id].suggestion}</strong>.</p>`;
+    } else {
+      feedback.innerHTML += `<p>✅ ${document.getElementById(id)?.textContent || id} est un bon choix !</p>`;
+    }
+  });
+
+  if (erreurs === 0) {
+    feedback.innerHTML += "<p style='color: green; font-weight: bold;'>Bravo ! Tous les aliments sont adaptés !</p>";
+  } else {
+    feedback.innerHTML += `<p style='color: red; font-weight: bold;'>Vous avez ${erreurs} erreur(s). Essayez de faire mieux !</p>`;
+  }
+});
