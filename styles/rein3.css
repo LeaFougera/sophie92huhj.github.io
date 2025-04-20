@@ -6,6 +6,7 @@ body {
 }
 
 .container {
+    position: relative; /* 👈 ajoute ceci */
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
@@ -210,7 +211,7 @@ button:hover {
 #nextPart {
     position: absolute;
     bottom: 20px;
-    right: 70px;
+    right: 20px; /* 👈 plus proche du bord du container */
     padding: 10px 20px;
     background-color: #3498db;
     color: white;
@@ -219,6 +220,7 @@ button:hover {
     cursor: pointer;
     font-size: 16px;
 }
+
 
 #nextPart:hover {
     background-color: #2e86c1;

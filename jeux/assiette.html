@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeu de tri des aliments</title>
+  <link rel="stylesheet" href="../styles/assiette.css">
+</head>
+<body>
+    <div class="header">
+      <h1>Testez vos connaissances sur l'alimentation équilibrée !</h1>
+      <p>Glissez les aliments dans l'assiette en fonction des catégories : Protéines, Glucides, Lipides</p>
+    </div>
+  
+    <div class="info">
+      <h2>Les catégories à connaître :</h2>
+      <ul>
+        <li><strong>Protéines :</strong> Viande blanche, poisson maigre, œufs</li>
+        <li><strong>Glucides :</strong> Pain, riz, pâtes, pommes de terre</li>
+        <li><strong>Lipides :</strong> Huile d'olive, huile de colza, poissons gras</li>
+      </ul>
+    </div>
+  
+    <div class="ingredients-container">
+      <div class="ingredient" id="viande" draggable="true">Viande</div>
+      <div class="ingredient" id="oeuf" draggable="true">Œuf</div>
+      <div class="ingredient" id="sel" draggable="true">Sel</div>
+      <div class="ingredient" id="courgette" draggable="true">Courgette</div>
+      <div class="ingredient" id="riz" draggable="true">Riz</div>
+      <div class="ingredient" id="pain" draggable="true">Pain</div>
+      <div class="ingredient" id="poisson" draggable="true">Poisson maigre</div>
+      <div class="ingredient" id="huile_olive" draggable="true">Huile d'olive</div>
+      <div class="ingredient" id="chocolat" draggable="true">Chocolat</div>
+      <div class="ingredient" id="pomme" draggable="true">Pomme</div>
+    </div>
+  
+    <div class="plate-container">
+      <div class="plate" id="proteins">
+        <h3>Protéines</h3>
+        <p>Déposez ici les aliments riches en protéines</p>
+      </div>
+      <div class="plate" id="carbs">
+        <h3>Glucides</h3>
+        <p>Déposez ici les aliments riches en glucides</p>
+      </div>
+      <div class="plate" id="fats">
+        <h3>Lipides</h3>
+        <p>Déposez ici les aliments riches en lipides</p>
+      </div>
+    </div>
+  
+    <script src="../scripts/assiette.js"></script>
+  </body>
+  </html>

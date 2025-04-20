@@ -5,43 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Résultats - Jeu de Liaison</title>
     <link rel="stylesheet" href="../styles/resultat_rein3.css" />
+    <!-- Intégration de FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
     <div class="container">
-        <h1>Résultats du Jeu de Liaison</h1>
-        <p id="score"></p>
-        <h2>À retenir</h2>
-        <pre id="explications"></pre>
+        <h1><i class="fas fa-trophy"></i> Résultats du Jeu de Liaison</h1>
+        <p id="score" class="score"></p>
+        <h2><i class="fas fa-brain"></i> À retenir</h2>
+        <pre id="explications" class="explications"></pre>
         <button onclick="window.location.href='../pages/jeux.html'">Retour au parcours</button>
     </div>
 
     <script>
-        // Récupérer le score depuis localStorage
         const scoreFinal = localStorage.getItem("scoreFinal");
         document.getElementById("score").textContent = `Votre score : ${scoreFinal} / 10`;
-
-        // Texte explicatif enrichi
+    
         const recapitulatif = `
-🧠 À retenir sur le fonctionnement des reins et leur suivi médical :
-
-- Le test sanguin permet de mesurer la créatinine, un indicateur essentiel pour évaluer la santé rénale.
-- Les reins filtrent le sang pour éliminer les toxines et les déchets, ensuite évacués dans l’urine.
-- Une tension artérielle élevée est un facteur de risque important pour les maladies rénales. Il est donc crucial de bien la surveiller.
-- Les reins produisent l’EPO (érythropoïétine), une hormone qui stimule la production de globules rouges.
-- Un suivi médical régulier permet de détecter tôt les signes de dégradation et de mieux prendre en charge la fonction rénale.
-
-🔎 Sur les outils de diagnostic et les indicateurs à connaître :
-
-- Les bandelettes urinaires peuvent révéler la présence de protéines ou de sang, signes d’un dysfonctionnement rénal.
-- Le DFG (Débit de Filtration Glomérulaire) est un indicateur-clé : s’il est faible, cela signifie que les reins filtrent moins bien.
-- Un taux élevé de créatinine dans le sang signale souvent une altération de la fonction des reins.
-- Lorsqu’un rein est endommagé, il ne parvient plus à filtrer efficacement, ce qui provoque une accumulation de toxines dans le corps.
-- La maladie rénale chronique évolue lentement, mais un diagnostic précoce permet de ralentir sa progression et de préserver la qualité de vie.
-
-🩺 En résumé : Comprendre les fonctions des reins et surveiller les bons indicateurs permet une meilleure prévention et un suivi adapté en cas de problème rénal.
-`;
-
-        document.getElementById("explications").textContent = recapitulatif;
+                           <strong>LE FONCTIONNEMENT DES REINS</strong><br>
+    
+        🔬 <strong>1. Leur rôle vital</strong><br>
+Les reins filtrent le sang pour éliminer toxines et déchets — évacués dans l’urine.<br>
+Ils produisent <strong>l’EPO</strong> (érythropoïétine), une hormone qui stimule la fabrication des globules rouges.<br><br>
+    
+        💉 <strong>2. Le suivi médical</strong><br>
+Un test sanguin mesure la <strong>créatinine</strong>, indicateur de la fonction rénale.<br>
+Une tension artérielle élevée augmente les risques de maladie rénale.<br>
+Un <strong>suivi régulier</strong> permet de détecter tôt les problèmes et de ralentir leur évolution.<br><br>
+    
+    🔎 <strong>Outils de diagnostic & Indicateurs à connaître</strong><br>
+    
+        🧪 <strong>1. Analyses urinaires</strong><br>
+Les bandelettes urinaires peuvent détecter la présence de <strong>protéines</strong> ou de <strong>sang</strong>, signes d’un dysfonctionnement.<br><br>
+    
+        📊 <strong>2. Indicateurs sanguins</strong><br>
+Le <strong>DFG</strong> (Débit de Filtration Glomérulaire) mesure l’efficacité du filtre rénal.<br>
+Un DFG bas ou une créatinine élevée indiquent un <strong>fonctionnement rénal réduit</strong>.<br><br>
+    
+        ⚠️ <strong>3. Maladie rénale chronique</strong><br>
+Elle évolue lentement, souvent sans symptômes.<br>
+Un <strong>diagnostic précoce</strong> aide à préserver la qualité de vie.<br><br>
+    
+    🩺 <strong>En résumé</strong><br>
+👉 Comprendre les <strong>fonctions des reins</strong> et surveiller les <strong>bons indicateurs</strong> permet une <strong>prévention efficace</strong> et un <strong>suivi médical adapté</strong> en cas de problème rénal.
+        `;
+    
+        document.getElementById("explications").innerHTML = recapitulatif;
     </script>
+    
 </body>
 </html>
