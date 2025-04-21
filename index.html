@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="styles/principal.css">
-    <link rel="stylesheet" href="styles/index.css"> <!-- Si tu sépares CSS par page -->
+    <link rel="stylesheet" href="styles/index.css"> 
+    <link rel="stylesheet" href="styles/barre-navigation.css">
 </head>
 <body>
 
@@ -17,76 +17,234 @@
     <!-- Barre de navigation (chargée dynamiquement) -->
     <div id="navbar-placeholder"></div>
 
-        <!-- Intro compacte + Stat -->
-        <section class="split-section">
-            <!-- Bloc gauche : Intro complète -->
-            <div class="split-box">
-                <h2>Pourquoi ce site ?</h2>
-                <p class="desc">
-                    L’insuffisance rénale est une maladie silencieuse qui touche des millions de personnes sans symptômes apparents.
-                    <br><br>
-                    Ce site a été conçu pour vous aider à comprendre ce qu’est l’insuffisance rénale, en repérer les signes,
-                    connaître les causes, et surtout apprendre à la prévenir. Informez-vous, testez vos connaissances, 
-                    et devenez acteur de votre santé rénale.
-                </p>
-            </div>
-        
-            <!-- Bloc droit : Stat -->
-            <div class="split-box stat-box">
-                <div class="compact-stats">
-                    <span id="typing-text" class="typing-text"></span><br>
-                    <span class="normal-text">De plus en plus de personnes sont touchées par l’insuffisance rénale, en grande partie à cause du vieillissement de la population, de la progression du diabète, de l’hypertension et des modes de vie de moins en moins sains.</span>
-                </div>
-                
-            </div>
-        </section>
-
+    <!-- Intro compacte + Stat -->
+    <section class="split-section home-page">
+        <div class="split-box">
+            <h2>Pourquoi ce site ?</h2>
+            <p class="desc">
+                L’insuffisance rénale est une maladie silencieuse qui touche des millions de personnes sans symptômes apparents.
+                <br><br>
+                Ce site a été conçu pour vous aider à comprendre ce qu’est l’insuffisance rénale, en repérer les signes, connaître les causes, et surtout apprendre à être en capacité de protéger ses reins et mieux vivre au quotidien avec cette pathologie chronique. Informez-vous, testez vos connaissances, et devenez acteur de votre santé rénale.
+                <br><br>
+                De plus en plus de personnes sont touchées par l’insuffisance rénale, en raison du vieillissement de la population et de l'augmentation du nombre de personnes atteintes de diabète et/ou d'hypertension.
+            </p>
+        </div>
+    </section>
 
     <!-- Contenu principal -->
     <div class="content">
+        <section class="grid-container home-page">
+
+            <!-- 1 -->
+            <a href="pages/rein.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/AccueilRein.png" alt="Le rein" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Le rein</h3>
+                    <p>Découvrez le rôle essentiel de vos reins pour maintenir une bonne santé.</p>
+                </div>
+            </a>
+        
+            <!-- 2 -->
+            <a href="pages/insuffisance.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/AccueilInsuffisance.png" alt="Insuffisance rénale" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Qu’est-ce que l’insuffisance rénale ?</h3>
+                    <p>Comprenez cette maladie silencieuse et comment elle affecte vos reins.</p>
+                </div>
+            </a>
+        
+            <!-- 3 -->
+            <a href="pages/causes.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/AccueilCauses.png" alt="Causes et risques" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Causes et risques</h3>
+                    <p>Apprenez ce qui peut provoquer des problèmes rénaux et quels sont les facteurs de risque.</p>
+                </div>
+            </a>
+        
+            <!-- 4 - TEXTE À GAUCHE -->
+            <a href="pages/symptomes.html" class="grid-item home-page">
+                <div class="text">
+                    <h3>Symptômes</h3>
+                    <p>Les symptômes de l’insuffisance rénale sont souvent discrets – sachez les repérer.</p>
+                </div>
+                <div class="image-container">
+                    <img src="photos/AccueilSymptomes.png" alt="Symptômes" class="card-image" />
+                </div>
+            </a>
+        
+            <!-- 5 - TEXTE À GAUCHE -->
+            <a href="pages/hygiene.html" class="grid-item home-page">
+                <div class="text">
+                    <h3>Hygiène de vie</h3>
+                    <p>Adoptez des habitudes simples pour prendre soin de vos reins au quotidien.</p>
+                </div>
+                <div class="image-container">
+                    <img src="photos/AccueilSport.png" alt="Hygiène de vie" class="card-image" />
+                </div>
+            </a>
+        
+            <!-- 6 - TEXTE À GAUCHE -->
+            <a href="pages/alimentation.html" class="grid-item home-page">
+                <div class="text">
+                    <h3>Alimentation</h3>
+                    <p>Découvrez les aliments à privilégier pour protéger vos reins et améliorer votre santé.</p>
+                </div>
+                <div class="image-container">
+                    <img src="photos/AccueilAlimentation.png" alt="Alimentation" class="card-image" />
+                </div>
+            </a>
+        
+            <!-- 7 -->
+            <a href="pages/prevention.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/AccueilSuiviMedical.png" alt="Prévention et suivi médical" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Prévention et suivi médical</h3>
+                    <p>Apprenez les bonnes pratiques pour conserver votre fonction rénale et le suivi de votre santé.</p>
+                </div>
+            </a>
+        
+            <!-- 8 -->
+            <a href="pages/jeux.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/AccueilJeux.png" alt="Quiz et mini-jeux" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>QUIZ et mini-jeux</h3>
+                    <p>Testez vos connaissances de manière ludique et apprenez tout en vous amusant !</p>
+                </div>
+                
+            </a>
+        
+            <!-- 9 -->
+            <a href="pages/ressources.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/AccueilRessources.png" alt="Ressources et aides" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Ressources et aides</h3>
+                    <p>Trouvez des informations utiles et des ressources fiables pour vous accompagner.</p>
+                </div>
+            </a>
+
+
+
+
+            <!-- 1 -->
+            <a href="pages/rein.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/Accueil2Rein.png" alt="Le rein" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Le rein</h3>
+                    <p>Découvrez le rôle essentiel de vos reins pour maintenir une bonne santé.</p>
+                </div>
+            </a>
+        
+            <!-- 2 -->
+            <a href="pages/insuffisance.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/Accueil2Insuffisance.png" alt="Insuffisance rénale" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Qu’est-ce que l’insuffisance rénale ?</h3>
+                    <p>Comprenez cette maladie silencieuse et comment elle affecte vos reins.</p>
+                </div>
+            </a>
+        
+            <!-- 3 -->
+            <a href="pages/causes.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/Accueil2Causes.png" alt="Causes et risques" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Causes et risques</h3>
+                    <p>Apprenez ce qui peut provoquer des problèmes rénaux et quels sont les facteurs de risque.</p>
+                </div>
+            </a>
+        
+            <!-- 4 - TEXTE À GAUCHE -->
+            <a href="pages/symptomes.html" class="grid-item home-page">
+                <div class="text">
+                    <h3>Symptômes</h3>
+                    <p>Les symptômes de l’insuffisance rénale sont souvent discrets – sachez les repérer.</p>
+                </div>
+                <div class="image-container">
+                    <img src="photos/Accueil2Symptomes.png" alt="Symptômes" class="card-image" />
+                </div>
+            </a>
+        
+            <!-- 5 - TEXTE À GAUCHE -->
+            <a href="pages/hygiene.html" class="grid-item home-page">
+                <div class="text">
+                    <h3>Hygiène de vie</h3>
+                    <p>Adoptez des habitudes simples pour prendre soin de vos reins au quotidien.</p>
+                </div>
+                <div class="image-container">
+                    <img src="photos/Accueil2Sport.png" alt="Hygiène de vie" class="card-image" />
+                </div>
+            </a>
+        
+            <!-- 6 - TEXTE À GAUCHE -->
+            <a href="pages/alimentation.html" class="grid-item home-page">
+                <div class="text">
+                    <h3>Alimentation</h3>
+                    <p>Découvrez les aliments à privilégier pour protéger vos reins et améliorer votre santé.</p>
+                </div>
+                <div class="image-container">
+                    <img src="photos/Accueil2Alimentation.png" alt="Alimentation" class="card-image" />
+                </div>
+            </a>
+        
+            <!-- 7 -->
+            <a href="pages/prevention.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/Accueil2SuiviMedical.png" alt="Prévention et suivi médical" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Prévention et suivi médical</h3>
+                    <p>Apprenez les bonnes pratiques pour conserver votre fonction rénale et le suivi de votre santé.</p>
+                </div>
+            </a>
+        
+            <!-- 8 -->
+            <a href="pages/jeux.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/Accueil2Jeux.png" alt="Quiz et mini-jeux" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>QUIZ et mini-jeux</h3>
+                    <p>Testez vos connaissances de manière ludique et apprenez tout en vous amusant !</p>
+                </div>
+                
+            </a>
+        
+            <!-- 9 -->
+            <a href="pages/ressources.html" class="grid-item home-page">
+                <div class="image-container">
+                    <img src="photos/Accueil2Ressources.png" alt="Ressources et aides" class="card-image" />
+                </div>
+                <div class="text">
+                    <h3>Ressources et aides</h3>
+                    <p>Trouvez des informations utiles et des ressources fiables pour vous accompagner.</p>
+                </div>
+            </a>
+
+
+
 
 
         
-        
-        
-
-        <!-- Blocs cliquables -->
-        <section class="grid-container">
-            <div class="grid-item text-block" onclick="window.location.href='pages/insuffisance.html';">
-                <h3>❓ Qu’est-ce que l’insuffisance rénale ?</h3>
-                <p>Découvrez le rôle des reins et ce qui se passe quand ils ne fonctionnent plus correctement.</p>
-            </div>
-
-            <div class="grid-item text-block" onclick="window.location.href='pages/causes.html';">
-                <h3>⚠️ Causes et facteurs de risque</h3>
-                <p>Hypertension, diabète, antécédents familiaux... Informez-vous sur les principaux facteurs de risque.</p>
-            </div>
-
-            <div class="grid-item text-block" onclick="window.location.href='pages/symptomes.html';">
-                <h3>🩺 Symptômes à surveiller</h3>
-                <p>
-                    Reconnaissez les signes d’alerte : fatigue, 
-                    <span class="tooltip">œdèmes
-                        <span class="tooltiptext">Accumulation anormale de liquide dans les tissus du corps</span>
-                    </span>, troubles urinaires... Pour agir à temps.
-                </p>
-            </div>
-
-            <div class="grid-item text-block" onclick="window.location.href='pages/prevention.html';">
-                <h3>🛡️ Prévention et traitements</h3>
-                <p>Découvrez les gestes simples pour préserver vos reins et les solutions thérapeutiques existantes.</p>
-            </div>
-
-            <div class="grid-item text-block" onclick="window.location.href='pages/jeux.html';">
-                <h3>🎮 Quiz et mini-jeux</h3>
-                <p>Testez vos connaissances de manière ludique et apprenez tout en vous amusant !</p>
-            </div>
-
-            <div class="grid-item text-block" onclick="window.location.href='pages/ressources.html';">
-                <h3>📚 Ressources et aide</h3>
-                <p>Accédez à des liens utiles, des vidéos explicatives, des associations et des contacts pour approfondir votre démarche et mieux comprendre l’insuffisance rénale.</p>
-            </div>
         </section>
+        
     </div>
 
     <!-- Scripts -->
