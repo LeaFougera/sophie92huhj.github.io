@@ -11,16 +11,17 @@ const alimentData = {
   courgette: { bon: true },
   riz: { bon: false, suggestion: "Riz blanc (moins de phosphore)" },
   pain: { bon: true },
-  poisson: { bon: true },
+  poisson_blanc: { bon: true },
   huile_olive: { bon: true },
   chocolat: { bon: false, suggestion: "Fruits frais comme la pomme" },
   pomme: { bon: true },
-  herbes : { bon: true },
+  poire : { bon: true },
   charcuterie : { bon: false, suggestion:"?" },
   pâtes : { bon: true },
   fromages : { bon: false },
   plat_industriel : { bon: false },
   viande_blanche : { bon: true },
+  herbes_aromatiques  : { bon: true },
 
 };
 
@@ -29,7 +30,7 @@ let alimentsChoisis = [];
 // Drag start
 ingredients.forEach(ingredient => {
   ingredient.addEventListener('dragstart', (e) => {
-    e.dataTransfer.setData('text', e.target.id);
+    e.dataTransfer.setData('text', ingredient.id); // on force à utiliser le parent .ingredient
   });
 });
 
