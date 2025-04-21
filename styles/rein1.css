@@ -109,7 +109,25 @@ body {
     background-color: #45a049;
   }
   
-  .result-container {
+  /* Styles pour la section de correction */
+  .correction-section {
     margin-top: 30px;
     text-align: left;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+  }
+  
+  #close-correction {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  #close-correction:hover {
+    background-color: #d32f2f;
   }
