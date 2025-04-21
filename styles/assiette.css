@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    margin-top: 30px;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 10px 0;
+  }
+  
+  ul li {
+    margin: 5px 0;
+  }
+  
+  .ingredients-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .ingredient {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+  }
+  
+  .ingredient:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .plate-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+  }
+  
+  .plate {
+    width: 250px;
+    height: 200px;
+    border: 3px dashed #333;
+    position: relative;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .plate h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .plate p {
+    color: #777;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .plate.dragover {
+    background-color: #f9f9f9;
+  }
+  
+  header p {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+
+  #check-btn {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #check-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .feedback {
+    margin-top: 30px;
+    padding: 15px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
