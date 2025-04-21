@@ -7,13 +7,17 @@ const organs = [
 
 const phrases = [
   { text: "Un organe qui filtre le sang et élimine les toxines.", organ: "Rein" },
-  { text: "Les reins sont responsables de la production de l'urine.", organ: "Rein" },
+  { text: "Organe vital en forme de haricot, chargé de filtrer le sang pour éliminer les déchets et l’excès d’eau", organ: "Rein" },
+  { text: "Chaque jour, il traite environ 180 litres de sang pour produire 1,5 litre d’urine.", organ: "Rein" },
   { text: "Un organe qui stocke l'urine avant l'élimination.", organ: "Vessie" },
-  { text: "La vessie est une poche musculaire qui contient l'urine.", organ: "Vessie" },
+  { text: "Elle peut contenir jusqu’à 500 ml d’urine avant de déclencher l’envie d’uriner.", organ: "Vessie" },
+  { text: "Elle se contracte pour permettre l'écavuation de l'urine par l'urètre.", organ: "Vessie" },
   { text: "Les tubes qui transportent l'urine des reins à la vessie.", organ: "Uretères" },
-  { text: "Les uretères sont des conduits qui permettent le passage de l'urine.", organ: "Uretères" },
+  { text: "Grâce à de petites contractions, ils font descendre l'urine même si l'on est allongé.", organ: "Uretères" },
+  { text: "Ils mesurent environ 25cm de long chez l'adulte.", organ: "Uretères" },
   { text: "Le canal qui permet à l'urine de sortir du corps.", organ: "Urètre" },
-  { text: "L'urètre est un tube qui relie la vessie à l'extérieur.", organ: "Urètre" }
+  { text: "Il est plus court chez la femme et plus long chez l'homme, car il traverse le pénis.", organ: "Urètre" },
+  { text: "Il est controlé par un sphincter qui permet de retenir ou de libérer l'urine volontairement.", organ: "Urètre" }
 ];
 
 let selections = [];
@@ -96,16 +100,36 @@ function selectOrgane(organElement, countDisplay) {
   }
 }
 
-function getExplanation(correct, selectedOrgane, correctOrgane) {
-  const details = {
-    "Rein": "Les reins filtrent le sang et éliminent les toxines.",
-    "Vessie": "La vessie stocke l'urine avant son élimination.",
-    "Uretères": "Les uretères transportent l'urine des reins à la vessie.",
-    "Urètre": "L'urètre est le canal qui permet à l'urine de sortir du corps."
-  };
+const details = {
+  "Rein": `
+    Les reins sont deux organes en forme de haricot situés dans la partie arrière de l’abdomen.
+    Leur rôle principal est de filtrer le sang pour en éliminer les déchets (toxines) et l’excès d’eau,
+    formant ainsi l’urine. Ils participent aussi à la régulation de la pression artérielle,
+    de l’équilibre acido-basique et de la production de certaines hormones.
+    Chaque jour, ils filtrent environ 180 litres de sang pour produire près de 1,5 litre d’urine.`,
+  
+  "Vessie": `
+    La vessie est un organe creux, musculaire et extensible qui sert de réservoir à l’urine.
+    Elle reçoit l’urine des uretères et peut contenir en moyenne entre 400 et 600 ml de liquide.
+    Lorsqu’elle est pleine, elle envoie un signal au cerveau qui déclenche l’envie d’uriner.
+    Elle se contracte ensuite pour expulser l’urine via l’urètre.`,
 
+  "Uretères": `
+    Les uretères sont deux conduits longs et étroits (environ 25 à 30 cm) qui relient chaque rein à la vessie.
+    Leur paroi musculaire permet des contractions (péristaltisme) qui font progresser l’urine vers la vessie,
+    même si la personne est allongée ou en mouvement.
+    Ils sont essentiels pour le bon écoulement de l’urine sans reflux vers les reins.`,
+
+  "Urètre": `
+    L’urètre est le canal qui permet à l’urine stockée dans la vessie d’être évacuée vers l’extérieur du corps.
+    Il est court chez la femme (environ 3 à 4 cm) et plus long chez l’homme (environ 15 à 20 cm), 
+    car il traverse le pénis. Chez l’homme, il transporte aussi le sperme lors de l’éjaculation.
+    Un sphincter (muscle circulaire) permet de contrôler volontairement la miction (action d’uriner).`
+};
+
+function getExplanation(correct, selectedOrgane, correctOrgane) {
   return correct
-    ? `✅ La phrase correspond bien à <strong>${selectedOrgane}</strong>.`
+    ? `✅ Bonne réponse ! <br><strong>Explication :</strong> ${details[selectedOrgane]}`
     : `❌ Tu as choisi <strong>${selectedOrgane}</strong> mais la bonne réponse était <strong>${correctOrgane}</strong>.<br><strong>Explication :</strong> ${details[correctOrgane]}`;
 }
 

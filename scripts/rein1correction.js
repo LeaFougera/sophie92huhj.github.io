@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let correctCount = 0;
 
   const details = {
-    "Rein": "Les reins filtrent le sang et éliminent les toxines.",
-    "Vessie": "La vessie stocke l'urine avant son élimination.",
-    "Uretères": "Les uretères transportent l'urine des reins à la vessie.",
-    "Urètre": "L'urètre est le canal qui permet à l'urine de sortir du corps."
+    "Rein": "Les reins filtrent le sang, éliminent les toxines et régulent l'équilibre hydrique du corps. Chaque jour, ils produisent environ 1,5 litre d’urine.",
+    "Vessie": "La vessie est un réservoir musculaire extensible qui peut stocker jusqu’à 500 ml d’urine avant d’être évacuée via l’urètre.",
+    "Uretères": "Les uretères sont deux tubes fins qui transportent l'urine des reins à la vessie grâce à des contractions régulières.",
+    "Urètre": "L’urètre est le canal par lequel l’urine quitte le corps. Il est court chez la femme et plus long chez l’homme, où il traverse le pénis."
   };
 
   const correctionDetails = document.getElementById('correction-details');
