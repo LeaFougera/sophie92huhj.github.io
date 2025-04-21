@@ -3,20 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Récapitulatif Final</title>
+  <title>Récapitulatif - Jeu des Reins</title>
   <link rel="stylesheet" href="../styles/rein1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
-
   <div class="container">
-    <h1>Récapitulatif Final</h1>
-
-    <div id="correction-details"></div>
-    <p id="score-message"></p>
-
-    <button id="back-btn">Retour au jeu</button>
+    <h1><i class="fas fa-trophy"></i> Résultats du Jeu</h1>
+    <p id="score" class="score"></p>
+    <h2><i class="fas fa-brain"></i> Ce qu’il faut retenir</h2>
+    <pre id="explications" class="explications"></pre>
+    <button onclick="window.location.href='../pages/jeux.html'">Retour au parcours</button>
   </div>
 
-  <script src="../scripts/rein1correction.js"></script>
+  <script>
+    const selections = JSON.parse(localStorage.getItem("selections")) || [];
+    const correctCount = selections.filter(s => s.correct).length;
+
+    document.getElementById("score").textContent = `Votre score : ${correctCount} / ${selections.length}`;
+
+    const explications = `
+🧠 <strong>Fonctions principales des organes du système urinaire :</strong>
+
+🔹 <strong>Reins :</strong> Filtrent le sang, éliminent les toxines et régulent l’équilibre hydrique.
+🔹 <strong>Vessie :</strong> Stocke l'urine jusqu'à l'élimination.
+🔹 <strong>Uretères :</strong> Transportent l'urine des reins à la vessie.
+🔹 <strong>Urètre :</strong> Permet l’évacuation de l’urine à l’extérieur du corps.
+
+🧪 <strong>Importance de la connaissance :</strong>
+Comprendre le rôle de chaque organe aide à mieux saisir le fonctionnement du corps et à prévenir les maladies urinaires.
+
+💡 <strong>En résumé :</strong>
+Associer une fonction à un organe renforce la mémorisation et facilite l’apprentissage.
+`;
+
+    document.getElementById("explications").innerHTML = explications;
+  </script>
 </body>
 </html>

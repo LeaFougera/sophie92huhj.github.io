@@ -8,27 +8,29 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Jeu de Mémoire - Les Reins</h1>
-    <p>Associez les phrases aux organes correspondants !</p>
-
-    <div id="cards-container" class="cards-container"></div>
-    <div id="organs-container" class="organs-container"></div>
-
-    <div id="message"></div>
-    <button id="validate-btn">Valider</button>
-    <button id="restart-btn" class="hidden">Recommencer le jeu</button>
-
-    <!-- Pop-up Modal -->
-    <div id="popup-modal" class="hidden popup-modal">
-      <div class="popup-content">
-        <p id="popup-text"></p>
-        <button id="next-explanation-btn">Suivant</button>
-        <button id="final-recap-btn" class="hidden">Voir le récapitulatif final</button>
-      </div>
-    </div>
+<!-- MODAL STYLE REIN3 -->
+<div id="customModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Résultat</h2>
+    <div id="modalText"></div>
+    <button id="next-explanation-btn" class="hidden">Suivant</button>
+    <button id="finish-correction-btn" class="hidden">Terminer</button>
   </div>
+</div>
 
-  <script src="../scripts/rein1.js"></script>
+<div class="container">
+  <h1>Jeu de Mémoire - Les Reins</h1>
+  <p>Associez les phrases aux organes correspondants !</p>
+
+  <div id="cards-container" class="cards-container"></div>
+  <div id="organs-container" class="organs-container"></div>
+
+  <div id="message"></div>
+  <button id="validate-btn">Valider</button>
+  <button id="restart-btn" class="hidden">Recommencer le jeu</button>
+</div>
+
+<script src="../scripts/rein1.js"></script>
 </body>
 </html>

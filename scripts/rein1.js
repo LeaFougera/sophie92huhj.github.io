@@ -18,6 +18,7 @@ const phrases = [
 
 let selections = [];
 let flippedCard = null;
+let currentCorrectionIndex = 0;
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -28,51 +29,43 @@ function shuffle(array) {
 }
 
 function createCards() {
-  const cardsContainer = document.getElementById("cards-container");
-  shuffle(phrases);
-  phrases.forEach((phrase) => {
-    const cardElement = document.createElement("div");
-    cardElement.classList.add("card");
-    cardElement.setAttribute("data-organe", phrase.organ);
-
-    const cardText = document.createElement("div");
-    cardText.textContent = phrase.text;
-    cardElement.appendChild(cardText);
-
-    cardElement.addEventListener("click", () => flipCard(cardElement));
-
-    cardsContainer.appendChild(cardElement);
+  const container = document.getElementById("cards-container");
+  shuffle(phrases).forEach(phrase => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute("data-organe", phrase.organ);
+    card.textContent = phrase.text;
+    card.addEventListener("click", () => flipCard(card));
+    container.appendChild(card);
   });
 }
 
 function createOrgans() {
-  const organsContainer = document.getElementById("organs-container");
+  const container = document.getElementById("organs-container");
+  organs.forEach(organ => {
+    const img = document.createElement("img");
+    img.src = organ.img;
+    img.alt = organ.name;
+    img.setAttribute("data-name", organ.name);
 
-  organs.forEach((organ) => {
-    const organElement = document.createElement("img");
-    organElement.src = organ.img;
-    organElement.alt = organ.name;
-    organElement.setAttribute("data-name", organ.name);
+    const counter = document.createElement("span");
+    counter.classList.add("count-display");
+    counter.textContent = organ.count;
 
-    const countDisplay = document.createElement("span");
-    countDisplay.classList.add("count-display");
-    countDisplay.textContent = organ.count;
+    const box = document.createElement("div");
+    box.classList.add("organ-container");
+    box.appendChild(img);
+    box.appendChild(counter);
 
-    const organContainer = document.createElement("div");
-    organContainer.classList.add("organ-container");
-    organContainer.appendChild(organElement);
-    organContainer.appendChild(countDisplay);
-
-    organElement.addEventListener("click", () => selectOrgane(organElement, countDisplay));
-
-    organsContainer.appendChild(organContainer);
+    img.addEventListener("click", () => selectOrgane(img, counter));
+    container.appendChild(box);
   });
 }
 
-function flipCard(cardElement) {
+function flipCard(card) {
   if (!flippedCard) {
-    flippedCard = cardElement;
-    cardElement.style.backgroundColor = "#fff";
+    flippedCard = card;
+    card.style.backgroundColor = "#fff";
   }
 }
 
@@ -112,11 +105,41 @@ function getExplanation(correct, selectedOrgane, correctOrgane) {
   };
 
   return correct
-    ? `✅ Correct ! ${details[selectedOrgane]}`
-    : `❌ Incorrect. Tu as choisi "${selectedOrgane}". La bonne réponse est "${correctOrgane}" : ${details[correctOrgane]}`;
+    ? `✅ La phrase correspond bien à <strong>${selectedOrgane}</strong>.`
+    : `❌ Tu as choisi <strong>${selectedOrgane}</strong> mais la bonne réponse était <strong>${correctOrgane}</strong>.<br><strong>Explication :</strong> ${details[correctOrgane]}`;
 }
 
-let explanationIndex = 0;
+function showNextCorrection() {
+  const messageDiv = document.getElementById("message");
+  const nextButton = document.getElementById("next-correction");
+
+  messageDiv.innerHTML = ""; // Reset affichage
+
+  if (currentCorrectionIndex < selections.length) {
+    const sel = selections[currentCorrectionIndex];
+    const result = document.createElement("p");
+    result.innerHTML = `<strong>Phrase :</strong> "${sel.phraseText}"<br>${getExplanation(sel.correct, sel.selectedOrgane, sel.correctOrgane)}<br>`;
+    messageDiv.appendChild(result);
+    currentCorrectionIndex++;
+
+    if (currentCorrectionIndex === selections.length) {
+      nextButton.textContent = "Voir le récapitulatif";
+    }
+  } else {
+    const correctCount = selections.filter(s => s.correct).length;
+    const final = document.createElement("p");
+    final.innerHTML = `<strong>Score final :</strong> ${correctCount} sur ${selections.length}`;
+    final.style.fontSize = "20px";
+    messageDiv.appendChild(final);
+
+    const link = document.createElement("a");
+    link.href = "rein1correction.html";
+    link.innerHTML = `<button>Voir le récapitulatif final</button>`;
+    messageDiv.appendChild(link);
+
+    nextButton.classList.add("hidden");
+  }
+}
 
 document.getElementById("validate-btn").addEventListener("click", () => {
   if (selections.length < phrases.length) {
@@ -124,60 +147,26 @@ document.getElementById("validate-btn").addEventListener("click", () => {
     return;
   }
 
-  localStorage.setItem('selections', JSON.stringify(selections));
+  // Sauvegarde des données
+  localStorage.setItem("selections", JSON.stringify(selections));
 
-  const correctCount = selections.filter(s => s.correct).length;
-  showPopup(`Score : ${correctCount} / ${selections.length}<br><br><button id="start-explanations">Voir la correction</button>`);
-});
+  currentCorrectionIndex = 0;
+  showNextCorrection();
 
-function showPopup(content) {
-  const popup = document.getElementById("popup-modal");
-  const popupText = document.getElementById("popup-text");
-
-  popupText.innerHTML = content;
-  popup.classList.remove("hidden");
-
-  document.getElementById("next-explanation-btn").classList.add("hidden");
-  document.getElementById("final-recap-btn").classList.add("hidden");
-
-  const startBtn = document.getElementById("start-explanations");
-  if (startBtn) {
-    startBtn.addEventListener("click", () => {
-      explanationIndex = 0;
-      showNextExplanation();
-    });
+  // Afficher le bouton suivant
+  let nextBtn = document.getElementById("next-correction");
+  if (!nextBtn) {
+    nextBtn = document.createElement("button");
+    nextBtn.id = "next-correction";
+    nextBtn.textContent = "Suivant";
+    nextBtn.style.marginTop = "20px";
+    nextBtn.addEventListener("click", showNextCorrection);
+    document.querySelector(".container").appendChild(nextBtn);
+  } else {
+    nextBtn.classList.remove("hidden");
+    nextBtn.textContent = "Suivant";
   }
-}
-
-function showNextExplanation() {
-  const popup = document.getElementById("popup-modal");
-  const popupText = document.getElementById("popup-text");
-  const nextBtn = document.getElementById("next-explanation-btn");
-  const finalBtn = document.getElementById("final-recap-btn");
-
-  const selection = selections[explanationIndex];
-  const text = `<strong>Phrase :</strong> "${selection.phraseText}"<br><br>${getExplanation(selection.correct, selection.selectedOrgane, selection.correctOrgane)}`;
-
-  popupText.innerHTML = text;
-  nextBtn.classList.remove("hidden");
-  finalBtn.classList.add("hidden");
-
-  nextBtn.onclick = () => {
-    explanationIndex++;
-    if (explanationIndex < selections.length) {
-      showNextExplanation();
-    } else {
-      nextBtn.classList.add("hidden");
-      popupText.innerHTML = "Fin des corrections ! Tu peux consulter le récapitulatif final.";
-      finalBtn.classList.remove("hidden");
-    }
-  };
-
-  finalBtn.onclick = () => {
-    popup.classList.add("hidden");
-    window.location.href = "rein1correction.html";
-  };
-}
+});
 
 document.getElementById("restart-btn").addEventListener("click", () => {
   resetGame();
@@ -188,9 +177,13 @@ document.getElementById("restart-btn").addEventListener("click", () => {
 function resetGame() {
   selections = [];
   flippedCard = null;
+  currentCorrectionIndex = 0;
   document.getElementById("cards-container").innerHTML = "";
   document.getElementById("organs-container").innerHTML = "";
   document.getElementById("message").textContent = "";
+
+  const nextBtn = document.getElementById("next-correction");
+  if (nextBtn) nextBtn.classList.add("hidden");
 }
 
 createCards();
