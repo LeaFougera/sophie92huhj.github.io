@@ -19,23 +19,21 @@ const phrases = [
 let selections = [];
 let flippedCard = null;
 
-function shuffle(phrases) {
-  for (let i = phrases.length - 1; i > 0; i--) {
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [phrases[i], phrases[j]] = [phrases[j], phrases[i]];
+    [array[i], array[j]] = [array[j], array[i]];
   }
-  return phrases;
+  return array;
 }
 
 function createCards() {
   const cardsContainer = document.getElementById("cards-container");
   shuffle(phrases);
-
-  phrases.forEach((phrase, index) => {
+  phrases.forEach((phrase) => {
     const cardElement = document.createElement("div");
     cardElement.classList.add("card");
     cardElement.setAttribute("data-organe", phrase.organ);
-    cardElement.setAttribute("data-index", index);
 
     const cardText = document.createElement("div");
     cardText.textContent = phrase.text;
@@ -80,14 +78,13 @@ function flipCard(cardElement) {
 
 function selectOrgane(organElement, countDisplay) {
   if (flippedCard) {
-    // Empêche plusieurs sélections pour une même carte
     if (selections.find(sel => sel.phraseText === flippedCard.textContent)) {
       flippedCard = null;
       return;
     }
 
     const selectedOrgane = organElement.getAttribute("data-name");
-    const flippedCardOrgane = flippedCard.getAttribute("data-organe");
+    const correctOrgane = flippedCard.getAttribute("data-organe");
 
     const organ = organs.find(o => o.name === selectedOrgane);
     organ.count++;
@@ -96,20 +93,91 @@ function selectOrgane(organElement, countDisplay) {
     selections.push({
       phraseText: flippedCard.textContent,
       selectedOrgane: selectedOrgane,
-      correctOrgane: flippedCardOrgane,
-      correct: selectedOrgane === flippedCardOrgane
+      correctOrgane: correctOrgane,
+      correct: selectedOrgane === correctOrgane
     });
 
-    organElement.classList.add("selected");
     flippedCard.style.backgroundColor = "#f4f4f9";
+    organElement.classList.add("selected");
     flippedCard = null;
   }
 }
 
+function getExplanation(correct, selectedOrgane, correctOrgane) {
+  const details = {
+    "Rein": "Les reins filtrent le sang et éliminent les toxines.",
+    "Vessie": "La vessie stocke l'urine avant son élimination.",
+    "Uretères": "Les uretères transportent l'urine des reins à la vessie.",
+    "Urètre": "L'urètre est le canal qui permet à l'urine de sortir du corps."
+  };
+
+  return correct
+    ? `✅ Correct ! ${details[selectedOrgane]}`
+    : `❌ Incorrect. Tu as choisi "${selectedOrgane}". La bonne réponse est "${correctOrgane}" : ${details[correctOrgane]}`;
+}
+
+let explanationIndex = 0;
+
 document.getElementById("validate-btn").addEventListener("click", () => {
+  if (selections.length < phrases.length) {
+    alert("Veuillez associer toutes les phrases aux organes avant de valider.");
+    return;
+  }
+
   localStorage.setItem('selections', JSON.stringify(selections));
-  window.location.href = "rein1correction.html";
+
+  const correctCount = selections.filter(s => s.correct).length;
+  showPopup(`Score : ${correctCount} / ${selections.length}<br><br><button id="start-explanations">Voir la correction</button>`);
 });
+
+function showPopup(content) {
+  const popup = document.getElementById("popup-modal");
+  const popupText = document.getElementById("popup-text");
+
+  popupText.innerHTML = content;
+  popup.classList.remove("hidden");
+
+  document.getElementById("next-explanation-btn").classList.add("hidden");
+  document.getElementById("final-recap-btn").classList.add("hidden");
+
+  const startBtn = document.getElementById("start-explanations");
+  if (startBtn) {
+    startBtn.addEventListener("click", () => {
+      explanationIndex = 0;
+      showNextExplanation();
+    });
+  }
+}
+
+function showNextExplanation() {
+  const popup = document.getElementById("popup-modal");
+  const popupText = document.getElementById("popup-text");
+  const nextBtn = document.getElementById("next-explanation-btn");
+  const finalBtn = document.getElementById("final-recap-btn");
+
+  const selection = selections[explanationIndex];
+  const text = `<strong>Phrase :</strong> "${selection.phraseText}"<br><br>${getExplanation(selection.correct, selection.selectedOrgane, selection.correctOrgane)}`;
+
+  popupText.innerHTML = text;
+  nextBtn.classList.remove("hidden");
+  finalBtn.classList.add("hidden");
+
+  nextBtn.onclick = () => {
+    explanationIndex++;
+    if (explanationIndex < selections.length) {
+      showNextExplanation();
+    } else {
+      nextBtn.classList.add("hidden");
+      popupText.innerHTML = "Fin des corrections ! Tu peux consulter le récapitulatif final.";
+      finalBtn.classList.remove("hidden");
+    }
+  };
+
+  finalBtn.onclick = () => {
+    popup.classList.add("hidden");
+    window.location.href = "rein1correction.html";
+  };
+}
 
 document.getElementById("restart-btn").addEventListener("click", () => {
   resetGame();
@@ -119,11 +187,10 @@ document.getElementById("restart-btn").addEventListener("click", () => {
 
 function resetGame() {
   selections = [];
-  document.getElementById("message").textContent = "";
-  document.getElementById("restart-btn").classList.add("hidden");
+  flippedCard = null;
   document.getElementById("cards-container").innerHTML = "";
   document.getElementById("organs-container").innerHTML = "";
-  document.getElementById("correction-link").classList.add("hidden");
+  document.getElementById("message").textContent = "";
 }
 
 createCards();
