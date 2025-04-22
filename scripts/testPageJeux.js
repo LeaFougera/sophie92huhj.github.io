@@ -62,3 +62,25 @@ etapeQuiz.addEventListener("mouseenter", () => {
   });
 });
 etapeQuiz.addEventListener("mouseleave", cacherInfoJeu);
+
+
+// === Étape 7 : Jeu de Liaison (rein3.html) ===
+const bestScoreRein3 = localStorage.getItem("scoreFinal");
+const etape7 = document.getElementById("etape7");
+const ligne7 = document.querySelector(".line.c7"); // Ligne qui relie le jeu 7 au jeu 8
+
+if (bestScoreRein3 && etape7 && ligne7 && !ligne7.classList.contains("completed")) {
+  completer(7, etape7, "#ef5350"); // Couleur rouge pour la difficulté "difficile"
+}
+
+etape7.addEventListener("mouseenter", () => {
+  afficherInfoJeu(620, {
+    theme: "Diagnostic rénal",
+    niveau: "Difficile",
+    duree: "6-8 min",
+    type: "Jeu de liaison",
+    score: bestScoreRein3 ? `${bestScoreRein3} / 10` : "Non joué"
+  });
+});
+
+etape7.addEventListener("mouseleave", cacherInfoJeu);

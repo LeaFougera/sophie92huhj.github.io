@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Récapitulatif - Jeu des Reins</title>
+  <link rel="stylesheet" href="../styles/rein1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-trophy"></i> Résultats du Jeu</h1>
+    <p id="score" class="score"></p>
+    <h2><i class="fas fa-brain"></i> Ce qu’il faut retenir</h2>
+    <pre id="explications" class="explications"></pre>
+    <button onclick="window.location.href='../pages/jeux.html'">Retour au parcours</button>
+  </div>
+
+  <script>
+    const selections = JSON.parse(localStorage.getItem("selections")) || [];
+    const correctCount = selections.filter(s => s.correct).length;
+
+    document.getElementById("score").textContent = `Votre score : ${correctCount} / ${selections.length}`;
+
+    const explications = `
+🧠 <strong>Fonctions principales des organes du système urinaire :</strong>
+
+ <strong>Reins :</strong> Ils filtrent le sang pour éliminer les déchets et les toxines, régulent l’équilibre hydrique et produisent environ 1,5 litre d’urine par jour.
+ <strong>Vessie :</strong> Organe creux et musculaire, elle stocke l’urine jusqu'à son expulsion. Sa capacité moyenne est d’environ 500 ml.
+ <strong>Uretères :</strong> Ce sont des conduits d’environ 25 cm de long qui transportent l’urine des reins vers la vessie à l’aide de petites contractions.
+ <strong>Urètre :</strong> Il permet l’évacuation de l’urine hors du corps. Sa longueur varie selon le sexe : il est plus court chez la femme et plus long chez l’homme.
+
+🧪 <strong>Pourquoi c’est important ?</strong>
+Comprendre le rôle de ces organes aide à détecter les signes de troubles urinaires et à adopter de bonnes habitudes d’hydratation.
+
+💡 <strong>En résumé :</strong>
+Associer chaque fonction à son organe permet de mieux retenir le fonctionnement du système urinaire.
+`;
+
+    document.getElementById("explications").innerHTML = explications;
+  </script>
+</body>
+</html>

@@ -1,110 +1,102 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Insuffisance rénale</title>
-    <link rel="stylesheet" href="../styles/principal.css">
-    <link rel="stylesheet" href="../styles/insuffisance.css">
+  <meta charset="UTF-8" />
+  <title>Insuffisance rénale</title>
+  <link rel="stylesheet" href="../styles/principal.css" />
+  <link rel="stylesheet" href="../styles/insuffisance.css" />
 </head>
 <body>
 
-    <!-- En-tête -->
-    <div class="header-top">
-        <h1>Qu'est-ce que l'insuffisance rénale ?</h1>
-        <p>Comprenez ce qu'est cette maladie et comment elle affecte votre santé.</p>
-    </div>
+  <!-- En-tête -->
+  <div class="header-top">
+    <h1>Qu'est-ce que l'insuffisance rénale ?</h1>
+    <p>Comprenez cette maladie silencieuse et comment elle affecte vos reins.</p>
+  </div>
 
-    <!-- Barre de navigation (chargée dynamiquement) -->
-    <div id="navbar-placeholder"></div>
+  <!-- Barre de navigation -->
+  <div id="navbar-placeholder"></div>
 
-    <div class="content">
+  <!-- Contenu principal -->
+  <div class="content">
 
-        <!-- Intro -->
-        <section class="intro-section fancy-intro">
-            <h2>Qu’est-ce que l’insuffisance rénale</h2>
-            <p class="desc">
-                L’insuffisance rénale correspond à une altération du fonctionnement des reins. 
-                Ces derniers ne parviennent plus à éliminer efficacement les déchets et les excès d’eau du corps. 
-            </p>
-        </section>
+    <!-- Section 1 : Introduction -->
+    <section class="grid-container fade-in">
+      <div class="grid-item text-card">
+        <h3>🩺 Nos reins, des organes essentiels</h3>
+        <p>
+          Quand les reins fatiguent, cela peut passer inaperçu. C’est ce qu’on appelle
+          <strong>l’insuffisance rénale</strong>, aussi connue sous le nom de <strong>maladie rénale chronique (MRC)</strong>.
+        </p>
+      </div>
 
-        <!-- Introduction aux fonctions des reins -->
-        <section class="functions-intro">
-            <p class="desc">
-                Les reins jouent plusieurs rôles essentiels pour le bon fonctionnement de l’organisme. 
-                Les cartes ci-dessous présentent leurs principales fonctions au quotidien.
-            </p>
-        </section>
+      <div class="grid-item text-card">
+        <h3>🔁 Quand ils n’assurent plus leur rôle...</h3>
+        <p>
+          Les reins ne filtrent plus correctement le sang. La maladie évolue lentement, souvent sans symptôme.
+          Seul un examen médical peut la détecter.
+        </p>
+      </div>
+    </section>
 
-        <!-- Cartes fonction des reins -->
-        <section class="grid-container">
-            <div class="grid-item text-block">
-                <h3>🩸 Filtration du sang</h3>
-                <p>50 litres de sang filtrés par heure pour éliminer les 
-                    <span class="tooltip">toxines
-                      <span class="tooltiptext">Substances nocives que le corps doit éliminer via les reins.</span>
-                    </span>.
-                </p>                  
-            </div>
-            <div class="grid-item text-block">
-                <h3>💦 Régulation des fluides</h3>
-                <p>Les reins contrôlent l’eau et les minéraux essentiels.</p>
-            </div>
-            <div class="grid-item text-block">
-                <h3>⚖️ Équilibre des 
-                    <span class="tooltip">électrolytes
-                      <span class="tooltiptext">Minéraux essentiels au bon fonctionnement des cellules et nerfs.</span>
-                    </span>
-                </h3>
-                <p>Le sodium, le potassium, etc. sont ajustés pour le bon fonctionnement du corps.</p>
-            </div>
-        </section>
+    <!-- Section 2 : MRC -->
+    <section class="grid-container fade-in">
+      <div class="grid-item text-card">
+        <h3>📖 Qu’est-ce que la MRC ?</h3>
+        <p>
+          C’est une baisse progressive et irréversible du fonctionnement rénal, souvent découverte par hasard :
+        </p>
+        <ul>
+          <li>🧪 Bilan sanguin ou urinaire</li>
+          <li>📋 Dépistage ciblé (diabète, hypertension…)</li>
+        </ul>
+      </div>
 
-        <!-- Types -->
-        <section class="type-section">
-            <h2>Les deux types d'insuffisance rénale</h2>
-            <div class="grid-container">
-                <div class="grid-item text-block">
-                    <h3>⏳ Chronique</h3>
-                    <p>Évolue lentement sur plusieurs années, souvent liée à une maladie sous-jacente.</p>
-                </div>
-                <div class="grid-item text-block">
-                    <h3>⚡ Aiguë</h3>
-                    <p>Apparaît soudainement à cause d'une infection ou d'un choc sévère.</p>
-                </div>
-            </div>
-        </section>
+      <div class="grid-item text-card">
+        <h3>🔍 Comment la surveiller ?</h3>
+        <p>
+          Seule une prise de sang permet de mesurer la <strong>créatinine</strong> et de calculer le
+          <strong>DFG</strong>, un indicateur de filtration :
+        </p>
+        <ul>
+          <li>📉 DFG bas = reins affaiblis</li>
+          <li>⚠️ Créatinine élevée = filtration perturbée</li>
+        </ul>
+      </div>
+    </section>
 
-        <!-- Symptômes -->
-        <section class="symptoms-section">
-            <h2>Quels sont les premiers signes d’alerte ?</h2>
-            <div class="symptom-cards">
-                <div class="symptom-card">💤 Fatigue et faiblesse</div>
-                <div class="symptom-card">
-                    💧 
-                    <span class="tooltip">Gonflement (œdèmes)
-                        <span class="tooltiptext">Accumulation anormale de liquide dans les tissus du corps.</span>
-                    </span>
-                </div>
-                <div class="symptom-card">🚽 Urines anormales</div>
-                <div class="symptom-card">
-                    😵 
-                    <span class="tooltip">Douleurs thoraciques
-                        <span class="tooltiptext">Douleurs localisées au niveau de la poitrine.</span>
-                    </span>
-                </div>
-                <div class="symptom-card">🤢 Nausées</div>
-            </div>
-        </section>
+    <!-- Section 3 : Seuil d’insuffisance -->
+    <section class="grid-container fade-in">
+      <div class="grid-item text-card">
+        <h3>📏 Quand parle-t-on d’insuffisance rénale ?</h3>
+        <ul>
+          <li>DFG < 60 ml/min</li>
+          <li>Pendant plus de 3 mois</li>
+        </ul>
+        <p>Ce seuil marque une perte significative de fonction. Un suivi médical adapté est indispensable.</p>
+      </div>
 
-        <!-- Conclusion -->
-        <section class="insuffisance-conclusion fancy-intro">
-            <h2>Pourquoi agir rapidement ?</h2>
-            <p>Une prise en charge précoce peut ralentir la maladie et améliorer la qualité de vie.</p>
-        </section>
-    </div>
+      <div class="grid-item image-card">
+        <img src="../images/schema-insuffisance.png" alt="Schéma insuffisance rénale" />
+      </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="../scripts/barre-navigation.js"></script>
+    <!-- Section 4 : Définitions utiles -->
+    <section class="grid-container fade-in">
+      <div class="grid-item text-card">
+        <h3>🧠 Définitions utiles</h3>
+        <ul>
+          <li><strong>Créatinine :</strong> indicateur sanguin de la fonction rénale.</li>
+          <li><strong>DFG :</strong> volume de sang filtré par minute.</li>
+          <li><strong>Toxines :</strong> déchets à éliminer pour rester en bonne santé.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../scripts/barre-navigation.js"></script>
+  <script src="../scripts/insuffisance.js"></script>
 </body>
 </html>
