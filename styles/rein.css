@@ -50,19 +50,31 @@ body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     flex: 1 1 45%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
 }
 
+/* effet d’apparition */
+.split-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* effet de survol */
 .split-box:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
+
+
+/* Titres de sections */
 .content h2 {
     font-size: 22px;
     color: #3d3d3d;
     margin-bottom: 16px;
 }
 
+/* Texte général */
 .desc {
     font-size: 16px;
     line-height: 1.6;
@@ -94,7 +106,7 @@ ul.desc li::before {
     color: #4a536b;
 }
 
-/* Animation d’apparition fluide */
+/* Animation fade-in (appliquée en JS) */
 .fade-in {
     opacity: 0;
     transform: translateY(40px);

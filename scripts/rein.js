@@ -1,21 +1,25 @@
-// Animation au scroll : fade-in
 document.addEventListener('DOMContentLoaded', () => {
     const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = {
-        threshold: 0.2,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.15
     });
-});
+  
+    faders.forEach(el => observer.observe(el));
+  
+    // Accordéon
+    const accordions = document.querySelectorAll('.accordion-btn');
+    accordions.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = btn.nextElementSibling;
+        const isOpen = panel.style.display === "block";
+        document.querySelectorAll('.accordion-panel').forEach(p => p.style.display = 'none');
+        if (!isOpen) panel.style.display = "block";
+      });
+    });
+  });
