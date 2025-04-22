@@ -7,21 +7,28 @@ const checkBtn = document.getElementById('check-btn');
 const alimentData = {
   viande: { bon: false, suggestion: "Poisson maigre", category: 'protéine' },
   oeuf: { bon: true, category: 'protéine' },
-  sel: { bon: false, suggestion: "Herbes aromatiques", category: 'autre' },
+  sel: { bon: false, suggestion: "Herbes aromatiques", category: 'assaisonnements' },
   courgette: { bon: true, category: 'légume' },
   riz: { bon: false, suggestion: "Riz blanc (moins de phosphore)", category: 'féculent' },
   pain: { bon: true, category: 'féculent' },
   poisson_blanc: { bon: true, category: 'protéine' },
-  huile_olive: { bon: true, category: 'autre' },
-  chocolat: { bon: false, suggestion: "Fruits frais comme la pomme", category: 'autre' },
-  pomme: { bon: true, category: 'autre' },
-  poire: { bon: true, category: 'autre' },
+  huile_olive: { bon: true, category: 'assaisonnements' },
+  chocolat: { bon: false, suggestion: "Fruits frais comme la pomme", category: 'dessert' },
+  pomme: { bon: true, category: 'dessert' },
+  poire: { bon: true, category: 'dessert' },
   charcuterie: { bon: false, suggestion: "?", category: 'protéine' },
   pâtes: { bon: true, category: 'féculent' },
   fromages: { bon: false, category: 'protéine' },
-  plat_industriel: { bon: false, category: 'autre' },
+  plat_industriel: { bon: false, category: 'protéine' },
   viande_blanche: { bon: true, category: 'protéine' },
-  herbes_aromatiques: { bon: true, category: 'autre' },
+  herbes_aromatiques: { bon: true, category: 'assaisonnements' },
+  carottes_rape: { bon: true, category: 'entree' },
+  chips: { bon: false, suggestion: "Carottes râpées à l’huile d’olive", category: 'entree' },
+  yaourt_0: { bon: true, category: 'laitier' },
+  fromage: { bon: false, suggestion: "Yaourt 0%", category: 'laitier' },
+  fruit: { bon: true, category: 'dessert' },
+  chocolat: { bon: false, suggestion: "Un fruit frais", category: 'dessert' },
+
 
 };
 
@@ -72,7 +79,7 @@ checkBtn.addEventListener('click', () => {
   let categoriesManquantes = [];
 
   // Vérifier si toutes les catégories ont été choisies
-  ['protéine', 'légume', 'féculent'].forEach(category => {
+  ['entree', 'protéine', 'féculent', 'légume', 'assaisonnements', 'laitier', 'dessert'].forEach(category => {
     if (!categoriesChoisies[category]) {
       categoriesManquantes.push(category);
     }
@@ -103,9 +110,12 @@ checkBtn.addEventListener('click', () => {
 
 
 let categoriesChoisies = {
+  entree: false,
   protéine: false,
+  féculent: false,
   légume: false,
-  féculent: false
+  laitier: false,
+  dessert: false
 };
 
 plate.addEventListener('drop', (e) => {
@@ -141,3 +151,11 @@ plate.addEventListener('drop', (e) => {
   plate.querySelector('p').style.display = 'none';
 });
 
+function nextStep(current) {
+  const currentStep = document.getElementById(`step-${current}`);
+  const next = document.getElementById(`step-${current + 1}`);
+  if (currentStep && next) {
+    currentStep.style.display = 'none';
+    next.style.display = 'block';
+  }
+}
