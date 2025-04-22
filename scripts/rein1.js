@@ -151,6 +151,12 @@ function showNextCorrection() {
     }
   } else {
     const correctCount = selections.filter(s => s.correct).length;
+
+    const previousBest = localStorage.getItem("scoreRein1");
+    if (!previousBest || correctCount > parseInt(previousBest)) {
+      localStorage.setItem("scoreRein1", correctCount);
+    }
+
     const final = document.createElement("p");
     final.innerHTML = `<strong>Score final :</strong> ${correctCount} sur ${selections.length}`;
     final.style.fontSize = "20px";

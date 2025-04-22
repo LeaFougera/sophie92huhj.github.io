@@ -1,3 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #edede9;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+/* En-tête */
+.header-top {
+    padding: 30px 20px 10px;
+    text-align: center;
+    background: #f5ebe0;
+    color: #4a536b;
+}
+
+.header-top h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #4a536b;
+}
+
+.text {
+    width: 45%;
+    padding: 20px;
+    text-align: center;
+}
+
 /* Section d'introduction et de conclusion */
 .intro-section,
 .causes-conclusion {
