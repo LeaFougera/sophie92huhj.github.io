@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .card {
+    width: 200px;
+    height: 150px;
+    background-color: #d3d3d3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+  
+  .card div {
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    padding: 10px;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #e0e0e0;
+  }
+  
+  .organs-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .organs-container img {
+    width: 140px;
+    height: auto;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .organs-container img:hover {
+    transform: scale(1.1);
+  }
+  
+  .organs-container img.selected {
+    border: 3px solid #4CAF50; /* Marque l'organe sélectionné */
+  }
+  
+  /* Positionner le compteur en haut à gauche de chaque organe */
+  .organ-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .count-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  button {
+    padding: 12px 25px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Styles pour la section de correction */
+  .correction-section {
+    margin-top: 30px;
+    text-align: left;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+  }
+  
+  #close-correction {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  #close-correction:hover {
+    background-color: #d32f2f;
+  }

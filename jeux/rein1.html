@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeu de Mémoire - Les Reins</title>
+  <link rel="stylesheet" href="../styles/rein1.css">
+</head>
+<body>
+
+<!-- MODAL STYLE REIN3 -->
+<div id="customModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Résultat</h2>
+    <div id="modalText"></div>
+    <button id="next-explanation-btn" class="hidden">Suivant</button>
+    <button id="finish-correction-btn" class="hidden">Terminer</button>
+  </div>
+</div>
+
+<div class="container">
+  <h1>🧠 Jeu de Mémoire - Les Reins</h1>
+  <div class="intro">
+    <p>
+      Bienvenue ! Dans ce jeu, ton objectif est d’associer chaque <strong>phrase descriptive</strong> à l’<strong>organe du système urinaire</strong> qui lui correspond.<br>
+      Observe bien les phrases, clique sur l’une d’elles, puis sélectionne l’image de l’organe correspondant. Bonne chance !
+    </p>
+  </div>
+
+  <div id="cards-container" class="cards-container"></div>
+  <hr style="margin: 40px auto; width: 60%; border: 1px solid #ccc;">
+  <div id="organs-container" class="organs-container"></div>
+
+  <div id="message"></div>
+  <button id="validate-btn">Valider</button>
+  <button id="restart-btn" class="hidden">Recommencer le jeu</button>
+</div>
+
+<script src="../scripts/rein1.js"></script>
+</body>
+</html>
