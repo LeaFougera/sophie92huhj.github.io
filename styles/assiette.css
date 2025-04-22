@@ -97,7 +97,7 @@
     margin-top: 30px;
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #4CAF50;
+    background-color: #3498db;;
     color: white;
     border: none;
     border-radius: 8px;
@@ -106,7 +106,7 @@
   }
   
   #check-btn:hover {
-    background-color: #45a049;
+    background-color: #2e86c1;
   }
   
   .feedback {
@@ -116,5 +116,37 @@
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+  }
+  
+
+  .ingredient {
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    cursor: grab;
+  }
+  
+  .ingredient {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+  }
+  
+  .ingredient img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ou 'cover' si tu veux remplir même si ça rogne */
+    border-radius: 10px;
   }
   
