@@ -1,8 +1,8 @@
 const organs = [
-  { img: "../photos/rein.png", name: "Rein", count: 0 },
-  { img: "../photos/vessie.png", name: "Vessie", count: 0 },
-  { img: "../photos/ureteres.png", name: "Uretères", count: 0 },
-  { img: "../photos/uretre.png", name: "Urètre", count: 0 }
+  { img: "../photos/rein1/rein.png", name: "Rein", count: 0 },
+  { img: "../photos/rein1/vessie.png", name: "Vessie", count: 0 },
+  { img: "../photos/rein1/ureteres.png", name: "Uretères", count: 0 },
+  { img: "../photos/rein1/uretre.png", name: "Urètre", count: 0 }
 ];
 
 const phrases = [
