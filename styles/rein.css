@@ -1,48 +1,97 @@
 /* Styles spécifiques à la page Le Rein */
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f7f7f7; /* Fond clair */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background: #edede9;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+/* En-tête */
 .header-top {
     padding: 30px 20px 10px;
     text-align: center;
-    background-color: #f5f5f5;
+    background: #f5ebe0;
+    color: #4a536b;
 }
 
 .header-top h1 {
     margin: 0;
     font-size: 28px;
-    color: #02084b;
+    color: #4a536b;
 }
 
+
+/* Contenu principal */
 .content {
-    padding: 40px;
-    text-align: center;
+    padding: 40px 8%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Sections en deux colonnes */
+.split-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.split-box {
+    background-color: #e8e3dd;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    flex: 1 1 45%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.split-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .content h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 22px;
+    color: #3d3d3d;
+    margin-bottom: 16px;
 }
 
-.content p {
-    font-size: 1.2em;
-    color: #555;
+.desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    text-align: left;
 }
 
+/* Image centrée */
 .image-center {
     text-align: center;
     margin: 40px 0;
 }
 
 .image-center img {
-    max-width: 30%;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    max-width: 320px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Liste stylée */
+ul.desc {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.desc li::before {
+    content: "🔹";
+    margin-right: 10px;
+    color: #4a536b;
 }
 
 /* Animation d’apparition fluide */
@@ -55,14 +104,4 @@ body {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* ✨ Effet de survol sur les blocs */
-.split-box {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.split-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
