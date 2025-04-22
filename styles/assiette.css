@@ -60,6 +60,7 @@
     display: flex;
     justify-content: space-around;
     margin-top: 40px;
+    margin-top: 80px;
   }
   
   .plate {
@@ -94,15 +95,19 @@
   
 
   #check-btn {
-    margin-top: 30px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #3498db;;
+    background-color: #3498db;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    z-index: 1000;
   }
   
   #check-btn:hover {
