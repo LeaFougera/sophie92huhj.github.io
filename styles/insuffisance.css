@@ -1,3 +1,4 @@
+/* RESET GÉNÉRAL */
 * {
     margin: 0;
     padding: 0;
@@ -5,237 +6,163 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: #edede9;
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-}
-
-/* En-tête */
-.header-top {
-    padding: 30px 20px 10px;
-    text-align: center;
-    background: #f5ebe0;
-    color: #4a536b;
-}
-
-.header-top h1 {
-    margin: 0;
-    font-size: 28px;
-    color: #4a536b;
-}
-
-/* Mise en page */
-.intro-section,
-.type-section,
-.symptoms-section,
-.insuffisance-conclusion {
-    margin: 40px auto;
-    max-width: 1000px;
-    padding: 20px;
-}
-
-.intro-section h2,
-.type-section h2,
-.symptoms-section h2,
-.insuffisance-conclusion h2 {
-    text-align: center;
-    color: #02084b;
-    margin-bottom: 20px;
-}
-
-/* Cartes façon accueil */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
-
-.grid-item {
-    background: linear-gradient(135deg, #ffffff, #f0f4ff);
-    padding: 25px 20px;
-    border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-    cursor: default;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
-}
-
-.grid-item h3 {
-    color: #02084b;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.grid-item p {
-    color: #333;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-/* Symptômes */
-.symptom-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.symptom-card {
-    background: linear-gradient(135deg, #ffffff, #f9f9f9);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-    font-size: 15px;
-    color: #333;
-    min-width: 220px;
-    text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
-}
-
-.symptom-card:hover {
-    background: linear-gradient(135deg, #ffe5e5, #ffdddd);
-    transform: scale(1.04);
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Fancy wrapper comme sur la page d'accueil */
-.fancy-intro {
-    background: linear-gradient(135deg, #f5faff, #eef6ff);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    padding: 30px 30px;
-}
-
-.intro-section .desc {
-    font-size: 16px;
-    line-height: 1.7;
-    color: #333;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.functions-intro {
-    max-width: 1000px;
-    margin: 0 auto 10px;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.functions-intro .desc {
-    font-size: 16px;
     color: #333;
     line-height: 1.6;
 }
 
-/* Animation d’apparition progressive */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Cartes dynamiques */
-.cause-card {
-    background: linear-gradient(135deg, #ffffff, #f0f4ff);
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-    font-size: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cause-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.cause-card strong {
-    color: #02084b;
-}
-
-.section-title {
+/* EN-TÊTE */
+.header-top {
+    padding: 40px 20px 20px;
     text-align: center;
-    color: #02084b;
-    margin: 40px 0 20px;
+    background: linear-gradient(135deg, #f5ebe0, #f8f4e5);
+    color: #3a3a3a;
+    border-bottom: 1px solid #ddd;
+}
+.header-top h1 {
+    font-size: 30px;
+    color: #2c2c2c;
 }
 
-/* Liste risques */
-.risk-list {
-    list-style: none;
-    padding: 0;
-    max-width: 600px;
-    margin: auto;
-    display: grid;
-    gap: 12px;
+/* TITRES */
+h2, h3 {
+    font-weight: 600;
+    color: #1c1c3c;
+    margin-bottom: 12px;
 }
-
-.risk-list li {
-    background: #f8f8f8;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-size: 15px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+.section-title {
+    font-size: 24px;
+    text-align: center;
+    color: #1c1c3c;
+    margin: 50px auto 25px;
 }
-
-/* Accordéon */
-.accordion-btn {
-    background: linear-gradient(90deg, #02084b, #1d2b8d);
-    color: #fff;
-    padding: 14px 20px;
-    border: none;
-    outline: none;
-    width: 100%;
-    text-align: left;
-    font-size: 16px;
-    border-radius: 8px;
+.grid-item h3, .cause-card h3 {
+    font-size: 18px;
     margin-bottom: 8px;
-    cursor: pointer;
+}
+
+/* CONTAINERS */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 30px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* BOÎTES DE TEXTE */
+.grid-item,
+.cause-card,
+.text-card {
+    background-color: #e8e3dd;
+    padding: 22px 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
+.grid-item:hover,
+.cause-card:hover,
+.text-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+}
+
+.grid-item p,
+.text-card p,
+.text-card ul {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.text-card ul {
+    padding-left: 18px;
+    margin-top: 8px;
+}
+
+/* IMAGE CENTRÉE */
+.image-card img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+.image-center {
+    text-align: center;
+    margin: 40px 0;
+}
+.image-center img {
+    max-width: 320px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* WRAPPER DOUX */
+.fancy-intro {
+    background-color: #e8e3dd;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    padding: 30px 30px;
+    margin: 40px auto;
+    max-width: 1000px;
+}
+
+/* ACCORDÉON */
+.accordion-btn {
+    background: #1c1c3c;
+    color: #fff;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s ease;
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
 .accordion-btn::after {
     content: "▾";
     position: absolute;
     right: 20px;
     font-size: 14px;
 }
-
+.accordion-btn:hover {
+    background: #2c2c60;
+}
 .accordion-panel {
+    background: #f9f9fb;
+    border-left: 4px solid #1c1c3c;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    border-radius: 0 8px 8px 8px;
+    font-size: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     display: none;
-    padding: 15px 20px;
-    margin-top: -8px;
-    margin-bottom: 12px;
-    background: #f0f4ff;
-    border-radius: 0 0 8px 8px;
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
-    font-size: 14px;
-    color: #333;
 }
 
-/* Animation d'apparition */
+/* EFFET D’APPARITION */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(25px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .fancy-intro {
+        padding: 20px;
+    }
 }
