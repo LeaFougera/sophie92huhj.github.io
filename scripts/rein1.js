@@ -130,6 +130,36 @@ function getExplanation(correct, selectedOrgane, correctOrgane) {
     : `❌ Tu as choisi <strong>${selectedOrgane}</strong> mais la bonne réponse était <strong>${correctOrgane}</strong>.<br><strong>Explication :</strong> ${details[correctOrgane]}`;
 }
 
+function showModal() {
+  document.getElementById("customModal").classList.remove("hidden");
+}
+
+function hideModal() {
+  document.getElementById("customModal").classList.add("hidden");
+}
+
+document.querySelector(".close-button").addEventListener("click", hideModal);
+document.getElementById("finish-correction-btn").addEventListener("click", hideModal);
+
+function showModalExplanation(index) {
+  const modalText = document.getElementById("modalText");
+  const nextBtn = document.getElementById("next-explanation-btn");
+  const finishBtn = document.getElementById("finish-correction-btn");
+
+  if (index < selections.length) {
+    const sel = selections[index];
+    modalText.innerHTML = `<strong>Phrase :</strong> "${sel.phraseText}"<br>${getExplanation(sel.correct, sel.selectedOrgane, sel.correctOrgane)}`;
+    nextBtn.classList.remove("hidden");
+    finishBtn.classList.add("hidden");
+  } else {
+    modalText.innerHTML = `<strong>Score final :</strong> ${selections.filter(s => s.correct).length} sur ${selections.length}<br><br><a href="rein1correction.html"><button>Voir le récapitulatif final</button></a>`;
+    nextBtn.classList.add("hidden");
+    finishBtn.classList.remove("hidden");
+  }
+
+  showModal();
+}
+
 function showNextCorrection() {
   const messageDiv = document.getElementById("message");
   const nextButton = document.getElementById("next-correction");
@@ -188,7 +218,7 @@ document.getElementById("validate-btn").addEventListener("click", () => {
   });
 
   currentCorrectionIndex = 0;
-  showNextCorrection();
+  showModalExplanation(currentCorrectionIndex);
 
   // Afficher bouton suivant
   let nextBtn = document.getElementById("next-correction");
@@ -222,6 +252,11 @@ function resetGame() {
   const nextBtn = document.getElementById("next-correction");
   if (nextBtn) nextBtn.classList.add("hidden");
 }
+
+document.getElementById("next-explanation-btn").addEventListener("click", () => {
+  currentCorrectionIndex++;
+  showModalExplanation(currentCorrectionIndex);
+});
 
 createCards();
 createOrgans();
