@@ -38,7 +38,21 @@ body {
     font-size: 16px;
     cursor: pointer;
     border-radius: 10px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    background-color: #e0e0e0;
+  }
+
+  .card:not(.card-back) {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
   }
   
   .card img {
@@ -52,12 +66,6 @@ body {
     text-align: center;
     display: block;
     padding: 10px;
-  }
-
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #e0e0e0;
   }
   
   .organs-container {
@@ -146,4 +154,22 @@ body {
   
   #close-correction:hover {
     background-color: #d32f2f;
+  }
+
+  .card.card-back {
+    background-color: #bbb;
+    color: transparent;
+    pointer-events: auto;
+  }
+
+  .card.correct {
+    background-color: #c8e6c9 !important; /* vert clair */
+    border: 3px solid #4CAF50;
+    color: black;
+  }
+  
+  .card.incorrect {
+    background-color: #ffcdd2 !important; /* rouge clair */
+    border: 3px solid #f44336;
+    color: black;
   }
