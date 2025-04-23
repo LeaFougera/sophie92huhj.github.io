@@ -8,16 +8,20 @@
 </head>
 <body>
   <div class="header">
-    <h1>Choisissez les bons aliments pour un patient atteint de maladie rénale</h1>
-    <p>Faites glisser les aliments vers l’assiette. Évitez les aliments néfastes pour les reins !</p>
+    <h1>Choisis les bons aliments pour préserver ta santé rénale </h1>
+    <p>Fais glisser les aliments vers l’assiette !</p>
   </div>
 
   <div id="step-1" class="step active">
     <h2>Étape 1 : Choisis ton entrée</h2>
+    <p>Tu peux choisir plusieurs aliments !</p>
     <div class="category-column">
       <div class="ingredient-list">
         <div class="ingredient" id="carottes_rape" draggable="true"><img src="../photos/jeu_alimentation_photos/salade_carottes.png" alt="Carottes râpées"></div>
-        <div class="ingredient" id="betterave" draggable="true"><img src="../photos/jeu_alimentation_photos/chips.png" alt="Chips"></div>
+        <div class="ingredient" id="chips" draggable="true"><img src="../photos/jeu_alimentation_photos/chips.png" alt="Chips"></div>
+        <div class="ingredient" id="charcuterie" draggable="true"><img src="../photos/jeu_alimentation_photos/charcuterie.png" alt="Charcuterie"></div>
+        <div class="ingredient" id="melon" draggable="true"><img src="../photos/jeu_alimentation_photos/melon.png" alt="Melon"></div>
+        <div class="ingredient" id="salade" draggable="true"><img src="../photos/jeu_alimentation_photos/salade.png" alt="Salade"></div>
     </div>
     <div class="button-wrapper">
       <button class="btn btn-primary suivant-btn" onclick="nextStep(1)">Suivant</button>
@@ -27,6 +31,7 @@
 
   <div id="step-2" class="step">
     <h2>Étape 2 : Compose ton plat</h2>
+    <p>Choisis une protéine, un féculent, un légume et assaisone le tout !</p>
     <div class="ingredients-container">
       
       <!-- Protéines -->
@@ -39,6 +44,7 @@
           <div class="ingredient" id="plat_industriel" draggable="true"><img src="../photos/jeu_alimentation_photos/plat.png" alt="Plat industriel"></div>
           <div class="ingredient" id="viande_blanche" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_blanche.png" alt="Viande blanche"></div>
           <div class="ingredient" id="charcuterie" draggable="true"><img src="../photos/jeu_alimentation_photos/charcuterie.png" alt="Charcuterie"></div>
+          <div class="ingredient" id="tofu" draggable="true"><img src="../photos/jeu_alimentation_photos/tofu.png" alt="Tofu"></div>
         </div>
       </div>
   
@@ -49,6 +55,7 @@
           <div class="ingredient" id="riz" draggable="true"><img src="../photos/jeu_alimentation_photos/riz.png" alt="Riz"></div>
           <div class="ingredient" id="pain" draggable="true"><img src="../photos/jeu_alimentation_photos/pain.png" alt="Pain"></div>
           <div class="ingredient" id="pâtes" draggable="true"><img src="../photos/jeu_alimentation_photos/pâtes.png" alt="Pâtes"></div>
+          <div class="ingredient" id="pomme_de_terre" draggable="true"><img src="../photos/jeu_alimentation_photos/pdt.png" alt="Pomme de terre"></div>
         </div>
       </div>
   
@@ -57,6 +64,7 @@
         <h2>Légumes</h2>
         <div id="legume-list" class="ingredient-list">
           <div class="ingredient" id="courgette" draggable="true"><img src="../photos/jeu_alimentation_photos/courgette.png" alt="Courgette"></div>
+          <div class="ingredient" id="tomate" draggable="true"><img src="../photos/jeu_alimentation_photos/tomate.png" alt="Tomate"></div>
         </div>
       </div>
   
@@ -83,7 +91,7 @@
           <img src="../photos/jeu_alimentation_photos/fromage.png" alt="Fromage">
         </div>
         <div class="ingredient" id="yaourt" draggable="true">
-          <img src="../photos/jeu_alimentation_photos/fromage.png" alt="Fromage">
+          <img src="../photos/jeu_alimentation_photos/yaourt.png" alt="Yaourt">
         </div>
       </div>
     </div>
@@ -107,9 +115,7 @@
         </div>
       </div>
     </div>
-    <div class="button-wrapper">
-      <button class="btn btn-primary suivant-btn" onclick="nextStep(4)">Suivant</button>
-    </div>
+
   </div>
   
 

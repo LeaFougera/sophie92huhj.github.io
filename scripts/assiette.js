@@ -125,13 +125,13 @@ plate.addEventListener('drop', (e) => {
 
   if (!ingredient) return;
 
-  // Vérifier si l'aliment appartient à une catégorie déjà choisie
+  /*// Vérifier si l'aliment appartient à une catégorie déjà choisie
   const category = alimentData[id].category;
 
   if (categoriesChoisies[category]) {
     alert("Vous avez déjà choisi un aliment de cette catégorie !");
     return;
-  }
+  }*/
 
   // Ajoute l’ingrédient dans l’assiette
   const clone = ingredient.cloneNode(true);
