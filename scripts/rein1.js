@@ -39,7 +39,7 @@ function createCards() {
     card.classList.add("card", "card-back");
     card.setAttribute("data-organe", phrase.organ);
     card.setAttribute("data-text", phrase.text);
-    card.textContent = ""; // caché au départ
+    card.textContent = "";
     card.addEventListener("click", () => flipCard(card));
     container.appendChild(card);
   });
@@ -69,19 +69,14 @@ function createOrgans() {
 
 function flipCard(card) {
   const phraseText = card.getAttribute("data-text");
-
-  // Si déjà associée, on ne peut plus la re-cacher ni re-retourner
   const alreadySelected = selections.find(sel => sel.phraseText === phraseText);
   if (alreadySelected) return;
 
-  // Si la carte est déjà retournée et sélectionnée => on la re-cache
   if (!card.classList.contains("card-back") && flippedCard === card) {
     card.classList.add("card-back");
     card.textContent = "";
     flippedCard = null;
-  }
-  // Si la carte est encore face cachée => on la retourne
-  else if (card.classList.contains("card-back") && !flippedCard) {
+  } else if (card.classList.contains("card-back") && !flippedCard) {
     card.classList.remove("card-back");
     card.textContent = phraseText;
     flippedCard = card;
@@ -139,7 +134,6 @@ function hideModal() {
 }
 
 document.querySelector(".close-button").addEventListener("click", hideModal);
-document.getElementById("finish-correction-btn").addEventListener("click", hideModal);
 
 function showModalExplanation(index) {
   const modalText = document.getElementById("modalText");
@@ -152,7 +146,10 @@ function showModalExplanation(index) {
     nextBtn.classList.remove("hidden");
     finishBtn.classList.add("hidden");
   } else {
-    modalText.innerHTML = `<strong>Score final :</strong> ${selections.filter(s => s.correct).length} sur ${selections.length}<br><br><a href="rein1correction.html"><button>Voir le récapitulatif final</button></a>`;
+    modalText.innerHTML = `
+      <strong>Score final :</strong> ${selections.filter(s => s.correct).length} sur ${selections.length}<br><br>
+      <a href="rein1correction.html"><button>Voir le récapitulatif final</button></a>
+    `;
     nextBtn.classList.add("hidden");
     finishBtn.classList.remove("hidden");
   }
@@ -160,43 +157,17 @@ function showModalExplanation(index) {
   showModal();
 }
 
-function showNextCorrection() {
-  const messageDiv = document.getElementById("message");
-  const nextButton = document.getElementById("next-correction");
+document.getElementById("next-explanation-btn").addEventListener("click", () => {
+  currentCorrectionIndex++;
+  showModalExplanation(currentCorrectionIndex);
+});
 
-  messageDiv.innerHTML = "";
-
-  if (currentCorrectionIndex < selections.length) {
-    const sel = selections[currentCorrectionIndex];
-    const result = document.createElement("p");
-    result.innerHTML = `<strong>Phrase :</strong> "${sel.phraseText}"<br>${getExplanation(sel.correct, sel.selectedOrgane, sel.correctOrgane)}<br>`;
-    messageDiv.appendChild(result);
-    currentCorrectionIndex++;
-
-    if (currentCorrectionIndex === selections.length) {
-      nextButton.textContent = "Voir le récapitulatif";
-    }
-  } else {
-    const correctCount = selections.filter(s => s.correct).length;
-
-    const previousBest = localStorage.getItem("scoreRein1");
-    if (!previousBest || correctCount > parseInt(previousBest)) {
-      localStorage.setItem("scoreRein1", correctCount);
-    }
-
-    const final = document.createElement("p");
-    final.innerHTML = `<strong>Score final :</strong> ${correctCount} sur ${selections.length}`;
-    final.style.fontSize = "20px";
-    messageDiv.appendChild(final);
-
-    const link = document.createElement("a");
-    link.href = "rein1correction.html";
-    link.innerHTML = `<button>Voir le récapitulatif final</button>`;
-    messageDiv.appendChild(link);
-
-    nextButton.classList.add("hidden");
-  }
-}
+document.getElementById("finish-correction-btn").addEventListener("click", () => {
+  hideModal();
+  resetGame();
+  createCards();
+  createOrgans();
+});
 
 document.getElementById("validate-btn").addEventListener("click", () => {
   if (selections.length < phrases.length) {
@@ -204,10 +175,10 @@ document.getElementById("validate-btn").addEventListener("click", () => {
     return;
   }
 
-  // Sauvegarde des données
+  // Sauvegarde
   localStorage.setItem("selections", JSON.stringify(selections));
 
-  // Colorer les cartes : vert ou rouge
+  // Colorer les cartes
   selections.forEach(sel => {
     const allCards = document.querySelectorAll(".card");
     allCards.forEach(card => {
@@ -219,26 +190,6 @@ document.getElementById("validate-btn").addEventListener("click", () => {
 
   currentCorrectionIndex = 0;
   showModalExplanation(currentCorrectionIndex);
-
-  // Afficher bouton suivant
-  let nextBtn = document.getElementById("next-correction");
-  if (!nextBtn) {
-    nextBtn = document.createElement("button");
-    nextBtn.id = "next-correction";
-    nextBtn.textContent = "Suivant";
-    nextBtn.style.marginTop = "20px";
-    nextBtn.addEventListener("click", showNextCorrection);
-    document.querySelector(".container").appendChild(nextBtn);
-  } else {
-    nextBtn.classList.remove("hidden");
-    nextBtn.textContent = "Suivant";
-  }
-});
-
-document.getElementById("restart-btn").addEventListener("click", () => {
-  resetGame();
-  createCards();
-  createOrgans();
 });
 
 function resetGame() {
@@ -247,16 +198,7 @@ function resetGame() {
   currentCorrectionIndex = 0;
   document.getElementById("cards-container").innerHTML = "";
   document.getElementById("organs-container").innerHTML = "";
-  document.getElementById("message").textContent = "";
-
-  const nextBtn = document.getElementById("next-correction");
-  if (nextBtn) nextBtn.classList.add("hidden");
 }
-
-document.getElementById("next-explanation-btn").addEventListener("click", () => {
-  currentCorrectionIndex++;
-  showModalExplanation(currentCorrectionIndex);
-});
 
 createCards();
 createOrgans();
