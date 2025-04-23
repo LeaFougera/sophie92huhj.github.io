@@ -14,23 +14,25 @@ const memorisationZone = document.getElementById("memorisation-zone");
 const goodList = document.getElementById("good-list");
 const badList = document.getElementById("bad-list");
 const sortingZone = document.getElementById("sorting-zone");
-const choices = document.getElementById("choices");
-const validateBtn = document.getElementById("validate-btn");
 const resultEl = document.getElementById("result");
 
-let draggedElement = null;
+// NOUVEAUX ÉLÉMENTS
+let phraseContainer, btnGood, btnBad;
+
+let shuffledItems = [];
+let currentIndex = 0;
+let score = 0;
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-// ▶️ Lancement du jeu
 startBtn.addEventListener("click", () => {
   startZone.classList.add("hidden");
   countdown.classList.remove("hidden");
   memorisationZone.classList.remove("hidden");
 
-  // Affiche les bons et mauvais conseils
+  // Afficher les phrases à mémoriser
   goodList.innerHTML = "";
   badList.innerHTML = "";
   conseils.forEach(pair => {
@@ -43,7 +45,6 @@ startBtn.addEventListener("click", () => {
     badList.appendChild(badLi);
   });
 
-  // Timer
   let timeLeft = 10;
   timer.textContent = timeLeft;
   const interval = setInterval(() => {
@@ -51,74 +52,101 @@ startBtn.addEventListener("click", () => {
     timer.textContent = timeLeft;
     if (timeLeft <= 0) {
       clearInterval(interval);
-      showDragDropPhase();
+      startClassificationPhase();
     }
   }, 1000);
 });
 
-// 🧩 Phase drag & drop
-function showDragDropPhase() {
+function startClassificationPhase() {
   countdown.classList.add("hidden");
   memorisationZone.classList.add("hidden");
   sortingZone.classList.remove("hidden");
 
-  const allItems = shuffle([
+  // Création de la structure
+  sortingZone.innerHTML = `
+    <h2>🔍 Dans quelle colonne va ce conseil ?</h2>
+    <div class="columns">
+      <div class="column" id="good-column">
+        <h3>Bon conseil</h3>
+        <ul id="col-good"></ul>
+      </div>
+      <div class="column" id="bad-column">
+        <h3>Faux bon conseil</h3>
+        <ul id="col-bad"></ul>
+      </div>
+    </div>
+    <div id="phrase-zone" class="choices"></div>
+    <div id="answer-buttons">
+      <button id="choose-good">✅ Bon conseil</button>
+      <button id="choose-bad">❌ Faux bon conseil</button>
+    </div>
+  `;
+
+  phraseContainer = document.getElementById("phrase-zone");
+  btnGood = document.getElementById("choose-good");
+  btnBad = document.getElementById("choose-bad");
+
+  shuffledItems = shuffle([
     ...conseils.map(c => ({ text: c.good, type: "good" })),
     ...conseils.map(c => ({ text: c.bad, type: "bad" }))
   ]);
 
-  choices.innerHTML = "";
-  allItems.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "choice";
-    div.textContent = item.text;
-    div.setAttribute("data-type", item.type);
-    div.setAttribute("draggable", true);
+  currentIndex = 0;
+  score = 0;
 
-    // Utiliser l'élément réel pour drag
-    div.addEventListener("dragstart", (e) => {
-      draggedElement = div;
-      div.classList.add("dragging");
+  showNextPhrase();
 
-      // Utiliser le vrai bloc comme image de drag
-      e.dataTransfer.setDragImage(div, 10, 10);
-    });
-
-    div.addEventListener("dragend", () => {
-      draggedElement = null;
-      div.classList.remove("dragging");
-    });
-
-    choices.appendChild(div);
-  });
+  btnGood.addEventListener("click", () => handleAnswer("good"));
+  btnBad.addEventListener("click", () => handleAnswer("bad"));
 }
 
-// 📥 Gestion du drop
-document.querySelectorAll(".drop-zone").forEach(zone => {
-  zone.addEventListener("dragover", e => e.preventDefault());
+function showNextPhrase() {
+  if (currentIndex >= shuffledItems.length) {
+    return showScore();
+  }
 
-  zone.addEventListener("drop", e => {
-    e.preventDefault();
-    if (draggedElement) {
-      zone.appendChild(draggedElement);
-      draggedElement = null;
-    }
-  });
-});
+  const phrase = shuffledItems[currentIndex];
+  phraseContainer.innerHTML = `<div class="choice">${phrase.text}</div>`;
+}
 
-// ✅ Vérification
-validateBtn.addEventListener("click", () => {
-  let score = 0;
+function handleAnswer(userChoice) {
+  const item = shuffledItems[currentIndex];
+  const correct = item.type === userChoice;
 
-  document.querySelectorAll(".drop-zone").forEach(zone => {
-    const expected = zone.getAttribute("data-type");
+  if (correct) score++;
 
-    [...zone.children].forEach(child => {
-      const actual = child.getAttribute("data-type");
-      if (actual === expected) score++;
-    });
-  });
+  const li = document.createElement("li");
+  li.textContent = item.text;
 
-  resultEl.textContent = `🎯 Score : ${score} / 10 bons placements`;
+  if (userChoice === "good") {
+    document.getElementById("col-good").appendChild(li);
+  } else {
+    document.getElementById("col-bad").appendChild(li);
+  }
+
+  currentIndex++;
+  showNextPhrase();
+}
+
+function showScore() {
+  document.getElementById("answer-buttons").classList.add("hidden");
+  phraseContainer.classList.add("hidden");
+
+  // On affiche les bonnes et mauvaises couleurs dans les colonnes
+  const colGood = document.getElementById("col-good").children;
+  const colBad = document.getElementById("col-bad").children;
+
+  for (let li of colGood) {
+    const correctItem = shuffledItems.find(item => item.text === li.textContent);
+    li.classList.add(correctItem.type === "good" ? "correct" : "incorrect");
+  }
+
+  for (let li of colBad) {
+    const correctItem = shuffledItems.find(item => item.text === li.textContent);
+    li.classList.add(correctItem.type === "bad" ? "correct" : "incorrect");
+  }
+
+  resultEl.textContent = `🎯 Score : ${score} / ${shuffledItems.length} bons placements`;
   resultEl.classList.remove("hidden");
-});
+}
+

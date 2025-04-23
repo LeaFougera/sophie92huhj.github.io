@@ -282,3 +282,15 @@ li {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+.correct {
+  background-color: #d6f5db !important;
+  color: #1c4b2e !important;
+  border: 1.5px solid #b3eac2 !important;
+}
+
+.incorrect {
+  background-color: #f8d1d1 !important;
+  color: #6d1c1c !important;
+  border: 1.5px solid #f2b1b1 !important;
+}
+
