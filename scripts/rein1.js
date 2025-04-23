@@ -198,6 +198,9 @@ function resetGame() {
   currentCorrectionIndex = 0;
   document.getElementById("cards-container").innerHTML = "";
   document.getElementById("organs-container").innerHTML = "";
+  organs.forEach(organ => {
+    organ.count = 0;
+  });
 }
 
 createCards();
