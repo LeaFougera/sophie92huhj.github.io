@@ -6,18 +6,30 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #edede9; /* Couleur de fond principale */
+  background: #edede9;
   color: #4a536b;
 }
 
 .container {
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 h1 {
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   color: #4a536b;
+}
+
+.intro {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a536b;
+}
+
+.intro p {
+  margin-bottom: 0;
 }
 
 .cards-container {
@@ -25,7 +37,7 @@ h1 {
   grid-template-columns: repeat(4, 200px);
   gap: 20px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .card {
@@ -56,7 +68,7 @@ h1 {
 }
 
 .card.card-back {
-  background-color: #dcd2c2;
+  background-color: #d5bdaf;
   color: transparent;
 }
 
@@ -80,14 +92,24 @@ h1 {
   flex-wrap: wrap;
 }
 
+.organ-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 16px;
+  border: 2px solid #8b5e3c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
 .organs-container img {
   width: 140px;
   height: auto;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 10px;
   transition: transform 0.3s ease;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  display: block;
 }
 
 .organs-container img:hover {
@@ -95,13 +117,7 @@ h1 {
 }
 
 .organs-container img.selected {
-  border: 3px solid #8b5e3c;
-}
-
-.organ-container {
-  position: relative;
-  display: inline-block;
-  text-align: center;
+  border: 3px solid #ffffff;
 }
 
 .count-display {
@@ -113,13 +129,14 @@ h1 {
   font-size: 13px;
   padding: 4px 7px;
   border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 button {
   padding: 12px 25px;
   margin-top: 30px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #d5bdaf;
+  color: #4a536b;
   border: none;
   cursor: pointer;
   font-size: 18px;
@@ -128,7 +145,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #d5bdaf;
 }
 
 .hidden {
@@ -156,17 +173,18 @@ button:hover {
 
 .modal-content {
   background: #fefcfb;
-  border-radius: 15px;
-  padding: 30px 40px;
-  max-width: 600px;
+  border-radius: 18px;
+  padding: 35px 45px;
+  max-width: 620px;
   width: 90%;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   animation: slideIn 0.3s ease;
   position: relative;
   text-align: left;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4a536b;
+  border: 1px solid #e0dcd5;
 }
 
 .modal-content h2 {
@@ -214,8 +232,8 @@ button:hover {
 #next-explanation-btn,
 #finish-correction-btn {
   padding: 10px 25px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #d5bdaf;
+  color: #4a536b;
   border: none;
   font-size: 16px;
   border-radius: 8px;
@@ -226,5 +244,44 @@ button:hover {
 
 #next-explanation-btn:hover,
 #finish-correction-btn:hover {
-  background-color: #45a049;
+  background-color: #d5bdaf;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #d5bdaf;
+}
+
+.game-header {
+  background-color: #d5bdaf;
+  padding: 30px 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.game-header h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.game-header .intro p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
 }

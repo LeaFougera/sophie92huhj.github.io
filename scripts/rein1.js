@@ -140,14 +140,20 @@ function showModalExplanation(index) {
   const nextBtn = document.getElementById("next-explanation-btn");
   const finishBtn = document.getElementById("finish-correction-btn");
 
-  if (index < selections.length) {
-    const sel = selections[index];
-    modalText.innerHTML = `<strong>Phrase :</strong> "${sel.phraseText}"<br>${getExplanation(sel.correct, sel.selectedOrgane, sel.correctOrgane)}`;
+  const wrongSelections = selections.filter(sel => !sel.correct);
+
+  if (index < wrongSelections.length) {
+    const sel = wrongSelections[index];
+    modalText.innerHTML = `
+      <strong>Phrase :</strong> "${sel.phraseText}"<br>
+      ${getExplanation(sel.correct, sel.selectedOrgane, sel.correctOrgane)}
+    `;
     nextBtn.classList.remove("hidden");
     finishBtn.classList.add("hidden");
   } else {
+    const correctCount = selections.filter(s => s.correct).length;
     modalText.innerHTML = `
-      <strong>Score final :</strong> ${selections.filter(s => s.correct).length} sur ${selections.length}<br><br>
+      <strong>Score final :</strong> ${correctCount} sur ${selections.length}<br><br>
       <a href="rein1correction.html"><button>Voir le récapitulatif final</button></a>
     `;
     nextBtn.classList.add("hidden");
