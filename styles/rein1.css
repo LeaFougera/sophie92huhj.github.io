@@ -266,22 +266,3 @@ button:hover {
   background-color: #d5bdaf;
 }
 
-.game-header {
-  background-color: #d5bdaf;
-  padding: 30px 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.game-header h1 {
-  color: #333;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.game-header .intro p {
-  color: #333;
-  font-size: 16px;
-  line-height: 1.6;
-}

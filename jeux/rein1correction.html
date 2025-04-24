@@ -1,43 +1,209 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Récapitulatif - Jeu des Reins</title>
-  <link rel="stylesheet" href="../styles/rein1.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fiche Réflexe - Les Reins</title>
+  <link rel="stylesheet" href="../styles/rein1.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      background: white;
+      color: #333;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #4a536b;
+    }
+
+    .fiche-section {
+  background: #f5ebe0;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center; /* ✅ Centrage du contenu */
+  color: #000000;      /* ✅ Couleur texte harmonisée */
+  font-size: 16px;     /* ✅ Taille uniforme */
+  line-height: 1.6;
+}
+
+.fiche-section ul {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.fiche-section li {
+  margin: 6px 0;
+}
+
+.fiche-section h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: #4a536b;
+}
+
+    .fiche-section p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .btn-group button,
+    .btn-group a {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #d5bdaf;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      min-width: 180px;
+    }
+
+    .btn-group button:hover,
+    .btn-group a:hover {
+      background-color: #bfa69b;
+    }
+
+    @media print {
+      .btn-group {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1><i class="fas fa-trophy"></i> Résultats du Jeu</h1>
-    <p id="score" class="score"></p>
-    <h2><i class="fas fa-brain"></i> Ce qu’il faut retenir</h2>
-    <pre id="explications" class="explications"></pre>
-    <button onclick="window.location.href='../pages/jeux.html'">Retour au parcours</button>
+
+  <h1>Fiche Réflexe – Système Urinaire</h1>
+  <p style="text-align:center; margin-bottom: 30px;">
+    Récapitulatif pédagogique – Généralités essentielles sur chaque organe
+  </p>
+
+  <div id="fiche-container"></div>
+
+  <!-- 🔘 BOUTONS EN BAS -->
+  <div class="btn-group">
+    <button onclick="generatePDF()">📥 Enregistrer en PDF</button>
+    <button onclick="window.print()">🖨️ Imprimer</button>
+    <a href="../pages/jeux.html"> Retour au parcours</a>
   </div>
 
   <script>
-    const selections = JSON.parse(localStorage.getItem("selections")) || [];
-    const correctCount = selections.filter(s => s.correct).length;
+    const details = {
+  "Rein": [
+    "Filtrent le sang pour éliminer les déchets et les toxines",
+    "Régulent l’équilibre hydrique du corps",
+    "Produisent environ 1,5 litre d’urine par jour",
+    "Participent à la régulation de la pression artérielle",
+    "Contribuent à l’équilibre acido-basique",
+    "Produisent certaines hormones (ex. : érythropoïétine)"
+  ],
+  "Vessie": [
+    "Organe creux et extensible, situé dans le bas-ventre",
+    "Stocke l’urine jusqu’à son expulsion",
+    "Peut contenir environ 400 à 600 ml d’urine",
+    "Se contracte quand elle est pleine pour permettre la miction"
+  ],
+  "Uretères": [
+    "Conduits d’environ 25 à 30 cm de long",
+    "Transportent l’urine des reins à la vessie",
+    "Leur paroi musculaire permet des contractions (péristaltisme)",
+    "Fonctionnent même en position allongée"
+  ],
+  "Urètre": [
+    "Canal qui permet l’évacuation de l’urine vers l’extérieur",
+    "Court chez la femme (~3-4 cm), long chez l’homme (~15-20 cm)",
+    "Traverse le pénis chez l’homme",
+    "Contrôlé par un sphincter pour retenir ou libérer l’urine"
+  ]
+};
 
-    document.getElementById("score").textContent = `Votre score : ${correctCount} / ${selections.length}`;
+    const ficheContainer = document.getElementById("fiche-container");
+    const organs = ["Rein", "Vessie", "Uretères", "Urètre"];
 
-    const explications = `
-🧠 <strong>Fonctions principales des organes du système urinaire :</strong>
+    organs.forEach(org => {
+      const bloc = document.createElement("div");
+      bloc.className = "fiche-section";
 
- <strong>Reins :</strong> Ils filtrent le sang pour éliminer les déchets et les toxines, régulent l’équilibre hydrique et produisent environ 1,5 litre d’urine par jour.
- <strong>Vessie :</strong> Organe creux et musculaire, elle stocke l’urine jusqu'à son expulsion. Sa capacité moyenne est d’environ 500 ml.
- <strong>Uretères :</strong> Ce sont des conduits d’environ 25 cm de long qui transportent l’urine des reins vers la vessie à l’aide de petites contractions.
- <strong>Urètre :</strong> Il permet l’évacuation de l’urine hors du corps. Sa longueur varie selon le sexe : il est plus court chez la femme et plus long chez l’homme.
+      const heading = document.createElement("h2");
+      heading.textContent = ` ${org}`;
+      bloc.appendChild(heading);
 
-🧪 <strong>Pourquoi c’est important ?</strong>
-Comprendre le rôle de ces organes aide à détecter les signes de troubles urinaires et à adopter de bonnes habitudes d’hydratation.
+      const list = document.createElement("ul");
+list.style.marginTop = "10px";
 
-💡 <strong>En résumé :</strong>
-Associer chaque fonction à son organe permet de mieux retenir le fonctionnement du système urinaire.
-`;
+details[org].forEach(item => {
+  const li = document.createElement("li");
+  li.textContent = item;
+  list.appendChild(li);
+});
 
-    document.getElementById("explications").innerHTML = explications;
+bloc.appendChild(list);
+
+      ficheContainer.appendChild(bloc);
+    });
+
+    async function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.setFont("Helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("Fiche Réflexe – Système Urinaire", 15, 20);
+
+      doc.setFontSize(12);
+      let y = 30;
+
+      organs.forEach(org => {
+        const text = details[org];
+        if (!text) return;
+
+        doc.setFont("Helvetica", "bold");
+        doc.text(` ${org}`, 15, y);
+        y += 8;
+
+        doc.setFont("Helvetica", "normal");
+
+        // Découpe automatique du texte pour éviter débordement
+        details[org].forEach(item => {
+  const lines = doc.splitTextToSize(`- ${item}`, 180);
+  lines.forEach(line => {
+    doc.text(line, 20, y);
+    y += 6;
+  });
+  y += 2;
+});
+        lines.forEach(line => {
+          doc.text(line, 20, y);
+          y += 6;
+        });
+
+        y += 8;
+
+        if (y > 270) {
+          doc.addPage();
+          y = 20;
+        }
+      });
+
+      doc.save("fiche-systeme-urinaire.pdf");
+    }
   </script>
 </body>
 </html>
