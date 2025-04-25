@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f7f7f7;
+    background: #edede9;
     margin: 0;
     padding: 0;
 }
@@ -74,8 +74,8 @@ button {
     display: block;
     margin: 30px auto;
     padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
+    background-color: #d5bdaf;
+    color: #4a536b;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -83,7 +83,7 @@ button {
 }
 
 button:hover {
-    background-color: #2e86c1;
+    background-color: #d5bdaf;
 }
 
 #result {
@@ -93,7 +93,7 @@ button:hover {
 }
 
 .selected {
-    border: 2px dashed #e67e22;
+    border: 2px dashed #d5bdaf;
     background-color: #fdf2e9;
 }
 
@@ -213,8 +213,8 @@ button:hover {
     bottom: 20px;
     right: 20px; /* 👈 plus proche du bord du container */
     padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
+    background-color: #d5bdaf;
+    color: #4a536b;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -223,15 +223,15 @@ button:hover {
 
 
 #nextPart:hover {
-    background-color: #2e86c1;
+    background-color: #d5bdaf;
 }
 
 #finishButton {
     display: block;
     margin: 30px auto;
     padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
+    background-color: #d5bdaf;
+    color: #4a536b;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -239,5 +239,5 @@ button:hover {
 }
 
 #finishButton:hover {
-    background-color: #2e86c1;
+    background-color: #d5bdaf;
 }

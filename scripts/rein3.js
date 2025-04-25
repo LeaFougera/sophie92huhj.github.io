@@ -11,7 +11,7 @@
     let matchedPairs = [];
     let canGoToNextPart = false;
 
-    const colors = ["#e3ecff", "#bfd7ff", "#a0c4ff", "#7094cc", "#406499"];
+    const colors = ["#ffffcc", "#ffccff", "#ffcc99", "#99ccff", "#ccccff"];
     let currentColorIndex = 0;
 
     termes.forEach(terme => {
