@@ -1,5 +1,6 @@
     const checkButton = document.getElementById("checkButton");
     checkButton.disabled = true;  // Désactive le bouton au début
+    shuffleDefinitions("part1");
 
     
     const termes = document.querySelectorAll(".column:first-child .item");
@@ -80,16 +81,16 @@
         }
     
         const explications = {
-            1: "Ce test mesure la créatinine, un déchet filtré par les reins. Un taux élevé peut indiquer une insuffisance rénale.",
-            2: "Un suivi médical régulier permet de détecter une dégradation de la fonction rénale à temps.",
-            3: "Les reins sont des organes vitaux qui filtrent le sang et produisent l’urine.",
-            4: "Une tension artérielle élevée abîme les vaisseaux sanguins dans les reins.",
-            5: "Les reins produisent une hormone (EPO) qui stimule la production de globules rouges.",
-            6: "La bandelette urinaire permet une détection simple de protéines ou de sang dans l'urine.",
+            1: "Un test sanguin mesure le taux de créatinine pour vérifier la fonction rénale. Il est important de faire un bilan régulier.",
+            2: "Un suivi médical régulier aide à garder tes reins en bonne santé en repérant à temps d’éventuels déséquilibres, ce qui permet d’agir tôt et d’éviter que la situation ne se complique..",
+            3: "Les reins éliminent les déchets du sang. Boire suffisamment d'eau aide à leur bon fonctionnement.",
+            4: "Contrôler ta pression artérielle aide à protéger tes reins. Une alimentation saine et l'exercice sont essentiels.",
+            5: "Boire de l'eau régulièrement aide les reins à éliminer les toxines efficacement.",
+            6: "La bandelette urinaire permet de détecter des signes de dysfonction rénale tôt.",
             7: "Le DFG (Débit de Filtration Glomérulaire) estime la capacité des reins à filtrer le sang.",
-            8: "La créatinine est un marqueur de la fonction rénale ; son excès est un signe d’insuffisance.",
-            9: "Un rein endommagé filtre mal le sang, causant une accumulation de déchets dans l'organisme.",
-            10: "L’insuffisance rénale chronique évolue lentement, nécessitant une prise en charge précoce."
+            8: "S'exposer au soleil, dans les heures recommandées, aide à produire de la vitamine D, bénéfique pour les reins et la santé osseuse.",
+            9: "Un rein endommagé perd de son efficacité. Prendre soin de ses reins aide à éviter ces problèmes.",
+            10: "La maladie rénale est progressive. Un suivi régulier permet de s'adapter pour freiner son évolution (mieux vaut prévenir que guérir !)"
         };
     
         let score = 0;
@@ -193,12 +194,18 @@
             window.addEventListener("click", event => {
                 const modal = document.getElementById("customModal");
                 if (event.target === modal) {
-                modal.style.display = "none";
+                    modal.style.display = "none";
+                    if (canGoToNextPart) {
+                        document.getElementById("nextPart").style.display = "block";
+                    }
                 }
             });
+            
 
                 document.getElementById("nextPart").addEventListener("click", () => {
                     if (!canGoToNextPart) return;
+
+                    shuffleDefinitions("part2");
                 
                     // Cacher la partie 1
                     document.querySelectorAll(".part1").forEach(el => el.style.display = "none");
@@ -260,6 +267,20 @@ function updateCheckButtonState() {
     if (document.querySelector(".part2").style.display === "block") {
         document.getElementById("checkButton").disabled = matchedCountPart2 < totalItemsPart2;
     }
+}
+
+function shuffleDefinitions(partClass) {
+    const container = document.querySelector(".column:last-child");
+    const definitions = Array.from(container.querySelectorAll(`.item2.${partClass}`));
+
+    // Mélanger les définitions
+    for (let i = definitions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [definitions[i], definitions[j]] = [definitions[j], definitions[i]];
+    }
+
+    // Réinsérer dans le DOM dans le nouvel ordre
+    definitions.forEach(def => container.appendChild(def));
 }
 
 
