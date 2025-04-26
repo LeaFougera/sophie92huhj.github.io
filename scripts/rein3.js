@@ -11,6 +11,9 @@
     let selectedDefinition = null;
     let matchedPairs = [];
     let canGoToNextPart = false;
+    let erreursAffichage = [];
+    let erreurIndex = 0;
+
 
     const colors = ["#ffffcc", "#ffccff", "#ffcc99", "#99ccff", "#ccccff"];
     let currentColorIndex = 0;
@@ -112,11 +115,29 @@
                 const bonneDef = document.querySelector(`.item2.${currentPart}[data-id="${termeID}"]`).textContent.trim();
                 const explication = explications[termeID] || "Pas d'explication disponible.";
     
-                const message = `
+                // Trouver l'image qui correspond au terme
+                const imgElement = document.querySelector(`img[alt="${termeText}"]`);
+                const imgClone = imgElement ? imgElement.cloneNode(true) : null;
+
+                // Générer le message d'erreur pédagogique
+                let message = `
                     <div class="erreur-item">
-                        <p><strong>Tu as fait une erreur ici :</strong> L'image "${termeText}" ne correspond pas à cette définition.</p>
-                        <p><strong>Ce qu’il fallait associer :</strong> "${bonneDef}".</p>
-                        <p><strong>Pourquoi ?</strong> ${explication}</p>
+                `;  
+
+                if (imgClone) {
+                    message += `
+                        <div class="erreur-image">
+                            ${imgClone.outerHTML}
+                        </div>
+                    `;
+                }
+
+                
+
+                message += `
+                        <p><strong>Pas de panique !</strong> Tu t'es juste trompé avec l'image "${termeText}".</p>
+                        <p><strong>Voici pourquoi :</strong> ${explication}</p>
+                        <p><strong>La bonne association était :</strong> "${bonneDef}".</p>
                     </div>
                 `;
     
@@ -133,54 +154,81 @@
         // Vérification pour la partie 1
         if (currentPart === "part1") {
             if (erreursPart1.length === 0) {
-                showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.");
+                showModal("Félicitations ! Toutes les associations sont correctes. Tu peux passer à la suite.", false);
             } else {
-                showModal(erreursPart1.join("\n"));
+                erreursAffichage = erreursPart1;
+                erreurIndex = 0;
+                showModal(erreursAffichage[erreurIndex], true);
             }
-    
-            // Autoriser l’accès au bouton "Partie suivante"
             canGoToNextPart = true;
         } else {
-            // Vérification pour la partie 2
             if (erreursPart2.length === 0) {
-                // Afficher uniquement le message de félicitations pour la partie 2, sans erreurs de la partie 1
-                showModal("Félicitations ! Toutes les associations de la partie 2 sont correctes.");
+                showModal("Félicitations ! Toutes les associations de la partie 2 sont correctes.", false);
             } else {
-                showModal(erreursPart2.join("\n"));
+                erreursAffichage = erreursPart2;
+                erreurIndex = 0;
+                showModal(erreursAffichage[erreurIndex], true);
             }
-    
-            // Si toutes les associations de la partie 2 sont correctes, on n'affiche pas les erreurs de la partie 1
-            if (erreursPart2.length === 0) {
-                if (erreursPart1.length === 0) {
-                    showModal("Félicitations ! Toutes les associations sont correctes.");
-                }
-            }
-    
-            // Mettre à jour le score
             localStorage.setItem("scoreFinal", score);
-    
-            // Afficher toujours le bouton "Terminer"
             const finishButton = document.getElementById("finishButton");
             finishButton.style.display = "block";
-    
+        
             if (!finishButton.dataset.listenerAdded) {
                 finishButton.addEventListener("click", function () {
-                    window.location.href = "../jeux/resultat.html";  // Redirige vers la page "resultat.html"
+                    window.location.href = "../jeux/resultat.html";
                 });
                 finishButton.dataset.listenerAdded = "true";
             }
         }
+        
     }
     
     
     
 
-            function showModal(content) {
-                const modal = document.getElementById("customModal");
-                const modalText = document.getElementById("modalText");
-                modalText.innerHTML = content;
-                modal.style.display = "block";
+    function showModal(content, isErreur = false) {
+        const modal = document.getElementById("customModal");
+        const modalText = document.getElementById("modalText");
+        modalText.innerHTML = content;
+        modal.style.display = "block";
+    
+        const nextErrorButton = document.getElementById("nextErrorButton");
+        const prevErrorButton = document.getElementById("prevErrorButton");
+    
+        if (isErreur && erreursAffichage.length > 1) {
+            nextErrorButton.style.display = "inline-block";
+            prevErrorButton.style.display = "inline-block"; // On affiche le bouton suivant
+        } else {
+            nextErrorButton.style.display = "none";
+            prevErrorButton.style.display = "none"; // Sinon on le cache
+        }
+    }
+
+    
+    document.getElementById("nextErrorButton").addEventListener("click", () => {
+        erreurIndex++;
+        if (erreurIndex < erreursAffichage.length) {
+            showModal(erreursAffichage[erreurIndex], true);
+
+            if (erreurIndex === erreursAffichage.length - 1) {
+                nextErrorButton.style.display = "none"; // Cache le bouton "suivant" à la dernière erreur
             }
+            
+        } else {
+            // Si on a fini toutes les erreurs
+            document.getElementById("customModal").style.display = "none";
+            if (canGoToNextPart) {
+                document.getElementById("nextPart").style.display = "block";
+            }
+        }
+    });
+
+    document.getElementById("prevErrorButton").addEventListener("click", () => {
+        erreurIndex--;
+        if (erreurIndex >= 0) {
+            showModal(erreursAffichage[erreurIndex], true);
+        }
+    });
             
             document.querySelector(".close-button").addEventListener("click", () => {
                 document.getElementById("customModal").style.display = "none";
