@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#choices button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid #0077cc;
+    background-color: white;
+    border-radius: 8px;
+}
+
+#choices button:hover {
+    background-color: #cce7ff;
+}
+
+#next-btn, #score-screen button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+}
+
+#next-btn:hover, #score-screen button:hover {
+    background-color: #218838;
+}
