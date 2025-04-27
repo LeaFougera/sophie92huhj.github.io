@@ -57,6 +57,8 @@ plate.addEventListener('drop', (e) => {
   const ingredient = document.getElementById(id);
 
   if (!ingredient) return;
+  
+  const category = alimentData[id]?.category;
 
   // Ajoute l’ingrédient dans l’assiette
   const clone = ingredient.cloneNode(true);
@@ -71,12 +73,15 @@ plate.addEventListener('drop', (e) => {
   alimentsChoisis.push(id);
 
   plate.querySelector('p').style.display = 'none';
+
+  const step4Visible = document.getElementById('step-4')?.style.display === 'block';
+  if (step4Visible && category === 'dessert') {
+    document.getElementById('check-btn').style.display = 'block';
+  }
 });
 
 checkBtn.addEventListener('click', () => {
-  feedback.innerHTML = "<h3>Résultat :</h3>";
-  let erreurs = 0;
-  let categoriesManquantes = [];
+  window.location.href = "resultat_assiette.html";
 
   // Vérifier si toutes les catégories ont été choisies
   ['entree', 'protéine', 'féculent', 'légume', 'assaisonnements', 'laitier', 'dessert'].forEach(category => {
@@ -118,12 +123,14 @@ let categoriesChoisies = {
   dessert: false
 };
 
+/*
 plate.addEventListener('drop', (e) => {
   e.preventDefault();
   const id = e.dataTransfer.getData('text');
   const ingredient = document.getElementById(id);
 
   if (!ingredient) return;
+  */
 
   /*// Vérifier si l'aliment appartient à une catégorie déjà choisie
   const category = alimentData[id].category;
@@ -131,7 +138,7 @@ plate.addEventListener('drop', (e) => {
   if (categoriesChoisies[category]) {
     alert("Vous avez déjà choisi un aliment de cette catégorie !");
     return;
-  }*/
+  }
 
   // Ajoute l’ingrédient dans l’assiette
   const clone = ingredient.cloneNode(true);
@@ -149,7 +156,7 @@ plate.addEventListener('drop', (e) => {
   alimentsChoisis.push(id);
 
   plate.querySelector('p').style.display = 'none';
-});
+});*/
 
 function nextStep(current) {
   const currentStep = document.getElementById(`step-${current}`);

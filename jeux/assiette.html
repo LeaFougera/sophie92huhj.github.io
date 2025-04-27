@@ -14,7 +14,7 @@
 
   <div id="step-1" class="step active">
     <h2>Étape 1 : Choisis ton entrée</h2>
-    <p>Tu peux choisir plusieurs aliments !</p>
+    <p>Tu peux choisir plusieurs aliments et un assaisonnement !</p>
     <div class="category-column">
       <div class="ingredient-list">
         <div class="ingredient" id="carottes_rape" draggable="true"><img src="../photos/jeu_alimentation_photos/salade_carottes.png" alt="Carottes râpées"></div>
@@ -22,7 +22,16 @@
         <div class="ingredient" id="charcuterie" draggable="true"><img src="../photos/jeu_alimentation_photos/charcuterie.png" alt="Charcuterie"></div>
         <div class="ingredient" id="melon" draggable="true"><img src="../photos/jeu_alimentation_photos/melon.png" alt="Melon"></div>
         <div class="ingredient" id="salade" draggable="true"><img src="../photos/jeu_alimentation_photos/salade.png" alt="Salade"></div>
+        <div class="ingredient" id="huile_olive" draggable="true"><img src="../photos/jeu_alimentation_photos/huile.png" alt="Huile d'olive"></div>
+
     </div>
+
+    <!-- Assaisonnements 
+    <div class="category-column">
+      <h2>Assaisonnements</h2>
+      <div class="ingredient" id="huile_olive" draggable="true"><img src="../photos/jeu_alimentation_photos/huile.png" alt="Huile d'olive"></div>
+    </div>-->
+
     <div class="button-wrapper">
       <button class="btn btn-primary suivant-btn" onclick="nextStep(1)">Suivant</button>
     </div>
@@ -43,7 +52,6 @@
           <div class="ingredient" id="poisson_blanc" draggable="true"><img src="../photos/jeu_alimentation_photos/poisson.png" alt="Poisson blanc"></div>
           <div class="ingredient" id="plat_industriel" draggable="true"><img src="../photos/jeu_alimentation_photos/plat.png" alt="Plat industriel"></div>
           <div class="ingredient" id="viande_blanche" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_blanche.png" alt="Viande blanche"></div>
-          <div class="ingredient" id="charcuterie" draggable="true"><img src="../photos/jeu_alimentation_photos/charcuterie.png" alt="Charcuterie"></div>
           <div class="ingredient" id="tofu" draggable="true"><img src="../photos/jeu_alimentation_photos/tofu.png" alt="Tofu"></div>
         </div>
       </div>
@@ -72,7 +80,6 @@
       <div class="category-column">
         <h2>Assaisonnements</h2>
         <div class="ingredient" id="sel" draggable="true"><img src="../photos/jeu_alimentation_photos/sel.png" alt="Sel"></div>
-        <div class="ingredient" id="huile_olive" draggable="true"><img src="../photos/jeu_alimentation_photos/huile.png" alt="Huile d'olive"></div>
         <div class="ingredient" id="herbes_aromatiques" draggable="true"><img src="../photos/jeu_alimentation_photos/herbes.png" alt="Herbes aromatiques"></div>
       </div>
   
@@ -128,7 +135,7 @@
   </div>
   
 
-  <button id="check-btn">Vérifier</button>
+  <button id="check-btn" style="display:none;">Vérifier</button>
 
   <div id="feedback" class="feedback"></div>
 
