@@ -197,10 +197,14 @@
     
         if (isErreur && erreursAffichage.length > 1) {
             nextErrorButton.style.display = "inline-block";
-            prevErrorButton.style.display = "inline-block"; // On affiche le bouton suivant
+            if (erreurIndex === 0) {
+                prevErrorButton.style.display = "none"; // Pas de bouton précédent à la première erreur
+            } else {
+                prevErrorButton.style.display = "inline-block";
+            }
         } else {
             nextErrorButton.style.display = "none";
-            prevErrorButton.style.display = "none"; // Sinon on le cache
+            prevErrorButton.style.display = "none";
         }
     }
 

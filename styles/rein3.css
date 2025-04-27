@@ -147,6 +147,15 @@ button:hover {
     animation: slideIn 0.3s ease-out;
 }
 
+.modal-content img {
+    float: left;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    max-width: 80px;
+    height: auto;
+    border-radius: 8px;
+}
+
 @keyframes slideIn {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
@@ -174,7 +183,7 @@ button:hover {
 
 /* Nouveau style pour les messages d'erreur */
 .erreur-item {
-    background-color: #f8d7da; /* Couleur douce et pastel pour l'arrière-plan */
+    background-color: #edede9; /* Couleur douce et pastel pour l'arrière-plan */
     padding: 12px 20px;
     margin-bottom: 16px;
     margin-top: 3px; /* Remontée de l'élément d'erreur pour qu'il soit plus proche du contenu précédent */
@@ -254,4 +263,36 @@ button:hover {
     height: auto;
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+#prevErrorButton,
+#nextErrorButton {
+    padding: 10px 20px;
+    background-color: #d5bdaf;
+    color: #4a536b;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error-buttons {
+    display: flex;
+    justify-content: space-between; /* "Précédent" à gauche, "Suivant" à droite */
+    margin-top: 20px;
+}
+
+#backButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    background-color: #d5bdaf;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
 }
