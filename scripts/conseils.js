@@ -3,11 +3,23 @@ const conseils = [
   { good: "Réduis ta consommation de sel, même sans problème de tension", bad: "Inutile de réduire le sel si ta tension est stable" },
   { good: "Mange équilibré et varié pour couvrir tous tes besoins", bad: "Manger à ta faim suffit à couvrir tes besoins essentiels" },
   { good: "Fais 30 minutes d’exercice par jour", bad: "Fais 30 minutes d’exercice par semaine" },
-  { good: "Préfère les cuissons douces comme la vapeur", bad: "Tu peux frire tes aliments si tu égouttes bien l’huile après" }
+  { good: "Préfère les cuissons douces comme la vapeur", bad: "Tu peux frire tes aliments est si tu égouttes bien l’huile après" }
 ];
 
+const explications = {
+  "Bois de l’eau tout au long de la journée": "L’eau hydrate les reins et aide à filtrer les déchets. Boire régulièrement permet d'éviter les surcharges et de préserver leur bon fonctionnement.",
+  "Bois quand tu as soif, c’est le meilleur indicateur de besoin": "La sensation de soif arrive souvent trop tard. Chez les personnes âgées ou malades, elle peut être altérée. Il vaut mieux boire régulièrement même sans soif.",
+  "Réduis ta consommation de sel, même sans problème de tension": "Le sel surcharge les reins, favorise la rétention d’eau et peut nuire même sans hypertension visible. Moins de sel = reins protégés.",
+  "Inutile de réduire le sel si ta tension est stable": "Faux. Le sel a d'autres impacts que la tension, notamment sur la fonction rénale et la rétention d'eau.",
+  "Mange équilibré et varié pour couvrir tous tes besoins": "Un apport équilibré en vitamines, minéraux et protéines soutient les reins, évite les carences et réduit les déchets à filtrer.",
+  "Manger à ta faim suffit à couvrir tes besoins essentiels": "On peut manger à sa faim mais mal. L’équilibre et la variété sont essentiels, surtout en cas de pathologie rénale.",
+  "Fais 30 minutes d’exercice par jour": "L’activité physique régulière améliore la circulation, réduit l’hypertension et aide les reins à fonctionner efficacement.",
+  "Fais 30 minutes d’exercice par semaine": "Une seule séance par semaine n’est pas suffisante pour bénéficier d’effets protecteurs sur les reins ou la santé en général.",
+  "Préfère les cuissons douces comme la vapeur": "La cuisson vapeur conserve les nutriments sans ajouter de graisse ni de sel inutile. Idéal pour une alimentation protectrice des reins.",
+  "Tu peux frire tes aliments est si tu égouttes bien l’huile après": "Même bien égouttée, la friture dénature les aliments, ajoute des toxines et surcharge les reins avec des graisses transformées."
+};
+
 const startZone = document.getElementById("start-zone");
-const startBtn = document.getElementById("start-btn");
 const countdown = document.getElementById("countdown");
 const timer = document.getElementById("timer");
 const memorisationZone = document.getElementById("memorisation-zone");
@@ -15,34 +27,39 @@ const goodList = document.getElementById("good-list");
 const badList = document.getElementById("bad-list");
 const sortingZone = document.getElementById("sorting-zone");
 const resultEl = document.getElementById("result");
-
-// NOUVEAUX ÉLÉMENTS
-let phraseContainer, btnGood, btnBad;
+const showErrorsBtn = document.getElementById("show-errors-btn");
+const showErrorsContainer = document.getElementById("show-errors-btn-container");
+const errorModal = document.getElementById("error-modal");
+const errorText = document.getElementById("error-text");
+const nextErrorBtn = document.getElementById("next-error-btn");
+const endGameBtn = document.getElementById("end-game-btn");
 
 let shuffledItems = [];
 let currentIndex = 0;
 let score = 0;
+let errors = [];
+let phraseZone; // déclaration globale
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-startBtn.addEventListener("click", () => {
+document.getElementById("start-btn").addEventListener("click", () => {
   startZone.classList.add("hidden");
   countdown.classList.remove("hidden");
   memorisationZone.classList.remove("hidden");
 
-  // Afficher les phrases à mémoriser
   goodList.innerHTML = "";
   badList.innerHTML = "";
-  conseils.forEach(pair => {
-    const goodLi = document.createElement("li");
-    goodLi.textContent = pair.good;
-    goodList.appendChild(goodLi);
 
-    const badLi = document.createElement("li");
-    badLi.textContent = pair.bad;
-    badList.appendChild(badLi);
+  conseils.forEach(pair => {
+    const liGood = document.createElement("li");
+    liGood.textContent = pair.good;
+    goodList.appendChild(liGood);
+
+    const liBad = document.createElement("li");
+    liBad.textContent = pair.bad;
+    badList.appendChild(liBad);
   });
 
   let timeLeft = 10;
@@ -62,7 +79,6 @@ function startClassificationPhase() {
   memorisationZone.classList.add("hidden");
   sortingZone.classList.remove("hidden");
 
-  // Création de la structure
   sortingZone.innerHTML = `
     <h2>🔍 Dans quelle colonne va ce conseil ?</h2>
     <div class="columns">
@@ -82,9 +98,7 @@ function startClassificationPhase() {
     </div>
   `;
 
-  phraseContainer = document.getElementById("phrase-zone");
-  btnGood = document.getElementById("choose-good");
-  btnBad = document.getElementById("choose-bad");
+  phraseZone = document.getElementById("phrase-zone"); // <== on récupère après injection
 
   shuffledItems = shuffle([
     ...conseils.map(c => ({ text: c.good, type: "good" })),
@@ -93,36 +107,36 @@ function startClassificationPhase() {
 
   currentIndex = 0;
   score = 0;
+  errors = [];
 
   showNextPhrase();
 
-  btnGood.addEventListener("click", () => handleAnswer("good"));
-  btnBad.addEventListener("click", () => handleAnswer("bad"));
+  document.getElementById("choose-good").addEventListener("click", () => handleAnswer("good"));
+  document.getElementById("choose-bad").addEventListener("click", () => handleAnswer("bad"));
 }
 
 function showNextPhrase() {
-  if (currentIndex >= shuffledItems.length) {
-    return showScore();
-  }
+  if (!phraseZone) return;
+  if (currentIndex >= shuffledItems.length) return showScore();
 
-  const phrase = shuffledItems[currentIndex];
-  phraseContainer.innerHTML = `<div class="choice">${phrase.text}</div>`;
+  phraseZone.innerHTML = `<div class="choice">${shuffledItems[currentIndex].text}</div>`;
 }
 
 function handleAnswer(userChoice) {
   const item = shuffledItems[currentIndex];
   const correct = item.type === userChoice;
 
-  if (correct) score++;
-
   const li = document.createElement("li");
   li.textContent = item.text;
 
-  if (userChoice === "good") {
-    document.getElementById("col-good").appendChild(li);
+  if (correct) {
+    score++;
   } else {
-    document.getElementById("col-bad").appendChild(li);
+    errors.push(item.text);
   }
+
+  const col = userChoice === "good" ? document.getElementById("col-good") : document.getElementById("col-bad");
+  col.appendChild(li);
 
   currentIndex++;
   showNextPhrase();
@@ -130,23 +144,42 @@ function handleAnswer(userChoice) {
 
 function showScore() {
   document.getElementById("answer-buttons").classList.add("hidden");
-  phraseContainer.classList.add("hidden");
-
-  // On affiche les bonnes et mauvaises couleurs dans les colonnes
-  const colGood = document.getElementById("col-good").children;
-  const colBad = document.getElementById("col-bad").children;
-
-  for (let li of colGood) {
-    const correctItem = shuffledItems.find(item => item.text === li.textContent);
-    li.classList.add(correctItem.type === "good" ? "correct" : "incorrect");
-  }
-
-  for (let li of colBad) {
-    const correctItem = shuffledItems.find(item => item.text === li.textContent);
-    li.classList.add(correctItem.type === "bad" ? "correct" : "incorrect");
-  }
+  phraseZone.classList.add("hidden");
 
   resultEl.textContent = `🎯 Score : ${score} / ${shuffledItems.length} bons placements`;
   resultEl.classList.remove("hidden");
+
+  if (errors.length > 0) {
+    showErrorsContainer.classList.remove("hidden");
+    showErrorsBtn.addEventListener("click", showNextError);
+  } else {
+    endGameBtn.classList.remove("hidden");
+  }
 }
 
+// Gestion des erreurs et popups
+let currentErrorIndex = 0;
+
+function showNextError() {
+  if (currentErrorIndex < errors.length) {
+    errorText.textContent = explications[errors[currentErrorIndex]];
+    errorModal.classList.remove("hidden");
+  }
+
+  currentErrorIndex++;
+
+  if (currentErrorIndex === errors.length) {
+    nextErrorBtn.classList.add("hidden");
+    endGameBtn.classList.remove("hidden");
+  }
+}
+
+nextErrorBtn.addEventListener("click", () => {
+  errorModal.classList.add("hidden");
+  setTimeout(showNextError, 200);
+});
+
+endGameBtn.addEventListener("click", () => {
+  errorModal.classList.add("hidden");
+  showErrorsContainer.classList.add("hidden");
+});

@@ -31,21 +31,21 @@
       </div>
     </div>
 
-    <div id="sorting-zone" class="hidden">
-      <h2>🔄 Replace les conseils dans la bonne colonne</h2>
-      <div class="columns">
-        <div class="column drop-zone" data-type="good">
-          <h3>Bon conseil</h3>
-        </div>
-        <div class="column drop-zone" data-type="bad">
-          <h3>Faux bon conseil</h3>
-        </div>
-      </div>
-      <div id="choices" class="choices"></div>
-      <button id="validate-btn">Vérifier</button>
-    </div>
+    <div id="sorting-zone" class="hidden"></div>
 
     <div id="result" class="score hidden"></div>
+    <div id="show-errors-btn-container" class="hidden">
+      <button id="show-errors-btn">Voir les erreurs</button>
+    </div>
+
+    <!-- Modal d’explication -->
+    <div id="error-modal" class="hidden modal-overlay">
+      <div class="modal-content">
+        <p id="error-text"></p>
+        <button id="next-error-btn">Suivant</button>
+        <button id="end-game-btn" class="hidden">Fin de la partie</button>
+      </div>
+    </div>
   </div>
 
   <script src="../scripts/conseils.js"></script>
