@@ -34,6 +34,7 @@ const alimentData = {
 
 let alimentsChoisis = [];
 
+
 // Drag start
 ingredients.forEach(ingredient => {
   ingredient.addEventListener('dragstart', (e) => {
@@ -123,40 +124,6 @@ let categoriesChoisies = {
   dessert: false
 };
 
-/*
-plate.addEventListener('drop', (e) => {
-  e.preventDefault();
-  const id = e.dataTransfer.getData('text');
-  const ingredient = document.getElementById(id);
-
-  if (!ingredient) return;
-  */
-
-  /*// Vérifier si l'aliment appartient à une catégorie déjà choisie
-  const category = alimentData[id].category;
-
-  if (categoriesChoisies[category]) {
-    alert("Vous avez déjà choisi un aliment de cette catégorie !");
-    return;
-  }
-
-  // Ajoute l’ingrédient dans l’assiette
-  const clone = ingredient.cloneNode(true);
-  clone.setAttribute('draggable', false);
-  clone.style.margin = '5px';
-  plate.appendChild(clone);
-
-  // Supprime de la liste originale
-  ingredient.remove();
-
-  // Marque la catégorie comme choisie
-  categoriesChoisies[category] = true;
-
-  // Ajoute à la liste des aliments choisis
-  alimentsChoisis.push(id);
-
-  plate.querySelector('p').style.display = 'none';
-});*/
 
 function nextStep(current) {
   const currentStep = document.getElementById(`step-${current}`);
@@ -165,4 +132,12 @@ function nextStep(current) {
     currentStep.style.display = 'none';
     next.style.display = 'block';
   }
+}
+
+function validateAndNextStep(current) {
+  if (alimentsChoisis.length === 0) {
+    alert("Veuillez ajouter au moins un aliment dans l'assiette avant de continuer !");
+    return; // On ne fait rien si l'assiette est vide
+  }
+  nextStep(current); // Sinon on passe normalement à l'étape suivante
 }
