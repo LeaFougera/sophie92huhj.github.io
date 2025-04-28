@@ -2,15 +2,23 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz Capitales</title>
+  <title>Quiz sur la Maladie Rénale Chronique</title>
   <link rel="stylesheet" href="../styles/quiz.css">
 </head>
 <body>
-
   <a href="../pages/jeux.html" class="back-button">← Retour</a>
 
-  <div class="quiz-container">
-    <h1>Quiz des Capitales</h1>
+  <!-- Section de l'introduction avec la consigne -->
+  <div class="game-introduction" id="game-introduction">
+    <h1>Bienvenue !</h1>
+    <p>Dans ce quiz, ton objectif est de répondre à des questions sur les causes et les symptômes de la maladie rénale chronique.</p>
+    <p>Choisis la bonne réponse parmi les 4 proposées, puis découvre l’explication. Apprends en t’amusant et teste tes connaissances !</p>
+    <!-- Bouton pour commencer le quiz -->
+    <button id="start-quiz-btn">Commencer le quiz</button>
+  </div>
+
+  <!-- Conteneur du quiz, caché au départ -->
+  <div class="quiz-container hidden" id="quiz-container">
     <div id="question"></div>
     <div id="answers"></div>
     <div id="score" class="hidden"></div>

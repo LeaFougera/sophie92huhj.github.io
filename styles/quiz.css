@@ -1,77 +1,178 @@
+/* Reset général */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Style du body avec un fond doux */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-    padding: 50px;
-  }
-  
-  .quiz-container {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    display: inline-block;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  
-  button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button.correct {
-    background-color: #4CAF50; /* vert */
-    color: white;
-  }
-  
-  button.wrong {
-    background-color: #F44336; /* rouge */
-    color: white;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  #score {
-    margin-top: 20px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  p {
-    font-size: 16px;
-    color: #333;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 50px;
+  /* Centrer le contenu de la page */
+  display: flex;
+  justify-content: center; /* Centrage horizontal */
+  align-items: center; /* Centrage vertical */
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  flex-direction: column; /* Centrer les éléments de haut en bas */
+}
 
-  .back-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    text-decoration: none;
-    font-size: 1.5rem;
-    background-color: #ffffffcc;
-    color: #333;
-    padding: 8px 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .back-button:hover {
-    background-color: #eee;
-    transform: scale(1.05);
-  }
-  
-  
+/* Style pour la consigne (game-introduction) */
+.game-introduction {
+  background-color: #e3d5ca; /* Couleur douce */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.game-introduction h1 {
+  color: black;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.game-introduction p {
+  color: black;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Style du bouton "Commencer le quiz" */
+#start-quiz-btn {
+  background-color: #d5bdaf;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 50px;
+}
+
+#start-quiz-btn:hover {
+  background-color: #d5bdaf;
+}
+
+/* Conteneur du quiz, caché par défaut */
+.quiz-container {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #d5bdaf;
+  color: #4a536b;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 30px; /* Espacement avant le quiz */
+}
+
+/* Masquer les éléments cachés */
+.hidden {
+  display: none;
+}
+/* Boutons de réponse */
+button {
+  display: block;
+  margin: 15px auto;
+  padding: 12px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #f5ebe0; /* Fond doux */
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
+  color: #4a536b;
+  width: 70%; /* Ajuste la largeur pour plus d'uniformité */
+}
+
+button:hover {
+  background-color: #e3d5ca; /* Légère couleur de fond au survol */
+  transform: scale(1.05);  /* Légère transformation au survol */
+}
+
+button.correct {
+  background-color: #4CAF50; /* Vert pour la réponse correcte */
+  color: white;
+}
+
+button.wrong {
+  background-color: #F44336; /* Rouge pour la réponse incorrecte */
+  color: white;
+}
+
+/* Effet de survol spécifique pour les boutons */
+button:hover {
+  background-color: #e3d5ca;
+  transform: scale(1.05); /* Gros effet de zoom sur le bouton */
+}
+
+/* Masquer les éléments cachés */
+.hidden {
+  display: none;
+}
+
+/* Style du score */
+#score {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4a536b;
+}
+
+/* Style pour les explications */
+p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Style du bouton de retour */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  background-color: #ffffffcc;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-button:hover {
+  background-color: #eee;
+  transform: scale(1.05);
+}
+
+
+/* Désactivation complète de l'effet de survol après avoir affiché la correction */
+button.no-hover {
+  background-color: #e3d5ca; /* Rétablir l'arrière-plan initial */
+  transform: none; /* Pas de transformation */
+  pointer-events: none; /* Empêche toute interaction */
+}
+
+button.correct {
+  background-color: #4CAF50; /* Vert pour la bonne réponse */
+}
+
+button.wrong {
+  background-color: #F44336; /* Rouge pour la mauvaise réponse */
+}
+
+/* Effet au survol uniquement quand les réponses ne sont pas données */
+button:hover:not(.no-hover) {
+  background-color: #e3d5ca;
+  transform: scale(1.05); /* Légère transformation au survol */
+}
+
