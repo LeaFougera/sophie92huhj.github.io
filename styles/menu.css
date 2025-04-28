@@ -1,48 +1,87 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+* {
     margin: 0;
     padding: 0;
-}
-
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-#choices button {
-    display: block;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #edede9;
+    color: #4a536b;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
     width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 1rem;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #4a536b;
+  }
+  
+  #restaurant-type {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #8b5e3c;
+  }
+  
+  #question {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  #choices {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  #choices button {
+    background-color: #f5ebe0;
+    border: 2px solid transparent;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 16px;
     cursor: pointer;
-    border: 2px solid #0077cc;
-    background-color: white;
-    border-radius: 8px;
-}
-
-#choices button:hover {
-    background-color: #cce7ff;
-}
-
-#next-btn, #score-screen button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.1rem;
-    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #choices button:hover {
+    background-color: #e9dbc6;
+    transform: translateY(-3px);
+  }
+  
+  #next-btn, #score-screen button {
+    background-color: #d5bdaf;
+    color: #4a536b;
     border: none;
-    background-color: #28a745;
-    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
     border-radius: 8px;
-}
-
-#next-btn:hover, #score-screen button:hover {
-    background-color: #218838;
-}
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #next-btn:hover, #score-screen button:hover {
+    background-color: #cbb8a0;
+  }
+  
+  #score-screen {
+    font-size: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
