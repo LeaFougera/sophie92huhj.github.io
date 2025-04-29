@@ -17,26 +17,26 @@
 
     <div class="content">
         <h1>Comment lire les étiquettes des produits alimentaires ?</h1>
-        <h2>Devenez un détective des étiquettes !</h2>
+        <h2>Deviens un détective des étiquettes !</h2>
 
         <div class="card-container">
 
             <div class="card">
             <div class="emoji">🧂</div>
-            <h3>Traquez le sel</h3>
+            <h3>Traque le sel</h3>
             <p>
-                • Cherchez <strong>sodium</strong> ou <strong>NaCl</strong>.<br>
-                • Multipliez Na par 2,5 pour avoir le sel.<br>
-                • Choisissez des produits avec <strong>moins de 0,4 g</strong> de sel pour 100 g.
+                • Cherche <strong>sodium</strong> ou <strong>NaCl</strong>sur l'étiquette.<br>
+                • Multiplie Na par 2,5 pour l'équivalent en sel.<br>
+                • Choisis des produits avec <strong>moins de 0,4 g</strong> de sel pour 100 g.
             </p>
             </div>
 
             <div class="card">
             <div class="emoji">🥩</div>
-            <h3>Surveillez les protéines</h3>
+            <h3>Surveille les protéines</h3>
             <p>
-                • Trop de protéines fatiguent les reins.<br>
-                • Si besoin, préférez un <strong>taux de protéines modéré</strong>.
+                • Trop de protéines peuvent fatiguer tes reins.<br>
+                • Si ton médecin te le recommande, privilégie les aliments avec <strong>taux de protéines modéré</strong>.
             </p>
             </div>
 
@@ -44,24 +44,24 @@
             <div class="emoji">💧</div>
             <h3>Attention à l'eau cachée</h3>
             <p>
-                • Yaourts, soupes, plats préparés : parfois beaucoup d'eau !<br>
-                • Vérifiez le <strong>% d'eau</strong> si vous devez limiter votre hydratation.
+                • Yaourts, soupes, plats préparés : contiennent parfois beaucoup d'eau !<br>
+                • Vérifie le <strong>% d'eau</strong> si tu dois limiter ton hydratation.
             </p>
             </div>
 
             <div class="card">
             <div class="emoji">🥗</div>
-            <h3>Privilégiez le naturel</h3>
+            <h3>Privilégie le naturel</h3>
             <p>
-                • Liste d’ingrédients courte = mieux.<br>
-                • Favorisez les <strong>aliments frais</strong> et faits maison.
+                • Plus la liste d’ingrédients est courte, mieux c’est !<br>
+                • Favorise les <strong>aliments frais</strong> et faits maison.
             </p>
             </div>
 
         </div>
 
         <div class="footer">
-            🎯 Avec ces astuces, faites de vos courses un jeu d’enfant et prenez soin de vos reins !
+            Avec ces astuces, fais de tes courses un jeu d’enfant et prends soin de tes reins !
         </div>
 
 
@@ -84,6 +84,57 @@
         <p>Regardez l’étiquette ! Privilégiez une eau pauvre en sodium (moins de 20 mg/L) et demandez conseil à votre médecin.</p>
     </div>
 </div>
+
+    <section class="reflexes-section">
+        <h2>🧠 Top 5 des bons réflexes</h2>
+        <div class="reflexes-container">
+    
+        <div class="reflex-card">
+            <button class="reflex-toggle">🥦 Cuire malin</button>
+            <div class="reflex-details">
+            Privilégier la cuisson à l’eau, à la vapeur ou en papillote. Jeter l’eau de cuisson pour réduire le potassium.
+            </div>
+        </div>
+    
+        <div class="reflex-card">
+            <button class="reflex-toggle">🍗 Protéines bien réparties</button>
+            <div class="reflex-details">
+            Répartir les apports en protéines sur la journée, en privilégiant les viandes blanches, poissons maigres et œufs.
+            </div>
+        </div>
+    
+        <div class="reflex-card">
+            <button class="reflex-toggle">🧂 Réduire le sel</button>
+            <div class="reflex-details">
+            Ne pas dépasser 6g/jour, éviter les plats industriels, et utiliser des herbes, épices, citron pour le goût.
+            </div>
+        </div>
+    
+        <div class="reflex-card">
+            <button class="reflex-toggle">🍌 Limiter potassium & phosphore</button>
+            <div class="reflex-details">
+            Limiter les aliments riches en potassium et phosphore, bien cuire les légumes, et jeter l’eau de cuisson.
+            </div>
+        </div>
+    
+        <div class="reflex-card">
+            <button class="reflex-toggle">💧 Bien s’hydrater</button>
+            <div class="reflex-details">
+            Boire 1,5 L d’eau par jour selon les besoins, éviter les eaux gazeuses salées, boire par petites gorgées.
+            </div>
+        </div>
+    
+        </div>
+    </section>
+    
+    <script>
+        document.querySelectorAll('.reflex-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.nextElementSibling.classList.toggle('active');
+        });
+        });
+    </script>
+    
 
 
 

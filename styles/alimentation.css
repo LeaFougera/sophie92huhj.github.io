@@ -1,7 +1,7 @@
 @import url('hygiene.css');
 @import url('quiz.css');
 @import url('alimentation.css');
-@import url('mise-en-page.css');
+/*@import url('mise-en-page.css');*/
 @import url('barre-navigation.css');
 @import url('index.css');
 @import url('connexion.css');
@@ -54,6 +54,10 @@
     opacity: 1;
 }
 
+.content {
+    padding: 20px;
+    margin: auto;
+}
 
 * {
     margin: 0;
@@ -122,15 +126,6 @@ body {
 
 
 
-/* Conteneur pour les deux encadrés 
-.encadres-container {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    margin-top: 40px;
-}*/
-
-
 .encadres-container {
     display: flex;
     gap: 20px;
@@ -191,3 +186,60 @@ body {
     font-size: 14px;
     margin-bottom: 10px;
 }
+
+
+.reflexes-section {
+    padding: 2em;
+    background: #f7f9fb;
+  }
+  
+  .reflexes-section h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 1em;
+  }
+  
+  .reflexes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  .reflex-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 280px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  
+  .reflex-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .reflex-toggle {
+    width: 100%;
+    padding: 1em;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    background: #e0f7fa;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .reflex-details {
+    display: none;
+    padding: 1em;
+    background: #f0f8ff;
+    border-top: 1px solid #ccc;
+    font-size: 0.95em;
+    line-height: 1.4;
+  }
+  
+  .reflex-details.active {
+    display: block;
+  }
+  
