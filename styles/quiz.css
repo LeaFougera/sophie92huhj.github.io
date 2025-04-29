@@ -73,10 +73,7 @@ body {
   margin-top: 30px; /* Espacement avant le quiz */
 }
 
-/* Masquer les éléments cachés */
-.hidden {
-  display: none;
-}
+
 /* Boutons de réponse */
 button {
   display: block;
@@ -121,11 +118,35 @@ button:hover {
 
 /* Style du score */
 #score {
-  margin-top: 20px;
-  font-size: 24px;
+  background-color: #e3d5ca; /* Fond doux */
+  padding: 30px;
+  font-size: 30px;
   font-weight: bold;
-  color: #4a536b;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: black;
 }
+
+#score button {
+  background-color: #d5bdaf;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 30px;
+}
+
+#score button:hover {
+  background-color: #d5bdaf;
+}
+
 
 /* Style pour les explications */
 p {
@@ -175,4 +196,35 @@ button:hover:not(.no-hover) {
   background-color: #e3d5ca;
   transform: scale(1.05); /* Légère transformation au survol */
 }
+
+.question-content {
+  display: flex;
+  align-items: center; /* Aligner verticalement l'image et le texte */
+  justify-content: flex-start; /* Espacer l'image et le texte */
+  margin-bottom: 20px; /* Espacement entre la question et les réponses */
+}
+
+/* Style pour l'image de la question */
+.question-image {
+  width: 150px; /* Ajuste la taille de l'image */
+  height: auto; /* Garder les proportions */
+  margin-right: 20px; /* Espacement entre l'image et le texte */
+  border-radius: 8px;
+}
+
+/* Style pour le texte de la question */
+.question-text p {
+  font-size: 1.1rem;
+  color: #4a536b;
+  margin: 0;
+  text-align: left; /* Aligner le texte à gauche */
+}
+
+/* Conteneur des réponses */
+#answers {
+  display: flex;
+  flex-direction: column; /* Placer les réponses verticalement */
+  margin-top: 20px;
+}
+
 
