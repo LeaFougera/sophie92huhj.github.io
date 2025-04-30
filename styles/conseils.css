@@ -342,3 +342,33 @@ li {
   background-color: #2f364d;
 }
 
+#next-part-btn-container,
+#back-home-btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#next-part-btn,
+#back-home-btn {
+  background-color: #4a536b;
+  color: #fff;
+  padding: 14px 34px;
+  font-size: 1.07rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 3px 12px rgba(44, 49, 80, 0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+#next-part-btn:hover,
+#back-home-btn:hover {
+  background-color: #2f364d;
+}
+
+#back-home-btn-container {
+  margin-top: 10px;
+}
+
+

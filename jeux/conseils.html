@@ -38,14 +38,24 @@
       <button id="show-errors-btn">Voir les erreurs</button>
     </div>
 
-    <!-- Modal d’explication -->
-    <div id="error-modal" class="hidden modal-overlay">
-      <div class="modal-content">
-        <p id="error-text"></p>
-        <button id="next-error-btn">Suivant</button>
-        <button id="end-game-btn" class="hidden">Fin de la partie</button>
-      </div>
-    </div>
+   <!-- Modal d’explication -->
+   <div id="error-modal" class="hidden modal-overlay">
+     <div class="modal-content">
+       <p id="error-text"></p>
+       <button id="next-error-btn">Suivant</button>
+       <button id="back-home-btn" class="hidden">Retour au parcours de progression</button>
+     </div>
+   </div>
+
+  </div>
+
+   <!-- Ajout du bouton pour passer à la 2ème partie dans la zone principale -->
+   <div id="next-part-btn-container" class="hidden">
+    <button id="next-part-btn">C’est parti pour la 2ᵉ partie !</button>
+  </div>
+
+  <div id="back-home-btn-container" class="hidden">
+    <button id="back-home-btn">Retour au parcours de progression</button>
   </div>
 
   <script src="../scripts/conseils.js"></script>
