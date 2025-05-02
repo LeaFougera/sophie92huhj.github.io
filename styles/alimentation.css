@@ -188,59 +188,63 @@ body {
 }
 
 
-.reflexes-section {
-    padding: 2em;
-    background: #f7f9fb;
-  }
+    .reflexes-section-v2 {
+        padding: 2em;
+        background: #edede9;
+    }
+    
+    .reflexes-section-v2 h2 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 1.5em;
+        color: #4a536b;
+    }
+    
+    .reflexes-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .reflex-item {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 1em 1.5em;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    
+    .reflex-item.left {
+        flex-direction: row;
+    }
+    
+    .reflex-item.right {
+        flex-direction: row-reverse;
+    }
+    
+    .number-circle {
+        width: 50px;
+        height: 50px;
+        background-color: #4a536b;
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 1em;
+        flex-shrink: 0;
+    }
+    
+    .reflex-text {
+        font-size: 1em;
+        color: #333;
+        line-height: 1.5;
+        max-width: 600px;
+    }
   
-  .reflexes-section h2 {
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 1em;
-  }
-  
-  .reflexes-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1em;
-  }
-  
-  .reflex-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    width: 280px;
-    overflow: hidden;
-    transition: transform 0.2s ease;
-  }
-  
-  .reflex-card:hover {
-    transform: scale(1.02);
-  }
-  
-  .reflex-toggle {
-    width: 100%;
-    padding: 1em;
-    font-size: 1.1em;
-    font-weight: bold;
-    border: none;
-    background: #e0f7fa;
-    cursor: pointer;
-    text-align: left;
-  }
-  
-  .reflex-details {
-    display: none;
-    padding: 1em;
-    background: #f0f8ff;
-    border-top: 1px solid #ccc;
-    font-size: 0.95em;
-    line-height: 1.4;
-  }
-  
-  .reflex-details.active {
-    display: block;
-  }
-  
-
