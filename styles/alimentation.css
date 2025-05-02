@@ -129,24 +129,31 @@ body {
 .encadres-container {
     display: flex;
     gap: 20px;
-    justify-content: space-between;
-    margin-top: 40px;
+    justify-content: center; /* centre les encadrés dans le conteneur */
+    margin: 40px auto;
+    max-width: 1000px; /* limite la largeur totale */
+    padding: 0 20px; /* marge intérieure si l'écran est petit */
 }
 
-/* Style de chaque encadré */
+
 .encadre {
-    flex: 1; /* Chaque encadré occupe une largeur égale */
+    flex: 0 0 45%; /* occupe environ 45% de la largeur */
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1;
     position: relative;
     overflow: hidden;
     transition: box-shadow 0.3s ease-in-out;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
 
 /* Animation de lumière autour de l'encadré */
 .encadre:hover {
