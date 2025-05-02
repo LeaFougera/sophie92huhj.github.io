@@ -180,14 +180,19 @@ function showScore() {
   resultEl.textContent = `🎯 Score : ${score} / ${shuffledItems.length} bons placements`;
   resultEl.classList.remove("hidden");
 
+  // Masquer le bouton "Retour au parcours de progression" après la première partie
+  document.getElementById("back-home-btn-container").classList.add("hidden");
+
   // Si des erreurs existent, on affiche le bouton pour voir les erreurs
   if (errors.length > 0) {
     showErrorsContainer.classList.remove("hidden");
     currentErrorIndex = 0;
     showErrorsBtn.addEventListener("click", showNextError);
   } else {
-    // Sinon, on montre directement le bouton "Retour au parcours de progression"
-    document.getElementById("back-home-btn-container").classList.remove("hidden");
+    // Sinon, on montre directement le bouton "Retour au parcours de progression" à la fin de la partie 2
+    if (partie === 2 && score === shuffledItems.length) {
+      document.getElementById("back-home-btn-container").classList.remove("hidden"); // Si score est parfait
+    }
   }
 
   // Afficher le bouton "Retour au parcours" après avoir vu toutes les erreurs ou s'il n'y a pas d'erreurs
@@ -195,16 +200,18 @@ function showScore() {
     if (currentErrorIndex >= errors.length) {
       // Masquer les erreurs et afficher le bouton "Retour au parcours"
       showErrorsContainer.classList.add("hidden");
-      document.getElementById("back-home-btn-container").classList.remove("hidden");
+      if (partie === 2 || score === shuffledItems.length) {
+        document.getElementById("back-home-btn-container").classList.remove("hidden");
+      }
     }
   });
 
-  // Si aucune erreur, on affiche directement le bouton "Retour au parcours"
-  if (errors.length === 0) {
+  // Si aucune erreur, on affiche directement le bouton "Retour au parcours" pour la partie 2 uniquement
+  if (errors.length === 0 && partie === 2) {
     document.getElementById("back-home-btn-container").classList.remove("hidden");
   }
 
-  // **Masquer tous les boutons au début**
+  // **Masquer tous les boutons avant de les afficher à nouveau**
   document.getElementById("next-part-btn-container").classList.add("hidden");
   document.getElementById("back-home-btn-container").classList.add("hidden");
 
@@ -214,7 +221,10 @@ function showScore() {
     document.getElementById("next-part-btn-container").classList.remove("hidden");
   } else if (partie === 2) {
     // Affiche le bouton "Retour au parcours de progression" si nous sommes dans la deuxième partie
-    document.getElementById("back-home-btn-container").classList.remove("hidden");
+    // Mais uniquement après avoir vu toutes les erreurs ou si score est parfait
+    if (errors.length === 0 || currentErrorIndex >= errors.length) {
+      document.getElementById("back-home-btn-container").classList.remove("hidden");
+    }
   }
 
   // Ajouter l'événement pour rediriger vers la page jeux.html lorsque le bouton "Retour au parcours de progression" est cliqué
@@ -223,21 +233,20 @@ function showScore() {
   });
 }
 
-
-
 // Affichage du bouton "Retour au parcours" après avoir vu toutes les erreurs ou s'il n'y a pas d'erreurs
 nextErrorBtn.addEventListener("click", () => {
   if (currentErrorIndex >= errors.length) {
     // Masquer les erreurs et afficher le bouton "Retour au parcours"
     showErrorsContainer.classList.add("hidden");
-    document.getElementById("back-home-btn-container").classList.remove("hidden");
+    if (partie === 2 || score === shuffledItems.length) {
+      document.getElementById("back-home-btn-container").classList.remove("hidden");
+    }
   } else {
     setTimeout(showNextError, 200);
   }
 });
 
-
-
+// Fonction pour afficher les erreurs
 function showNextError() {
   if (currentErrorIndex < errors.length) {
     errorText.textContent = explications[errors[currentErrorIndex]];
@@ -250,18 +259,23 @@ function showNextError() {
   }
 }
 
+// Ajouter un événement pour fermer le pop-up d'erreur
 nextErrorBtn.addEventListener("click", () => {
-  errorModal.classList.add("hidden");
-
   if (currentErrorIndex >= errors.length) {
-    showErrorsContainer.classList.add("hidden");
-    document.getElementById("next-part-btn-container").classList.remove("hidden"); // Affiche le bouton pour passer à la deuxième partie
+    // Masquer le pop-up d'erreur
+    errorModal.classList.add("hidden");
+
+    // Afficher le bouton "Retour au parcours de progression" à la fin de la partie 2
+    if (partie === 2) {
+      document.getElementById("back-home-btn-container").classList.remove("hidden");
+    }
   } else {
     setTimeout(showNextError, 200);
   }
 });
 
 
+// Ajout de l'événement pour passer à la deuxième partie après la première partie
 document.getElementById("next-part-btn").addEventListener("click", () => {
   partie = 2;
   // Masquer le bouton et les résultats de la première partie
