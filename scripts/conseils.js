@@ -105,6 +105,7 @@ document.getElementById("start-btn").addEventListener("click", () => {
 });
 
 // Phase de classification
+// Phase de classification
 function startClassificationPhase(selectedPairs) {
   countdown.classList.add("hidden");
   memorisationZone.classList.add("hidden");
@@ -112,6 +113,14 @@ function startClassificationPhase(selectedPairs) {
 
   sortingZone.innerHTML = `
     <h2>🔍 Dans quelle colonne va ce conseil ?</h2>
+    <!-- Affichage du conseil à placer en dessous de la question -->
+    <div id="phrase-zone" class="choices"></div>
+    <div id="answer-buttons">
+      <button id="choose-good">✅ Bon conseil</button>
+      <button id="choose-bad">❌ Faux bon conseil</button>
+    </div>
+    
+    <!-- Colonnes de classement -->
     <div class="columns">
       <div class="column" id="good-column">
         <h3>Bon conseil</h3>
@@ -121,11 +130,6 @@ function startClassificationPhase(selectedPairs) {
         <h3>Faux bon conseil</h3>
         <ul id="col-bad"></ul>
       </div>
-    </div>
-    <div id="phrase-zone" class="choices"></div>
-    <div id="answer-buttons">
-      <button id="choose-good">✅ Bon conseil</button>
-      <button id="choose-bad">❌ Faux bon conseil</button>
     </div>
   `;
 
@@ -152,6 +156,7 @@ function showNextPhrase() {
 
   phraseZone.innerHTML = `<div class="choice">${shuffledItems[currentIndex].text}</div>`;
 }
+
 
 function handleAnswer(userChoice) {
   const item = shuffledItems[currentIndex];
