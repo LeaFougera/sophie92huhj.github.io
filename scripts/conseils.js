@@ -239,13 +239,12 @@ function showScore() {
 
   if (errors.length > 0) {
     showErrorsContainer.classList.remove("hidden");
-    // Réinitialisation complète de l'index des erreurs
     currentErrorIndex = 0;
     
-    // Suppression des anciens écouteurs
-    showErrorsBtn.removeEventListener("click", handleShowErrors);
-    // Nouvel écouteur
-    showErrorsBtn.addEventListener("click", handleShowErrors);
+    showErrorsBtn.onclick = function() {
+      handleShowErrors();
+      showErrorsContainer.classList.add("hidden");
+    };
   } else {
     if (score === shuffledItems.length) {
       document.getElementById("next-part-btn-container").classList.remove("hidden");
@@ -254,12 +253,11 @@ function showScore() {
 
   if (errors.length === 0 && partie === 2) {
     document.getElementById("back-home-btn-container").classList.remove("hidden");
-    document.getElementById("back-home-btn").addEventListener("click", () => {
-      window.location.href = "../pages/jeux.html";
-    });
+    document.getElementById("back-home-btn").onclick = function() {
+      window.location.href = "/pages/jeux.html"; // Chemin absolu plus fiable
+    };
   }
 }
-
 nextErrorBtn.onclick = () => {
   showNextError();
 };
@@ -304,7 +302,11 @@ function showNextError() {
     if (partie === 1) {
       document.getElementById("next-part-btn-container").classList.remove("hidden");
     } else {
+      // Afficher le bouton Retour seulement après avoir vu toutes les erreurs
       document.getElementById("back-home-btn-container").classList.remove("hidden");
+      document.getElementById("back-home-btn").onclick = function() {
+        window.location.href = "/pages/jeux.html"; // Chemin absolu plus fiable
+      };
     }
   }
 }
