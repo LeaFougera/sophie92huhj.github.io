@@ -168,12 +168,18 @@ function handleAnswer(userChoice) {
   if (correct) {
     score++;
   } else {
-    // Ajouter l'erreur avec toutes les informations nécessaires
+    // Enregistrer l'erreur avec toutes les infos nécessaires
     errors.push({
       text: item.text,
       correctType: item.type,
       userChoice: userChoice,
-      explanation: explications[item.text] // Stocker directement l'explication
+      explanation: explications[item.text] || "Explication non disponible" // Garantir une explication
+    });
+    
+    // Debug: afficher l'erreur dans la console
+    console.log("Erreur enregistrée:", {
+      text: item.text, 
+      explanation: explications[item.text]
     });
   }
 
@@ -183,8 +189,10 @@ function handleAnswer(userChoice) {
   currentIndex++;
 
   if (currentIndex === shuffledItems.length) {
-    applyColors(); // Appliquer les couleurs uniquement une fois tous les éléments placés
+    applyColors();
     showScore();
+    // Debug: afficher toutes les erreurs enregistrées
+    console.log("Toutes les erreurs:", errors);
   } else {
     showNextPhrase();
   }
@@ -245,26 +253,6 @@ function showScore() {
     }
   }
 
-  // Affichage du bouton "Retour au parcours" après avoir vu toutes les erreurs ou si score est parfait
-  nextErrorBtn.addEventListener("click", () => {
-    if (currentErrorIndex >= errors.length) {
-      // Masquer les erreurs et afficher le bouton "Retour au parcours"
-      showErrorsContainer.classList.add("hidden");
-      // Le bouton "C’est parti pour la 2ᵉ partie !" s'affiche après avoir vu toutes les erreurs ou si score est parfait
-      if (partie === 1) {
-        document.getElementById("next-part-btn-container").classList.remove("hidden");
-      }
-      // Ajouter l'événement pour rediriger vers la page de retour si nécessaire
-      if (partie === 2 || score === shuffledItems.length) {
-        document.getElementById("back-home-btn-container").classList.remove("hidden");
-        document.getElementById("back-home-btn").addEventListener("click", () => {
-          window.location.href = "../pages/jeux.html"; // Rediriger vers la page de jeux
-        });
-      }
-    } else {
-      setTimeout(showNextError, 200); // Continue d'afficher les erreurs
-    }
-  });
 
   // Affichage automatique du bouton "Retour au parcours" pour la partie 2 (si pas d'erreurs)
   if (errors.length === 0 && partie === 2) {
@@ -275,14 +263,33 @@ function showScore() {
   }
 }
 
-
-
-// Ajouter un événement pour fermer le pop-up d'erreur
-nextErrorBtn.addEventListener("click", () => {
+// REMPLACEZ TOUS LES ÉCOUTEURS EXISTANTS PAR CELUI-CI :
+nextErrorBtn.onclick = () => {
   if (currentErrorIndex >= errors.length) {
     errorModal.classList.add("hidden");
     
-    // Après la dernière erreur, afficher les boutons appropriés
+    if (partie === 1) {
+      document.getElementById("next-part-btn-container").classList.remove("hidden");
+    } else {
+      document.getElementById("back-home-btn-container").classList.remove("hidden");
+    }
+  } else {
+    showNextError();
+  }
+};
+
+function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
+nextErrorBtn.onclick = debounce(() => {
+  if (currentErrorIndex >= errors.length) {
+    errorModal.classList.add("hidden");
+    
     if (partie === 1) {
       document.getElementById("next-part-btn-container").classList.remove("hidden");
     } else {
@@ -293,40 +300,34 @@ nextErrorBtn.addEventListener("click", () => {
   }
 });
 
-
-// Fonction pour afficher les erreurs
 function showNextError() {
+  // Debug: vérifier l'index et les erreurs
+  console.log(`Affichage erreur ${currentErrorIndex + 1}/${errors.length}`);
+  
   if (currentErrorIndex < errors.length) {
     const error = errors[currentErrorIndex];
     
+    // Debug: vérifier le contenu de l'erreur
+    console.log("Erreur courante:", error);
+    
     errorText.innerHTML = `
-      <p><strong>Vous avez placé :</strong> "${error.text}"</p>
-      <p><strong>Dans la mauvaise colonne</strong></p>
+      <p><strong>Conseil mal placé :</strong> "${error.text}"</p>
+      <p><strong>Votre choix :</strong> ${error.userChoice === 'good' ? 'Bon conseil' : 'Faux bon conseil'}</p>
+      <p><strong>Réponse correcte :</strong> ${error.correctType === 'good' ? 'Bon conseil' : 'Faux bon conseil'}</p>
       <p><strong>Explication :</strong> ${error.explanation}</p>
     `;
     
     errorModal.classList.remove("hidden");
     currentErrorIndex++;
 
-    // Changer le texte du bouton pour le dernier message
     nextErrorBtn.textContent = currentErrorIndex === errors.length ? "Terminer" : "Suivant";
   }
 }
 
-nextErrorBtn.addEventListener("click", () => {
-  if (currentErrorIndex >= errors.length) {
-    errorModal.classList.add("hidden");
-    
-    // Après la dernière erreur, afficher les boutons appropriés
-    if (partie === 1) {
-      document.getElementById("next-part-btn-container").classList.remove("hidden");
-    } else {
-      document.getElementById("back-home-btn-container").classList.remove("hidden");
-    }
-  } else {
-    showNextError();
-  }
-});
+showErrorsBtn.onclick = () => {
+  currentErrorIndex = 0;
+  showNextError();
+};
 
 // Ajout de l'événement pour passer à la deuxième partie après la première partie
 document.getElementById("next-part-btn").addEventListener("click", () => {
