@@ -89,18 +89,16 @@
     transition: stroke 0.4s ease, stroke-opacity 0.4s ease;
   }
   
-  /* Lignes colorées en fonction des groupes d'étapes */
-  .line.c1, .line.c2, .line.c3 {
-    stroke: #66bb6a; /* Vert pour les étapes 1, 2, 3 */
+  .line {
+    stroke: #66bb6a; /* Vert uniforme pour tout le parcours */
+    stroke-width: 6;
+    stroke-dasharray: 10, 10;
+    stroke-opacity: 0.6;
+    fill: none;
+    stroke-linecap: round;
+    transition: stroke 0.4s ease, stroke-opacity 0.4s ease;
   }
   
-  .line.c4, .line.c5, .line.c6 {
-    stroke: #ffa726; /* Orange pour les étapes 4, 5, 6 */
-  }
-  
-  .line.c7, .line.c8, .line.c9 {
-    stroke: #ef5350; /* Rouge pour les étapes 7, 8, 9 */
-  }
   
   .completed {
     stroke-opacity: 1;
