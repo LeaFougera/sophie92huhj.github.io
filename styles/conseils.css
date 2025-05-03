@@ -372,12 +372,14 @@ li {
 }
 
 .correct-correction {
-  background-color: green; /* Vert pour un bon conseil */
-  color: white;
+  background-color: #d6f5db !important;
+  color: #1c4b2e !important;
+  border: 1.5px solid #b3eac2;
 }
 
 .incorrect-correction {
-  background-color: red; /* Rouge pour un mauvais conseil */
-  color: white;
+  background-color: #f8d1d1 !important;
+  color: #6d1c1c !important;
+  border: 1.5px solid #f2b1b1;
 }
 

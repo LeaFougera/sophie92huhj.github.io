@@ -162,15 +162,19 @@ function handleAnswer(userChoice) {
   const item = shuffledItems[currentIndex];
   const correct = item.type === userChoice;
 
-  // On n'applique pas encore la couleur ici, juste on place l'élément dans la bonne colonne
   const li = document.createElement("li");
   li.textContent = item.text;
 
-  // Augmenter le score si le choix est correct
   if (correct) {
     score++;
   } else {
-    errors.push(item.text);
+    // Ajouter l'erreur avec toutes les informations nécessaires
+    errors.push({
+      text: item.text,
+      correctType: item.type,
+      userChoice: userChoice,
+      explanation: explications[item.text] // Stocker directement l'explication
+    });
   }
 
   const col = userChoice === "good" ? document.getElementById("col-good") : document.getElementById("col-bad");
@@ -178,52 +182,45 @@ function handleAnswer(userChoice) {
 
   currentIndex++;
 
-  // Si c'est le dernier conseil, on applique les couleurs et affiche le score
   if (currentIndex === shuffledItems.length) {
-    applyColors(); // Appliquer les couleurs après le dernier conseil
-    showScore(); // Afficher le score après avoir placé tous les conseils
+    applyColors(); // Appliquer les couleurs uniquement une fois tous les éléments placés
+    showScore();
   } else {
     showNextPhrase();
   }
 }
 
+
 function applyColors() {
-  // Récupère tous les items classés
   const goodItems = document.querySelectorAll("#col-good li");
   const badItems = document.querySelectorAll("#col-bad li");
 
-  // Crée un Set des bonnes réponses pour chaque colonne
-  const correctGoodItems = new Set(
-    shuffledItems
-      .filter(item => item.type === "good")
-      .map(item => item.text)
-  );
+  // Créer une map pour vérifier rapidement les bonnes réponses
+  const correctMap = new Map();
+  shuffledItems.forEach(item => {
+    correctMap.set(item.text, item.type);
+  });
 
-  const correctBadItems = new Set(
-    shuffledItems
-      .filter(item => item.type === "bad")
-      .map(item => item.text)
-  );
-
-  // Applique les couleurs à la colonne "Bon conseil"
+  // Vérifier les éléments dans la colonne "Bon conseil"
   goodItems.forEach(item => {
-    if (correctGoodItems.has(item.textContent)) {
-      item.classList.add("correct-correction"); // Bon placement
+    const correctType = correctMap.get(item.textContent);
+    if (correctType === 'good') {
+      item.classList.add("correct-correction");
     } else {
-      item.classList.add("incorrect-correction"); // Mauvais placement
+      item.classList.add("incorrect-correction");
     }
   });
 
-  // Applique les couleurs à la colonne "Faux bon conseil"
+  // Vérifier les éléments dans la colonne "Faux bon conseil"
   badItems.forEach(item => {
-    if (correctBadItems.has(item.textContent)) {
-      item.classList.add("correct-correction"); // Bon placement
+    const correctType = correctMap.get(item.textContent);
+    if (correctType === 'bad') {
+      item.classList.add("correct-correction");
     } else {
-      item.classList.add("incorrect-correction"); // Mauvais placement
+      item.classList.add("incorrect-correction");
     }
   });
 }
-
 
 
 function showScore() {
@@ -278,32 +275,21 @@ function showScore() {
   }
 }
 
-// Affichage des erreurs une par une
-function showNextError() {
-  if (currentErrorIndex < errors.length) {
-    // Affiche l'explication de l'erreur courante
-    errorText.textContent = explications[errors[currentErrorIndex]];
-    errorModal.classList.remove("hidden");
-    currentErrorIndex++;
 
-    if (currentErrorIndex === errors.length) {
-      nextErrorBtn.textContent = "Fermer";
-    }
-  }
-}
 
 // Ajouter un événement pour fermer le pop-up d'erreur
 nextErrorBtn.addEventListener("click", () => {
   if (currentErrorIndex >= errors.length) {
-    // Masquer le pop-up d'erreur
     errorModal.classList.add("hidden");
-
-    // Afficher le bouton "Retour au parcours de progression" à la fin de la partie 2
-    if (partie === 2) {
+    
+    // Après la dernière erreur, afficher les boutons appropriés
+    if (partie === 1) {
+      document.getElementById("next-part-btn-container").classList.remove("hidden");
+    } else {
       document.getElementById("back-home-btn-container").classList.remove("hidden");
     }
   } else {
-    setTimeout(showNextError, 200); // Continue d'afficher les erreurs
+    showNextError();
   }
 });
 
@@ -311,31 +297,36 @@ nextErrorBtn.addEventListener("click", () => {
 // Fonction pour afficher les erreurs
 function showNextError() {
   if (currentErrorIndex < errors.length) {
-    errorText.textContent = explications[errors[currentErrorIndex]];
+    const error = errors[currentErrorIndex];
+    
+    errorText.innerHTML = `
+      <p><strong>Vous avez placé :</strong> "${error.text}"</p>
+      <p><strong>Dans la mauvaise colonne</strong></p>
+      <p><strong>Explication :</strong> ${error.explanation}</p>
+    `;
+    
     errorModal.classList.remove("hidden");
     currentErrorIndex++;
 
-    if (currentErrorIndex === errors.length) {
-      nextErrorBtn.textContent = "Fermer";
-    }
+    // Changer le texte du bouton pour le dernier message
+    nextErrorBtn.textContent = currentErrorIndex === errors.length ? "Terminer" : "Suivant";
   }
 }
 
-// Ajouter un événement pour fermer le pop-up d'erreur
 nextErrorBtn.addEventListener("click", () => {
   if (currentErrorIndex >= errors.length) {
-    // Masquer le pop-up d'erreur
     errorModal.classList.add("hidden");
-
-    // Afficher le bouton "Retour au parcours de progression" à la fin de la partie 2
-    if (partie === 2) {
+    
+    // Après la dernière erreur, afficher les boutons appropriés
+    if (partie === 1) {
+      document.getElementById("next-part-btn-container").classList.remove("hidden");
+    } else {
       document.getElementById("back-home-btn-container").classList.remove("hidden");
     }
   } else {
-    setTimeout(showNextError, 200);
+    showNextError();
   }
 });
-
 
 // Ajout de l'événement pour passer à la deuxième partie après la première partie
 document.getElementById("next-part-btn").addEventListener("click", () => {
