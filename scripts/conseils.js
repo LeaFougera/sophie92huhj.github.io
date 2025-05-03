@@ -189,49 +189,42 @@ function showScore() {
     currentErrorIndex = 0;
     showErrorsBtn.addEventListener("click", showNextError);
   } else {
-    // Sinon, on montre directement le bouton "Retour au parcours de progression" à la fin de la partie 2
-    if (partie === 2 && score === shuffledItems.length) {
-      document.getElementById("back-home-btn-container").classList.remove("hidden"); // Si score est parfait
+    // Si pas d'erreurs, on affiche le bouton "C’est parti pour la 2ᵉ partie !" directement (si score parfait)
+    if (score === shuffledItems.length) {
+      document.getElementById("next-part-btn-container").classList.remove("hidden");
     }
   }
 
-  // Afficher le bouton "Retour au parcours" après avoir vu toutes les erreurs ou s'il n'y a pas d'erreurs
+  // Affichage du bouton "Retour au parcours" après avoir vu toutes les erreurs ou si score est parfait
   nextErrorBtn.addEventListener("click", () => {
     if (currentErrorIndex >= errors.length) {
       // Masquer les erreurs et afficher le bouton "Retour au parcours"
       showErrorsContainer.classList.add("hidden");
+      // Le bouton "C’est parti pour la 2ᵉ partie !" s'affiche après avoir vu toutes les erreurs ou si score est parfait
+      if (partie === 1) {
+        document.getElementById("next-part-btn-container").classList.remove("hidden");
+      }
+      // Ajouter l'événement pour rediriger vers la page de retour si nécessaire
       if (partie === 2 || score === shuffledItems.length) {
         document.getElementById("back-home-btn-container").classList.remove("hidden");
+        document.getElementById("back-home-btn").addEventListener("click", () => {
+          window.location.href = "../pages/jeux.html"; // Rediriger vers la page de jeux
+        });
       }
+    } else {
+      setTimeout(showNextError, 200); // Continue d'afficher les erreurs
     }
   });
 
-  // Si aucune erreur, on affiche directement le bouton "Retour au parcours" pour la partie 2 uniquement
+  // Affichage automatique du bouton "Retour au parcours" pour la partie 2 (si pas d'erreurs)
   if (errors.length === 0 && partie === 2) {
     document.getElementById("back-home-btn-container").classList.remove("hidden");
+    document.getElementById("back-home-btn").addEventListener("click", () => {
+      window.location.href = "../pages/jeux.html"; // Rediriger vers la page de jeux
+    });
   }
-
-  // **Masquer tous les boutons avant de les afficher à nouveau**
-  document.getElementById("next-part-btn-container").classList.add("hidden");
-  document.getElementById("back-home-btn-container").classList.add("hidden");
-
-  // **Condition pour afficher le bon bouton en fonction de la partie**
-  if (partie === 1) {
-    // Affiche le bouton "C’est parti pour la 2ᵉ partie !" si nous sommes dans la première partie
-    document.getElementById("next-part-btn-container").classList.remove("hidden");
-  } else if (partie === 2) {
-    // Affiche le bouton "Retour au parcours de progression" si nous sommes dans la deuxième partie
-    // Mais uniquement après avoir vu toutes les erreurs ou si score est parfait
-    if (errors.length === 0 || currentErrorIndex >= errors.length) {
-      document.getElementById("back-home-btn-container").classList.remove("hidden");
-    }
-  }
-
-  // Ajouter l'événement pour rediriger vers la page jeux.html lorsque le bouton "Retour au parcours de progression" est cliqué
-  document.getElementById("back-home-btn").addEventListener("click", () => {
-    window.location.href = "../pages/jeux.html"; // Rediriger vers la page ../pages/jeux.html
-  });
 }
+
 
 // Affichage du bouton "Retour au parcours" après avoir vu toutes les erreurs ou s'il n'y a pas d'erreurs
 nextErrorBtn.addEventListener("click", () => {
@@ -315,7 +308,7 @@ document.getElementById("next-part-btn").addEventListener("click", () => {
   });
 
   // Initialisation du timer pour 10 secondes
-  let timeLeft = 10;  // La durée des 10 secondes
+  let timeLeft = 1;  // La durée des 10 secondes
   const timerEl = document.getElementById("timer");
   timerEl.textContent = timeLeft;
 
@@ -331,3 +324,4 @@ document.getElementById("next-part-btn").addEventListener("click", () => {
     }
   }, 1000);
 });
+
