@@ -60,6 +60,7 @@ const backHomeBtn = document.getElementById("back-home-btn");
 // Variables pour gérer l'état du jeu
 let shuffledItems = [];
 let currentIndex = 0;
+let currentErrorIndex = 0;
 let score = 0;
 let errors = [];
 let phraseZone; // déclaration globale
@@ -104,7 +105,6 @@ document.getElementById("start-btn").addEventListener("click", () => {
   }, 1000);
 });
 
-// Phase de classification
 // Phase de classification
 function startClassificationPhase(selectedPairs) {
   countdown.classList.add("hidden");
@@ -168,15 +168,12 @@ function handleAnswer(userChoice) {
   if (correct) {
     score++;
   } else {
-    // Enregistrer l'erreur avec toutes les infos nécessaires
     errors.push({
       text: item.text,
       correctType: item.type,
       userChoice: userChoice,
-      explanation: explications[item.text] || "Explication non disponible" // Garantir une explication
+      explanation: explications[item.text] || "Explication non disponible"
     });
-    
-    // Debug: afficher l'erreur dans la console
     console.log("Erreur enregistrée:", {
       text: item.text, 
       explanation: explications[item.text]
@@ -186,17 +183,18 @@ function handleAnswer(userChoice) {
   const col = userChoice === "good" ? document.getElementById("col-good") : document.getElementById("col-bad");
   col.appendChild(li);
 
-  currentIndex++;
+  currentIndex++; // On incrémente l'index après avoir traité l'élément courant
 
-  if (currentIndex === shuffledItems.length) {
+  // On vérifie maintenant si on a traité tous les éléments
+  if (currentIndex >= shuffledItems.length) {
     applyColors();
     showScore();
-    // Debug: afficher toutes les erreurs enregistrées
     console.log("Toutes les erreurs:", errors);
   } else {
     showNextPhrase();
   }
 }
+
 
 
 function applyColors() {
@@ -230,7 +228,6 @@ function applyColors() {
   });
 }
 
-
 function showScore() {
   document.getElementById("answer-buttons").classList.add("hidden");
   phraseZone.classList.add("hidden");
@@ -238,78 +235,61 @@ function showScore() {
   resultEl.textContent = `🎯 Score : ${score} / ${shuffledItems.length} bons placements`;
   resultEl.classList.remove("hidden");
 
-  // Masquer le bouton "Retour au parcours de progression" après la première partie
   document.getElementById("back-home-btn-container").classList.add("hidden");
 
-  // Si des erreurs existent, on affiche le bouton pour voir les erreurs
   if (errors.length > 0) {
     showErrorsContainer.classList.remove("hidden");
-    currentErrorIndex = 0; // Réinitialiser l'index des erreurs
-    showErrorsBtn.addEventListener("click", showNextError); // Montrer les erreurs une par une
+    // Réinitialisation complète de l'index des erreurs
+    currentErrorIndex = 0;
+    
+    // Suppression des anciens écouteurs
+    showErrorsBtn.removeEventListener("click", handleShowErrors);
+    // Nouvel écouteur
+    showErrorsBtn.addEventListener("click", handleShowErrors);
   } else {
-    // Si pas d'erreurs, on affiche le bouton "C’est parti pour la 2ᵉ partie !" directement (si score parfait)
     if (score === shuffledItems.length) {
       document.getElementById("next-part-btn-container").classList.remove("hidden");
     }
   }
 
-
-  // Affichage automatique du bouton "Retour au parcours" pour la partie 2 (si pas d'erreurs)
   if (errors.length === 0 && partie === 2) {
     document.getElementById("back-home-btn-container").classList.remove("hidden");
     document.getElementById("back-home-btn").addEventListener("click", () => {
-      window.location.href = "../pages/jeux.html"; // Rediriger vers la page de jeux
+      window.location.href = "../pages/jeux.html";
     });
   }
 }
 
-// REMPLACEZ TOUS LES ÉCOUTEURS EXISTANTS PAR CELUI-CI :
 nextErrorBtn.onclick = () => {
-  if (currentErrorIndex >= errors.length) {
-    errorModal.classList.add("hidden");
-    
-    if (partie === 1) {
-      document.getElementById("next-part-btn-container").classList.remove("hidden");
-    } else {
-      document.getElementById("back-home-btn-container").classList.remove("hidden");
-    }
-  } else {
-    showNextError();
-  }
+  showNextError();
 };
 
-function debounce(func, timeout = 300) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
-  };
+
+
+function handleShowErrors() {
+  // Réinitialiser l'index
+  currentErrorIndex = 0;
+  
+  // Afficher la première erreur
+  if (errors.length > 0) {
+    const error = errors[currentErrorIndex];
+    errorText.innerHTML = `
+      <p><strong>Conseil mal placé :</strong> "${error.text}"</p>
+      <p><strong>Votre choix :</strong> ${error.userChoice === 'good' ? 'Bon conseil' : 'Faux bon conseil'}</p>
+      <p><strong>Réponse correcte :</strong> ${error.correctType === 'good' ? 'Bon conseil' : 'Faux bon conseil'}</p>
+      <p><strong>Explication :</strong> ${error.explanation}</p>
+    `;
+    errorModal.classList.remove("hidden");
+    currentErrorIndex++;
+    
+    // Mettre à jour le texte du bouton
+    nextErrorBtn.textContent = currentErrorIndex === errors.length ? "Terminer" : "Suivant";
+  }
 }
 
-nextErrorBtn.onclick = debounce(() => {
-  if (currentErrorIndex >= errors.length) {
-    errorModal.classList.add("hidden");
-    
-    if (partie === 1) {
-      document.getElementById("next-part-btn-container").classList.remove("hidden");
-    } else {
-      document.getElementById("back-home-btn-container").classList.remove("hidden");
-    }
-  } else {
-    showNextError();
-  }
-});
-
 function showNextError() {
-  // Debug: vérifier l'index et les erreurs
-  console.log(`Affichage erreur ${currentErrorIndex + 1}/${errors.length}`);
-  
   if (currentErrorIndex < errors.length) {
     const error = errors[currentErrorIndex];
-    
-    // Debug: vérifier le contenu de l'erreur
-    console.log("Erreur courante:", error);
-    
     errorText.innerHTML = `
       <p><strong>Conseil mal placé :</strong> "${error.text}"</p>
       <p><strong>Votre choix :</strong> ${error.userChoice === 'good' ? 'Bon conseil' : 'Faux bon conseil'}</p>
@@ -317,10 +297,15 @@ function showNextError() {
       <p><strong>Explication :</strong> ${error.explanation}</p>
     `;
     
-    errorModal.classList.remove("hidden");
     currentErrorIndex++;
-
     nextErrorBtn.textContent = currentErrorIndex === errors.length ? "Terminer" : "Suivant";
+  } else {
+    errorModal.classList.add("hidden");
+    if (partie === 1) {
+      document.getElementById("next-part-btn-container").classList.remove("hidden");
+    } else {
+      document.getElementById("back-home-btn-container").classList.remove("hidden");
+    }
   }
 }
 
