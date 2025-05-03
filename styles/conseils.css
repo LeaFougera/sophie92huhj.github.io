@@ -371,4 +371,13 @@ li {
   margin-top: 10px;
 }
 
+.correct-correction {
+  background-color: green; /* Vert pour un bon conseil */
+  color: white;
+}
+
+.incorrect-correction {
+  background-color: red; /* Rouge pour un mauvais conseil */
+  color: white;
+}
 

@@ -162,9 +162,11 @@ function handleAnswer(userChoice) {
   const item = shuffledItems[currentIndex];
   const correct = item.type === userChoice;
 
+  // On n'applique pas encore la couleur ici, juste on place l'élément dans la bonne colonne
   const li = document.createElement("li");
   li.textContent = item.text;
 
+  // Augmenter le score si le choix est correct
   if (correct) {
     score++;
   } else {
@@ -175,8 +177,54 @@ function handleAnswer(userChoice) {
   col.appendChild(li);
 
   currentIndex++;
-  showNextPhrase();
+
+  // Si c'est le dernier conseil, on applique les couleurs et affiche le score
+  if (currentIndex === shuffledItems.length) {
+    applyColors(); // Appliquer les couleurs après le dernier conseil
+    showScore(); // Afficher le score après avoir placé tous les conseils
+  } else {
+    showNextPhrase();
+  }
 }
+
+function applyColors() {
+  // Récupère tous les items classés
+  const goodItems = document.querySelectorAll("#col-good li");
+  const badItems = document.querySelectorAll("#col-bad li");
+
+  // Crée un Set des bonnes réponses pour chaque colonne
+  const correctGoodItems = new Set(
+    shuffledItems
+      .filter(item => item.type === "good")
+      .map(item => item.text)
+  );
+
+  const correctBadItems = new Set(
+    shuffledItems
+      .filter(item => item.type === "bad")
+      .map(item => item.text)
+  );
+
+  // Applique les couleurs à la colonne "Bon conseil"
+  goodItems.forEach(item => {
+    if (correctGoodItems.has(item.textContent)) {
+      item.classList.add("correct-correction"); // Bon placement
+    } else {
+      item.classList.add("incorrect-correction"); // Mauvais placement
+    }
+  });
+
+  // Applique les couleurs à la colonne "Faux bon conseil"
+  badItems.forEach(item => {
+    if (correctBadItems.has(item.textContent)) {
+      item.classList.add("correct-correction"); // Bon placement
+    } else {
+      item.classList.add("incorrect-correction"); // Mauvais placement
+    }
+  });
+}
+
+
 
 function showScore() {
   document.getElementById("answer-buttons").classList.add("hidden");
@@ -191,8 +239,8 @@ function showScore() {
   // Si des erreurs existent, on affiche le bouton pour voir les erreurs
   if (errors.length > 0) {
     showErrorsContainer.classList.remove("hidden");
-    currentErrorIndex = 0;
-    showErrorsBtn.addEventListener("click", showNextError);
+    currentErrorIndex = 0; // Réinitialiser l'index des erreurs
+    showErrorsBtn.addEventListener("click", showNextError); // Montrer les erreurs une par une
   } else {
     // Si pas d'erreurs, on affiche le bouton "C’est parti pour la 2ᵉ partie !" directement (si score parfait)
     if (score === shuffledItems.length) {
@@ -230,19 +278,35 @@ function showScore() {
   }
 }
 
+// Affichage des erreurs une par une
+function showNextError() {
+  if (currentErrorIndex < errors.length) {
+    // Affiche l'explication de l'erreur courante
+    errorText.textContent = explications[errors[currentErrorIndex]];
+    errorModal.classList.remove("hidden");
+    currentErrorIndex++;
 
-// Affichage du bouton "Retour au parcours" après avoir vu toutes les erreurs ou s'il n'y a pas d'erreurs
+    if (currentErrorIndex === errors.length) {
+      nextErrorBtn.textContent = "Fermer";
+    }
+  }
+}
+
+// Ajouter un événement pour fermer le pop-up d'erreur
 nextErrorBtn.addEventListener("click", () => {
   if (currentErrorIndex >= errors.length) {
-    // Masquer les erreurs et afficher le bouton "Retour au parcours"
-    showErrorsContainer.classList.add("hidden");
-    if (partie === 2 || score === shuffledItems.length) {
+    // Masquer le pop-up d'erreur
+    errorModal.classList.add("hidden");
+
+    // Afficher le bouton "Retour au parcours de progression" à la fin de la partie 2
+    if (partie === 2) {
       document.getElementById("back-home-btn-container").classList.remove("hidden");
     }
   } else {
-    setTimeout(showNextError, 200);
+    setTimeout(showNextError, 200); // Continue d'afficher les erreurs
   }
 });
+
 
 // Fonction pour afficher les erreurs
 function showNextError() {
