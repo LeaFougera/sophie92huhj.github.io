@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parcours Ludique Animé</title>
+  <link rel="stylesheet" href="../styles/barre-navigation.css">
+  <link rel="stylesheet" href="../styles/jeux2.css" />
+</head>
+<body>
+
+  <div class="header-top">
+    <h1>Bienvenue dans l’espace Jeux</h1>
+    <br>
+    <p>Testez vos connaissances avec nos activités interactives</p>
+    <br>
+</div>
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="content">
+    <div class="parcours-wrapper">
+      <svg width="600" height="900" style="position:absolute; top:0; left:0; z-index:1;">
+        <line x1="75" y1="55" x2="300" y2="155" class="line c1" />
+        <line x1="300" y1="155" x2="525" y2="255" class="line c2" />
+        <line x1="525" y1="255" x2="300" y2="355" class="line c3" />
+        <line x1="300" y1="355" x2="75" y2="455" class="line c4" />
+        <line x1="75" y1="455" x2="300" y2="555" class="line c5" />
+        <line x1="300" y1="555" x2="525" y2="655" class="line c6" />
+        <line x1="525" y1="655" x2="300" y2="755" class="line c7" />
+        <line x1="300" y1="755" x2="75" y2="855" class="line c8" />
+      </svg>
+
+<!-- Exemple mis à jour dans .parcours-wrapper -->
+     <a href="../jeux/jeu1.html" class="image-jeu" style="top:20px; left:40px;">
+          <img src="../photos/accueil/AccueilAlimentation.png" alt="Jeu 1">
+     </a>
+     <a href="../jeux/jeu2.html" class="image-jeu" style="top:120px; left:265px;">
+          <img src="../photos/accueil/AccueilCauses.png" alt="Jeu 2">
+     </a>
+     <a href="../jeux/jeu3.html" class="image-jeu" style="top:220px; left:490px;">
+          <img src="../photos/accueil/AccueilInsuffisance.png" alt="Jeu 3">
+     </a>
+     <a href="../jeux/jeu4.html" class="image-jeu" style="top:320px; left:265px;">
+          <img src="../photos/accueil/AccueilJeux.png" alt="Jeu 4">
+     </a>
+     <a href="../jeux/jeu5.html" class="image-jeu" style="top:420px; left:40px;">
+         <img src="../photos/accueil/AccueilRein.png" alt="Jeu 5">
+     </a>
+     <a href="../jeux/jeu6.html" class="image-jeu" style="top:520px; left:265px;">
+          <img src="../photos/accueil/AccueilRessources.png" alt="Jeu 6">
+     </a>
+  
+
+      <!-- Panneau d'infos -->
+      <div class="info-panel" id="info-panel">
+        <h3>Infos du mini-jeu</h3>
+        <p><strong>Thème :</strong> <span id="info-theme">-</span></p>
+        <p><strong>Niveau :</strong> <span id="info-niveau">-</span></p>
+        <p><strong>Durée estimée :</strong> <span id="info-duree">-</span></p>
+        <p><strong>Type :</strong> <span id="info-type">-</span></p>
+        <p><strong>Meilleur score :</strong> <span id="info-score">-</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/barre-navigation.js"></script>
+  <script src="../scripts/jeux.js"></script>
+</body>
+</html>
