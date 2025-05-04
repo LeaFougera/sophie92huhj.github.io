@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jeu Menu Santé Rénale</title>
+  <link rel="stylesheet" href="../styles/menu.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🍽️ Menu Spécial Insuffisance Rénale</h1>
+
+    <div id="game">
+    <p id="instructions"></p>
+      <h2 id="restaurant-type"></h2>
+      <p id="question"></p>
+      <div id="choices"></div>
+    </div>
+
+    <div id="result-screen" class="hidden">
+      <h2>Évaluation de ton menu</h2>
+      <div id="result-details"></div>
+      <button id="next-btn">Restaurant suivant</button>
+    </div>
+
+    <div id="score-screen" class="hidden">
+      <h2>🎉 Fin du jeu !</h2>
+      <p>Score final : <span id="final-score"></span> / <span id="total-score"></span></p>
+      <button onclick="restartGame()">Rejouer</button>
+    </div>
+  </div>
+  <script src="../scripts/menu.js"></script>
+</body>
+</html>
