@@ -8,7 +8,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f4faff;
+    background-color: #edede9;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #1f2d3d;
     line-height: 1.8;
@@ -30,7 +30,7 @@ h1 {
     font-size: 2.8rem;
     color: #2c3e50;
     margin-bottom: 30px;
-    border-left: 6px solid #3498db;
+    border-left: 6px solid #BDA18A;
     padding-left: 15px;
     letter-spacing: 1px;
     display: flex;
@@ -60,15 +60,16 @@ h2 i {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 40px;
-    color: #2980b9;
-    border-bottom: 2px solid #2980b9;
+    color: #BDA18A;
+    border-bottom: 2px solid #BDA18A;
     padding-bottom: 12px;
 }
 
-/* Bloc explications */
+/* Bloc explications (modifié pour supprimer l'encadré bleu) */
 #explications {
-    background-color: #ecf6fd;
-    border-left: 6px solid #3498db;
+    /* Suppression de l'encadré bleu */
+    /* background-color: #ecf6fd; */
+    /* border-left: 6px solid #BDA18A; */
     padding: 30px;
     border-radius: 12px;
     white-space: pre-wrap;
@@ -78,12 +79,13 @@ h2 i {
     line-height: 1.8;
 }
 
+/* Boutons */
 button {
     display: block;
     padding: 18px 35px;
     font-size: 1.2rem;
     font-weight: 600;
-    background-color: #3498db;
+    background-color: #BDA18A;
     color: #ffffff;
     border: none;
     border-radius: 12px;
@@ -96,16 +98,12 @@ button {
     text-align: center;
 }
 
-
-
-
-
 button i {
     font-size: 1.5rem;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #BDA18A;
     transform: scale(1.05);
 }
 
