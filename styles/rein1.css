@@ -1,143 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  h1 {
-    margin-bottom: 10px;
-  }
-  
-  .cards-container {
-    display: grid;
-    grid-template-columns: repeat(4, 200px);
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .card {
-    width: 200px;
-    height: 150px;
-    background-color: #d3d3d3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
-  
-  .card img {
-    width: 100%;
-    height: auto;
-    display: none;
-  }
-  
-  .card div {
-    font-size: 16px;
-    text-align: center;
-    display: block;
-    padding: 10px;
-  }
+  font-family: Arial, sans-serif;
+  background: #edede9;
+  color: #4a536b;
+}
 
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #e0e0e0;
-  }
-  
-  .organs-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-  }
-  
-  .organs-container img {
-    width: 140px;
-    height: auto;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
+.container {
+  text-align: center;
+  padding: 40px 20px;
+}
 
-  .organs-container img:hover {
-    transform: scale(1.1);
+h1 {
+  margin-bottom: 25px;
+  color: #4a536b;
+}
+
+.intro {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a536b;
+}
+
+.intro p {
+  margin-bottom: 0;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.card {
+  width: 200px;
+  height: 150px;
+  background-color: #f5ebe0;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  background-color: #e9dbc6;
+}
+
+.card:not(.card-back) {
+  background-color: #ffffff;
+}
+
+.card.card-back {
+  background-color: #d5bdaf;
+  color: transparent;
+}
+
+.card.correct {
+  background-color: #d0f0c0 !important;
+  border: 2px solid #4CAF50;
+  color: #333;
+}
+
+.card.incorrect {
+  background-color: #f8c8c8 !important;
+  border: 2px solid #f44336;
+  color: #333;
+}
+
+.organs-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.organ-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 16px;
+  border: 2px solid #8b5e3c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.organs-container img {
+  width: 140px;
+  height: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.organs-container img:hover {
+  transform: scale(1.1);
+}
+
+.organs-container img.selected {
+  border: 3px solid #ffffff;
+}
+
+.count-display {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #8b5e3c;
+  color: white;
+  font-size: 13px;
+  padding: 4px 7px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+button {
+  padding: 12px 25px;
+  margin-top: 30px;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #d5bdaf;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ==== MODALE ==== */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fefcfb;
+  border-radius: 18px;
+  padding: 35px 45px;
+  max-width: 620px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease;
+  position: relative;
+  text-align: left;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4a536b;
+  border: 1px solid #e0dcd5;
+}
+
+.modal-content h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #4a536b;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
   }
-  
-  .organs-container img.selected {
-    border: 3px solid #4CAF50; /* Marque l'organe sélectionné */
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  /* Positionner le compteur en haut à gauche de chaque organe */
-  .organ-container {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-  }
-  
-  .count-display {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 14px;
-    padding: 2px 8px;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  button {
-    padding: 12px 25px;
-    margin-top: 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Styles pour la section de correction */
-  .correction-section {
-    margin-top: 30px;
-    text-align: left;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-  }
-  
-  #close-correction {
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  #close-correction:hover {
-    background-color: #d32f2f;
-  }
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+#modalText {
+  margin-bottom: 20px;
+}
+
+#modalText strong {
+  font-weight: bold;
+  color: #4a536b;
+}
+
+#next-explanation-btn,
+#finish-correction-btn {
+  padding: 10px 25px;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+#next-explanation-btn:hover,
+#finish-correction-btn:hover {
+  background-color: #d5bdaf;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #d5bdaf;
+}
+

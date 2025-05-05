@@ -36,9 +36,10 @@ function createCards() {
   const container = document.getElementById("cards-container");
   shuffle(phrases).forEach(phrase => {
     const card = document.createElement("div");
-    card.classList.add("card");
+    card.classList.add("card", "card-back");
     card.setAttribute("data-organe", phrase.organ);
-    card.textContent = phrase.text;
+    card.setAttribute("data-text", phrase.text);
+    card.textContent = "";
     card.addEventListener("click", () => flipCard(card));
     container.appendChild(card);
   });
@@ -67,64 +68,55 @@ function createOrgans() {
 }
 
 function flipCard(card) {
-  if (!flippedCard) {
+  const phraseText = card.getAttribute("data-text");
+  const alreadySelected = selections.find(sel => sel.phraseText === phraseText);
+  if (alreadySelected) return;
+
+  if (!card.classList.contains("card-back") && flippedCard === card) {
+    card.classList.add("card-back");
+    card.textContent = "";
+    flippedCard = null;
+  } else if (card.classList.contains("card-back") && !flippedCard) {
+    card.classList.remove("card-back");
+    card.textContent = phraseText;
     flippedCard = card;
-    card.style.backgroundColor = "#fff";
   }
 }
 
 function selectOrgane(organElement, countDisplay) {
   if (flippedCard) {
-    if (selections.find(sel => sel.phraseText === flippedCard.textContent)) {
+    const selectedOrgane = organElement.getAttribute("data-name");
+    const correctOrgane = flippedCard.getAttribute("data-organe");
+
+    if (selections.find(sel => sel.phraseText === flippedCard.getAttribute("data-text"))) {
       flippedCard = null;
       return;
     }
-
-    const selectedOrgane = organElement.getAttribute("data-name");
-    const correctOrgane = flippedCard.getAttribute("data-organe");
 
     const organ = organs.find(o => o.name === selectedOrgane);
     organ.count++;
     countDisplay.textContent = organ.count;
 
     selections.push({
-      phraseText: flippedCard.textContent,
+      phraseText: flippedCard.getAttribute("data-text"),
       selectedOrgane: selectedOrgane,
       correctOrgane: correctOrgane,
       correct: selectedOrgane === correctOrgane
     });
 
     flippedCard.style.backgroundColor = "#f4f4f9";
-    organElement.classList.add("selected");
+    flippedCard.classList.remove("card-back");
     flippedCard = null;
+
+    organElement.classList.add("selected");
   }
 }
 
 const details = {
-  "Rein": `
-    Les reins sont deux organes en forme de haricot situés dans la partie arrière de l’abdomen.
-    Leur rôle principal est de filtrer le sang pour en éliminer les déchets (toxines) et l’excès d’eau,
-    formant ainsi l’urine. Ils participent aussi à la régulation de la pression artérielle,
-    de l’équilibre acido-basique et de la production de certaines hormones.
-    Chaque jour, ils filtrent environ 180 litres de sang pour produire près de 1,5 litre d’urine.`,
-  
-  "Vessie": `
-    La vessie est un organe creux, musculaire et extensible qui sert de réservoir à l’urine.
-    Elle reçoit l’urine des uretères et peut contenir en moyenne entre 400 et 600 ml de liquide.
-    Lorsqu’elle est pleine, elle envoie un signal au cerveau qui déclenche l’envie d’uriner.
-    Elle se contracte ensuite pour expulser l’urine via l’urètre.`,
-
-  "Uretères": `
-    Les uretères sont deux conduits longs et étroits (environ 25 à 30 cm) qui relient chaque rein à la vessie.
-    Leur paroi musculaire permet des contractions (péristaltisme) qui font progresser l’urine vers la vessie,
-    même si la personne est allongée ou en mouvement.
-    Ils sont essentiels pour le bon écoulement de l’urine sans reflux vers les reins.`,
-
-  "Urètre": `
-    L’urètre est le canal qui permet à l’urine stockée dans la vessie d’être évacuée vers l’extérieur du corps.
-    Il est court chez la femme (environ 3 à 4 cm) et plus long chez l’homme (environ 15 à 20 cm), 
-    car il traverse le pénis. Chez l’homme, il transporte aussi le sperme lors de l’éjaculation.
-    Un sphincter (muscle circulaire) permet de contrôler volontairement la miction (action d’uriner).`
+  "Rein": "Les reins sont deux organes en forme de haricot situés dans la partie arrière de l’abdomen...",
+  "Vessie": "La vessie est un organe creux, musculaire et extensible qui sert de réservoir à l’urine...",
+  "Uretères": "Les uretères sont deux conduits longs et étroits qui relient chaque rein à la vessie...",
+  "Urètre": "L’urètre est le canal qui permet à l’urine d’être évacuée vers l’extérieur du corps..."
 };
 
 function getExplanation(correct, selectedOrgane, correctOrgane) {
@@ -133,37 +125,55 @@ function getExplanation(correct, selectedOrgane, correctOrgane) {
     : `❌ Tu as choisi <strong>${selectedOrgane}</strong> mais la bonne réponse était <strong>${correctOrgane}</strong>.<br><strong>Explication :</strong> ${details[correctOrgane]}`;
 }
 
-function showNextCorrection() {
-  const messageDiv = document.getElementById("message");
-  const nextButton = document.getElementById("next-correction");
+function showModal() {
+  document.getElementById("customModal").classList.remove("hidden");
+}
 
-  messageDiv.innerHTML = ""; // Reset affichage
+function hideModal() {
+  document.getElementById("customModal").classList.add("hidden");
+}
 
-  if (currentCorrectionIndex < selections.length) {
-    const sel = selections[currentCorrectionIndex];
-    const result = document.createElement("p");
-    result.innerHTML = `<strong>Phrase :</strong> "${sel.phraseText}"<br>${getExplanation(sel.correct, sel.selectedOrgane, sel.correctOrgane)}<br>`;
-    messageDiv.appendChild(result);
-    currentCorrectionIndex++;
+document.querySelector(".close-button").addEventListener("click", hideModal);
 
-    if (currentCorrectionIndex === selections.length) {
-      nextButton.textContent = "Voir le récapitulatif";
-    }
+function showModalExplanation(index) {
+  const modalText = document.getElementById("modalText");
+  const nextBtn = document.getElementById("next-explanation-btn");
+  const finishBtn = document.getElementById("finish-correction-btn");
+
+  const wrongSelections = selections.filter(sel => !sel.correct);
+
+  if (index < wrongSelections.length) {
+    const sel = wrongSelections[index];
+    modalText.innerHTML = `
+      <strong>Phrase :</strong> "${sel.phraseText}"<br>
+      ${getExplanation(sel.correct, sel.selectedOrgane, sel.correctOrgane)}
+    `;
+    nextBtn.classList.remove("hidden");
+    finishBtn.classList.add("hidden");
   } else {
     const correctCount = selections.filter(s => s.correct).length;
-    const final = document.createElement("p");
-    final.innerHTML = `<strong>Score final :</strong> ${correctCount} sur ${selections.length}`;
-    final.style.fontSize = "20px";
-    messageDiv.appendChild(final);
-
-    const link = document.createElement("a");
-    link.href = "rein1correction.html";
-    link.innerHTML = `<button>Voir le récapitulatif final</button>`;
-    messageDiv.appendChild(link);
-
-    nextButton.classList.add("hidden");
+    modalText.innerHTML = `
+      <strong>Score final :</strong> ${correctCount} sur ${selections.length}<br><br>
+      <a href="rein1correction.html"><button>Voir le récapitulatif final</button></a>
+    `;
+    nextBtn.classList.add("hidden");
+    finishBtn.classList.remove("hidden");
   }
+
+  showModal();
 }
+
+document.getElementById("next-explanation-btn").addEventListener("click", () => {
+  currentCorrectionIndex++;
+  showModalExplanation(currentCorrectionIndex);
+});
+
+document.getElementById("finish-correction-btn").addEventListener("click", () => {
+  hideModal();
+  resetGame();
+  createCards();
+  createOrgans();
+});
 
 document.getElementById("validate-btn").addEventListener("click", () => {
   if (selections.length < phrases.length) {
@@ -171,31 +181,21 @@ document.getElementById("validate-btn").addEventListener("click", () => {
     return;
   }
 
-  // Sauvegarde des données
+  // Sauvegarde
   localStorage.setItem("selections", JSON.stringify(selections));
 
+  // Colorer les cartes
+  selections.forEach(sel => {
+    const allCards = document.querySelectorAll(".card");
+    allCards.forEach(card => {
+      if (card.getAttribute("data-text") === sel.phraseText) {
+        card.classList.add(sel.correct ? "correct" : "incorrect");
+      }
+    });
+  });
+
   currentCorrectionIndex = 0;
-  showNextCorrection();
-
-  // Afficher le bouton suivant
-  let nextBtn = document.getElementById("next-correction");
-  if (!nextBtn) {
-    nextBtn = document.createElement("button");
-    nextBtn.id = "next-correction";
-    nextBtn.textContent = "Suivant";
-    nextBtn.style.marginTop = "20px";
-    nextBtn.addEventListener("click", showNextCorrection);
-    document.querySelector(".container").appendChild(nextBtn);
-  } else {
-    nextBtn.classList.remove("hidden");
-    nextBtn.textContent = "Suivant";
-  }
-});
-
-document.getElementById("restart-btn").addEventListener("click", () => {
-  resetGame();
-  createCards();
-  createOrgans();
+  showModalExplanation(currentCorrectionIndex);
 });
 
 function resetGame() {
@@ -204,10 +204,9 @@ function resetGame() {
   currentCorrectionIndex = 0;
   document.getElementById("cards-container").innerHTML = "";
   document.getElementById("organs-container").innerHTML = "";
-  document.getElementById("message").textContent = "";
-
-  const nextBtn = document.getElementById("next-correction");
-  if (nextBtn) nextBtn.classList.add("hidden");
+  organs.forEach(organ => {
+    organ.count = 0;
+  });
 }
 
 createCards();
