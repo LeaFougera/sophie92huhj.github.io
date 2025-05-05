@@ -1,87 +1,141 @@
+/* Reset pour les marges et paddings */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: #edede9;
-    color: #4a536b;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .container {
-    background: #fff;
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-    font-size: 26px;
-    color: #4a536b;
-  }
-  
-  #restaurant-type {
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: #8b5e3c;
-  }
-  
-  #question {
-    margin-bottom: 20px;
-    font-size: 18px;
-  }
-  
-  #choices {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  #choices button {
-    background-color: #f5ebe0;
-    border: 2px solid transparent;
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  #choices button:hover {
-    background-color: #e9dbc6;
-    transform: translateY(-3px);
-  }
-  
-  #next-btn, #score-screen button {
-    background-color: #d5bdaf;
-    color: #4a536b;
-    border: none;
-    padding: 12px 25px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  #next-btn:hover, #score-screen button:hover {
-    background-color: #cbb8a0;
-  }
-  
-  #score-screen {
-    font-size: 20px;
-  }
-  
-  .hidden {
-    display: none;
-  }
+  margin: 30px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #edede9;
+  color: #4a536b;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  background-color: #d5bdaf;
+}
+
+/* Conteneur principal */
+.container {
+  text-align: center;
+  padding: 40px;
+}
+
+/* Style du titre */
+h1 {
+  margin-bottom: 25px;
+  color: #4a536b;
+}
+
+/* Explication du jeu */
+.intro {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a536b;
+}
+
+/* Espacement des paragraphes dans l'explication */
+#game-explanation p {
+  margin-bottom: 0px;
+}
+
+/* Style des titres */
+h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #4a536b;
+}
+
+/* Choix des questions */
+#question {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Style des boutons de choix */
+/* Style des boutons de choix */
+#choices {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Réduit l'espace entre les boutons */
+  margin-bottom: 10px;
+}
+
+#choices button {
+  background-color: #d5bdaf;
+  border: 2px solid transparent;
+  padding: 8px 20px; /* Réduire le padding pour que les boutons soient plus compacts */
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 5px; /* Ajoute une petite marge entre les boutons */
+}
+
+#choices button:hover {
+  background-color: #d5bdaf;
+  transform: translateY(-3px);
+}
+
+#choices button:hover {
+  background-color: #d5bdaf;
+  transform: translateY(-3px);
+}
+
+/* Résultats de chaque restaurant */
+#result-screen {
+  display: none;
+}
+
+#result-details {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Bouton "Restaurant suivant" */
+#next-btn {
+  background-color: #d5bdaf;
+  color: #4a536b;
+  border: none;
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#next-btn:hover {
+  background-color: #d5bdaf;
+}
+
+/* Score final */
+#score-screen {
+  display: none;
+  font-size: 20px;
+}
+
+/* Cacher les éléments invisibles */
+.hidden {
+  display: none;
+}
