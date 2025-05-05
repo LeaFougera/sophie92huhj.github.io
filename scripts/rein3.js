@@ -170,19 +170,29 @@
                 showModal(erreursAffichage[erreurIndex], true);
             }
             localStorage.setItem("scoreFinal", score);
+            const scoreEl = document.getElementById("scoreFinalDisplay");
+            if (scoreEl) {
+              scoreEl.textContent = `Score Final : ${score} / 10`;
+              scoreEl.style.display = "block";
+            }
+
+            const meilleurScore = parseInt(localStorage.getItem("bestScoreJeu1")) || 0;
+            if (score > meilleurScore) {
+              localStorage.setItem("bestScoreJeu1", score);
+            }
+
             const finishButton = document.getElementById("finishButton");
             finishButton.style.display = "block";
         
             if (!finishButton.dataset.listenerAdded) {
                 finishButton.addEventListener("click", function () {
-                    window.location.href = "../jeux/resultat.html";
+                    window.location.href = "../jeux/rein3correction.html";
                 });
                 finishButton.dataset.listenerAdded = "true";
             }
         }
         
     }
-    
     
     
 
@@ -287,7 +297,7 @@ if (currentPart === "part2") {
 
     // Afficher le bouton "Terminer"
     document.getElementById("finishButton").addEventListener("click", function() {
-        window.location.href = "../jeux/resultat.html";  // Redirige vers la page "resultat.html"
+        window.location.href = "../jeux/rein3correction.html"; 
     });
     
 } else {
