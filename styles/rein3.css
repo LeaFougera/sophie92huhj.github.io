@@ -6,9 +6,10 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #edede9;
-    margin: 0;
-    padding: 0;
+    background-image: url('../photos/conseil/FondParcours.png');
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: top left;
 }
 
 .container {

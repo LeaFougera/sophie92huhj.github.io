@@ -8,19 +8,19 @@
 /* Style du body avec un fond doux */
 body {
   font-family: Arial, sans-serif;
-  background-image: url('../photos/conseil/FondParcours.png'); /* adapte le chemin si nécessaire */
-  background-size: auto; /* taille originale de l’image */
-  background-repeat: repeat; /* évite que l’image se répète */
-  background-position: top left; /* positionne l’image en haut à gauche */
+  background-image: url('../photos/conseil/FondParcours.png');
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: top left;
   text-align: center;
   padding: 50px;
-  /* Centrer le contenu de la page */
-  display: flex;
-  justify-content: center; /* Centrage horizontal */
-  align-items: center; /* Centrage vertical */
-  height: 100vh; /* Prend toute la hauteur de la fenêtre */
-  flex-direction: column; /* Centrer les éléments de haut en bas */
+
+  /* Supprimer flex qui bloque le scroll si contenu > 100vh */
+  min-height: 100vh;
+  overflow-x: hidden; /* éviter scroll horizontal */
+  overflow-y: auto;   /* autoriser scroll vertical */
 }
+
 
 /* Style pour la consigne (game-introduction) */
 .game-introduction {
