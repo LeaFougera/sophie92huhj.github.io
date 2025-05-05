@@ -14,7 +14,11 @@
         <p id="score" class="score"></p>
         <h2><i class="fas fa-brain"></i> À retenir</h2>
         <pre id="explications" class="explications"></pre>
-        <button onclick="window.location.href='../pages/jeux.html'">Retour au parcours</button>
+
+        <div class="buttons">
+            <button onclick="window.location.href='../pages/jeux.html'">Retour au parcours</button>
+            <button onclick="window.location.href='rein3correction.html'">Voir fiche réflexe</button>
+        </div>
     </div>
 
     <script>
@@ -23,10 +27,9 @@
     
         const recapitulatif = `
                            carte mentale
-    `;
+        `;
     
         document.getElementById("explications").innerHTML = recapitulatif;
     </script>
-    
 </body>
 </html>
