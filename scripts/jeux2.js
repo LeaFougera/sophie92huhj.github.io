@@ -92,4 +92,22 @@ etape3.addEventListener("mouseenter", () => {
 
 etape3.addEventListener("mouseleave", cacherInfoJeu);
 
-  
+  // === Étape 4 : Jeu de Mémoire (rein1.html) ===
+const bestScoreJeu4 = localStorage.getItem("bestScoreJeu4"); // sur 12
+const etape4 = document.querySelector(".image-jeu[href*='rein1.html']");
+const ligne4 = document.querySelector(".line.c4");
+
+if (bestScoreJeu4 && etape4 && ligne4 && !ligne4.classList.contains("completed")) {
+  completer(4, etape4, "#66bb6a");
+}
+
+etape4.addEventListener("mouseenter", () => {
+  afficherInfoJeu(250, 160, {
+    theme: "Système urinaire",
+    duree: "5 min",
+    type: "Mémoire & Association",
+    score: bestScoreJeu4 ? `${bestScoreJeu4} / 12` : "Non joué"
+  });
+});
+
+etape4.addEventListener("mouseleave", cacherInfoJeu);
