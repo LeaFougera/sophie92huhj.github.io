@@ -152,6 +152,13 @@ function showModalExplanation(index) {
     finishBtn.classList.add("hidden");
   } else {
     const correctCount = selections.filter(s => s.correct).length;
+  
+    // Ajout ici : enregistrement du meilleur score
+    const ancienBest = parseInt(localStorage.getItem("bestScoreJeu4")) || 0;
+    if (correctCount > ancienBest) {
+      localStorage.setItem("bestScoreJeu4", correctCount);
+    }
+  
     modalText.innerHTML = `
       <strong>Score final :</strong> ${correctCount} sur ${selections.length}<br><br>
       <a href="rein1correction.html"><button>Voir le récapitulatif final</button></a>
@@ -159,6 +166,7 @@ function showModalExplanation(index) {
     nextBtn.classList.add("hidden");
     finishBtn.classList.remove("hidden");
   }
+  
 
   showModal();
 }
