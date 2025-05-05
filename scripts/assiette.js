@@ -5,27 +5,35 @@ const checkBtn = document.getElementById('check-btn');
 
 // Base de données des aliments
 const alimentData = {
-  viande: { bon: false, suggestion: "Poisson maigre" },
-  oeuf: { bon: true },
-  sel: { bon: false, suggestion: "Herbes aromatiques" },
-  courgette: { bon: true },
-  riz: { bon: false, suggestion: "Riz blanc (moins de phosphore)" },
-  pain: { bon: true },
-  poisson_blanc: { bon: true },
-  huile_olive: { bon: true },
-  chocolat: { bon: false, suggestion: "Fruits frais comme la pomme" },
-  pomme: { bon: true },
-  poire : { bon: true },
-  charcuterie : { bon: false, suggestion:"?" },
-  pâtes : { bon: true },
-  fromages : { bon: false },
-  plat_industriel : { bon: false },
-  viande_blanche : { bon: true },
-  herbes_aromatiques  : { bon: true },
+  viande: { bon: false, suggestion: "Poisson maigre", category: 'protéine' },
+  oeuf: { bon: true, category: 'protéine' },
+  sel: { bon: false, suggestion: "Herbes aromatiques", category: 'assaisonnements' },
+  courgette: { bon: true, category: 'légume' },
+  riz: { bon: false, suggestion: "Riz blanc (moins de phosphore)", category: 'féculent' },
+  pain: { bon: true, category: 'féculent' },
+  poisson_blanc: { bon: true, category: 'protéine' },
+  huile_olive: { bon: true, category: 'assaisonnements' },
+  chocolat: { bon: false, suggestion: "Fruits frais comme la pomme", category: 'dessert' },
+  pomme: { bon: true, category: 'dessert' },
+  poire: { bon: true, category: 'dessert' },
+  charcuterie: { bon: false, suggestion: "?", category: 'protéine' },
+  pâtes: { bon: true, category: 'féculent' },
+  fromages: { bon: false, category: 'protéine' },
+  plat_industriel: { bon: false, category: 'protéine' },
+  viande_blanche: { bon: true, category: 'protéine' },
+  herbes_aromatiques: { bon: true, category: 'assaisonnements' },
+  carottes_rape: { bon: true, category: 'entree' },
+  chips: { bon: false, suggestion: "Carottes râpées à l’huile d’olive", category: 'entree' },
+  yaourt_0: { bon: true, category: 'laitier' },
+  fromage: { bon: false, suggestion: "Yaourt 0%", category: 'laitier' },
+  fruit: { bon: true, category: 'dessert' },
+  chocolat: { bon: false, suggestion: "Un fruit frais", category: 'dessert' },
+
 
 };
 
 let alimentsChoisis = [];
+
 
 // Drag start
 ingredients.forEach(ingredient => {
@@ -50,6 +58,8 @@ plate.addEventListener('drop', (e) => {
   const ingredient = document.getElementById(id);
 
   if (!ingredient) return;
+  
+  const category = alimentData[id]?.category;
 
   // Ajoute l’ingrédient dans l’assiette
   const clone = ingredient.cloneNode(true);
@@ -64,13 +74,30 @@ plate.addEventListener('drop', (e) => {
   alimentsChoisis.push(id);
 
   plate.querySelector('p').style.display = 'none';
+
+  const step4Visible = document.getElementById('step-4')?.style.display === 'block';
+  if (step4Visible && category === 'dessert') {
+    document.getElementById('check-btn').style.display = 'block';
+  }
 });
 
-// Vérification des choix
 checkBtn.addEventListener('click', () => {
-  feedback.innerHTML = "<h3>Résultat :</h3>";
-  let erreurs = 0;
+  window.location.href = "resultat_assiette.html";
 
+  // Vérifier si toutes les catégories ont été choisies
+  ['entree', 'protéine', 'féculent', 'légume', 'assaisonnements', 'laitier', 'dessert'].forEach(category => {
+    if (!categoriesChoisies[category]) {
+      categoriesManquantes.push(category);
+    }
+  });
+
+  // Si une catégorie manque, donner un message
+  if (categoriesManquantes.length > 0) {
+    feedback.innerHTML += `<p style="color: red;">Il manque des aliments dans les catégories suivantes : ${categoriesManquantes.join(', ')}</p>`;
+    erreurs++;
+  }
+
+  // Vérification des choix d'aliments
   alimentsChoisis.forEach(id => {
     if (!alimentData[id].bon) {
       erreurs++;
@@ -86,3 +113,31 @@ checkBtn.addEventListener('click', () => {
     feedback.innerHTML += `<p style='color: red; font-weight: bold;'>Vous avez ${erreurs} erreur(s). Essayez de faire mieux !</p>`;
   }
 });
+
+
+let categoriesChoisies = {
+  entree: false,
+  protéine: false,
+  féculent: false,
+  légume: false,
+  laitier: false,
+  dessert: false
+};
+
+
+function nextStep(current) {
+  const currentStep = document.getElementById(`step-${current}`);
+  const next = document.getElementById(`step-${current + 1}`);
+  if (currentStep && next) {
+    currentStep.style.display = 'none';
+    next.style.display = 'block';
+  }
+}
+
+function validateAndNextStep(current) {
+  if (alimentsChoisis.length === 0) {
+    alert("Veuillez ajouter au moins un aliment dans l'assiette avant de continuer !");
+    return; // On ne fait rien si l'assiette est vide
+  }
+  nextStep(current); // Sinon on passe normalement à l'étape suivante
+}
