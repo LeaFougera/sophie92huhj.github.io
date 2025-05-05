@@ -59,10 +59,11 @@ h2 i {
     padding-bottom: 12px;
 }
 
-/* Bloc explications */
+/* Bloc explications (modifié pour supprimer l'encadré bleu) */
 #explications {
-    background-color: #ecf6fd;
-    border-left: 6px solid #BDA18A;
+    /* Suppression de l'encadré bleu */
+    /* background-color: #ecf6fd; */
+    /* border-left: 6px solid #BDA18A; */
     padding: 30px;
     border-radius: 12px;
     white-space: pre-wrap;
@@ -72,6 +73,7 @@ h2 i {
     line-height: 1.8;
 }
 
+/* Boutons */
 button {
     display: block;
     padding: 18px 35px;
@@ -89,10 +91,6 @@ button {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: center;
 }
-
-
-
-
 
 button i {
     font-size: 1.5rem;
