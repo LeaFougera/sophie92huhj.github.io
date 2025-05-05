@@ -49,4 +49,25 @@ function completer(num, el, couleur) {
   
   
   etape2.addEventListener("mouseleave", cacherInfoJeu);
+
+  // === Étape 3 : Jeu de Conseils (conseils.html) ===
+const scoreConseils = localStorage.getItem("scoreConseils"); // sur 20
+const etape3 = document.querySelector(".image-jeu[href*='conseils.html']");
+const ligne3 = document.querySelector(".line.c3"); // Assure-toi que ta ligne 3 a bien class="line c3"
+
+if (scoreConseils && etape3 && ligne3 && !ligne3.classList.contains("completed")) {
+  completer(3, etape3, "#66bb6a"); // Vert
+}
+
+etape3.addEventListener("mouseenter", () => {
+  afficherInfoJeu(120, 850, {
+    theme: "Hygiène de vie",
+    duree: "5 min",
+    type: "Mémoire & Tri",
+    score: scoreConseils ? `${scoreConseils} / 20` : "Non joué"
+  });
+});
+
+etape3.addEventListener("mouseleave", cacherInfoJeu);
+
   

@@ -62,6 +62,8 @@ let shuffledItems = [];
 let currentIndex = 0;
 let currentErrorIndex = 0;
 let score = 0;
+let scorePartie1 = 0;
+let scorePartie2 = 0;
 let errors = [];
 let phraseZone; // déclaration globale
 let partie = 1; // Partie actuelle
@@ -232,8 +234,17 @@ function showScore() {
   document.getElementById("answer-buttons").classList.add("hidden");
   phraseZone.classList.add("hidden");
 
-  resultEl.textContent = `🎯 Score : ${score} / ${shuffledItems.length} bons placements`;
-  resultEl.classList.remove("hidden");
+  if (partie === 1) {
+    scorePartie1 = score;
+    resultEl.textContent = `🎯 Score : ${scorePartie1} / ${shuffledItems.length} (partie 1)`;
+  } else {
+    scorePartie2 = score;
+    const total = scorePartie1 + scorePartie2;
+    resultEl.textContent = `🎯 Score total : ${total} / 20`;
+    
+    // (optionnel) enregistrer dans localStorage :
+    localStorage.setItem("scoreConseils", total);
+  }
 
   document.getElementById("back-home-btn-container").classList.add("hidden");
 
