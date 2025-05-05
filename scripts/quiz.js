@@ -208,6 +208,10 @@ function checkAnswer(button, isCorrect) {
 
 // Fonction pour afficher le score
 function displayScore() {
+
+  localStorage.setItem("bestScoreQuiz", score);
+  localStorage.setItem("maxScoreQuiz", questions.length);
+  
   // Cacher le quiz (question et réponses)
   document.getElementById("quiz-container").classList.add("hidden");
 
@@ -225,7 +229,7 @@ function displayScore() {
 
   // Ajouter l'événement de redirection
   backToProgressBtn.onclick = () => {
-    window.location.href = "../pages/jeux.html"; // Modifie ce lien selon ton projet
+    window.location.href = "../pages/jeux2.html"; // Modifie ce lien selon ton projet
   };
 
   // Ajouter le bouton au DOM

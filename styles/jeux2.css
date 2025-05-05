@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
   
   body {
@@ -59,25 +58,7 @@
   .etape:hover {
     transform: scale(1.1);
   }
-  
-  .etape-complete.debutant {
-    background-color: #66bb6a !important;
-    color: white;
-  }
-  
-  .etape-complete.intermediaire {
-    background-color: #ffa726 !important;
-    color: white;
-  }
-  
-  .etape-complete.difficile {
-    background-color: #ef5350 !important;
-    color: white;
-  }
-  
-  .debutant { border-color: #66bb6a; }
-  .intermediaire { border-color: #ffa726; }
-  .difficile { border-color: #ef5350; }
+
   
   /* Ligne entre les étapes */
   .line {
@@ -91,7 +72,7 @@
   }
   
   .line {
-    stroke: #66bb6a; /* Vert uniforme pour tout le parcours */
+    stroke: #d5bdaf; /* Vert uniforme pour tout le parcours */
     stroke-width: 6;
     stroke-dasharray: 10, 10;
     stroke-opacity: 0.6;
@@ -129,7 +110,7 @@
   
   .info-panel h3 {
     margin-top: 0;
-    color: #4a148c;
+    color: #e3d5ca;
   }
   
   .info-panel p {
@@ -157,7 +138,7 @@
   
   .image-jeu:hover {
     transform: scale(1.1);
-    border-color: #4a148c;
+    border-color: #d5bdaf;
   }
   
   .image-jeu img {
@@ -165,5 +146,38 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  
+
+  .regles-jeux {
+    max-width: 100%;
+    margin: 40px auto 20px auto;
+    padding: 25px 30px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .regles-jeux:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+  
+  .regles-jeux h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #2c3e50;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 8px;
+  }
+  
+  .regles-jeux p {
+    margin-bottom: 12px;
   }
   
