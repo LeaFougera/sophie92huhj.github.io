@@ -1,6 +1,6 @@
 /* Reset général */
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
 }
@@ -13,24 +13,33 @@ body {
   background-repeat: repeat;
   background-position: top left;
   text-align: center;
-  padding: 50px;
-
-  /* Supprimer flex qui bloque le scroll si contenu > 100vh */
+  margin: 0;
   min-height: 100vh;
-  overflow-x: hidden; /* éviter scroll horizontal */
-  overflow-y: auto;   /* autoriser scroll vertical */
+
+  display: flex;
+  justify-content: center;     /* Centrage horizontal */
+  align-items: flex-start;     /* Aligner en haut */
+  flex-direction: column;
+
+  padding: 60px 20px 100px;    /* Haut / côtés / bas */
+  overflow-y: auto;
 }
+
 
 
 /* Style pour la consigne (game-introduction) */
 .game-introduction {
-  background-color: #e3d5ca; /* Couleur douce */
+  background-color: #e3d5ca;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
   text-align: center;
+
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto; /* CENTRE HORIZONTALEMENT */
 }
+
 
 .game-introduction h1 {
   color: black;
@@ -72,7 +81,7 @@ body {
   background-color: #d5bdaf;
   color: #4a536b;
   width: 100%;
-  max-width: 600px;
+  max-width: 750px;
   margin-top: 30px; /* Espacement avant le quiz */
 }
 
@@ -165,7 +174,7 @@ p {
   left: 20px;
   text-decoration: none;
   font-size: 1.5rem;
-  background-color: #ffffffcc;
+  background-color: #d5bdaf;
   color: #333;
   padding: 8px 12px;
   border-radius: 8px;
@@ -174,7 +183,7 @@ p {
 }
 
 .back-button:hover {
-  background-color: #eee;
+  background-color: #e3d5ca;
   transform: scale(1.05);
 }
 
@@ -204,20 +213,20 @@ button:hover:not(.no-hover) {
 .question-content {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
+  flex-wrap: wrap;
 }
-
 
 .question-image {
-  width: 150px; /* Ajuste la taille de l'image */
-  height: auto; /* Garder les proportions */
-  border-radius: 8px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  width: 300px;       /* Taille plus grande */
+  height: auto;
+  border-radius: 16px;
+  flex-shrink: 0;     /* Empêche l'image de se réduire */
 }
+
 
 .question-text {
   font-size: 1.2rem;
@@ -225,7 +234,9 @@ button:hover:not(.no-hover) {
   margin: 0;
   width: 100%;
   text-align: center;
+  font-weight: bold;
 }
+
 
 /* Conteneur des réponses */
 #answers {

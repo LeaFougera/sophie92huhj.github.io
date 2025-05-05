@@ -102,7 +102,7 @@ if (bestScoreJeu4 && etape4 && ligne4 && !ligne4.classList.contains("completed")
 }
 
 etape4.addEventListener("mouseenter", () => {
-  afficherInfoJeu(250, 160, {
+  afficherInfoJeu(600,700, {
     theme: "Système urinaire",
     duree: "5 min",
     type: "Mémoire & Association",
