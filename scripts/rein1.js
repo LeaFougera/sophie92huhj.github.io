@@ -183,6 +183,8 @@ document.getElementById("finish-correction-btn").addEventListener("click", () =>
   createOrgans();
 });
 
+
+
 document.getElementById("validate-btn").addEventListener("click", () => {
   if (selections.length < phrases.length) {
     alert("Veuillez associer toutes les phrases aux organes avant de valider.");
@@ -202,9 +204,12 @@ document.getElementById("validate-btn").addEventListener("click", () => {
     });
   });
 
-  currentCorrectionIndex = 0;
-  showModalExplanation(currentCorrectionIndex);
+  // 👉 Maintenant on montre un bouton pour "Voir les résultats"
+  document.getElementById("see-results-btn").classList.remove("hidden");
+  document.getElementById("validate-btn").classList.add("hidden");
 });
+
+
 
 function resetGame() {
   selections = [];
@@ -215,7 +220,18 @@ function resetGame() {
   organs.forEach(organ => {
     organ.count = 0;
   });
+// ✅ Cache le bouton "Voir les résultats"
+document.getElementById("see-results-btn").classList.add("hidden");
+
+// ✅ Réaffiche le bouton "Valider"
+document.getElementById("validate-btn").classList.remove("hidden");
 }
+
 
 createCards();
 createOrgans();
+
+document.getElementById("see-results-btn").addEventListener("click", () => {
+  currentCorrectionIndex = 0;
+  showModalExplanation(currentCorrectionIndex);
+});
