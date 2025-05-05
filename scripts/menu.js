@@ -116,10 +116,6 @@ const scoreScreen = document.getElementById('score-screen');
 const finalScore = document.getElementById('final-score');
 const totalScore = document.getElementById('total-score');
 
-// Instructions du jeu
-const instructions = "Bienvenue dans le jeu du Menu Rénal ! Votre mission : choisir les repas les plus adaptés pour une alimentation saine en cas d’insuffisance rénale. Pour chaque restaurant, vous devrez sélectionner une entrée, un plat et un dessert. À la fin de chaque repas, nous vous expliquerons pourquoi certains choix sont bons ou à éviter pour protéger vos reins. N’oubliez pas, même si certains choix ne sont pas parfaits, l’essentiel est d’avoir un bon équilibre alimentaire au quotidien. Se faire plaisir de temps en temps, c'est aussi important pour votre bien-être. L’important est de trouver la juste mesure ! Essayez de faire les bons choix et de récolter un maximum de points !";
-
-document.getElementById('instructions').textContent = instructions;
 
 function startGame() {
   score = 0;
