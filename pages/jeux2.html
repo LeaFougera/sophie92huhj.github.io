@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parcours Ludique Animé</title>
+  <link rel="stylesheet" href="../styles/barre-navigation.css">
+  <link rel="stylesheet" href="../styles/jeux2.css" />
+</head>
+<body>
+
+  <div class="header-top">
+    <h1>Bienvenue dans l’espace Jeux</h1>
+    <br>
+    <p>Testez vos connaissances avec nos activités interactives</p>
+    <br>
+</div>
+
+  <div id="navbar-placeholder"></div>
+
+  <!-- Bloc d'explication des règles -->
+<div class="regles-jeux" style="max-width: 1200px; margin: 40px auto 20px auto; padding: 20px; background-color: #f2f2f2; border-radius: 10px; font-size: 16px; line-height: 1.6; color: #333;">
+  <h2 style="text-align: center; margin-top: 0;">Règles du parcours ludique</h2>
+  <p>
+    Plongez dans une série de mini-jeux interactifs pour tester vos connaissances tout en vous amusant. Chaque jeu explore un thème en lien avec ce que vous avez découvert dans les différentes pages du site, autour de la santé et du bien-être.
+  </p>
+  <p>
+    Vous pouvez jouer aux jeux dans l’ordre de votre choix, et les recommencer autant de fois que vous le souhaitez. Bonne exploration !
+  </p>
+</div>
+
+  <div class="content">
+    <div class="parcours-wrapper" style="width: 1000px; height: 1800px;">
+      <svg width="1000" height="1800" style="position:absolute; top:0; left:0; z-index:1;">
+        <line x1="190" y1="100" x2="540" y2="250" class="line c1" />
+        <line x1="540" y1="250" x2="890" y2="400" class="line c2" />
+        <line x1="890" y1="400" x2="540" y2="550" class="line c3" />
+        <line x1="540" y1="550" x2="190" y2="700" class="line c4" />
+        <line x1="190" y1="700" x2="540" y2="850" class="line c5" />
+        <line x1="540" y1="850" x2="890" y2="1000" class="line c6" />
+      </svg>
+
+      <!-- Jeu 1 -->
+<a href="../jeux/rein3.html" class="image-jeu" style="top:40px; left:100px;">
+  <img src="../photos/accueil/AccueilRein.png" alt="Jeu 1">
+</a>
+<div style="position: absolute; top: 170px; left: 130px; width: 120px; text-align: center; font-weight: bold; color: black;">
+  Jeu 1
+</div>
+
+<!-- Jeu 2 -->
+<a href="../jeux/quiz.html" class="image-jeu" id="etape2" style="top:190px; left:450px;">
+  <img src="../photos/accueil/AccueilSymptomes.png" alt="Jeu 2">
+</a>
+<div style="position: absolute; top: 320px; left: 480px; width: 120px; text-align: center; font-weight: bold; color: black;">
+  Jeu 2
+</div>
+
+<!-- Jeu 3 -->
+<a href="../jeux/conseils.html" class="image-jeu" style="top:340px; left:800px;">
+  <img src="../photos/accueil/AccueilSport.png" alt="Jeu 3">
+</a>
+<div style="position: absolute; top: 470px; left: 830px; width: 120px; text-align: center; font-weight: bold; color: black;">
+  Jeu 3
+</div>
+
+<!-- Jeu 4 -->
+<a href="../jeux/rein1.html" class="image-jeu" style="top:490px; left:450px;">
+  <img src="../photos/accueil/AccueilRein.png" alt="Jeu 4">
+</a>
+<div style="position: absolute; top: 620px; left: 480px; width: 120px; text-align: center; font-weight: bold; color: black;">
+  Jeu 4
+</div>
+
+<!-- Jeu 5 -->
+<a href="../jeux/jeu5.html" class="image-jeu" style="top:640px; left:100px;">
+  <img src="../photos/accueil/Jsp.png" alt="Jeu 5">
+</a>
+<div style="position: absolute; top: 770px; left: 130px; width: 120px; text-align: center; font-weight: bold; color: black;">
+  Jeu 5
+</div>
+
+<!-- Jeu 6 -->
+<a href="../jeux/jeu6.html" class="image-jeu" style="top:790px; left:450px;">
+  <img src="../photos/accueil/Jsp.png" alt="Jeu 6">
+</a>
+<div style="position: absolute; top: 920px; left: 480px; width: 120px; text-align: center; font-weight: bold; color: black;">
+  Jeu 6
+</div>
+
+<!-- Jeu 7 -->
+<a href="../jeux/jeu7.html" class="image-jeu" style="top:940px; left:800px;">
+  <img src="../photos/accueil/Jsp.png" alt="Jeu 7">
+</a>
+<div style="position: absolute; top: 1070px; left: 830px; width: 120px; text-align: center; font-weight: bold; color: black;">
+  Jeu 7
+</div>
+
+
+      <!-- Panneau d'infos -->
+      <div class="info-panel" id="info-panel">
+        <h3>Infos du mini-jeu</h3>
+        <p><strong>Thème :</strong> <span id="info-theme">-</span></p>
+        <p><strong>Durée estimée :</strong> <span id="info-duree">-</span></p>
+        <p><strong>Type :</strong> <span id="info-type">-</span></p>
+        <p><strong>Meilleur score :</strong> <span id="info-score">-</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/barre-navigation.js"></script>
+  <script src="../scripts/jeux2.js"></script>
+</body>
+</html>

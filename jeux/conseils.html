@@ -1,28 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Jeu de Conseils</title>
   <link rel="stylesheet" href="../styles/conseils.css">
 </head>
 <body>
-
-  <a href="../pages/jeux.html" class="back-button">← Retour</a>
-
   <div class="container">
-    <h1>🧠 Mémorise les conseils !</h1>
-    <div id="countdown" class="hidden">Temps restant : <span id="timer">10</span>s</div>
-    <ul id="display-list" class="conseils visible"></ul>
+    <h1>🧠 Mémorise les bons et les faux bons conseils</h1>
+    <p>Tu verras pendant 10 secondes des conseils à retenir. Ensuite, tu devras les classer dans la bonne colonne.</p>
 
-    <button id="start-btn">Commencer</button>
-
-    <div id="drag-zone" class="hidden">
-      <h2>Replace les conseils dans le bon ordre</h2>
-      <ul id="drag-list" class="draggable-list"></ul>
-      <button id="validate-btn">Valider</button>
+    <div id="start-zone">
+      <button id="start-btn">Commencer</button>
     </div>
 
+    <div id="countdown" class="hidden">
+      ⏳ Temps restant : <span id="timer">10</span>s
+    </div>
+
+    <div id="memorisation-zone" class="hidden">
+      <div class="memorisation-columns">
+        <div class="column green">
+          <h2>Bons conseils ✅</h2>
+          <ul id="good-list"></ul>
+        </div>
+        <div class="column red">
+          <h2>Faux bons conseils ❌</h2>
+          <ul id="bad-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="sorting-zone" class="hidden"></div>
+
     <div id="result" class="score hidden"></div>
+    <div id="show-errors-btn-container" class="hidden">
+      <button id="show-errors-btn">Voir les erreurs</button>
+    </div>
+
+   <!-- Modal d’explication -->
+   <div id="error-modal" class="hidden modal-overlay">
+     <div class="modal-content">
+       <p id="error-text"></p>
+       <button id="next-error-btn">Suivant</button>
+     </div>
+   </div>
+
+  </div>
+
+   <!-- Ajout du bouton pour passer à la 2ème partie dans la zone principale -->
+   <div id="next-part-btn-container" class="hidden">
+    <button id="next-part-btn">C’est parti pour la 2ᵉ partie !</button>
+  </div>
+
+  <div id="back-home-btn-container" class="hidden">
+    <button id="back-home-btn">Retour au parcours de progression</button>
   </div>
 
   <script src="../scripts/conseils.js"></script>

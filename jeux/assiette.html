@@ -8,38 +8,137 @@
 </head>
 <body>
   <div class="header">
-    <h1>Choisissez les bons aliments pour un patient atteint de maladie rénale</h1>
-    <p>Faites glisser les aliments vers l’assiette. Évitez les aliments néfastes pour les reins !</p>
+    <h1>Choisis les bons aliments pour préserver ta santé rénale </h1>
+    <p>Fais glisser les aliments vers l’assiette !</p>
   </div>
 
-  <div class="ingredients-container" id="ingredients-list">
-    <div class="ingredient" id="viande" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_rouge.png" alt="Viande rouge"></div>
-    <div class="ingredient" id="oeuf" draggable="true"><img src="../photos/jeu_alimentation_photos/oeufs.png" alt="Oeuf"></div>
-    <div class="ingredient" id="sel" draggable="true"><img src="../photos/jeu_alimentation_photos/sel.png" alt="Sel"></div>
-    <div class="ingredient" id="courgette" draggable="true"><img src="../photos/jeu_alimentation_photos/courgette.png" alt="Courgette"></div>
-    <div class="ingredient" id="riz" draggable="true"><img src="../photos/jeu_alimentation_photos/riz.png" alt="Riz"></div>
-    <div class="ingredient" id="pain" draggable="true"><img src="../photos/jeu_alimentation_photos/pain.png" alt="Pain"></div>
-    <div class="ingredient" id="poisson_blanc" draggable="true"><img src="../photos/jeu_alimentation_photos/poisson.png" alt="Poisson blanc"></div>
-    <div class="ingredient" id="huile_olive" draggable="true"><img src="../photos/jeu_alimentation_photos/huile.png" alt="Huile d'olive"></div>
-    <div class="ingredient" id="chocolat" draggable="true"><img src="../photos/jeu_alimentation_photos/chocolat.png" alt="Chocolat"></div>
-    <div class="ingredient" id="pomme" draggable="true"><img src="../photos/jeu_alimentation_photos/pomme.png" alt="Pomme"></div>
-    <div class="ingredient" id="poire" draggable="true"><img src="../photos/jeu_alimentation_photos/poire.png" alt="Poire"></div>
-    <div class="ingredient" id="fromages" draggable="true"><img src="../photos/jeu_alimentation_photos/fromage.png" alt="Fromage"></div>
-    <div class="ingredient" id="plat_industriel" draggable="true"><img src="../photos/jeu_alimentation_photos/plat.png" alt="Plat industriel"></div>
-    <div class="ingredient" id="pâtes" draggable="true"><img src="../photos/jeu_alimentation_photos/pâtes.png" alt="Pâtes"></div>
-    <div class="ingredient" id="herbes_aromatiques" draggable="true"><img src="../photos/jeu_alimentation_photos/herbes.png" alt="Herbes aromatiques"></div>
-    <div class="ingredient" id="charcuterie" draggable="true"><img src="../photos/jeu_alimentation_photos/charcuterie.png" alt="Charcuterie"></div>
-    <div class="ingredient" id="viande_blanche" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_blanche.png" alt="Viande blanche"></div>
+  <div id="step-1" class="step active">
+    <h2>Étape 1 : Choisis ton entrée</h2>
+    <p>Tu peux choisir plusieurs aliments et un assaisonnement !</p>
+    <div class="category-column">
+      <div class="ingredient-list">
+        <div class="ingredient" id="carottes_rape" draggable="true"><img src="../photos/jeu_alimentation_photos/salade_carottes.png" alt="Carottes râpées"></div>
+        <div class="ingredient" id="chips" draggable="true"><img src="../photos/jeu_alimentation_photos/chips.png" alt="Chips"></div>
+        <div class="ingredient" id="charcuterie" draggable="true"><img src="../photos/jeu_alimentation_photos/charcuterie.png" alt="Charcuterie"></div>
+        <div class="ingredient" id="melon" draggable="true"><img src="../photos/jeu_alimentation_photos/melon.png" alt="Melon"></div>
+        <div class="ingredient" id="salade" draggable="true"><img src="../photos/jeu_alimentation_photos/salade.png" alt="Salade"></div>
+        <div class="ingredient" id="huile_olive" draggable="true"><img src="../photos/jeu_alimentation_photos/huile.png" alt="Huile d'olive"></div>
+
+    </div>
+
+    <!-- Assaisonnements 
+    <div class="category-column">
+      <h2>Assaisonnements</h2>
+      <div class="ingredient" id="huile_olive" draggable="true"><img src="../photos/jeu_alimentation_photos/huile.png" alt="Huile d'olive"></div>
+    </div>-->
+
+    <div class="button-wrapper">
+      <button class="btn btn-primary suivant-btn" onclick="validateAndNextStep(1)">Suivant</button>
+    </div>
+    
   </div>
+      </div>
+
+  <div id="step-2" class="step">
+    <h2>Étape 2 : Compose ton plat</h2>
+    <p>Choisis une protéine, un féculent, un légume et assaisone le tout !</p>
+    <div class="ingredients-container">
+      
+      <!-- Protéines -->
+      <div class="category-column">
+        <h2>Protéines</h2>
+        <div id="proteine-list" class="ingredient-list">
+          <div class="ingredient" id="viande" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_rouge.png" alt="Viande rouge"></div>
+          <div class="ingredient" id="oeuf" draggable="true"><img src="../photos/jeu_alimentation_photos/oeufs.png" alt="Oeuf"></div>
+          <div class="ingredient" id="poisson_blanc" draggable="true"><img src="../photos/jeu_alimentation_photos/poisson.png" alt="Poisson blanc"></div>
+          <div class="ingredient" id="plat_industriel" draggable="true"><img src="../photos/jeu_alimentation_photos/plat.png" alt="Plat industriel"></div>
+          <div class="ingredient" id="viande_blanche" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_blanche.png" alt="Viande blanche"></div>
+          <div class="ingredient" id="tofu" draggable="true"><img src="../photos/jeu_alimentation_photos/tofu.png" alt="Tofu"></div>
+        </div>
+      </div>
+  
+      <!-- Féculents -->
+      <div class="category-column">
+        <h2>Féculents</h2>
+        <div id="feculent-list" class="ingredient-list">
+          <div class="ingredient" id="riz" draggable="true"><img src="../photos/jeu_alimentation_photos/riz.png" alt="Riz"></div>
+          <div class="ingredient" id="pain" draggable="true"><img src="../photos/jeu_alimentation_photos/pain.png" alt="Pain"></div>
+          <div class="ingredient" id="pâtes" draggable="true"><img src="../photos/jeu_alimentation_photos/pâtes.png" alt="Pâtes"></div>
+          <div class="ingredient" id="pomme_de_terre" draggable="true"><img src="../photos/jeu_alimentation_photos/pdt.png" alt="Pomme de terre"></div>
+        </div>
+      </div>
+  
+      <!-- Légumes -->
+      <div class="category-column">
+        <h2>Légumes</h2>
+        <div id="legume-list" class="ingredient-list">
+          <div class="ingredient" id="courgette" draggable="true"><img src="../photos/jeu_alimentation_photos/courgette.png" alt="Courgette"></div>
+          <div class="ingredient" id="tomate" draggable="true"><img src="../photos/jeu_alimentation_photos/tomate.png" alt="Tomate"></div>
+        </div>
+      </div>
+  
+      <!-- Assaisonnements -->
+      <div class="category-column">
+        <h2>Assaisonnements</h2>
+        <div class="ingredient" id="sel" draggable="true"><img src="../photos/jeu_alimentation_photos/sel.png" alt="Sel"></div>
+        <div class="ingredient" id="herbes_aromatiques" draggable="true"><img src="../photos/jeu_alimentation_photos/herbes.png" alt="Herbes aromatiques"></div>
+      </div>
+  
+    </div> <!-- FIN .ingredients-container -->
+    <div class="button-wrapper">
+      <button class="btn btn-primary suivant-btn" onclick="validateAndNextStep(2)">Suivant</button>
+    </div>
+  </div> <!-- FIN #step-2 -->
+  
+    
+  <div id="step-3" class="step">
+    <h2>Étape 3 : Choisis un produit laitier</h2>
+    <div class="category-column">
+      <div class="ingredient-list">
+        <div class="ingredient" id="fromages" draggable="true">
+          <img src="../photos/jeu_alimentation_photos/fromage.png" alt="Fromage">
+        </div>
+        <div class="ingredient" id="yaourt" draggable="true">
+          <img src="../photos/jeu_alimentation_photos/yaourt.png" alt="Yaourt">
+        </div>
+      </div>
+    </div>
+    <div class="button-wrapper">
+      <button class="btn btn-primary suivant-btn" onclick="validateAndNextStep(3)">Suivant</button>
+    </div>
+  </div>
+  
+  <div id="step-4" class="step">
+    <h2>Étape 4 : Choisis un dessert</h2>
+    <div class="category-column">
+      <div class="ingredient-list">
+        <div class="ingredient" id="chocolat" draggable="true">
+          <img src="../photos/jeu_alimentation_photos/chocolat.png" alt="Chocolat">
+        </div>
+        <div class="ingredient" id="pomme" draggable="true">
+          <img src="../photos/jeu_alimentation_photos/pomme.png" alt="Pomme">
+        </div>
+        <div class="ingredient" id="poire" draggable="true">
+          <img src="../photos/jeu_alimentation_photos/poire.png" alt="Poire">
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
 
   <div class="plate-container">
     <div class="plate" id="patient-plate">
-      <h3>Assiette du patient</h3>
-      <p>Déposez ici les aliments que vous recommandez</p>
+
+      
+      <h3>Ton assiette</h3>
+      <img src="../photos/jeu_alimentation_photos/assiette.png" alt="Assiette" class="plate-image">
+      <p>Dépose ici les aliments que tu souhaites</p>
     </div>
   </div>
+  
 
-  <button id="check-btn">Vérifier</button>
+  <button id="check-btn" style="display:none;">Vérifier</button>
 
   <div id="feedback" class="feedback"></div>
 

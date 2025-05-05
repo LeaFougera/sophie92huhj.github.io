@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('../photos/conseil/FondParcours.png'); /* adapte le chemin si nécessaire */
+    background-size: auto; /* taille originale de l’image */
+    background-repeat: repeat; /* évite que l’image se répète */
+    background-position: top left; /* positionne l’image en haut à gauche */
+  }
+  
+  .header-top {
+    padding: 30px 20px 10px;
+    text-align: center;
+    background: #f5ebe0;
+    color: #4a536b;
+  }
+  
+  .header-top h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #4a536b;
+  }
+  
+  
+  h1 {
+    color: #4a148c;
+  }
+  
+  .parcours-wrapper {
+    position: relative;
+    width: 600px;
+    height: 900px;
+    margin: 40px auto;
+  }
+  
+  .etape {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    border: 4px solid #ccc;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+    color: black;
+  }
+  
+  .etape:hover {
+    transform: scale(1.1);
+  }
+
+  
+  /* Ligne entre les étapes */
+  .line {
+    stroke: #aaa;
+    stroke-width: 6;
+    stroke-dasharray: 10, 10;
+    stroke-opacity: 0.2;
+    fill: none;
+    stroke-linecap: round;
+    transition: stroke 0.4s ease, stroke-opacity 0.4s ease;
+  }
+  
+  .line {
+    stroke: #d5bdaf; /* Vert uniforme pour tout le parcours */
+    stroke-width: 6;
+    stroke-dasharray: 10, 10;
+    stroke-opacity: 0.6;
+    fill: none;
+    stroke-linecap: round;
+    transition: stroke 0.4s ease, stroke-opacity 0.4s ease;
+  }
+  
+  
+  .completed {
+    stroke-opacity: 1;
+    stroke-width: 6;
+    animation: colorPulse 2.5s ease forwards;
+  }
+  
+  @keyframes colorPulse {
+    from { stroke-opacity: 0.2; }
+    to   { stroke-opacity: 1; }
+  }
+  
+  .info-panel {
+    position: absolute;
+    top: 40px;
+    left: 660px;
+    width: 280px;
+    background: #ffffffcc;
+    border: 2px solid #ccc;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .info-panel h3 {
+    margin-top: 0;
+    color: #9d7a60;
+  }
+  
+  .info-panel p {
+    margin: 6px 0;
+    font-size: 15px;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .image-jeu {
+    position: absolute;
+    width: 180px;     /* largeur augmentée */
+    height: 120px;     /* hauteur un peu réduite pour un effet rectangulaire */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid #aaa;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+  
+  
+  .image-jeu:hover {
+    transform: scale(1.1);
+    border-color: #d5bdaf;
+  }
+  
+  .image-jeu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+
+  .regles-jeux {
+    max-width: 100%;
+    margin: 40px auto 20px auto;
+    padding: 25px 30px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .regles-jeux:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+  
+  .regles-jeux h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #2c3e50;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 8px;
+  }
+  
+  .regles-jeux p {
+    margin-bottom: 12px;
+  }
+  
