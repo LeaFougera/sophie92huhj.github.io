@@ -7,11 +7,24 @@
   <link rel="stylesheet" href="../styles/menu.css" />
 </head>
 <body>
+
+  <!-- Bouton Retour au Parcours en haut à gauche -->
+  <a href="../pages/jeux.html" class="back-button">← Retour au parcours</a>
+
   <div class="container">
-    <h1>🍽️ Menu Spécial Insuffisance Rénale</h1>
+    <h1>Menu Spécial Insuffisance Rénale</h1>
 
     <div id="game">
-    <p id="instructions"></p>
+      <!-- Explication du jeu avec plus de texte espacé -->
+      <div id="game-explanation">
+        <p>Bienvenue dans le jeu ! </p>
+        <p>Votre mission : choisir les repas les plus adaptés pour une alimentation saine en cas d’insuffisance rénale. Pour chaque restaurant, vous devrez sélectionner une entrée, un plat et un dessert.</p>
+        <p>À la fin de chaque repas, nous vous expliquerons pourquoi certains choix sont bons ou à éviter pour protéger vos reins. Essayez de faire les bons choix et de récolter un maximum de points !</p>
+        <p>Rappelez-vous, même si certains choix ne sont pas parfaits, l’essentiel est d’avoir un bon équilibre alimentaire au quotidien. Se faire plaisir de temps en temps, c'est aussi important pour votre bien-être.</p>
+        <p>L’important est de trouver la juste mesure !</p>
+      </div>
+
+      <p id="instructions"></p> <!-- Instructions mises à jour -->
       <h2 id="restaurant-type"></h2>
       <p id="question"></p>
       <div id="choices"></div>
@@ -29,6 +42,7 @@
       <button onclick="restartGame()">Rejouer</button>
     </div>
   </div>
+
   <script src="../scripts/menu.js"></script>
 </body>
 </html>
