@@ -27,6 +27,28 @@ function completer(num, el, couleur) {
   function cacherInfoJeu() {
     document.getElementById("info-panel").style.display = "none";
   }
+
+  // === Étape 1 : Jeu de Liaison (rein3) ===
+  const bestScoreJeu1 = localStorage.getItem("bestScoreJeu1"); // sur 10
+  const etape1 = document.querySelector(".image-jeu[href*='rein3.html']");
+  const ligne1 = document.querySelector(".line.c1");
+  
+  if (bestScoreJeu1 && etape1 && ligne1 && !ligne1.classList.contains("completed")) {
+    completer(1, etape1, "#66bb6a"); // par exemple vert
+  }
+  
+  etape1.addEventListener("mouseenter", () => {
+    afficherInfoJeu(250, 50, {
+      theme: "Fonction rénale",
+      duree: "5 min",
+      type: "Association visuelle",
+      score: bestScoreJeu1 ? `${bestScoreJeu1} / 10` : "Non joué"
+    });
+  });
+  
+  etape1.addEventListener("mouseleave", cacherInfoJeu);
+  
+
   
   // === Étape 2 : Quiz (quiz.html) ===
   const bestScoreQuiz = localStorage.getItem("bestScoreQuiz"); // Exemple : 7
@@ -35,7 +57,7 @@ function completer(num, el, couleur) {
   const ligne2 = document.querySelector(".line.c2");           // ligne 2 → 3 (ajouter class="line c2" dans le SVG si pas encore fait)
   
   if (bestScoreQuiz && maxScoreQuiz && etape2 && ligne2 && !ligne2.classList.contains("completed")) {
-    completer(2, etape2, "#66bb6a"); // Bleu pour quizz
+    completer(2, etape2, "#66bb6a"); 
   }
   
   etape2.addEventListener("mouseenter", () => {
@@ -56,7 +78,7 @@ const etape3 = document.querySelector(".image-jeu[href*='conseils.html']");
 const ligne3 = document.querySelector(".line.c3"); // Assure-toi que ta ligne 3 a bien class="line c3"
 
 if (scoreConseils && etape3 && ligne3 && !ligne3.classList.contains("completed")) {
-  completer(3, etape3, "#66bb6a"); // Vert
+  completer(3, etape3, "#66bb6a"); 
 }
 
 etape3.addEventListener("mouseenter", () => {
