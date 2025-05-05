@@ -209,9 +209,11 @@ function checkAnswer(button, isCorrect) {
 // Fonction pour afficher le score
 function displayScore() {
 
-  localStorage.setItem("bestScoreQuiz", score);
-  localStorage.setItem("maxScoreQuiz", questions.length);
-  
+  const ancienBest = parseInt(localStorage.getItem("bestScoreQuiz")) || 0;
+  if (score > ancienBest) {
+    localStorage.setItem("bestScoreQuiz", score);
+  }  
+
   // Cacher le quiz (question et réponses)
   document.getElementById("quiz-container").classList.add("hidden");
 

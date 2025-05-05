@@ -8,7 +8,10 @@
 /* Style du body avec un fond doux */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-image: url('../photos/conseil/FondParcours.png'); /* adapte le chemin si nécessaire */
+  background-size: auto; /* taille originale de l’image */
+  background-repeat: repeat; /* évite que l’image se répète */
+  background-position: top left; /* positionne l’image en haut à gauche */
   text-align: center;
   padding: 50px;
   /* Centrer le contenu de la page */

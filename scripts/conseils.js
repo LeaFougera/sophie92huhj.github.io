@@ -114,12 +114,12 @@ function startClassificationPhase(selectedPairs) {
   sortingZone.classList.remove("hidden");
 
   sortingZone.innerHTML = `
-    <h2>🔍 Dans quelle colonne va ce conseil ?</h2>
+    <h2 id="classification-title">🔍 Dans quelle colonne va ce conseil ?</h2>
     <!-- Affichage du conseil à placer en dessous de la question -->
     <div id="phrase-zone" class="choices"></div>
     <div id="answer-buttons">
-      <button id="choose-good">✅ Bon conseil</button>
-      <button id="choose-bad">❌ Faux bon conseil</button>
+      <button id="choose-good">Bon conseil</button>
+      <button id="choose-bad">Faux bon conseil</button>
     </div>
     
     <!-- Colonnes de classement -->
@@ -232,19 +232,32 @@ function applyColors() {
 
 function showScore() {
   document.getElementById("answer-buttons").classList.add("hidden");
+  document.getElementById("classification-title").classList.add("hidden");
+
   phraseZone.classList.add("hidden");
 
   if (partie === 1) {
     scorePartie1 = score;
-    resultEl.textContent = `🎯 Score : ${scorePartie1} / ${shuffledItems.length} (partie 1)`;
+    resultEl.innerHTML = `
+      🎯 <strong>Score de la 1ère partie :</strong> ${scorePartie1} / ${shuffledItems.length}
+    `;
+    resultEl.classList.remove("hidden");
   } else {
     scorePartie2 = score;
     const total = scorePartie1 + scorePartie2;
-    resultEl.textContent = `🎯 Score total : ${total} / 20`;
-    
-    // (optionnel) enregistrer dans localStorage :
-    localStorage.setItem("scoreConseils", total);
+    resultEl.innerHTML = `
+      🎯 <strong>Score de la 2ème partie :</strong> ${scorePartie2} / ${shuffledItems.length}<br><br><br>
+      🏁 <strong>Score total :</strong> ${total} / 20
+    `;
+    resultEl.classList.remove("hidden");
+    const ancienScore = parseInt(localStorage.getItem("scoreConseils")) || 0;
+     if (total > ancienScore) {
+       localStorage.setItem("scoreConseils", total);
+     }
+
   }
+  
+  
 
   document.getElementById("back-home-btn-container").classList.add("hidden");
 
@@ -265,7 +278,7 @@ function showScore() {
   if (errors.length === 0 && partie === 2) {
     document.getElementById("back-home-btn-container").classList.remove("hidden");
     document.getElementById("back-home-btn").onclick = function() {
-      window.location.href = "/pages/jeux.html"; // Chemin absolu plus fiable
+      window.location.href = "/pages/jeux2.html"; // Chemin absolu plus fiable
     };
   }
 }
@@ -316,7 +329,7 @@ function showNextError() {
       // Afficher le bouton Retour seulement après avoir vu toutes les erreurs
       document.getElementById("back-home-btn-container").classList.remove("hidden");
       document.getElementById("back-home-btn").onclick = function() {
-        window.location.href = "/pages/jeux.html"; // Chemin absolu plus fiable
+        window.location.href = "/pages/jeux2.html"; // Chemin absolu plus fiable
       };
     }
   }
