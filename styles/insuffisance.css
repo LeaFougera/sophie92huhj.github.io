@@ -6,24 +6,25 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Arial, sans-serif;
     background: #edede9;
     color: #333;
-    line-height: 1.6;
 }
 
-/* EN-TÊTE */
+/* En-tête */
 .header-top {
-    padding: 40px 20px 20px;
+    padding: 30px 20px 10px;
     text-align: center;
-    background: linear-gradient(135deg, #f5ebe0, #f8f4e5);
-    color: #3a3a3a;
-    border-bottom: 1px solid #ddd;
+    background: #f5ebe0;
+    color: #4a536b;
 }
+
 .header-top h1 {
-    font-size: 30px;
-    color: #2c2c2c;
+    margin: 0;
+    font-size: 28px;
+    color: #4a536b;
 }
+
 
 /* TITRES */
 h2, h3 {
