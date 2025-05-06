@@ -1,8 +1,22 @@
-/* Reset pour les marges et paddings */
+/* Reset global */
 * {
-  margin: 30px;
-  padding: 0px;
+  margin: 10px;
+  padding: 0;
   box-sizing: border-box;
+}
+
+/* Supprime les marges pour le popup uniquement */
+#result-screen,
+#result-screen * {
+  margin: 0 !important;
+}
+
+/* Structure de base */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -16,6 +30,20 @@ body {
   padding: 20px;
 }
 
+/* Désactive le scroll quand popup ouverte */
+body.noscroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Floute ou masque le fond quand popup ouverte */
+#main-content.dimmed {
+  visibility: hidden; /* ou filter: blur(4px); */
+  pointer-events: none;
+}
+
+/* Bouton retour */
 .back-button {
   position: absolute;
   top: 20px;
@@ -38,89 +66,107 @@ body {
 .container {
   text-align: center;
   padding: 40px;
+  overflow: hidden;
 }
 
-/* Style du titre */
+/* Titre */
 h1 {
+  margin-top: 40px;
   margin-bottom: 25px;
   color: #4a536b;
+  text-align: center;
 }
 
-/* Explication du jeu */
-.intro {
+#game-explanation {
+  background-color: #fdfaf6;
+  border: 1px solid #e0dcd2;
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin: 0 auto 30px auto;
   max-width: 800px;
-  margin: 0 auto 40px auto;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #4a536b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
-/* Espacement des paragraphes dans l'explication */
-#game-explanation p {
-  margin-bottom: 0px;
-}
-
-/* Style des titres */
+/* Titres */
 h2 {
   font-size: 26px;
   margin-bottom: 20px;
   color: #4a536b;
 }
 
-/* Choix des questions */
+/* Question */
 #question {
   font-size: 18px;
   margin-bottom: 20px;
 }
 
-/* Style des boutons de choix */
-/* Style des boutons de choix */
+/* Choix des boutons */
 #choices {
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Réduit l'espace entre les boutons */
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 #choices button {
   background-color: #d5bdaf;
   border: 2px solid transparent;
-  padding: 8px 20px; /* Réduire le padding pour que les boutons soient plus compacts */
+  padding: 10px 20px;
   border-radius: 12px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  margin-bottom: 5px; /* Ajoute une petite marge entre les boutons */
+  color: #4a536b;
 }
 
 #choices button:hover {
-  background-color: #d5bdaf;
   transform: translateY(-3px);
 }
 
-#choices button:hover {
-  background-color: #d5bdaf;
-  transform: translateY(-3px);
-}
-
-/* Résultats de chaque restaurant */
-#result-screen {
+/* Résultat final */
+#score-screen {
   display: none;
+  font-size: 20px;
 }
 
+/* Popup overlay */
+#result-screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Popup centrée */
+#result-screen .popup-content {
+  background-color: #fefcfb;
+  padding: 60px;
+  border-radius: 16px;
+  max-width: 600px;
+  max-height: 80vh;
+  width: 100%;
+  text-align: center;
+  overflow-y: auto;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Détail des résultats */
 #result-details {
-  margin-bottom: 20px;
-  text-align: left;
+  margin-bottom: 30px;
 }
 
-/* Bouton "Restaurant suivant" */
+/* Bouton suivant */
 #next-btn {
   background-color: #d5bdaf;
   color: #4a536b;
   border: none;
-  padding: 12px 25px;
+  padding: 14px 30px;
   font-size: 18px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -129,13 +175,48 @@ h2 {
   background-color: #d5bdaf;
 }
 
-/* Score final */
-#score-screen {
-  display: none;
-  font-size: 20px;
-}
-
-/* Cacher les éléments invisibles */
+/* Cache les sections */
 .hidden {
   display: none;
+}
+
+.result-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.result-choices {
+  text-align: left;
+}
+
+.result-block {
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.result-item {
+  margin: 0;
+}
+
+.result-explanation {
+  margin: 6px 0 0 0;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+
+.result-score {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#main-content.dimmed {
+  visibility: hidden;
+  pointer-events: none;
 }
