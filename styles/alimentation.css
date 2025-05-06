@@ -262,3 +262,12 @@ body {
     font-size: 1.25em;
     color: #4a536b;
 }
+
+
+.etiquette-section {
+    background-color: #fefcfb; /* ou un beige clair, ou #fffef5, à ajuster selon ton goût */
+    padding: 40px 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin: 40px 0;
+}
