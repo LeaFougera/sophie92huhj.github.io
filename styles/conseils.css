@@ -36,6 +36,8 @@ h1 {
   display: flex;
   align-items: center;
   gap: 12px;
+  justify-content: center; /* centrer les éléments enfants dans le flex */
+  text-align: center;  
 }
 
 p {
@@ -43,6 +45,8 @@ p {
   font-size: 1.05rem;
   margin-bottom: 20px;
   line-height: 1.7;
+  justify-content: center; /* centrer les éléments enfants dans le flex */
+  text-align: center;  
 }
 
 #countdown {
@@ -295,6 +299,23 @@ li {
   border: 1.5px solid #f2b1b1 !important;
 }
 
+#error-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* fond assombri */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;      /* 👈 commence en haut */
+  overflow-y: auto;
+  padding: 60px 20px;           /* ✅ marge haut et bas */
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -316,7 +337,10 @@ li {
   width: 90%;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
+
+  margin: 60px auto; /* ✅ ajoute de l’espace en haut et en bas */
 }
+
 
 .modal-content p {
   font-size: 1.1rem;
@@ -419,4 +443,75 @@ li {
 #choose-bad:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+#classification-title {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;         /* Centre le bloc dans la page */
+  text-align: center;        /* Centre le texte dans le bloc */
+  font-size: 1.8rem;
+  color: #10003a;            /* Comme dans ta capture */
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.explication-img {
+  display: block;
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  margin: 20px auto 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.phrase-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 20px 0;
+  flex-wrap: wrap; /* pour que ça passe bien sur petit écran */
+}
+
+.phrase-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  text-align: center;
+}
+
+.classement-img {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-group button {
+  padding: 14px 22px;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #4a536b;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.btn-group button:hover {
+  background-color: #2f364d;
 }
