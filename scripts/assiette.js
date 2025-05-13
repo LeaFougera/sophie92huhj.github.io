@@ -13,7 +13,7 @@ const alimentData = {
   pain: { bon: true, category: 'féculent', score_proteine: 0, score_sel: 0 },
   poisson_blanc: { bon: true, category: 'protéine', score_proteine: 1, score_sel: 0 },
   huile_olive: { bon: true, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
-  chocolat: { bon: false, category: 'dessert', score_proteine: 0, score_sel: 0 },
+  vanille: { bon: false, category: 'dessert', score_proteine: 0, score_sel: 0 },
   pomme: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   poire: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   charcuterie: { bon: false, category: 'protéine', score_proteine: 1, score_sel: 1 },
@@ -27,24 +27,40 @@ const alimentData = {
   yaourt_0: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   fromage: { bon: false, category: 'dessert', score_proteine: 0, score_sel: 1 },
   fruit: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
-  chocolat: { bon: false, category: 'dessert', score_proteine: 0, score_sel: 0 },
-  
-  
   poivre: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
   mayo: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
   moutarde: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 1 },
   ketchup: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
   haricots: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
+  melon: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
+  salade: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
+  tofu_nature: { bon: true, category: 'protéine', score_proteine: 1, score_sel: 0 },
+  pdt: { bon: false, category: 'féculent', score_proteine: 0, score_sel: 0 },
+  pain: { bon: false, category: 'féculent', score_proteine: 0, score_sel: 1 },
+  tomate: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
+
+
+
 
 };
 
 let alimentsChoisis = [];
 
+let categoriesChoisies = {
+  entree: false,
+  protéine: false,
+  féculent: false,
+  légume: false,
+  assaisonnements: false,
+  dessert: false
+};
+
+let erreurs = 0;
 
 // Drag start
 ingredients.forEach(ingredient => {
   ingredient.addEventListener('dragstart', (e) => {
-    e.dataTransfer.setData('text', ingredient.id); // on force à utiliser le parent .ingredient
+    e.dataTransfer.setData('text', ingredient.id);
   });
 });
 
@@ -62,88 +78,73 @@ plate.addEventListener('drop', (e) => {
   e.preventDefault();
   const id = e.dataTransfer.getData('text');
   const ingredient = document.getElementById(id);
-
   if (!ingredient) return;
-  
+
   const category = alimentData[id]?.category;
 
-  // Ajoute l’ingrédient dans l’assiette
+  // Ajouter clone à l’assiette
   const clone = ingredient.cloneNode(true);
   clone.setAttribute('draggable', false);
   clone.style.margin = '5px';
   plate.appendChild(clone);
 
-  // Supprime de la liste originale
+  // Supprimer de la source
   ingredient.remove();
 
-  // Ajoute à la liste des aliments choisis
+  // Ajouter aux aliments choisis
   alimentsChoisis.push(id);
 
+  // Marquer la catégorie comme choisie
+  if (category) {
+    categoriesChoisies[category] = true;
+  }
+
+  // Masquer le texte d’aide dans l’assiette
   plate.querySelector('p').style.display = 'none';
 
-  const step3Visible = document.getElementById('step-3')?.style.display === 'block';
-  if (step3Visible && category === 'dessert') {
-    document.getElementById('check-btn').style.display = 'block';
-  }
+  // Afficher bouton validation si en étape 3 et dessert ajouté
+  const step3Visible = document.getElementById('step-3')?.classList.contains('active');
+  if (step3Visible) {
+    checkBtn.style.display = 'block';
+  }  
 });
 
+// Bouton de vérification
 checkBtn.addEventListener('click', () => {
-  window.location.href = "resultat_assiette.html";
+  let totalProteine = 0;
+  let totalSel = 0;
 
-  // Vérifier si toutes les catégories ont été choisies
-  ['entree', 'protéine', 'féculent', 'légume', 'assaisonnements', 'dessert'].forEach(category => {
-    if (!categoriesChoisies[category]) {
-      categoriesManquantes.push(category);
-    }
-  });
-
-  // Si une catégorie manque, donner un message
-  if (categoriesManquantes.length > 0) {
-    feedback.innerHTML += `<p style="color: red;">Il manque des aliments dans les catégories suivantes : ${categoriesManquantes.join(', ')}</p>`;
-    erreurs++;
-  }
-
-  // Vérification des choix d'aliments
   alimentsChoisis.forEach(id => {
-    if (!alimentData[id].bon) {
-      erreurs++;
-      feedback.innerHTML += `<p>❌ ${document.getElementById(id)?.textContent || id} n’est pas recommandé. Essayez plutôt : <strong>${alimentData[id].suggestion}</strong>.</p>`;
-    } else {
-      feedback.innerHTML += `<p>✅ ${document.getElementById(id)?.textContent || id} est un bon choix !</p>`;
+    const aliment = alimentData[id];
+    if (aliment) {
+      totalProteine += aliment.score_proteine || 0;
+      totalSel += aliment.score_sel || 0;
     }
   });
 
-  if (erreurs === 0) {
-    feedback.innerHTML += "<p style='color: green; font-weight: bold;'>Bravo ! Tous les aliments sont adaptés !</p>";
-  } else {
-    feedback.innerHTML += `<p style='color: red; font-weight: bold;'>Vous avez ${erreurs} erreur(s). Essayez de faire mieux !</p>`;
-  }
+  // Enregistre les scores dans le localStorage pour la page de résultat
+  localStorage.setItem('score_proteine', totalProteine);
+  localStorage.setItem('score_sel', totalSel);
+
+  // Redirection vers la page de résultats
+  window.location.href = 'resultat_assiette.html';
 });
 
-
-let categoriesChoisies = {
-  entree: false,
-  protéine: false,
-  féculent: false,
-  légume: false,
-  laitier: false,
-  dessert: false
-};
-
-
+// Navigation entre étapes
 function nextStep(current) {
   const currentStep = document.getElementById(`step-${current}`);
   const next = document.getElementById(`step-${current + 1}`);
   if (currentStep && next) {
     currentStep.style.display = 'none';
     next.style.display = 'block';
+    next.classList.add('active');
   }
 }
 
 function validateAndNextStep(current) {
   if (alimentsChoisis.length === 0) {
     alert("Veuillez ajouter au moins un aliment dans l'assiette avant de continuer !");
-    return; // On ne fait rien si l'assiette est vide
+    return;
   }
-  nextStep(current); // Sinon on passe normalement à l'étape suivante
+  nextStep(current);
 }

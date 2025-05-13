@@ -2,10 +2,45 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Résultats Assiette</title>
+  <title>Résultat de l'assiette</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .score { font-size: 20px; margin: 10px 0; }
+    .resultat { font-weight: bold; font-size: 22px; margin-top: 20px; }
+  </style>
 </head>
 <body>
-  <h1>Résultats assiette</h1>
+  <h1>Résultat de l’assiette</h1>
+
+  <div class="score" id="score-proteine"></div>
+  <div class="score" id="score-sel"></div>
+  <div class="resultat" id="resultat-final"></div>
+
+  <script>
+    const proteine = parseInt(localStorage.getItem('score_proteine'), 10) || 0;
+    const sel = parseInt(localStorage.getItem('score_sel'), 10) || 0;
+
+    document.getElementById('score-proteine').textContent = `Score protéines : ${proteine}`;
+    document.getElementById('score-sel').textContent = `Score sel : ${sel}`;
+
+    // Interprétation simple (ajuste à ta logique si besoin)
+    let message = '';
+
+    if (proteine <= 1 && sel <= 1) {
+      message = '🥇 Excellent choix alimentaire !';
+    } else if (sel > 1) {
+      message = '⚠️ Attention, trop de sel dans l’assiette.';
+    } else if (proteine === 0) {
+      message = '⚠️ Il manque des protéines.';
+    } else {
+      message = '👌 Assiette correcte, mais peut être améliorée.';
+    }
+
+    document.getElementById('resultat-final').textContent = message;
+
+    // Nettoyage
+    localStorage.removeItem('score_proteine');
+    localStorage.removeItem('score_sel');
+  </script>
 </body>
 </html>
