@@ -148,3 +148,20 @@ function validateAndNextStep(current) {
   }
   nextStep(current);
 }
+
+
+
+document.getElementById("start-assiette-btn").addEventListener("click", function() {
+  // Cacher l'introduction
+  document.getElementById("intro-wrapper").style.display = "none";
+  
+  // Afficher la première étape
+  document.getElementById("step-1").style.display = "block";
+
+  // Afficher l'assiette (plate-container)
+  document.querySelector(".plate-container").style.display = "block";
+
+  document.body.style.display = "block";
+  document.body.style.alignItems = "";
+  document.body.style.justifyContent = "";
+});
