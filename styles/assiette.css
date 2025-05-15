@@ -10,11 +10,6 @@ body {
   background-color: #fdfaf6;
   color: #4a536b;
 
-  display: flex;
-  justify-content: center;     /* Centrage horizontal */
-  align-items: center;         /* Centrage vertical */
-  height: 100vh;               /* Prend toute la hauteur de la fenêtre */
-  margin: 0;
 }
 
 
@@ -199,21 +194,24 @@ ul li {
 }
 
 .button-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* pour s'assurer qu'il reste au-dessus */
 }
 
 .suivant-btn {
   padding: 10px 20px;
+  font-size: 18px; 
   font-weight: bold;
   border-radius: 8px;
   background-color: #BDA18A;
   color: white;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  /*transition: background-color 0.3s ease;*/
 }
+
 
 .suivant-btn:hover {
   background-color: #a58a70;
@@ -303,3 +301,15 @@ ul li {
   z-index: 1000;                 /* au-dessus du reste */
 }
 
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: none;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+}

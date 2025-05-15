@@ -1,4 +1,16 @@
+function formatAlimentName(id) {
+  return id
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, char => char.toUpperCase());
+}
+
+
 const ingredients = document.querySelectorAll('.ingredient');
+ingredients.forEach(ingredient => {
+  const id = ingredient.id;
+  ingredient.title = formatAlimentName(id);
+});
+
 const plate = document.getElementById('patient-plate');
 const feedback = document.getElementById('feedback');
 const checkBtn = document.getElementById('check-btn');
@@ -85,6 +97,8 @@ plate.addEventListener('drop', (e) => {
   // Ajouter clone à l’assiette
   const clone = ingredient.cloneNode(true);
   clone.setAttribute('draggable', false);
+  clone.title = formatAlimentName(id);
+
   clone.style.margin = '5px';
   plate.appendChild(clone);
 
@@ -164,4 +178,30 @@ document.getElementById("start-assiette-btn").addEventListener("click", function
   document.body.style.display = "block";
   document.body.style.alignItems = "";
   document.body.style.justifyContent = "";
+
+
 });
+
+
+const tooltip = document.getElementById('tooltip');
+
+document.querySelectorAll('.ingredient').forEach(ingredient => {
+  const id = ingredient.id;
+  const name = formatAlimentName(id);
+
+  ingredient.addEventListener('mouseover', (e) => {
+    tooltip.innerText = name;
+    tooltip.style.display = 'block';
+  });
+
+  ingredient.addEventListener('mousemove', (e) => {
+    tooltip.style.left = e.pageX + 15 + 'px';
+    tooltip.style.top = e.pageY + 15 + 'px';
+  });
+
+  ingredient.addEventListener('mouseleave', () => {
+    tooltip.style.display = 'none';
+  });
+});
+
+
