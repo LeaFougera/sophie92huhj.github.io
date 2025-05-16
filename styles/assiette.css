@@ -179,18 +179,19 @@ ul li {
   bottom: 20px;
   right: 20px;
   padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #4a536b;
+  font-size: 18px; 
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: #BDA18A;
   color: white;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
+  z-index: 1000; /* Pour qu'il soit au-dessus des autres éléments si besoin */
 }
 
+
 #check-btn:hover {
-  background-color: #3c4458;
+  background-color: #a58a70;
 }
 
 .button-wrapper {
