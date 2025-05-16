@@ -49,9 +49,7 @@ const alimentData = {
   pdt: { bon: false, category: 'féculent', score_proteine: 0, score_sel: 0 },
   pain: { bon: false, category: 'féculent', score_proteine: 0, score_sel: 1 },
   tomate: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
-
-
-
+  conserve_petit_pois: { bon: true, category: 'légume', score_proteine: 0, score_sel: 1 },
 
 };
 
