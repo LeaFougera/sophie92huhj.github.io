@@ -1,3 +1,4 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +7,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #edede9;
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    background-image: url('../photos/conseil/FondParcours.png'); 
+    background-size: auto; /* taille originale de l’image */
+    background-repeat: repeat; /* évite que l’image se répète */
+    background-position: top left; /* positionne l’image en haut à gauche */
+}
+
+
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* En-tête */
@@ -20,7 +30,101 @@ body {
 }
 
 .header-top h1 {
-    margin: 0;
     font-size: 28px;
     color: #4a536b;
 }
+
+.content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    color: #2d3142;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.content h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #1d3557;
+}
+
+.content p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Grille de cartes */
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Carte */
+/* Cartes de ressource */
+.resource-card {
+    background: #f5ebe0;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #2d3142;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 4px solid transparent; /* on personnalise ensuite */
+}
+
+.resource-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* un peu plus prononcé */
+}
+
+
+/* Image */
+.resource-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+/* Titre */
+.resource-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #264653;
+}
+
+/* Description */
+.resource-card p {
+    font-size: 14px;
+    line-height: 1.3;
+    margin-bottom: 0;
+}
+
+/* Bordures colorées par carte */
+.border-green-lime { border-color: #80b918; }
+.border-blue-electric { border-color: #4895ef; }
+.border-red-coral { border-color: #e63946; }
+.border-purple-bright { border-color: #9d4edd; }
+.border-orange-bold { border-color: #f77f00; }
+.border-yellow-safran { border-color: #f9c74f; }
+.border-rose-light { border-color: #d62828; }
+.border-indigo-soft { border-color: #560bad; }
+.border-turquoise { border-color: #00b4d8; }
+
+.bg-green-lime { background-color: #f3fae3; }    /* Vert très pâle */
+.bg-blue-electric { background-color: #e7f1fe; }  /* Bleu clair */
+.bg-red-coral { background-color: #ffecec; }      /* Rouge très clair */
+.bg-purple-bright { background-color: #f3e9fd; }  /* Violet pâle */
+.bg-orange-bold { background-color: #fff3e0; }    /* Orange doux */
+.bg-yellow-safran { background-color: #fffbe0; }  /* Jaune clair */
+.bg-rose-light { background-color: #ffe5ec; }     /* Rose doux (remplace marron) */
+.bg-indigo-soft { background-color: #f0ebfa; }    /* Indigo doux */
+.bg-turquoise { background-color: #e0f7fa; }       /* Bleu turquoise pâle */
