@@ -8,7 +8,7 @@ function formatAlimentName(id) {
 const ingredients = document.querySelectorAll('.ingredient');
 ingredients.forEach(ingredient => {
   const id = ingredient.id;
-  ingredient.title = formatAlimentName(id);
+  
 });
 
 const plate = document.getElementById('patient-plate');
@@ -30,11 +30,10 @@ const alimentData = {
   poire: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   charcuterie: { bon: false, category: 'protéine', score_proteine: 1, score_sel: 1 },
   pâtes: { bon: true, category: 'féculent', score_proteine: 0, score_sel: 0 },
-  fromages: { bon: false, category: 'protéine', score_proteine: 1, score_sel: 1 },
   plat_industriel: { bon: false, category: 'protéine', score_proteine: 1, score_sel: 1 },
   viande_blanche: { bon: true, category: 'protéine', score_proteine: 1, score_sel: 0 },
   herbes_aromatiques: { bon: true, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
-  carottes_rape: { bon: true, category: 'entree', score_proteine: 0, score_sel: 0 },
+  carottes_rap: { bon: true, category: 'entree', score_proteine: 0, score_sel: 0 },
   chips: { bon: false, category: 'entree', score_proteine: 0, score_sel: 1 },
   yaourt_0: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   fromage: { bon: false, category: 'dessert', score_proteine: 0, score_sel: 1 },
@@ -97,7 +96,6 @@ plate.addEventListener('drop', (e) => {
   // Ajouter clone à l’assiette
   const clone = ingredient.cloneNode(true);
   clone.setAttribute('draggable', false);
-  clone.title = formatAlimentName(id);
 
   clone.style.margin = '5px';
   plate.appendChild(clone);
