@@ -17,7 +17,7 @@ const checkBtn = document.getElementById('check-btn');
 
 // Base de données des aliments
 const alimentData = {
-  viande: { bon: false, category: 'protéine', score_proteine: 1, score_sel: 0 },
+  viande_rouge: { bon: false, category: 'protéine', score_proteine: 1, score_sel: 0 },
   oeuf: { bon: true, category: 'protéine', score_proteine: 1, score_sel: 0 },
   sel: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 1 },
   courgette: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
@@ -25,7 +25,6 @@ const alimentData = {
   pain: { bon: true, category: 'féculent', score_proteine: 0, score_sel: 0 },
   poisson_blanc: { bon: true, category: 'protéine', score_proteine: 1, score_sel: 0 },
   huile_olive: { bon: true, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
-  vanille: { bon: false, category: 'dessert', score_proteine: 0, score_sel: 0 },
   pomme: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   poire: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   charcuterie: { bon: false, category: 'protéine', score_proteine: 1, score_sel: 1 },
@@ -35,11 +34,10 @@ const alimentData = {
   herbes_aromatiques: { bon: true, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
   carottes_rap: { bon: true, category: 'entree', score_proteine: 0, score_sel: 0 },
   chips: { bon: false, category: 'entree', score_proteine: 0, score_sel: 1 },
-  yaourt_0: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
+  yaourt: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   fromage: { bon: false, category: 'dessert', score_proteine: 0, score_sel: 1 },
-  fruit: { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
   poivre: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
-  mayo: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
+  mayonnaise: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
   moutarde: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 1 },
   ketchup: { bon: false, category: 'assaisonnements', score_proteine: 0, score_sel: 0 },
   haricots: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
@@ -50,6 +48,8 @@ const alimentData = {
   pain: { bon: false, category: 'féculent', score_proteine: 0, score_sel: 1 },
   tomate: { bon: true, category: 'légume', score_proteine: 0, score_sel: 0 },
   conserve_petit_pois: { bon: true, category: 'légume', score_proteine: 0, score_sel: 1 },
+  creme_vanille : { bon: true, category: 'dessert', score_proteine: 0, score_sel: 0 },
+
 
 };
 
