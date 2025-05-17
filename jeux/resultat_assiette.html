@@ -80,6 +80,25 @@
         display: none;
       }
     }
+
+    .section-resultats, .info-message {
+  padding: 0 20px;
+  text-align: left;
+  color: #4a536b;
+}
+
+.section-resultats h1,
+.info-message h3 {
+  margin-top: 30px;
+  color: #4a536b;
+}
+
+.score, .resultat, .info-message p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
   </style>
 </head>
 <body>
@@ -92,6 +111,16 @@
     <div class="resultat" id="resultat-final"></div>
   </div>
 
+  <div class="info-message">
+    <h3>🍽️ Petit rappel utile !</h3>
+    <p>Il est recommandé d’avoir <strong>une source de protéines</strong> et <strong>une source de sel</strong><strong> maximum par jour</strong> pour maintenir un bon équilibre alimentaire.</p>
+    <p>💡 Si ce repas dépasse un peu… pas de panique ! Il suffira simplement <strong>d’ajuster les prochains repas</strong> de la journée.</p>
+    <p>👉 L’important, c’est l’<strong>équilibre sur l’ensemble de la journée</strong>, pas la perfection à chaque bouchée.</p>
+    <p>📄 Besoin d’un résumé rapide ?<br>
+    Consulte la <strong>fiche réflexe</strong> juste en dessous pour faire les bons choix en un clin d’œil ! </p>
+  </div>
+
+
   <!-- Fiche Réflexe -->
   <div class="container">
     <h1>Fiche Réflexe – Construire un repas équilibré</h1>
@@ -102,6 +131,9 @@
       <button onclick="window.print()">🖨️ Imprimer</button>
       <a href="../pages/jeux2.html">Retour au parcours</a>
     </div>
+
+
+
   </div>
 
   <script>
@@ -114,15 +146,16 @@
 
     let message = '';
     if (proteine <= 1 && sel <= 1) {
-      message = '🥇 Excellent choix alimentaire !';
-    } else if (sel > 1) {
-      message = '⚠️ Attention, trop de sel dans l’assiette.';
-    } else if (proteine === 0) {
-      message = '⚠️ Il manque des protéines.';
-    } else {
-      message = '👌 Assiette correcte, mais peut être améliorée.';
-    }
-
+  message = '🥇 Excellent choix alimentaire !';
+} else if (proteine <= 1 && sel > 1) {
+  message = '⚠️ Protéines OK, mais trop de sel dans l’assiette.';
+} else if (proteine > 1 && sel <= 1) {
+  message = '⚠️ Sel OK, mais trop de protéines dans l’assiette.';
+} else if (proteine > 1 && sel > 1) {
+  message = '⚠️ Attention, trop de protéines et trop de sel dans l’assiette.';
+} else {
+  message = 'Assiette correcte, mais peut être améliorée.';
+}
     document.getElementById('resultat-final').textContent = message;
 
     // Nettoyage

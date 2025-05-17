@@ -315,4 +315,70 @@ button:hover {
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     text-align: center;
   }
+
+
+/* Style pour la consigne (game-introduction) */
+.game-introduction {
+    background-color: #e3d5ca;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
   
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto; /* CENTRE HORIZONTALEMENT */
+  }
+  
+  
+  .game-introduction h1 {
+    color: black;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .game-introduction p {
+    color: black;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  /* Style du bouton "Commencer le quiz" */
+  #start-liaison-btn {
+    background-color: #d5bdaf;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 50px;
+  }
+  
+  #start-liaison-btn {
+    background-color: #d5bdaf;
+  }
+  
+  
+  .game {
+    display: none;
+  }
+
+  
+  .intro-wrapper {
+    position: fixed;               /* superposé à tout le reste */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  
+    display: flex;
+    justify-content: flex-start;   /* aligné à gauche */
+    align-items: center;           /* centré verticalement */
+  
+    /*padding-left: 15vw;            /* décale vers la droite */
+    background-color: #fdfaf6;     /* même fond que le reste */
+    z-index: 1000;                 /* au-dessus du reste */
+  }
