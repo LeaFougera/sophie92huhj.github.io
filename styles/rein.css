@@ -1,15 +1,17 @@
-/* Styles spécifiques à la page Le Rein */
+/* Reset général */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Corps de la page */
 body {
     font-family: Arial, sans-serif;
-    background: #edede9;
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    background-image: url('../photos/conseil/FondParcours.png');
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: top left;
 }
 
 /* En-tête */
@@ -26,94 +28,200 @@ body {
     color: #4a536b;
 }
 
-
-/* Contenu principal */
+/* Conteneur principal */
 .content {
-    padding: 40px 8%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    color: #2d3142;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Titres */
+.content h3 {
+    font-size: 18px;
+    color: #1d3557;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+/* Cartes des causes */
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr)); /* Colonnes flexibles */
+    gap: 70px; /* Espacement réduit au minimum */
+    margin: 20px auto 30px;
+    width: fit-content; /* Le conteneur s'adapte au contenu */
+}
+
+
+/* Style des cartes */
+.activity-card {
+    width: 250px;
+    background: #f5ebe0;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Sections en deux colonnes */
-.split-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
+.activity-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
 }
 
-.split-box {
-    background-color: #e8e3dd;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    flex: 1 1 45%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
+.activity-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
 
-/* effet d’apparition */
-.split-box.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* effet de survol */
-.split-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-
-
-/* Titres de sections */
-.content h2 {
-    font-size: 22px;
-    color: #3d3d3d;
-    margin-bottom: 16px;
-}
-
-/* Texte général */
-.desc {
+.activity-card p {
     font-size: 16px;
-    line-height: 1.6;
-    color: #4a4a4a;
-    text-align: left;
+    color: #264653;
+    margin: 0;
 }
 
-/* Image centrée */
-.image-center {
+/* Transition pour les paragraphes */
+.transition-paragraph {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2d3142;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 6px solid #d5bdaf;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: justify;
+}
+
+.transition-paragraph:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    background-color: #ede5df;
+}
+
+.transition-paragraph strong {
+    font-weight: bold;
+    color: #1d3557;
+}
+
+/* Schéma du rein */
+.schema-rein {
+    margin-top: 40px;
     text-align: center;
-    margin: 40px 0;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-.image-center img {
-    max-width: 320px;
-    border-radius: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+.schema-rein h3 {
+    font-size: 22px;
+    color: #264653;
+    margin-bottom: 20px;
 }
 
-/* Liste stylée */
-ul.desc {
-    list-style: none;
-    padding-left: 0;
+.img-rein {
+    max-width: 70%; /* Réduit la taille de l'image à 70% de son conteneur */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-ul.desc li::before {
-    content: "🔹";
-    margin-right: 10px;
-    color: #4a536b;
+.rein-facts {
+    margin-top: 30px;
 }
 
-/* Animation fade-in (appliquée en JS) */
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+/* Grille des cartes dans la section des fonctions du rein */
+.rein-functions {
+    text-align: center;
+    margin-top: 40px;
 }
 
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+.rein-functions h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #264653;
+}
+
+/* Style des cartes de chaque item */
+.activity-card {
+    width: 250px; /* Largeur fixe des cartes */
+    background: #f5ebe0;
+    border-radius: 12px;
+    padding: 10px 8px 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.activity-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.activity-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 10%;
+}
+
+.activity-card p {
+    font-size: 16px;
+    color: #264653;
+    margin: 0;
+}
+
+/* Couleurs de fond des cartes */
+.activity-border-green-lime {
+    border: 2px solid #80b918;
+    background-color: #f3fae3;
+}
+
+.activity-border-blue-electric {
+    border: 2px solid #4895ef;
+    background-color: #e7f1fe;
+}
+
+.activity-border-red-coral {
+    border: 2px solid #e63946;
+    background-color: #ffecec;
+}
+
+.activity-border-purple-bright {
+    border: 2px solid #9d4edd;
+    background-color: #f3e9fd;
 }

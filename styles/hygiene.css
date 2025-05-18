@@ -342,6 +342,7 @@ body {
     border-radius: 12px; /* Coins arrondis pour un effet moderne et doux */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Une ombre subtile pour donner du relief */
     transition: all 0.3s ease; /* Ajoute une animation fluide lors du survol */
+    text-align: justify;
 }
 
 /* Au survol, un léger effet d'ombrage et d'agrandissement */
