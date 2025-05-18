@@ -218,8 +218,14 @@ body {
 }
 
 .img-stades {
-    max-width: 70%;
+    max-width: 70%; 
     height: auto;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-stades:hover {
+    transform: translateY(-5px); /* Décale légèrement l'image vers le haut */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
 }

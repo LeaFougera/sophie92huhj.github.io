@@ -128,3 +128,29 @@ body {
 .bg-rose-light { background-color: #ffe5ec; }     /* Rose doux (remplace marron) */
 .bg-indigo-soft { background-color: #f0ebfa; }    /* Indigo doux */
 .bg-turquoise { background-color: #e0f7fa; }       /* Bleu turquoise pâle */
+
+/* Transition pour les paragraphes */
+.transition-paragraph {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2d3142;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 6px solid #d5bdaf;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.transition-paragraph:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    background-color: #ede5df;
+}
+
+.transition-paragraph strong {
+    font-weight: bold;
+    color: #1d3557;
+}

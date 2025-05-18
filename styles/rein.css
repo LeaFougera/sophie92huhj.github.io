@@ -144,11 +144,18 @@ body {
 }
 
 .img-rein {
-    max-width: 70%; /* Réduit la taille de l'image à 70% de son conteneur */
+    max-width: 70%;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.img-rein:hover {
+    transform: translateY(-5px); /* Décale légèrement l'image vers le haut */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+}
+
 
 .rein-facts {
     margin-top: 30px;
