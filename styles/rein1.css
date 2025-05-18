@@ -266,3 +266,12 @@ button:hover {
   background-color: #d5bdaf;
 }
 
+.my-button {
+  background-color: #d5bdaf;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}

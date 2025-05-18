@@ -24,8 +24,8 @@ const alimentData = {
   herbes_aromatiques: { bon: true, category: 'assaisonnements' },
   carottes_rape: { bon: true, category: 'entree' },
   chips: { bon: false, suggestion: "Carottes râpées à l’huile d’olive", category: 'entree' },
-  yaourt_0: { bon: true, category: 'laitier' },
-  fromage: { bon: false, suggestion: "Yaourt 0%", category: 'laitier' },
+  yaourt_0: { bon: true, category: 'dessert' },
+  fromage: { bon: false, suggestion: "Yaourt 0%", category: 'dessert' },
   fruit: { bon: true, category: 'dessert' },
   chocolat: { bon: false, suggestion: "Un fruit frais", category: 'dessert' },
 
@@ -75,8 +75,8 @@ plate.addEventListener('drop', (e) => {
 
   plate.querySelector('p').style.display = 'none';
 
-  const step4Visible = document.getElementById('step-4')?.style.display === 'block';
-  if (step4Visible && category === 'dessert') {
+  const step3Visible = document.getElementById('step-3')?.style.display === 'block';
+  if (step3Visible && category === 'dessert') {
     document.getElementById('check-btn').style.display = 'block';
   }
 });
@@ -85,7 +85,7 @@ checkBtn.addEventListener('click', () => {
   window.location.href = "resultat_assiette.html";
 
   // Vérifier si toutes les catégories ont été choisies
-  ['entree', 'protéine', 'féculent', 'légume', 'assaisonnements', 'laitier', 'dessert'].forEach(category => {
+  ['entree', 'protéine', 'féculent', 'légume', 'assaisonnements', 'dessert'].forEach(category => {
     if (!categoriesChoisies[category]) {
       categoriesManquantes.push(category);
     }

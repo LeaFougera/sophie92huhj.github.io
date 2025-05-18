@@ -116,14 +116,25 @@ const scoreScreen = document.getElementById('score-screen');
 const finalScore = document.getElementById('final-score');
 const totalScore = document.getElementById('total-score');
 
+function shuffleArray(array) {
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
 
 function startGame() {
   score = 0;
   currentRestaurantIndex = 0;
   step = 0;
   userChoices = [];
+
+  // 🧼 Assure que tout est bien réinitialisé
   resultScreen.classList.add("hidden");
+  resultScreen.style.display = ""; // reset display
   scoreScreen.classList.add("hidden");
+  scoreScreen.style.display = "";
+
   document.getElementById('game').style.display = 'block';
   showQuestion();
 }
@@ -133,11 +144,11 @@ function showQuestion() {
   const menuType = step === 0 ? 'entree' : step === 1 ? 'plat' : 'dessert';
   const question = step === 0 ? "Choisis une entrée :" : step === 1 ? "Choisis un plat :" : "Choisis un dessert :";
 
-  restaurantType.textContent = `Restaurant ${restaurant.type}`;
+  restaurantType.textContent = `Restaurant ${currentRestaurantIndex + 1}/${restaurants.length} – ${restaurant.type}`;
   questionText.textContent = question;
   choicesDiv.innerHTML = "";
 
-  restaurant.menu[menuType].forEach((option, index) => {
+  shuffleArray(restaurant.menu[menuType]).forEach((option, index) => {
     const btn = document.createElement('button');
     btn.textContent = option.text;
     btn.onclick = () => selectChoice(menuType, option);
@@ -146,6 +157,7 @@ function showQuestion() {
 }
 
 function selectChoice(type, option) {
+  console.log("Choix fait :", option.text);
   userChoices.push({ type, ...option });
 
   if (step < 2) {
@@ -157,31 +169,39 @@ function selectChoice(type, option) {
 }
 
 function showResults() {
+  console.log("Résultats affichés");
+
   let correctCount = userChoices.filter(choice => choice.correct).length;
-  let scoreIncrement = 0;
-
-  // Attribuer 1 point si au moins 2 choix sont bons
-  if (correctCount >= 2) {
-    scoreIncrement = 1;
-  }
-
+  let scoreIncrement = correctCount >= 2 ? 1 : 0;
   score += scoreIncrement;
 
+  document.body.classList.add('noscroll');
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) {
+    mainContent.classList.add('dimmed');
+  }
   document.getElementById('game').style.display = 'none';
+
   resultScreen.classList.remove('hidden');
+  resultScreen.style.display = 'flex';
+  scoreScreen.style.display = 'none';
+
   resultDetails.innerHTML = `
-    <ul style="text-align:left;">
+    <h2 class="result-title">Évaluation de ton menu</h2>
+    <div class="result-choices">
       ${userChoices.map(choice => `
-        <li>
-          <strong>${choice.type.toUpperCase()} :</strong> ${choice.text} 
-          <span style="color:${choice.correct ? 'green' : 'red'};">
-            (${choice.correct ? 'Adapté' : 'Peu adapté'})
-          </span><br/>
-          <em>${choice.explanation}</em>
-        </li>
+        <div class="result-block">
+          <p class="result-item">
+            <strong>${choice.type.toUpperCase()} :</strong> ${choice.text}
+            <span class="${choice.correct ? 'correct' : 'incorrect'}">
+              (${choice.correct ? 'Adapté' : 'Peu adapté'})
+            </span>
+          </p>
+          <p class="result-explanation"><em>${choice.explanation}</em></p>
+        </div>
       `).join('')}
-    </ul>
-    <p><strong>${correctCount}/3</strong> bonnes réponses pour ce restaurant.</p>
+    </div>
+    <p class="result-score"><strong>${correctCount}/3</strong> bonnes réponses pour ce restaurant.</p>
   `;
 }
 
@@ -189,10 +209,19 @@ nextBtn.onclick = () => {
   currentRestaurantIndex++;
   step = 0;
   userChoices = [];
+  resultDetails.innerHTML = "";
+  resultScreen.style.display = 'none';
+  document.body.classList.remove('noscroll');
+
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) {
+    mainContent.classList.remove('dimmed');
+  }
+
+  document.getElementById('game').style.display = 'block'; // ✅ << CETTE LIGNE MANQUAIT ICI
 
   if (currentRestaurantIndex < restaurants.length) {
     resultScreen.classList.add("hidden");
-    document.getElementById('game').style.display = 'block';
     showQuestion();
   } else {
     showFinalScore();
@@ -210,4 +239,4 @@ function restartGame() {
   startGame();
 }
 
-startGame();
+  startGame();
