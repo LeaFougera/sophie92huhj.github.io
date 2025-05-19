@@ -28,7 +28,7 @@ function completer(num, el, couleur) {
     document.getElementById("info-panel").style.display = "none";
   }
 
-  // === Étape 1 : Jeu de Liaison (rein3) ===
+  // === Étape 1 : Jeu de Liaison (rein3.html) ===
   const bestScoreJeu1 = localStorage.getItem("bestScoreJeu1"); // sur 10
   const etape1 = document.querySelector(".image-jeu[href*='rein3.html']");
   const ligne1 = document.querySelector(".line.c1");
@@ -38,7 +38,7 @@ function completer(num, el, couleur) {
   }
   
   etape1.addEventListener("mouseenter", () => {
-    afficherInfoJeu(250, 50, {
+    afficherInfoJeu(300, 50, {
       theme: "Fonction rénale",
       duree: "5 min",
       type: "Association visuelle",
@@ -50,18 +50,18 @@ function completer(num, el, couleur) {
   
 
   
-  // === Étape 2 : Quiz (quiz.html) ===
+  // === Étape 3 : Quiz (quiz.html) ===
   const bestScoreQuiz = localStorage.getItem("bestScoreQuiz"); // Exemple : 7
-  const maxScoreQuiz = localStorage.getItem("maxScoreQuiz");   // Exemple : 10
-  const etape2 = document.getElementById("etape2");            // à ajouter dans ton HTML
-  const ligne2 = document.querySelector(".line.c2");           // ligne 2 → 3 (ajouter class="line c2" dans le SVG si pas encore fait)
+  const maxScoreQuiz = 10;
+  const etape3 = document.getElementById("etape3");            // à ajouter dans ton HTML
+  const ligne3 = document.querySelector(".line.c3");           // ligne 2 → 3 (ajouter class="line c2" dans le SVG si pas encore fait)
   
-  if (bestScoreQuiz && maxScoreQuiz && etape2 && ligne2 && !ligne2.classList.contains("completed")) {
-    completer(2, etape2, "#66bb6a"); 
+  if (bestScoreQuiz && maxScoreQuiz && etape3 && ligne3 && !ligne3.classList.contains("completed")) {
+    completer(3, etape3, "#66bb6a"); 
   }
   
-  etape2.addEventListener("mouseenter", () => {
-    afficherInfoJeu(120, 750, {  // top: 120px, left: 750px
+  etape3.addEventListener("mouseenter", () => {
+    afficherInfoJeu(60, 750, {  // top: 120px, left: 750px
       theme: "Causes et Symptômes",
       duree: "5 min",
       type: "Quiz",
@@ -70,19 +70,19 @@ function completer(num, el, couleur) {
   });
   
   
-  etape2.addEventListener("mouseleave", cacherInfoJeu);
+  etape3.addEventListener("mouseleave", cacherInfoJeu);
 
-  // === Étape 3 : Jeu de Conseils (conseils.html) ===
+  // === Étape 4 : Jeu de Conseils (conseils.html) ===
 const scoreConseils = localStorage.getItem("scoreConseils"); // sur 20
-const etape3 = document.querySelector(".image-jeu[href*='conseils.html']");
-const ligne3 = document.querySelector(".line.c3"); // Assure-toi que ta ligne 3 a bien class="line c3"
+const etape4 = document.querySelector(".image-jeu[href*='conseils.html']");
+const ligne4 = document.querySelector(".line.c4");
 
-if (scoreConseils && etape3 && ligne3 && !ligne3.classList.contains("completed")) {
-  completer(3, etape3, "#66bb6a"); 
+if (scoreConseils && etape4 && ligne4 && !ligne4.classList.contains("completed")) {
+  completer(4, etape4, "#66bb6a"); 
 }
 
-etape3.addEventListener("mouseenter", () => {
-  afficherInfoJeu(120, 850, {
+etape4.addEventListener("mouseenter", () => {
+  afficherInfoJeu(300, 50, {
     theme: "Hygiène de vie",
     duree: "5 min",
     type: "Mémoire & Tri",
@@ -90,24 +90,24 @@ etape3.addEventListener("mouseenter", () => {
   });
 });
 
-etape3.addEventListener("mouseleave", cacherInfoJeu);
+etape4.addEventListener("mouseleave", cacherInfoJeu);
 
-  // === Étape 4 : Jeu de Mémoire (rein1.html) ===
-const bestScoreJeu4 = localStorage.getItem("bestScoreJeu4"); // sur 12
-const etape4 = document.querySelector(".image-jeu[href*='rein1.html']");
-const ligne4 = document.querySelector(".line.c4");
+  // === Étape 5 : Jeu de Mémoire (rein1.html) ===
+const bestScoreJeu5 = localStorage.getItem("bestScoreJeu5"); // sur 12
+const etape5 = document.querySelector(".image-jeu[href*='rein1.html']");
+const ligne5 = document.querySelector(".line.c5");
 
-if (bestScoreJeu4 && etape4 && ligne4 && !ligne4.classList.contains("completed")) {
-  completer(4, etape4, "#66bb6a");
+if (bestScoreJeu5 && etape5 && ligne5 && !ligne5.classList.contains("completed")) {
+  completer(5, etape5, "#66bb6a");
 }
 
-etape4.addEventListener("mouseenter", () => {
-  afficherInfoJeu(600,700, {
+etape5.addEventListener("mouseenter", () => {
+  afficherInfoJeu(300,50, {
     theme: "Système urinaire",
     duree: "5 min",
     type: "Mémoire & Association",
-    score: bestScoreJeu4 ? `${bestScoreJeu4} / 12` : "Non joué"
+    score: bestScoreJeu5 ? `${bestScoreJeu5} / 12` : "Non joué"
   });
 });
 
-etape4.addEventListener("mouseleave", cacherInfoJeu);
+etape5.addEventListener("mouseleave", cacherInfoJeu);
