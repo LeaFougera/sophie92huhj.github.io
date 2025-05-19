@@ -8,10 +8,11 @@
 /* Corps de la page */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../photos/conseil/FondParcours.png');
+    
     background-size: auto;
     background-repeat: repeat;
     background-position: top left;
+    background: #EDEDE9;
 }
 
 /* En-tête */
@@ -33,7 +34,7 @@ body {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
-    background: #ffffff;
+    background: #ede5df;
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
     color: #2d3142;

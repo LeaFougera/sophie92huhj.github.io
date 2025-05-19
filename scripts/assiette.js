@@ -201,3 +201,28 @@ document.querySelectorAll('.ingredient').forEach(ingredient => {
 });
 
 
+    // Résultat assiette
+    const proteine = parseInt(localStorage.getItem('score_proteine'), 10) || 0;
+    const sel = parseInt(localStorage.getItem('score_sel'), 10) || 0;
+
+    document.getElementById('score-proteine').textContent = `Score protéines : ${proteine}`;
+    document.getElementById('score-sel').textContent = `Score sel : ${sel}`;
+
+    let message = '';
+    if (proteine <= 1 && sel <= 1) {
+  message = '🥇 Excellent choix alimentaire !';
+} else if (proteine <= 1 && sel > 1) {
+  message = '⚠️ Protéines OK, mais trop de sel dans l’assiette.';
+} else if (proteine > 1 && sel <= 1) {
+  message = '⚠️ Sel OK, mais trop de protéines dans l’assiette.';
+} else if (proteine > 1 && sel > 1) {
+  message = '⚠️ Attention, trop de protéines et trop de sel dans l’assiette.';
+} else {
+  message = 'Assiette correcte, mais peut être améliorée.';
+}
+    document.getElementById('resultat-final').textContent = message;
+
+    // Nettoyage
+    localStorage.removeItem('score_proteine');
+    localStorage.removeItem('score_sel');
+
