@@ -162,20 +162,44 @@ function startGame() {
 
 function showQuestion() {
   const restaurant = restaurants[currentRestaurantIndex];
-  const menuType = step === 0 ? 'entree' : step === 1 ? 'plat' : 'dessert';
-  const question = step === 0 ? "Choisis une entrée :" : step === 1 ? "Choisis un plat :" : "Choisis un dessert :";
-
   restaurantType.textContent = `Restaurant ${currentRestaurantIndex + 1}/${restaurants.length} – ${restaurant.type}`;
-  questionText.textContent = question;
-  choicesDiv.innerHTML = "";
 
-  shuffleArray(restaurant.menu[menuType]).forEach((option, index) => {
-    const btn = document.createElement('button');
+  renderChoices('entree', restaurant.menu.entree);
+  renderChoices('plat', restaurant.menu.plat);
+  renderChoices('dessert', restaurant.menu.dessert);
+
+  userChoices = { entree: null, plat: null, dessert: null };
+  updateValidateButton();
+}
+
+function renderChoices(type, options) {
+  const container = document.getElementById(`choices-${type}`);
+  container.innerHTML = "";
+  options.forEach((option, index) => {
+    const btn = document.createElement("button");
     btn.textContent = option.text;
-    btn.onclick = () => selectChoice(menuType, option);
-    choicesDiv.appendChild(btn);
+    btn.onclick = () => {
+      userChoices[type] = { type, ...option };
+      highlightSelected(container, btn);
+      updateValidateButton();
+    };
+    container.appendChild(btn);
   });
 }
+
+function highlightSelected(container, selectedButton) {
+  [...container.children].forEach(btn => btn.classList.remove("selected"));
+  selectedButton.classList.add("selected");
+}
+
+function updateValidateButton() {
+  const allSelected = userChoices.entree && userChoices.plat && userChoices.dessert;
+  document.getElementById("validate-btn").disabled = !allSelected;
+}
+
+document.getElementById("validate-btn").onclick = () => {
+  showResults();
+};
 
 function selectChoice(type, option) {
   console.log("Choix fait :", option.text);
@@ -192,7 +216,8 @@ function selectChoice(type, option) {
 function showResults() {
   console.log("Résultats affichés");
 
-  let correctCount = userChoices.filter(choice => choice.correct).length;
+  const allChoices = [userChoices.entree, userChoices.plat, userChoices.dessert];
+  let correctCount = allChoices.filter(choice => choice.correct).length;
   let scoreIncrement = correctCount >= 2 ? 1 : 0;
   score += scoreIncrement;
 
@@ -210,7 +235,7 @@ function showResults() {
   resultDetails.innerHTML = `
     <h2 class="result-title">Évaluation de ton menu</h2>
     <div class="result-choices">
-      ${userChoices.map(choice => `
+      ${allChoices.map(choice => `
         <div class="result-block">
           <p class="result-item">
             <strong>${choice.type.toUpperCase()} :</strong> ${choice.text}

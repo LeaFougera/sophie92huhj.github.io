@@ -28,8 +28,21 @@
 
         <p id="instructions"></p>
         <h2 id="restaurant-type"></h2>
-        <p id="question"></p>
-        <div id="choices"></div>
+        <div id="menu-questions">
+          <div class="menu-section">
+            <p class="question">Choisis une entrée :</p>
+            <div id="choices-entree" class="choices-group"></div>
+          </div>
+          <div class="menu-section">
+            <p class="question">Choisis un plat :</p>
+            <div id="choices-plat" class="choices-group"></div>
+          </div>
+          <div class="menu-section">
+            <p class="question">Choisis un dessert :</p>
+            <div id="choices-dessert" class="choices-group"></div>
+          </div>
+        </div>
+        <button id="validate-btn">Valider mon menu</button>
       </div>
 
       <div id="score-screen" class="hidden">
