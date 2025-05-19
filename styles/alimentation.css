@@ -31,6 +31,7 @@ body {
     color: #4a536b;
 }
 
+
 .card-container {
     display: flex;
     gap: 20px; /* Espacement entre les cartes */
@@ -151,7 +152,7 @@ body {
 /* Section globale */
 .reflexes-section-v2 {
     padding: 3em 1.5em;
-    background: #edede9;
+    background: #f0e9e0;
 }
 
 /* Titre de section */
@@ -441,3 +442,43 @@ body {
     margin-bottom: 80px;
   }
   
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f0e9e0;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  color: #2d3142;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+
+/* Transition pour les paragraphes */
+.transition-paragraph {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #2d3142;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 6px solid #d5bdaf;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: justify;
+}
+
+.transition-paragraph:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  background-color: #e3d5ca;
+}
+
+.transition-paragraph strong {
+  font-weight: bold;
+  color: #1d3557;
+}

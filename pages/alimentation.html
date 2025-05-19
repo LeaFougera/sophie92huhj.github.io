@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../styles/alimentation.css">
 </head>
 <body>
-
+  
     <div class="header-top">
         <h1>Alimentation</h1>
         <br>
@@ -17,7 +17,7 @@
     <div id="navbar-placeholder"></div>
 
 
-
+    <div class="container">
     <section class="reflexes-section-v2">
         <h2>Top 3 des bons réflexes pour bien gérer son alimentation</h2>
         <div class="reflexes-list">
@@ -106,25 +106,18 @@
     </div>
     
     
-      
-<div class="encadres-container">
-            <!-- Premier encadré avec ampoule -->
-    <div class="encadre">
-        <h3><span class="ampoule-icon">💡</span> Le saviez-vous ?</h3>
-        <h3 class="phrase-title">Le sel a plusieurs noms !</h3>
-        <p>Le sel que vous trouvez sur les étiquettes ne s’appelle pas toujours "sel" ! Il peut aussi être mentionné sous le nom chlorure de sodium (NaCl) ou encore sous forme de sodium (Na). </p>
-        <p>1 g de sodium = 2,5 g de sel ! Alors, ouvrez l'œil en lisant les étiquettes.</p>
-    </div>
-        
-            <!-- Deuxième encadré -->
-    <div class="encadre">
-        <h3><span class="ampoule-icon">💡</span> Le saviez-vous ?</h3>
-        <h3 class="phrase-title">Boire trop d’eau gazeuse peut être déconseillé pour vos reins !</h3>
-        <p>Certaines eaux gazeuses contiennent beaucoup de sodium, ce qui peut les fatiguer.
-            Privilégiez l’eau plate ou une eau pauvre en sodium (moins de 20 mg/L), et pensez à varier les types d’eau : eau de source, eau minérale, eau gazeuse, ou eau du robinet.
-    </div>
+<div class="rein-facts">
+  <br><p class="transition-paragraph">
+      <strong>Le saviez-vous ?</strong> Le sel a plusieurs noms !<br> Le sel que vous trouvez sur les étiquettes ne s’appelle pas toujours "sel" ! Il peut aussi être mentionné sous le nom chlorure de sodium (NaCl) ou encore sous forme de sodium (Na). 
+      <br>1 g de sodium = 2,5 g de sel ! Alors, ouvrez l'œil en lisant les étiquettes.</p>
+  </p>
+
+  <br><p class="transition-paragraph">
+      <strong>Le saviez-vous ?</strong> Boire trop d’eau gazeuse peut être déconseillé pour vos reins ! <br> Certaines eaux gazeuses contiennent beaucoup de sodium, ce qui peut les fatiguer.
+          Privilégiez l’eau plate ou une eau pauvre en sodium (moins de 20 mg/L), et pensez à varier les types d’eau : eau de source, eau minérale, eau gazeuse, ou eau du robinet.
+  </p>
 </div>
-    
+
     <script>
         document.querySelectorAll('.reflex-toggle').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -137,5 +130,6 @@
 
 
     <script src="../scripts/barre-navigation.js"></script>
+  </div> 
 </body>
 </html>
