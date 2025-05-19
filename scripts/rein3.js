@@ -345,21 +345,4 @@ function shuffleDefinitions(partClass) {
     definitions.forEach(def => container.appendChild(def));
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const startButton = document.getElementById("start-liaison-btn");
-    const introWrapper = document.getElementById("intro-wrapper");
-  
-    if (startButton) {
-      startButton.addEventListener("click", function () {
-        // Cache l'intro
-        introWrapper.style.display = "none";
-  
-        // Affiche le reste du jeu
-        document.querySelector(".container").style.display = "block";
-      });
-    }
-  
-    // Facultatif : cacher le jeu au départ
-    document.querySelector(".container").style.display = "none";
-  });
-  
+

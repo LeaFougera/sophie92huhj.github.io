@@ -29,10 +29,12 @@
       <p>Lis bien les définitions et pense à leur lien avec les images.</p> 
       <p>Prêt à relever le défi ? C’est parti !</p>
       <button id="start-liaison-btn">Commencer le jeu</button>
+
+      <a href="../pages/jeux2.html" id="backButton">← Retour au parcours</a>
     </div>
   </div>
   
-  <a href="../pages/jeux2.html" id="backButton">← Retour au parcours</a>
+  
   <div class="container">
     <h1>Jeu de Liaison</h1>
 
@@ -111,6 +113,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Si tu utilises flexbox pour la classe .game, assure-toi que c'est bien en flex.
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const startBtn = document.getElementById('start-liaison-btn');
+    const introWrapper = document.getElementById('intro-wrapper');
+    const container = document.querySelector('.container');
+  
+    startBtn.addEventListener('click', () => {
+      // Cacher l'intro
+      introWrapper.style.display = 'none';
+  
+      // Afficher toute la partie jeu
+      container.style.display = 'block';
+    });
+  });
 
 
     </script>

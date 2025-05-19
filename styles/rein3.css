@@ -13,13 +13,13 @@ body {
 }
 
 .container {
-    position: relative; /* 👈 ajoute ceci */
+    position: relative; 
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
-    background: #fff;
+    background: transparent;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 h1 {
@@ -47,7 +47,16 @@ p {
 .column h2 {
     text-align: center;
     margin-bottom: 15px;
+    color: #4a536b;
+    text-decoration: underline;
 }
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #4a536b;
+}
+
 
 .item {
     border: 2px solid #BDA18A;
@@ -185,7 +194,7 @@ button:hover {
     white-space: pre-wrap;
     font-size: 16px;
     line-height: 1.6;
-    color: #333;
+    color: #4a536b;
 }
 
 /* Nouveau style pour les messages d'erreur */
@@ -379,6 +388,11 @@ button:hover {
     align-items: center;           /* centré verticalement */
   
     /*padding-left: 15vw;            /* décale vers la droite */
-    background-color: #fdfaf6;     /* même fond que le reste */
+    background-color: transparent;     /* même fond que le reste */
     z-index: 1000;                 /* au-dessus du reste */
+  }
+
+
+  .container {
+    display: none;
   }
