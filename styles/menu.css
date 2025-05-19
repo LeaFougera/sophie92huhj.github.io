@@ -79,14 +79,15 @@ h1 {
 }
 
 #game-explanation {
-  background-color: #fdfaf6;
+  background-color: #e3d5ca;
   border: 1px solid #e0dcd2;
   border-radius: 12px;
-  padding: 25px 30px;
-  margin: 0 auto 30px auto;
-  max-width: 800px;
+  padding: 40px 50px; /* plus de padding */
+  margin: 0 auto 40px auto;
+  max-width: 1000px; /* agrandir la largeur */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   text-align: center;
+  font-size: 18px; /* taille de police de base plus grande */
 }
 
 /* Titres */
@@ -144,7 +145,7 @@ h2 {
 
 /* Popup centrée */
 #result-screen .popup-content {
-  background-color: #fefcfb;
+  background-color: #ffffff;
   padding: 60px;
   border-radius: 16px;
   max-width: 600px;
@@ -183,33 +184,59 @@ h2 {
 
 .result-title {
   text-align: center;
-  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 60px; /* plus d'espace sous le titre */
 }
 
 .result-choices {
   text-align: left;
+  margin-bottom: 40px; /* espace avant le score */
 }
 
 .result-block {
-  margin-bottom: 24px;
-  line-height: 1.6;
+  margin-bottom: 30px;  /* plus de marge entre les blocs */
+  line-height: 1.8;     /* plus d’interligne */
 }
 
 .result-item {
   margin: 0;
+  margin-bottom: 10px;
 }
 
 .result-explanation {
-  margin: 6px 0 0 0;
+  margin: 10px 0 0 0;   /* espace avant l'explication */
+  font-style: italic;
+  color: #4a536b;
 }
 
-.correct {
-  color: green;
+.result-score {
+  margin-top: 50px;     /* espace avant le bouton */
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.incorrect {
-  color: red;
+#next-btn {
+  margin-top: 20px;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  border: none;
+  padding: 16px 36px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
+
+#next-btn:hover {
+  background-color: #cbb09e;
+}
+
+
 
 .result-score {
   margin-top: 30px;
@@ -236,16 +263,19 @@ h2 {
 #validate-btn {
   background-color: #d5bdaf;
   color: #4a536b;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 28px;
   border: none;
-  padding: 14px 30px;
-  font-size: 18px;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  margin-top: 30px;
 }
 
 #validate-btn:hover {
-  background-color: #cdb2a4;
+  background-color: #d5bdaf;
 }
 
 #validate-btn:disabled {
@@ -263,14 +293,15 @@ h2 {
 
 .menu-section {
   flex: 1;
-  min-width: 250px;
-  max-width: 300px;
-  background-color: #fdfaf6;
+  min-width: 320px;          /* largeur minimum augmentée */
+  max-width: 420px;          /* largeur max aussi */
+  background-color: #e3d5ca;
   border: 1px solid #e0dcd2;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 40px;             /* plus de padding = plus gros */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
   text-align: center;
+  font-size: 22px;  
 }
 
 .question {
@@ -284,22 +315,34 @@ h2 {
   gap: 8px;
 }
 
-#choices button {
+.choice-button {
+  display: block;
+  width: 100%;
+  padding: 18px 24px;
+  margin: 12px 0;
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: #EDEDE9;
+  color: #4a536b;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.choice-button:hover {
+  background-color: #f1ece6;
+}
+
+.choice-button.selected {
   background-color: #d5bdaf;
   color: #4a536b;
-  border: 2px solid transparent;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.2s;
+  font-weight: bold;
+  border: 2px solid #d5bdaf;
 }
 
-#choices button:hover,
-.choices-group button:hover {
-  background-color: #cdb2a4;
-}
-
-.choices-group button.selected {
-  border: 2px solid #4a536b;
+#game-explanation p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 12px;
 }

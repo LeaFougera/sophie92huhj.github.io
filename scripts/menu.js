@@ -39,26 +39,7 @@ const restaurants = [
       ]
     }
   },
-  {
-    type: "Indien",
-    menu: {
-      entree: [
-        { text: "Samosas aux légumes", correct: true, explanation: "Adapté, attention à la sauce qui peut être riche en sel." },
-        { text: "Pakoras frits", correct: true, explanation: "Adapté, attention à la sauce qui peut être riche en sel." },
-        { text: "Soupe lentilles (dal)", correct: true, explanation: "Adapté." }
-      ],
-      plat: [
-        { text: "Curry de légumes doux", correct: true, explanation: "Adapté." },
-        { text: "Poulet tikka masala", correct: false, explanation: "Riche en protéines." },
-        { text: "Agneau vindaloo", correct: false, explanation: "Riche en protéines." }
-      ],
-      dessert: [
-        { text: "Lassi nature", correct: true, explanation: "Yaourt dilué, peu salé, bon choix en petite quantité." },
-        { text: "Gulab jamun", correct: true, explanation: "Adapté." },
-        { text: "Halwa aux noix", correct: true, explanation: "Adapté." }
-      ]
-    }
-  },
+
   {
     type: "Français",
     menu: {
@@ -175,15 +156,53 @@ function showQuestion() {
 function renderChoices(type, options) {
   const container = document.getElementById(`choices-${type}`);
   container.innerHTML = "";
-  options.forEach((option, index) => {
+
+  const shuffledOptions = shuffleArray([...options]);
+
+  shuffledOptions.forEach(option => {
     const btn = document.createElement("button");
+    btn.className = "choice-button";
     btn.textContent = option.text;
+
+    // Marquer comme sélectionné si déjà choisi
+    if (userChoices[type] && userChoices[type].text === option.text) {
+      btn.classList.add("selected");
+    }
+
     btn.onclick = () => {
       userChoices[type] = { type, ...option };
-      highlightSelected(container, btn);
+
+      // ❗ Supprimer "renderChoices()" ici pour éviter le re-render
+      // ➕ Mettre à jour la sélection manuellement
+      [...container.children].forEach(child => child.classList.remove("selected"));
+      btn.classList.add("selected");
+
       updateValidateButton();
     };
+
     container.appendChild(btn);
+  });
+}
+
+function renderSection(type, containerId) {
+  const sectionDiv = document.getElementById(containerId);
+  sectionDiv.innerHTML = ""; // reset
+
+  restaurants[currentRestaurantIndex].menu[type].forEach(item => {
+    const btn = document.createElement("button");
+    btn.className = "choice-button";
+    btn.textContent = item.text;
+
+    if (userChoices[type] && userChoices[type].text === item.text) {
+      btn.classList.add("selected");
+    }
+
+    btn.onclick = () => {
+      userChoices[type] = { type, ...item };
+      renderSection(type, containerId); // re-render to update selected state
+    };
+
+    sectionDiv.appendChild(btn);
   });
 }
 
@@ -217,10 +236,66 @@ function showResults() {
   console.log("Résultats affichés");
 
   const allChoices = [userChoices.entree, userChoices.plat, userChoices.dessert];
-  let correctCount = allChoices.filter(choice => choice.correct).length;
-  let scoreIncrement = correctCount >= 2 ? 1 : 0;
+
+  // 🏷️ Tags pour détection sel/protéines
+  const protSelTags = {
+    "Pizza 4 fromages": "sel",
+    "Osso buco": "prot",
+    "Poulet caramélisé": "prot",
+    "Canard laqué": "prot",
+    "Filet de poisson vapeur": "prot",
+    "Boeuf bourguignon": "prot",
+    "Chili con carne": "prot",
+    "Burrito au fromage": "sel",
+    "Cheeseburger": "sel_prot",
+    "Double steak burger": "prot",
+    "Wrap Veggie fromage": "sel",
+    "Charcuterie italienne": "sel_prot",
+    "Rillettes de porc": "sel_prot",
+    "Oeuf mayonnaise": "prot",
+    "Frites": "sel",
+    "Nuggets de poulet": "prot",
+    "Tacos frits": "sel_prot",
+    "Soupe miso": "sel"
+  };
+
+  const tagValues = {
+    "prot": 1,
+    "sel": 1,
+    "sel_prot": 2
+  };
+
+  let imbalanceCount = 0;
+  let adviceMessage = "";
+
+  allChoices.forEach(choice => {
+    const tag = protSelTags[choice.text];
+    if (tag) imbalanceCount += tagValues[tag] || 0;
+  });
+
+  // 🎯 Calcul du score selon le niveau de déséquilibre
+  let scoreIncrement = 0;
+  if (imbalanceCount === 0) {
+    scoreIncrement = 3;
+  } else if (imbalanceCount === 1) {
+    scoreIncrement = 2;
+  } else {
+    scoreIncrement = 1;
+  }
+
   score += scoreIncrement;
 
+  // 💬 Message si plat déséquilibré
+  const platTag = protSelTags[userChoices.plat?.text];
+  if (platTag === "prot") {
+    adviceMessage = "⚠️ Ce plat est riche en protéines. Essayez d’équilibrer avec un repas végétarien pour le prochain repas.";
+  } else if (platTag === "sel") {
+    adviceMessage = "⚠️ Ce plat est riche en sel. Pensez à un repas plus pauvre en sel au prochain repas.";
+  } else if (platTag === "sel_prot") {
+    adviceMessage = "⚠️ Ce plat est très riche en sel et en protéines. À compenser avec un repas très léger ensuite.";
+  }
+
+  // 🎨 Affichage des résultats
   document.body.classList.add('noscroll');
   const mainContent = document.getElementById('main-content');
   if (mainContent) {
@@ -237,17 +312,13 @@ function showResults() {
     <div class="result-choices">
       ${allChoices.map(choice => `
         <div class="result-block">
-          <p class="result-item">
-            <strong>${choice.type.toUpperCase()} :</strong> ${choice.text}
-            <span class="${choice.correct ? 'correct' : 'incorrect'}">
-              (${choice.correct ? 'Adapté' : 'Peu adapté'})
-            </span>
-          </p>
+          <p class="result-item"><strong>${choice.type.toUpperCase()} :</strong> ${choice.text}</p>
           <p class="result-explanation"><em>${choice.explanation}</em></p>
         </div>
       `).join('')}
     </div>
-    <p class="result-score"><strong>${correctCount}/3</strong> bonnes réponses pour ce restaurant.</p>
+    <p class="result-score"><strong>${scoreIncrement}/2</strong> points pour ce restaurant.</p>
+    ${adviceMessage ? `<p class="result-advice">${adviceMessage}</p>` : ""}
   `;
 }
 
