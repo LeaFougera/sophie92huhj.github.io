@@ -3,19 +3,19 @@ const restaurants = [
     type: "Italien",
     menu: {
       entree: [
-        { text: "Bruschetta tomate-basilic", correct: true, explanation: "Faible en potassium et en sel, bon choix en entrée." },
-        { text: "Charcuterie italienne", correct: false, explanation: "Très salée et riche en protéines, à limiter." },
-        { text: "Salade au parmesan", correct: false, explanation: "Le parmesan est riche en sel et en phosphore." }
+        { text: "Bruschetta tomate-basilic", correct: true, explanation: "Adapté." },
+        { text: "Charcuterie italienne", correct: false, explanation: "Riche en sel et protéines, max 150g de charcuterie / semaine." },
+        { text: "Salade au parmesan", correct: true, explanation: "Adapté, attention à la quantité de parmesan qui est un fromage très salé." }
       ],
       plat: [
-        { text: "Lasagnes végétariennes", correct: true, explanation: "Plus pauvres en protéines animales et modérées en potassium." },
-        { text: "Pizza 4 fromages", correct: false, explanation: "Trop salée, trop de produits laitiers riches en phosphore." },
-        { text: "Osso buco", correct: false, explanation: "Viande rouge, riche en protéines et potassium." }
+        { text: "Lasagnes végétariennes", correct: true, explanation: "Adapté." },
+        { text: "Pizza 4 fromages", correct: false, explanation: "Riche en sel." },
+        { text: "Osso buco", correct: false, explanation: "Riche en protéines." }
       ],
       dessert: [
-        { text: "Panna cotta maison", correct: true, explanation: "Peu riche en potassium si préparée sans lait concentré." },
-        { text: "Tiramisu", correct: false, explanation: "Crème et café, trop riche en phosphore et potassium." },
-        { text: "Fromage", correct: false, explanation: "Riche en sel et en phosphore, à limiter." }
+        { text: "Panna cotta maison", correct: true, explanation: "Adapté." },
+        { text: "Tiramisu", correct: true, explanation: "Adapté." },
+        { text: "Fromage", correct: false, explanation: "Riche en sel." }
       ]
     }
   },
@@ -23,19 +23,19 @@ const restaurants = [
     type: "Chinois",
     menu: {
       entree: [
-        { text: "Soupe miso", correct: false, explanation: "Très salée, souvent à base de bouillon concentré." },
-        { text: "Salade de concombre au sésame", correct: true, explanation: "Légère, hydratante et pauvre en potassium." },
-        { text: "Nems au porc", correct: false, explanation: "Frits et salés, à limiter." }
+        { text: "Soupe miso", correct: false, explanation: "Riche en sel." },
+        { text: "Salade de concombre au sésame", correct: true, explanation: "Adapté." },
+        { text: "Nems au porc", correct: true, explanation: "Adapté, attention à la sauce qui peut être riche en sel." }
       ],
       plat: [
-        { text: "Légumes sautés au wok", correct: true, explanation: "Légumes modérés en potassium et peu salés." },
-        { text: "Poulet caramélisé", correct: false, explanation: "Sauces riches en sucre et sodium." },
-        { text: "Canard laqué", correct: false, explanation: "Viande grasse et sauce sucrée-salée, à éviter." }
+        { text: "Légumes sautés au wok", correct: true, explanation: "Adapté, attention peut être très salé selon l’assaisonnement." },
+        { text: "Poulet caramélisé", correct: false, explanation: "Riche en protéines." },
+        { text: "Canard laqué", correct: false, explanation: "Riche en protéines." }
       ],
       dessert: [
-        { text: "Perles de coco", correct: true, explanation: "Modérément sucrées, sans danger si portion raisonnable." },
-        { text: "Litchis au sirop", correct: false, explanation: "Trop sucré et potassium élevé." },
-        { text: "Beignets à la banane", correct: false, explanation: "Friture + banane = potassium élevé." }
+        { text: "Perles de coco", correct: true, explanation: "Adapté." },
+        { text: "Litchis au sirop", correct: true, explanation: "Adapté." },
+        { text: "Beignets à la banane", correct: true, explanation: "Adapté." }
       ]
     }
   },
@@ -43,19 +43,19 @@ const restaurants = [
     type: "Indien",
     menu: {
       entree: [
-        { text: "Samosas aux légumes", correct: true, explanation: "Peu salés et bien cuits au four, choix adapté." },
-        { text: "Pakoras frits", correct: false, explanation: "Friture excessive, à éviter." },
-        { text: "Soupe lentilles (dal)", correct: false, explanation: "Trop riche en potassium si portion élevée." }
+        { text: "Samosas aux légumes", correct: true, explanation: "Adapté, attention à la sauce qui peut être riche en sel." },
+        { text: "Pakoras frits", correct: true, explanation: "Adapté, attention à la sauce qui peut être riche en sel." },
+        { text: "Soupe lentilles (dal)", correct: true, explanation: "Adapté." }
       ],
       plat: [
-        { text: "Curry de légumes doux", correct: true, explanation: "Sans crème ni sel ajouté, très adapté." },
-        { text: "Poulet tikka masala", correct: false, explanation: "Riche en crème et sel." },
-        { text: "Agneau vindaloo", correct: false, explanation: "Épicé, salé, viande rouge : à limiter." }
+        { text: "Curry de légumes doux", correct: true, explanation: "Adapté." },
+        { text: "Poulet tikka masala", correct: false, explanation: "Riche en protéines." },
+        { text: "Agneau vindaloo", correct: false, explanation: "Riche en protéines." }
       ],
       dessert: [
         { text: "Lassi nature", correct: true, explanation: "Yaourt dilué, peu salé, bon choix en petite quantité." },
-        { text: "Gulab jamun", correct: false, explanation: "Trop sucré, sirop concentré." },
-        { text: "Halwa aux noix", correct: false, explanation: "Riche en potassium et matières grasses." }
+        { text: "Gulab jamun", correct: true, explanation: "Adapté." },
+        { text: "Halwa aux noix", correct: true, explanation: "Adapté." }
       ]
     }
   },
@@ -63,19 +63,19 @@ const restaurants = [
     type: "Français",
     menu: {
       entree: [
-        { text: "Crudités vinaigrette", correct: true, explanation: "Peu salées, riches en fibres, très bon choix." },
-        { text: "Rillettes de porc", correct: false, explanation: "Ultra salées et grasses, à limiter." },
-        { text: "Oeuf mayonnaise", correct: false, explanation: "Riche en cholestérol et gras." }
+        { text: "Crudités vinaigrette", correct: true, explanation: "Adapté." },
+        { text: "Rillettes de porc", correct: false, explanation: "Riche en sel et protéines, max 150g de charcuterie / semaine." },
+        { text: "Oeuf mayonnaise", correct: false, explanation: "Riche en protéines." }
       ],
       plat: [
-        { text: "Filet de poisson vapeur", correct: true, explanation: "Faible en sel et phosphore." },
-        { text: "Boeuf bourguignon", correct: false, explanation: "Viande rouge + sauce = trop salé et gras." },
-        { text: "Gratin dauphinois", correct: false, explanation: "Beaucoup de crème et de sel." }
+        { text: "Filet de poisson vapeur", correct: false, explanation: "Riche en protéines." },
+        { text: "Boeuf bourguignon", correct: false, explanation: "Riche en protéines." },
+        { text: "Gratin dauphinois", correct: true, explanation: "Adapté." }
       ],
       dessert: [
-        { text: "Compote sans sucre ajouté", correct: true, explanation: "Fruits doux, sans sucre, adapté." },
-        { text: "Crème brûlée", correct: false, explanation: "Sucre + produits laitiers riches en phosphore." },
-        { text: "Fromage blanc sucré", correct: false, explanation: "Trop de lait, sucre ajouté." }
+        { text: "Compote sans sucre ajouté", correct: true, explanation: "Adapté." },
+        { text: "Crème brûlée", correct: true, explanation: "Adapté." },
+        { text: "Fromage blanc sucré", correct: true, explanation: "Adapté." }
       ]
     }
   },
@@ -83,23 +83,44 @@ const restaurants = [
     type: "Mexicain",
     menu: {
       entree: [
-        { text: "Salade de haricots noirs", correct: true, explanation: "Bonne source de fibres et modérée en potassium." },
-        { text: "Nachos au fromage", correct: false, explanation: "Trop salés et gras." },
-        { text: "Tacos frits", correct: false, explanation: "Frits, souvent trop salés." }
+        { text: "Salade de haricots noirs", correct: true, explanation: "Adapté." },
+        { text: "Nachos au fromage", correct: false, explanation: "Riche en sel." },
+        { text: "Tacos frits", correct: false, explanation: "Riche en sel (et en protéines s’il y a de la viande dedans)." }
       ],
       plat: [
-        { text: "Fajitas de légumes", correct: true, explanation: "Cuisson légère, riche en fibres, bien équilibré." },
-        { text: "Chili con carne", correct: false, explanation: "Viande rouge + haricots + épices = lourd pour les reins." },
-        { text: "Burrito au fromage", correct: false, explanation: "Trop de produits laitiers et de sel." }
+        { text: "Fajitas de légumes", correct: true, explanation: "Adapté." },
+        { text: "Chili con carne", correct: false, explanation: "Riche en protéines." },
+        { text: "Burrito au fromage", correct: false, explanation: "Riche en sel." }
       ],
       dessert: [
-        { text: "Fruits frais", correct: true, explanation: "Fruits naturels non transformés, toujours adaptés." },
-        { text: "Churros au chocolat", correct: false, explanation: "Friture + sucre, à éviter." },
-        { text: "Glace caramel", correct: false, explanation: "Produits laitiers et sucre, non adaptés." }
+        { text: "Fruits frais", correct: true, explanation: "Adapté." },
+        { text: "Churros au chocolat", correct: true, explanation: "Adapté." },
+        { text: "Glace caramel", correct: true, explanation: "Adapté." }
+      ]
+    }
+  },
+  {
+    type: "Fast-food",
+    menu: {
+      entree: [
+        { text: "Frites", correct: false, explanation: "Souvent très salées au fast-food / bon choix si non salée." },
+        { text: "Nuggets de poulet", correct: false, explanation: "Riche en protéines." },
+        { text: "Salade verte", correct: true, explanation: "Adapté." }
+      ],
+      plat: [
+        { text: "Cheeseburger", correct: false, explanation: "Riche en sel et protéines." },
+        { text: "Double steak burger", correct: false, explanation: "Riche en protéines." },
+        { text: "Wrap Veggie fromage", correct: false, explanation: "Riche en sel." }
+      ],
+      dessert: [
+        { text: "Glace vanille pécan", correct: true, explanation: "Adapté." },
+        { text: "Brownie", correct: true, explanation: "Adapté." },
+        { text: "Donuts", correct: true, explanation: "Adapté." }
       ]
     }
   }
 ];
+
 
 let currentRestaurantIndex = 0;
 let step = 0;
