@@ -4,8 +4,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-/*test
 
+#main-content {
+  display: none; /* on le masque au chargement */
+}
 /* Supprime les marges pour le popup uniquement */
 #result-screen,
 #result-screen * {
@@ -345,4 +347,49 @@ h2 {
   font-size: 18px;
   line-height: 1.8;
   margin-bottom: 12px;
+}
+
+.intro-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../photos/conseil/FondParcours.png');
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: top left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.game-introduction {
+  background-color: #f5ebe0;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 700px;
+  width: 90%;
+  font-size: 18px;
+}
+
+#start-menu-btn {
+  margin-top: 30px;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+}
+
+#start-menu-btn:hover {
+  background-color: #cbb09e;
 }
