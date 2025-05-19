@@ -2,71 +2,68 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Symptômes à surveiller</title>
+    <title>Symptômes</title>
     <link rel="stylesheet" href="../styles/barre-navigation.css">
     <link rel="stylesheet" href="../styles/symptomes.css">
 </head>
 <body>
 
-    <!-- Bandeau en-tête harmonisé -->
     <div class="header-top">
-        <h1>Symptômes à Surveiller</h1>
+        <h1>Les Symptômes de la Maladie Rénale</h1>
         <br>
-        <p>Apprenez à reconnaître les signes avant-coureurs de l'insuffisance rénale.</p>
+        <p>Apprenez à reconnaître les signes qui peuvent indiquer des problèmes rénaux.</p>
         <br>
     </div>
 
-    <!-- Barre de navigation -->
     <div id="navbar-placeholder"></div>
 
-    <!-- Contenu -->
     <div class="content">
 
-        <!-- Intro -->
-        <section class="symptoms-intro fancy-intro">
-            <h2>Pourquoi est-il important de surveiller ces symptômes ?</h2>
-            <p>
-                L’insuffisance rénale est souvent silencieuse à ses débuts. Identifier ses premiers signes permet une prise en charge plus rapide.
+        <section class="section-physique">
+            <br><p class="transition-paragraph">
+                La maladie rénale chronique évolue souvent sans bruit. Pourtant, certains signes peuvent alerter, surtout aux stades avancés. 
+            </p><br>
+
+            <h3>Quelques symptômes de la maladie rénale :</h3><br>
+
+         <div class="activity-grid">
+            <div class="activity-card activity-border-green-lime">
+              <img src="../photos/symptomes/fatigue.png" alt="Fatigue inhabituelle" />
+              <p>Fatigue inhabituelle et persistante</p>
+            </div>
+            <div class="activity-card activity-border-blue-electric">
+              <img src="../photos/symptomes/gonflements.png" alt="Gonflements" />
+              <p>Gonflements <br>(chevilles, pieds, visage)</p>
+            </div>
+            <div class="activity-card activity-border-red-coral">
+              <img src="../photos/symptomes/crampes.png" alt="Crampes musculaires" />
+              <p>Crampes musculaires</p>
+            </div>
+            <div class="activity-card activity-border-purple-bright">
+              <img src="../photos/symptomes/troublesommeil.png" alt="Troubles du sommeil" />
+              <p>Troubles du sommeil</p>
+            </div>
+            <div class="activity-card activity-border-orange-bold">
+              <img src="../photos/symptomes/appetit.png" alt="Perte d'appétit" />
+              <p>Perte d'appétit ou amaigrissement progressif</p>
+            </div>
+            <div class="activity-card activity-border-yellow-safran">
+              <img src="../photos/symptomes/demangeaison.png" alt="Démangeaisons" />
+              <p>Démangeaisons ou pâleur de la peau</p>
+            </div>
+        </div>
+
+            <br><br><p class="transition-paragraph">
+                Ces symptômes sont souvent discrets et peuvent être confondus avec ceux d'autres maladies. <br>Il est donc important de consulter un médecin pour tout signe suspect.
+            </p><br>
+
+            <p class="transition-paragraph">
+                L’absence de symptômes ne signifie pas que tout va bien : les reins peuvent être très endommagés sans que vous ne le ressentiez. C’est pourquoi le dépistage et le suivi régulier (en particulier chez les personnes à risque) sont essentiels pour détecter la maladie avant qu’elle ne s’aggrave.
             </p>
-        </section>
 
-        <!-- Liste des symptômes en accordéon -->
-        <section class="symptoms-list">
-            <div class="symptom-item">
-                <button class="accordion">😴 Fatigue et faiblesse</button>
-                <div class="panel"><p>Une accumulation de toxines dans le sang entraîne une fatigue extrême.</p></div>
-            </div>
-            <div class="symptom-item">
-                <button class="accordion">💦 Gonflement des jambes</button>
-                <div class="panel"><p>Les reins ne parviennent plus à éliminer correctement l’excès de liquide.</p></div>
-            </div>
-            <div class="symptom-item">
-                <button class="accordion">🚽 Changement des urines</button>
-                <div class="panel"><p>Mousse, couleur foncée ou changement de fréquence sont des signes d’alerte.</p></div>
-            </div>
-            <div class="symptom-item">
-                <button class="accordion">😵 Essoufflement</button>
-                <div class="panel"><p>L’accumulation de liquide peut affecter les poumons.</p></div>
-            </div>
-            <div class="symptom-item">
-                <button class="accordion">🤢 Nausées</button>
-                <div class="panel"><p>Les toxines dans le sang peuvent entraîner des troubles digestifs.</p></div>
-            </div>
-            <div class="symptom-item">
-                <button class="accordion">🧑‍⚕️ Crampes musculaires</button>
-                <div class="panel"><p>Souvent liées à un déséquilibre électrolytique.</p></div>
-            </div>
-        </section>
-
-        <!-- Conclusion -->
-        <section class="symptoms-conclusion fancy-intro">
-            <h2>Que faire si vous ressentez ces symptômes ?</h2>
-            <p>Consultez un professionnel de santé rapidement pour effectuer un bilan rénal.</p>
-        </section>
     </div>
 
-    <!-- Scripts -->
     <script src="../scripts/barre-navigation.js"></script>
-    <script src="../scripts/symptomes.js"></script>
+
 </body>
 </html>
