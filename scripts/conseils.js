@@ -140,6 +140,9 @@ document.getElementById("start-btn").addEventListener("click", () => {
   countdown.classList.remove("hidden");
   memorisationZone.classList.remove("hidden");
 
+    const goodListMemorisation = document.getElementById("good-list");
+  const badListMemorisation = document.getElementById("bad-list");
+
   goodList.innerHTML = "";
   badList.innerHTML = "";
 
@@ -149,12 +152,14 @@ document.getElementById("start-btn").addEventListener("click", () => {
   selectedPairs.forEach(pair => {
     const liGood = document.createElement("li");
     liGood.textContent = pair.good;
-    goodList.appendChild(liGood);
+    goodListMemorisation.appendChild(liGood);
 
     const liBad = document.createElement("li");
     liBad.textContent = pair.bad;
-    badList.appendChild(liBad);
+    badListMemorisation.appendChild(liBad);
   });
+
+
 
   let timeLeft = 10;
   timer.textContent = timeLeft;
@@ -163,6 +168,7 @@ document.getElementById("start-btn").addEventListener("click", () => {
     timer.textContent = timeLeft;
     if (timeLeft <= 0) {
       clearInterval(interval);
+      memorisationZone.classList.remove("memorisation-active"); 
       startClassificationPhase(selectedPairs);
     }
   }, 1000);
@@ -404,7 +410,7 @@ function showNextError() {
       // Afficher le bouton Retour seulement après avoir vu toutes les erreurs
       document.getElementById("back-home-btn-container").classList.remove("hidden");
       document.getElementById("back-home-btn").onclick = function() {
-        window.location.href = "/pages/jeux2.html"; // Chemin absolu plus fiable
+        window.location.href = "../jeux/conseilscorrection.html"; // Chemin absolu plus fiable
       };
     }
   }
@@ -455,6 +461,7 @@ document.getElementById("next-part-btn").addEventListener("click", () => {
   });
 
   // Initialisation du timer pour 10 secondes
+  countdown.classList.remove("hidden"); // Affiche le bloc contenant le timer
   let timeLeft = 10;  // La durée des 10 secondes
   const timerEl = document.getElementById("timer");
   timerEl.textContent = timeLeft;

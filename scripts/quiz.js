@@ -226,12 +226,12 @@ function displayScore() {
 
   // Créer le bouton "Revenir au parcours de progression"
   const backToProgressBtn = document.createElement("button");
-  backToProgressBtn.textContent = "Revenir au parcours de progression";
+  backToProgressBtn.textContent = "Voir la fiche réflexe";
   backToProgressBtn.style.marginTop = "20px";
 
   // Ajouter l'événement de redirection
   backToProgressBtn.onclick = () => {
-    window.location.href = "../pages/jeux2.html"; // Modifie ce lien selon ton projet
+    window.location.href = "../jeux/quizcorrection.html"; // Modifie ce lien selon ton projet
   };
 
   // Ajouter le bouton au DOM
