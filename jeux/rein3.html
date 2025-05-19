@@ -6,6 +6,7 @@
   <title>Jeu de Liaison - Rein 3</title>
   <link rel="stylesheet" href="../styles/rein3.css" />
 </head>
+</body>
 <div id="customModal" class="modal">
   <div class="modal-content">
     <span class="close-button">&times;</span>
@@ -19,11 +20,23 @@
     
   </div>
 </div>
-<body>
-  <a href="../pages/jeux2.html" id="backButton">← Retour au parcours</a>
+
+  <div class="intro-wrapper" id="intro-wrapper">
+    <div class="game-introduction" id="game-introduction">
+      <h1>Bienvenue !</h1>
+      <p>Dans ce jeu, ton objectif est d'apprendre comment fonctionnent les reins et comment prendre soin de ta santé rénale.</p>
+      <p>Relie chaque image à la bonne définition</p>
+      <p>Lis bien les définitions et pense à leur lien avec les images.</p> 
+      <p>Prêt à relever le défi ? C’est parti !</p>
+      <button id="start-liaison-btn">Commencer le jeu</button>
+
+      <a href="../pages/jeux2.html" id="backButton">← Retour au parcours</a>
+    </div>
+  </div>
+  
+  
   <div class="container">
     <h1>Jeu de Liaison</h1>
-    <p>Relie chaque illustration à sa bonne définition en cliquant sur les éléments.</p>
 
     <div class="game">
       <!-- Colonne Termes -->
@@ -84,5 +97,38 @@
   </div>
 
   <script src="../scripts/rein3.js"></script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const startBtn = document.getElementById('start-liaison-btn');
+  const introWrapper = document.querySelector('.intro-wrapper');
+  const gameDiv = document.querySelector('.game');
+
+  startBtn.addEventListener('click', () => {
+    // On cache l'intro
+    introWrapper.style.display = 'none';
+    // On affiche la zone de jeu
+    gameDiv.style.display = 'flex';  // Si tu utilises flex pour les colonnes
+
+    // Si tu utilises flexbox pour la classe .game, assure-toi que c'est bien en flex.
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const startBtn = document.getElementById('start-liaison-btn');
+    const introWrapper = document.getElementById('intro-wrapper');
+    const container = document.querySelector('.container');
+  
+    startBtn.addEventListener('click', () => {
+      // Cacher l'intro
+      introWrapper.style.display = 'none';
+  
+      // Afficher toute la partie jeu
+      container.style.display = 'block';
+    });
+  });
+
+
+    </script>
 </body>
 </html>

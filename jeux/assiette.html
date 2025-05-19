@@ -7,17 +7,25 @@
   <link rel="stylesheet" href="../styles/assiette.css">
 </head>
 <body>
-  <div class="header">
-    <h1>Choisis les bons aliments pour préserver ta santé rénale </h1>
-    <p>Fais glisser les aliments vers l’assiette !</p>
+  <div id="tooltip" class="tooltip"></div>
+
+  <div class="intro-wrapper" id="intro-wrapper">
+    <div class="game-introduction" id="game-introduction">
+      <h1>Bienvenue !</h1>
+      <p>Dans ce jeu, ton objectif est de choisir les bons aliments pour préserver ta santé rénale.</p>
+      <p>Fais glisser les aliments vers l’assiette !</p>
+      <button id="start-assiette-btn">Commencer le jeu</button>
+
+      <a href="../pages/jeux2.html" id="backButton">← Retour au parcours</a>
+    </div>
   </div>
 
-  <div id="step-1" class="step active">
-    <h2>Étape 1 : Choisis ton entrée</h2>
-    <p>Tu peux choisir plusieurs aliments et un assaisonnement !</p>
+  <div id="step-1" class="step">
+    <h2>Étape 1 : Choisis ton entrée</h2><br>
+    <p>Compose ton entrée en sélectionnant un ou plusieurs aliments et un assaisonnement… puis clique sur Suivant pour continuer !</p><br>
     <div class="category-column">
       <div class="ingredient-list">
-        <div class="ingredient" id="carottes_rape" draggable="true"><img src="../photos/jeu_alimentation_photos/salade_carottes.png" alt="Carottes râpées"></div>
+        <div class="ingredient" id="carottes_rapees" draggable="true"><img src="../photos/jeu_alimentation_photos/salade_carottes.png" alt="Carottes râpées"></div>
         <div class="ingredient" id="chips" draggable="true"><img src="../photos/jeu_alimentation_photos/chips.png" alt="Chips"></div>
         <div class="ingredient" id="charcuterie" draggable="true"><img src="../photos/jeu_alimentation_photos/charcuterie.png" alt="Charcuterie"></div>
         <div class="ingredient" id="melon" draggable="true"><img src="../photos/jeu_alimentation_photos/melon.png" alt="Melon"></div>
@@ -35,20 +43,21 @@
       </div>
 
   <div id="step-2" class="step">
-    <h2>Étape 2 : Compose ton plat</h2>
-    <p>Choisis une protéine, un féculent, un légume et assaisone le tout !</p>
+    <h2>Étape 2 : Compose ton plat</h2><br>
+    <p>Compose ton plat comme tu veux : une protéine, un féculent, un légume et assaissone le tout… ou juste ce qui te fait envie, en gardant l'équilibre en tête.</p><br>
+    <p>Quand tu as terminé, clique sur Suivant pour passer à l’étape finale !</p>
     <div class="ingredients-container">
       
       <!-- Protéines -->
       <div class="category-column">
         <h2>Protéines</h2>
         <div id="proteine-list" class="ingredient-list">
-          <div class="ingredient" id="viande" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_rouge.png" alt="Viande rouge"></div>
+          <div class="ingredient" id="viande_rouge" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_rouge.png" alt="Viande rouge"></div>
           <div class="ingredient" id="oeuf" draggable="true"><img src="../photos/jeu_alimentation_photos/oeufs.png" alt="Oeuf"></div>
           <div class="ingredient" id="poisson_blanc" draggable="true"><img src="../photos/jeu_alimentation_photos/poisson.png" alt="Poisson blanc"></div>
           <div class="ingredient" id="plat_industriel" draggable="true"><img src="../photos/jeu_alimentation_photos/plat.png" alt="Plat industriel"></div>
           <div class="ingredient" id="viande_blanche" draggable="true"><img src="../photos/jeu_alimentation_photos/viande_blanche.png" alt="Viande blanche"></div>
-          <div class="ingredient" id="tofu" draggable="true"><img src="../photos/jeu_alimentation_photos/tofu.png" alt="Tofu"></div>
+          <div class="ingredient" id="tofu_nature" draggable="true"><img src="../photos/jeu_alimentation_photos/tofu.png" alt="Tofu"></div>
         </div>
       </div>
   
@@ -58,7 +67,7 @@
         <div id="feculent-list" class="ingredient-list">
           <div class="ingredient" id="riz" draggable="true"><img src="../photos/jeu_alimentation_photos/riz.png" alt="Riz"></div>
           <div class="ingredient" id="pain" draggable="true"><img src="../photos/jeu_alimentation_photos/pain.png" alt="Pain"></div>
-          <div class="ingredient" id="pâtes" draggable="true"><img src="../photos/jeu_alimentation_photos/pâtes.png" alt="Pâtes"></div>
+          <div class="ingredient" id="pates" draggable="true"><img src="../photos/jeu_alimentation_photos/pâtes.png" alt="Pâtes"></div>
           <div class="ingredient" id="pomme_de_terre" draggable="true"><img src="../photos/jeu_alimentation_photos/pdt.png" alt="Pomme de terre"></div>
         </div>
       </div>
@@ -69,17 +78,28 @@
         <div id="legume-list" class="ingredient-list">
           <div class="ingredient" id="courgette" draggable="true"><img src="../photos/jeu_alimentation_photos/courgette.png" alt="Courgette"></div>
           <div class="ingredient" id="tomate" draggable="true"><img src="../photos/jeu_alimentation_photos/tomate.png" alt="Tomate"></div>
+          <div class="ingredient" id="haricots" draggable="true"><img src="../photos/jeu_alimentation_photos/haricots.png" alt="Haricots"></div>
+          <div class="ingredient" id="conserve_petits_pois" draggable="true"><img src="../photos/jeu_alimentation_photos/petit_pois.png" alt="Petits pois"></div>
+
         </div>
       </div>
   
       <!-- Assaisonnements -->
       <div class="category-column">
         <h2>Assaisonnements</h2>
-        <div class="ingredient" id="sel" draggable="true"><img src="../photos/jeu_alimentation_photos/sel.png" alt="Sel"></div>
-        <div class="ingredient" id="herbes_aromatiques" draggable="true"><img src="../photos/jeu_alimentation_photos/herbes.png" alt="Herbes aromatiques"></div>
+        <div class="ingredient-list-2col">
+          <div class="ingredient" id="sel" draggable="true"><img src="../photos/jeu_alimentation_photos/sel.png" alt="Sel"></div>
+          <div class="ingredient" id="herbes_aromatiques" draggable="true"><img src="../photos/jeu_alimentation_photos/herbes.png" alt="Herbes aromatiques"></div>
+          <div class="ingredient" id="mayonnaise" draggable="true"><img src="../photos/jeu_alimentation_photos/mayo.png" alt="Mayo"></div>
+          <div class="ingredient" id="poivre" draggable="true"><img src="../photos/jeu_alimentation_photos/poivre.png" alt="Poivre"></div>
+          <div class="ingredient" id="moutarde" draggable="true"><img src="../photos/jeu_alimentation_photos/moutarde.png" alt="Moutarde"></div>
+          <div class="ingredient" id="ketchup" draggable="true"><img src="../photos/jeu_alimentation_photos/ketchup.png" alt="Ketchup"></div>
+        </div>
       </div>
+      
   
     </div> <!-- FIN .ingredients-container -->
+    
     <div class="button-wrapper">
       <button class="btn btn-primary suivant-btn" onclick="validateAndNextStep(2)">Suivant</button>
     </div>
@@ -87,11 +107,13 @@
   
   
   <div id="step-3" class="step">
-    <h2>Étape 3 : Choisis un dessert</h2>
+    <h2>Étape 3 : Choisis un dessert</h2><br>
+    <p>Un bon repas se termine par un dessert : choisis-le avant de valider ton assiette !</p><br>
+
     <div class="category-column">
       <div class="ingredient-list">
-        <div class="ingredient" id="chocolat" draggable="true">
-          <img src="../photos/jeu_alimentation_photos/chocolat.png" alt="Chocolat">
+        <div class="ingredient" id="creme_vanille" draggable="true">
+          <img src="../photos/jeu_alimentation_photos/vanille.png" alt="Vanille">
         </div>
         <div class="ingredient" id="pomme" draggable="true">
           <img src="../photos/jeu_alimentation_photos/pomme.png" alt="Pomme">
@@ -100,7 +122,7 @@
           <img src="../photos/jeu_alimentation_photos/poire.png" alt="Poire">
         </div>
         <div class="ingredient-list">
-          <div class="ingredient" id="fromages" draggable="true">
+          <div class="ingredient" id="fromage" draggable="true">
             <img src="../photos/jeu_alimentation_photos/fromage.png" alt="Fromage">
           </div>
           <div class="ingredient" id="yaourt" draggable="true">
@@ -124,9 +146,14 @@
   </div>
   
 
-  <button id="check-btn" style="display:none;">Vérifier</button>
+  <button id="check-btn" style="display:none;">Valider</button>
+
+  
 
   <div id="feedback" class="feedback"></div>
+
+
+  
 
   <script src="../scripts/assiette.js"></script>
 </body>

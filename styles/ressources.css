@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../photos/conseil/FondParcours.png'); 
+    background : #EDEDE9;
     background-size: auto; /* taille originale de l’image */
     background-repeat: repeat; /* évite que l’image se répète */
     background-position: top left; /* positionne l’image en haut à gauche */
@@ -25,7 +25,7 @@ body {
 .header-top {
     padding: 30px 20px 10px;
     text-align: center;
-    background: #f5ebe0;
+    background: #e3d5ca;
     color: #4a536b;
 }
 
@@ -38,7 +38,7 @@ body {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
-    background: #ffffff;
+    background: #f0e9e0;
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
     color: #2d3142;
@@ -147,7 +147,7 @@ body {
 .transition-paragraph:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-    background-color: #ede5df;
+    background-color: #e3d5ca;
 }
 
 .transition-paragraph strong {

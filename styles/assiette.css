@@ -7,9 +7,11 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: #fdfaf6;
+  background-color: #EDEDE9;
   color: #4a536b;
+
 }
+
 
 header {
   background-color: #BDA18A;
@@ -70,8 +72,8 @@ ul li {
 }
 
 .ingredient img {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   border-radius: 10px;
 }
@@ -168,8 +170,8 @@ ul li {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fdfaf6;
-  border-left: 4px solid #BDA18A;
+  background-color: #EDEDE9;
+  
 }
 
 #check-btn {
@@ -177,36 +179,40 @@ ul li {
   bottom: 20px;
   right: 20px;
   padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #4a536b;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-}
-
-#check-btn:hover {
-  background-color: #3c4458;
-}
-
-.button-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-}
-
-.suivant-btn {
-  padding: 10px 20px;
+  font-size: 18px; 
   font-weight: bold;
   border-radius: 8px;
   background-color: #BDA18A;
   color: white;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  z-index: 1000; /* Pour qu'il soit au-dessus des autres éléments si besoin */
 }
+
+
+#check-btn:hover {
+  background-color: #a58a70;
+}
+
+.button-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* pour s'assurer qu'il reste au-dessus */
+}
+
+.suivant-btn {
+  padding: 10px 20px;
+  font-size: 18px; 
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: #BDA18A;
+  color: white;
+  border: none;
+  cursor: pointer;
+  /*transition: background-color 0.3s ease;*/
+}
+
 
 .suivant-btn:hover {
   background-color: #a58a70;
@@ -224,4 +230,171 @@ ul li {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Style pour la consigne (game-introduction) */
+.game-introduction {
+  background-color: #e3d5ca;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto; /* CENTRE HORIZONTALEMENT */
+}
+
+
+.game-introduction h1 {
+  color: black;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.game-introduction p {
+  color: black;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Style du bouton "Commencer le quiz" */
+#start-assiette-btn {
+  background-color: #d5bdaf;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 50px;
+}
+
+#start-assiette-btn {
+  background-color: #d5bdaf;
+}
+
+
+.step {
+  display: none;
+}
+
+.plate-container {
+  display: none;
+}
+
+.intro-wrapper {
+  position: fixed;               /* superposé à tout le reste */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: flex-start;   /* aligné à gauche */
+  align-items: center;           /* centré verticalement */
+
+  /*padding-left: 15vw;            /* décale vers la droite */
+  background-color: #fdfaf6;     /* même fond que le reste */
+  z-index: 1000;                 /* au-dessus du reste */
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: none;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.category-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.category-column h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #4a536b;
+  border-bottom: 2px solid #d5bdaf;
+  padding-bottom: 5px;
+}
+
+/* Nouveau style pour afficher les ingrédients en deux colonnes */
+.category-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-column .ingredient-list-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+#backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  background-color: #d5bdaf;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #333;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6); 
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+
+.section-resultats {
+  margin-bottom: 20px;
+}
+
+.score {
+  font-weight: bold;
+  margin-bottom: 5px;
 }

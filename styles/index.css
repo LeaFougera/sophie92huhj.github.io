@@ -7,10 +7,11 @@
   
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../photos/conseil/FondParcours.png'); 
+    
     background-size: auto; /* taille originale de l’image */
     background-repeat: repeat; /* évite que l’image se répète */
     background-position: top left; /* positionne l’image en haut à gauche */
+    background: #EDEDE9;
 }
 
 
@@ -24,7 +25,7 @@ body {
 .header-top {
     padding: 30px 20px 10px;
     text-align: center;
-    background: #f5ebe0;
+    background: #e3d5ca;
     color: #4a536b;
 }
 
@@ -107,7 +108,7 @@ body {
 .split-box {
     flex: 1;
     padding: 25px 30px;
-    background: #e7e1da;
+    background: #f0e9e0;
     box-sizing: border-box;
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.05);
