@@ -1,14 +1,17 @@
+/* Reset général */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Corps de la page */
 body {
     font-family: Arial, sans-serif;
-    background: #edede9;
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    background-image: url('../photos/conseil/FondParcours.png');
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: top left;
 }
 
 /* En-tête */
@@ -25,90 +28,204 @@ body {
     color: #4a536b;
 }
 
-.text {
-    width: 45%;
+/* Conteneur principal */
+.content {
+    max-width: 1200px;
+    margin: 40px auto;
     padding: 20px;
-    text-align: center;
-}
-
-/* Section d'introduction et de conclusion */
-.intro-section,
-.causes-conclusion {
-    text-align: center;
-    padding: 50px 30px;
-    background: linear-gradient(135deg, #eef6ff, #f9fbff);
+    background: #ffffff;
     border-radius: 16px;
-    margin: 40px auto;
-    max-width: 1000px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-/* Grille des cartes */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 30px 10px;
-}
-
-.grid-item {
-    background: linear-gradient(135deg, #ffffff, #f0f4ff);
-    padding: 25px 20px;
-    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    color: #2d3142;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
-}
-
-.grid-item h3 {
-    color: #02084b;
+/* Titres */
+.content h3 {
     font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    color: #1d3557;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
-.grid-item p {
-    color: #333;
-    font-size: 15px;
-    line-height: 1.5;
+.content p {
+    font-size: 16px;
+    margin-bottom: 20px;
 }
 
-/* Risques façon "cartes de symptômes" */
-.risks-section {
-    text-align: center;
-    padding: 40px;
-    background-color: #f5faff;
+
+/* Cartes des causes */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 220px); /* 3 colonnes fixes à 220px */
+  justify-content: center; /* centre la grille dans le container */
+  gap: 30px 60px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+/* Style des cartes de chaque item */
+.activity-card {
+    width: auto; /* ou 100% pour remplir la cellule */
+    max-width: 250px; /* Gardez une limite max si besoin */
+    background: #f5ebe0;
     border-radius: 12px;
-    margin: 40px auto;
-    max-width: 1000px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-}
-
-.symptom-cards {
+    padding: 10px 8px 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-width: 600px;
-    margin: 20px auto;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
-.symptom-card {
-    background: white;
-    padding: 14px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s, background 0.3s;
-    font-size: 15px;
-    cursor: default;
+.activity-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.symptom-card:hover {
-    background: linear-gradient(to right, #ffecec, #fff5f5);
-    transform: scale(1.03);
+.activity-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 50%;
+}
+
+.activity-card p {
+    font-size: 16px;
+    color: #264653;
+    margin: 0;
+}
+
+/* Ajout de styles pour aligner les cartes */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;  /* Centrer les éléments dans chaque cellule de la grille */
+    gap: 30px; /* espacement entre les cartes */
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center; /* Centre les cartes horizontalement dans le container */
+    align-items: center;  
+}
+
+
+.activity-border-green-lime {
+    border: 2px solid #80b918;
+    background-color: #f3fae3;
+}
+
+.activity-border-blue-electric {
+    border: 2px solid #4895ef;
+    background-color: #e7f1fe;
+}
+
+.activity-border-red-coral {
+    border: 2px solid #e63946;
+    background-color: #ffecec;
+}
+
+.activity-border-purple-bright {
+    border: 2px solid #9d4edd;
+    background-color: #f3e9fd;
+}
+
+.activity-border-orange-bold {
+    border: 2px solid #f77f00;
+    background-color: #fff3e0;
+}
+
+.activity-border-yellow-safran {
+    border: 2px solid #f9c74f;
+    background-color: #fffbe0;
+}
+
+/* Styles spécifiques aux paragraphes de transition */
+.transition-paragraph {
+    font-size: 18px; /* Taille légèrement agrandie pour améliorer la lisibilité */
+    line-height: 1.8; /* Augmente l'espace entre les lignes pour plus de confort */
+    color: #2d3142; /* Couleur sombre et élégante pour le texte */
+    margin-bottom: 20px; /* Espacement sous chaque paragraphe */
+    padding: 20px; /* Un peu plus d'espace à l'intérieur pour aérer */
+    background-color: #f9f9f9; /* Un fond doux gris clair pour un contraste agréable */
+    border-left: 6px solid #d5bdaf; /* Bordure colorée à gauche pour accentuer l'importance */
+    border-radius: 12px; /* Coins arrondis pour un effet moderne et doux */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Une ombre subtile pour donner du relief */
+    transition: all 0.3s ease; /* Ajoute une animation fluide lors du survol */
+    text-align: justify;
+}
+
+/* Au survol, un léger effet d'ombrage et d'agrandissement */
+.transition-paragraph:hover {
+    transform: translateY(-5px); /* Décale légèrement le paragraphe vers le haut */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    background-color: #ede5df; /* Change légèrement le fond pour un effet dynamique */
+}
+
+/* Style du texte en gras */
+.transition-paragraph strong {
+    font-weight: bold; /* Met en évidence les mots en gras */
+    color: #1d3557; /* Utilise une couleur sombre pour plus de contraste */
+}
+
+/* Nouveau visuel pour le paragraphe explicatif */
+.explanation-container {
+    padding: 30px;
+    background-color: #eef1f7; /* Fond doux et léger */
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    text-align: left; /* Justifie le texte à gauche */
+    color: #264653;
+}
+
+.explanation-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2d3142; /* Couleur sombre pour une meilleure lisibilité */
+    margin-bottom: 20px;
+}
+
+.explanation-text strong {
+    font-weight: bold;
+    color: #1d3557; /* Sombre pour le texte en gras */
+}
+
+/* Styles pour le schéma des stades */
+.schema-stades {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.schema-stades h3 {
+    font-size: 22px;
+    color: #264653;
+    margin-bottom: 20px;
+}
+
+.img-stades {
+    max-width: 70%; 
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-stades:hover {
+    transform: translateY(-5px); /* Décale légèrement l'image vers le haut */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
 }
