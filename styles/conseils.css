@@ -64,8 +64,8 @@ p {
 }
 
 button {
-  background-color: #4a536b;
-  color: #fff;
+  background-color: #d5bdaf;
+  color: #4a536b;
   padding: 14px 34px;
   font-size: 1.07rem;
   border: none;
@@ -78,7 +78,7 @@ button {
 }
 
 button:hover {
-  background-color: #2f364d;
+  background-color: #d5bdaf;
 }
 
 .back-button {
@@ -88,7 +88,7 @@ button:hover {
   text-decoration: none;
   font-size: 1.07rem;
   background-color: #ffffffcc;
-  color: #4a536b;
+  color: #d5bdaf;
   padding: 9px 16px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
@@ -283,7 +283,7 @@ li {
   border-radius: 10px;
   font-size: 1rem;
   font-weight: bold;
-  color: #222;
+  color: #4a536b;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
@@ -344,14 +344,14 @@ li {
 
 .modal-content p {
   font-size: 1.1rem;
-  color: #333;
+  color: #4a536b;
   margin-bottom: 20px;
   line-height: 1.6;
 }
 
 .modal-content button {
-  background-color: #4a536b;
-  color: white;
+  background-color: #d5bdaf;
+  color: #4a536b;
   border: none;
   padding: 12px 22px;
   font-size: 1rem;
@@ -364,7 +364,7 @@ li {
 }
 
 .modal-content button:hover {
-  background-color: #2f364d;
+  background-color: #d5bdaf;
 }
 
 #next-part-btn-container,
@@ -375,8 +375,8 @@ li {
 
 #next-part-btn,
 #back-home-btn {
-  background-color: #4a536b;
-  color: #fff;
+  background-color: #d5bdaf;
+  color: #ffffff;
   padding: 14px 34px;
   font-size: 1.07rem;
   border: none;
@@ -389,7 +389,7 @@ li {
 
 #next-part-btn:hover,
 #back-home-btn:hover {
-  background-color: #2f364d;
+  background-color: #d5bdaf;
 }
 
 #back-home-btn-container {
@@ -505,7 +505,7 @@ li {
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  background-color: #4a536b;
+  background-color: #d5bdaf;
   color: white;
   border: none;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);

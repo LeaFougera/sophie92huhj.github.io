@@ -29,7 +29,7 @@ body {
 
 /* Style pour la consigne (game-introduction) */
 .game-introduction {
-  background-color: #e3d5ca;
+  background-color: #f0e9e0;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -42,13 +42,13 @@ body {
 
 
 .game-introduction h1 {
-  color: black;
+  color: #4a536b;
   font-size: 2.2rem;
   margin-bottom: 20px;
 }
 
 .game-introduction p {
-  color: black;
+  color: #4a536b;
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -56,7 +56,7 @@ body {
 /* Style du bouton "Commencer le quiz" */
 #start-quiz-btn {
   background-color: #d5bdaf;
-  color: black;
+  color: #4a536b;
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
@@ -78,7 +78,7 @@ body {
   border-radius: 10px;
   display: inline-block;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #d5bdaf;
+  background-color: #f0e9e0;
   color: #4a536b;
   width: 100%;
   max-width: 750px;
@@ -95,7 +95,7 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #f5ebe0; /* Fond doux */
+  background-color: #e3d5ca; /* Fond doux */
   transition: background-color 0.3s, transform 0.2s;
   font-weight: bold;
   color: #4a536b;
@@ -144,7 +144,7 @@ button:hover {
 
 #score button {
   background-color: #d5bdaf;
-  color: black;
+  color: #4a536b;
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
@@ -163,7 +163,7 @@ button:hover {
 /* Style pour les explications */
 p {
   font-size: 16px;
-  color: #333;
+  color: #4a536b;
   margin-top: 10px;
 }
 
@@ -175,7 +175,7 @@ p {
   text-decoration: none;
   font-size: 1.5rem;
   background-color: #d5bdaf;
-  color: #333;
+  color: #4a536b;
   padding: 8px 12px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
