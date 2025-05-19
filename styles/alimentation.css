@@ -12,7 +12,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #edede9;
+    background : #EDEDE9;
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
 }
@@ -21,7 +21,7 @@ body {
 .header-top {
     padding: 30px 20px 10px;
     text-align: center;
-    background: #f5ebe0;
+    background: #e3d5ca;
     color: #4a536b;
 }
 
