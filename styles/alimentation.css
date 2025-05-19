@@ -1,6 +1,6 @@
 
 .content {
-    padding: 20px;
+    /*padding: 20px;*/
     margin: auto;
 }
 
@@ -108,46 +108,6 @@ body {
     justify-content: space-between;
 }
 
-
-/* Animation de lumière autour de l'encadré */
-.encadre:hover {
-    box-shadow: 0 0 15px 5px rgba(255, 223, 0, 0.7); /* Effet de lumière jaune autour */
-}
-
-/* Titre "Le saviez-vous ?" avec l'ampoule */
-.encadre h3 {
-    font-size: 18px;
-    color: #4a536b;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-}
-
-/* Icône de l'ampoule */
-.encadre h3 .ampoule-icon {
-    font-size: 24px;
-    color: #f39c12; /* Jaune pour l'ampoule */
-}
-
-/* Titre de la phrase sous "Le saviez-vous ?" */
-.encadre .phrase-title {
-    font-size: 18px;
-    color: #4a536b;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px; /* Espacement entre le titre et la phrase */
-}
-
-/* Texte à l'intérieur des encadrés */
-.encadre p {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 0.75em;
-    line-height: 1.6;
-}
 
 /* Section globale */
 .reflexes-section-v2 {
@@ -282,6 +242,7 @@ body {
 }
 
 
+
 .timeline-container {
     position: relative;
     width: 100%;
@@ -293,27 +254,31 @@ body {
     align-items: center;
     gap: 30px;
     height: 600px; /* hauteur pour avoir la place au dessus et en dessous */
+    background-color: transparent;
+    margin-bottom: 200px;
 
   }
   
   /* Ligne horizontale centrale */
   .timeline-line {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 0;
     right: 0;
     height: 6px;
     background: linear-gradient(90deg, #BDA18A, #BDA18A);
     border-radius: 3px;
     z-index: 1;
-    transform: translateY(-50%);
+    transform: translateY(-70%);
+    
   }
   
   /* Chaque bloc */
   .timeline-item {
     position: relative;
-    width: 60%;         /* un peu plus large que 30% */
+    width: 90%;         /* un peu plus large que 30% */
     background: white;
+    border: 2px solid #d5bdaf ;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     padding: 20px 25px; /* un peu moins de padding vertical, plus horizontal */
@@ -322,18 +287,27 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    margin-bottom: 150px;
   
     min-height: 50px;  /* hauteur réduite pour moins de hauteur */
+  
   }
   
+  .timeline-title{
+    font-size: 2.2em;
+    margin-top: 1.5em;   /* ou toute autre valeur selon l'espacement voulu */
+    margin-bottom: -3.5em;
+    text-align: center;
+    color: #4a536b;
+}
   
   /* Décalage vertical : au-dessus = translateY(-100px), en dessous = translateY(100px) */
   .timeline-item.top {
-    transform: translateY(-230px);
+    transform: translateY(-40px);
   }
   
   .timeline-item.bottom {
-    transform: translateY(230px);
+    transform: translateY(430px);
   }
   
   /* Image + texte côte à côte */
@@ -342,13 +316,14 @@ body {
     align-items: center;
     gap: 15px;
     width: 100%;
+    background-color: white
   }
   
   /* Image */
   .content img {
-    width: 200px;
-    height: 200px;
-    border-radius: 12px;
+    width: 150px;
+    height: 150px;
+    /*border-radius: 12px;*/
     object-fit: cover;
     flex-shrink: 0;
   }
@@ -457,12 +432,13 @@ body {
 }
 
 
-/* Transition pour les paragraphes */
+/* Transition pour les paragraphes LE Saviez Vous*/
 .transition-paragraph {
+  margin-top: 60px;
   font-size: 18px;
   line-height: 1.8;
   color: #2d3142;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   padding: 20px;
   background-color: #f9f9f9;
   border-left: 6px solid #d5bdaf;
