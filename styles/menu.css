@@ -393,3 +393,62 @@ h2 {
 #start-menu-btn:hover {
   background-color: #cbb09e;
 }
+
+#final-popup {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-image: url('../photos/conseil/FondParcours.png');
+}
+
+#final-popup .popup-content {
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 30px;          /* moins de padding */
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+
+  min-width: 300px;
+  max-width: 500px;            /* un peu plus petit */
+  min-height: auto;            /* plus flexible */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;  
+}
+
+#final-message {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#final-total {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#see-correction-btn {
+  align-self: center;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  border: none;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: auto;
+  text-decoration: none;
+}
+
+#see-correction-btn:hover {
+  background-color: #c9b2a3;
+}
+

@@ -233,12 +233,18 @@ function selectChoice(type, option) {
 }
 
 function showResults() {
-  console.log("Résultats affichés");
-
   const allChoices = [userChoices.entree, userChoices.plat, userChoices.dessert];
 
-  // 🏷️ Tags pour détection sel/protéines
-  const protSelTags = {
+  let badCount = allChoices.filter(choice =>
+    choice.text.includes("sel") || choice.text.includes("protéines") || !choice.correct
+  ).length;
+
+  let scoreIncrement = badCount === 0 ? 2 : badCount === 1 ? 1 : 0;
+  score += scoreIncrement;
+
+  // Conseil personnalisé
+  const platChoisi = userChoices.plat?.text;
+  const tag = {
     "Pizza 4 fromages": "sel",
     "Osso buco": "prot",
     "Poulet caramélisé": "prot",
@@ -249,63 +255,17 @@ function showResults() {
     "Burrito au fromage": "sel",
     "Cheeseburger": "sel_prot",
     "Double steak burger": "prot",
-    "Wrap Veggie fromage": "sel",
-    "Charcuterie italienne": "sel_prot",
-    "Rillettes de porc": "sel_prot",
-    "Oeuf mayonnaise": "prot",
-    "Frites": "sel",
-    "Nuggets de poulet": "prot",
-    "Tacos frits": "sel_prot",
-    "Soupe miso": "sel"
-  };
+    "Wrap Veggie fromage": "sel"
+  }[platChoisi];
 
-  const tagValues = {
-    "prot": 1,
-    "sel": 1,
-    "sel_prot": 2
-  };
-
-  let imbalanceCount = 0;
   let adviceMessage = "";
-
-  allChoices.forEach(choice => {
-    const tag = protSelTags[choice.text];
-    if (tag) imbalanceCount += tagValues[tag] || 0;
-  });
-
-  // 🎯 Calcul du score selon le niveau de déséquilibre
-  let scoreIncrement = 0;
-  if (imbalanceCount === 0) {
-    scoreIncrement = 3;
-  } else if (imbalanceCount === 1) {
-    scoreIncrement = 2;
-  } else {
-    scoreIncrement = 1;
+  if (tag === "prot") {
+    adviceMessage = "⚠️ Ce plat est riche en protéines. Pense à un repas végétarien ensuite.";
+  } else if (tag === "sel") {
+    adviceMessage = "⚠️ Ce plat est riche en sel. Évite les produits salés pour le prochain repas.";
+  } else if (tag === "sel_prot") {
+    adviceMessage = "⚠️ Ce plat est très riche en sel et en protéines. Prévois un repas très léger ensuite.";
   }
-
-  score += scoreIncrement;
-
-  // 💬 Message si plat déséquilibré
-  const platTag = protSelTags[userChoices.plat?.text];
-  if (platTag === "prot") {
-    adviceMessage = "⚠️ Ce plat est riche en protéines. Essayez d’équilibrer avec un repas végétarien pour le prochain repas.";
-  } else if (platTag === "sel") {
-    adviceMessage = "⚠️ Ce plat est riche en sel. Pensez à un repas plus pauvre en sel au prochain repas.";
-  } else if (platTag === "sel_prot") {
-    adviceMessage = "⚠️ Ce plat est très riche en sel et en protéines. À compenser avec un repas très léger ensuite.";
-  }
-
-  // 🎨 Affichage des résultats
-  document.body.classList.add('noscroll');
-  const mainContent = document.getElementById('main-content');
-  if (mainContent) {
-    mainContent.classList.add('dimmed');
-  }
-  document.getElementById('game').style.display = 'none';
-
-  resultScreen.classList.remove('hidden');
-  resultScreen.style.display = 'flex';
-  scoreScreen.style.display = 'none';
 
   resultDetails.innerHTML = `
     <h2 class="result-title">Évaluation de ton menu</h2>
@@ -317,39 +277,62 @@ function showResults() {
         </div>
       `).join('')}
     </div>
-    <p class="result-score"><strong>${scoreIncrement}/2</strong> points pour ce restaurant.</p>
+    <p class="result-score"><strong>${scoreIncrement}/2</strong> pour ce menu.</p>
     ${adviceMessage ? `<p class="result-advice">${adviceMessage}</p>` : ""}
   `;
+
+  document.body.classList.add("noscroll");
+  document.getElementById("game").style.display = "none";
+  document.getElementById("main-content").classList.add("dimmed");
+
+  resultScreen.classList.remove("hidden");
+  resultScreen.style.display = "flex";
+
+  // ➕ Met à jour le texte du bouton à ce moment-là
+  nextBtn.textContent = currentRestaurantIndex === restaurants.length - 1
+    ? "Voir les résultats"
+    : "Restaurant suivant";
 }
 
 nextBtn.onclick = () => {
-  currentRestaurantIndex++;
-  step = 0;
-  userChoices = [];
-  resultDetails.innerHTML = "";
-  resultScreen.style.display = 'none';
-  document.body.classList.remove('noscroll');
+  resultScreen.style.display = "none";
+  document.body.classList.remove("noscroll");
+  document.getElementById("main-content").classList.remove("dimmed");
 
-  const mainContent = document.getElementById('main-content');
-  if (mainContent) {
-    mainContent.classList.remove('dimmed');
-  }
-
-  document.getElementById('game').style.display = 'block'; // ✅ << CETTE LIGNE MANQUAIT ICI
-
-  if (currentRestaurantIndex < restaurants.length) {
-    resultScreen.classList.add("hidden");
-    showQuestion();
+  if (currentRestaurantIndex === restaurants.length - 1) {
+    // Affiche le popup final
+    document.getElementById("final-total").textContent = score;
+    document.getElementById("final-popup").style.display = "flex";
   } else {
-    showFinalScore();
+    currentRestaurantIndex++;
+    userChoices = [];
+    showQuestion();
+    document.getElementById("game").style.display = "block";
   }
 };
 
 function showFinalScore() {
   resultScreen.classList.add("hidden");
-  scoreScreen.classList.remove("hidden");
-  finalScore.textContent = score;
-  totalScore.textContent = restaurants.length;
+  scoreScreen.classList.add("hidden");
+
+  const popup = document.getElementById("final-popup");
+ // Popup final affichage
+document.getElementById("final-total").textContent = score;
+
+const finalMessage = document.getElementById("final-message");
+
+if (score >= 9) {
+  finalMessage.textContent = "🌟 Excellent !";
+} else if (score >= 7) {
+  finalMessage.textContent = "👏 Bien joué !";
+} else if (score >= 5) {
+  finalMessage.textContent = "👍 Pas mal !";
+} else {
+  finalMessage.textContent = "💡 Continue à t'améliorer !";
+}
+
+  popup.classList.remove("hidden");
+  popup.style.display = "flex";
 }
 
 function restartGame() {

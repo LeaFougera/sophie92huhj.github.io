@@ -132,13 +132,46 @@ checkBtn.addEventListener('click', () => {
     }
   });
 
-  // Enregistre les scores dans le localStorage pour la page de résultat
   localStorage.setItem('score_proteine', totalProteine);
   localStorage.setItem('score_sel', totalSel);
 
-  // Redirection vers la page de résultats
-  window.location.href = 'resultat_assiette.html';
+  // Affiche la fenêtre popup
+  document.getElementById("popup").style.display = "flex";
+
+  // 👇 Affichage des scores DANS la popup
+  const proteine = parseInt(localStorage.getItem('score_proteine'), 10) || 0;
+  const sel = parseInt(localStorage.getItem('score_sel'), 10) || 0;
+
+  document.getElementById('score-proteine').textContent = `Score protéines : ${proteine}`;
+  document.getElementById('score-sel').textContent = `Score sel : ${sel}`;
+
+  let message = '';
+  if (proteine == 1 && sel == 1) {
+    message = 'Bon choix alimentaire !';
+  } else if  (proteine <1 && sel <1) {
+    message = 'Excellent choix alimentaire !';
+  } else if (proteine <= 1 && sel > 1) {
+    message = '⚠️ Protéines OK, mais trop de sel dans l’assiette.';
+  } else if (proteine > 1 && sel <= 1) {
+    message = '⚠️ Sel OK, mais trop de protéines dans l’assiette.';
+  } else if (proteine > 1 && sel > 1) {
+    message = '⚠️ Attention, trop de protéines et trop de sel dans l’assiette.';
+  } else {
+    message = 'Assiette correcte, mais peut être améliorée.';
+  }
+
+  // Assure-toi que tu as bien un élément avec cet ID dans ta popup :
+  document.getElementById('message-feedback').textContent = message;
+
+  // Cacher le bouton valider avec force
+  checkBtn.classList.add('hidden');
+
+  // Nettoyer après affichage
+  localStorage.removeItem('score_proteine');
+  localStorage.removeItem('score_sel');
+
 });
+
 
 // Navigation entre étapes
 function nextStep(current) {
@@ -199,30 +232,3 @@ document.querySelectorAll('.ingredient').forEach(ingredient => {
     tooltip.style.display = 'none';
   });
 });
-
-
-    // Résultat assiette
-    const proteine = parseInt(localStorage.getItem('score_proteine'), 10) || 0;
-    const sel = parseInt(localStorage.getItem('score_sel'), 10) || 0;
-
-    document.getElementById('score-proteine').textContent = `Score protéines : ${proteine}`;
-    document.getElementById('score-sel').textContent = `Score sel : ${sel}`;
-
-    let message = '';
-    if (proteine <= 1 && sel <= 1) {
-  message = '🥇 Excellent choix alimentaire !';
-} else if (proteine <= 1 && sel > 1) {
-  message = '⚠️ Protéines OK, mais trop de sel dans l’assiette.';
-} else if (proteine > 1 && sel <= 1) {
-  message = '⚠️ Sel OK, mais trop de protéines dans l’assiette.';
-} else if (proteine > 1 && sel > 1) {
-  message = '⚠️ Attention, trop de protéines et trop de sel dans l’assiette.';
-} else {
-  message = 'Assiette correcte, mais peut être améliorée.';
-}
-    document.getElementById('resultat-final').textContent = message;
-
-    // Nettoyage
-    localStorage.removeItem('score_proteine');
-    localStorage.removeItem('score_sel');
-
