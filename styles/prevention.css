@@ -280,3 +280,20 @@ body {
     color: #1d3557; /* Utilise une couleur sombre pour plus de contraste */
 }
 
+.download-btn {
+  display: inline-block;
+  background-color: #d5bdaf; /* couleur de fond */
+  color: #4a536b;              /* texte en blanc */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;     /* enlève le soulignement */
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background-color: #d5bdaf; /* couleur au survol */
+}
