@@ -1,12 +1,10 @@
-// Détecte le niveau du dossier pour ajuster le chemin vers la barre de navigation
 const path = window.location.pathname;
 let navPath = "";
 
-// Vérifie si l'URL contient "/pages/" ou "/jeux/"
 if (path.includes("/pages/") || path.includes("/jeux/")) {
-    navPath = "../composants/barre-navigation.html";  // Remonte d'un dossier pour accéder à "composants"
+    navPath = "../composants/barre-navigation.html";  
 } else {
-    navPath = "composants/barre-navigation.html";  // Utilise ce chemin si on est déjà au bon niveau
+    navPath = "composants/barre-navigation.html";  
 }
 
 fetch(navPath)
@@ -14,7 +12,6 @@ fetch(navPath)
     .then(data => {
         document.getElementById("navbar-placeholder").innerHTML = data;
 
-        // Marquer l'onglet actif automatiquement
         const currentPath = window.location.pathname;
         const links = document.querySelectorAll(".navbar a");
 

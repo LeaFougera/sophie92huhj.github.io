@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
     faders.forEach(el => observer.observe(el));
   
-    // Accordéon
     const accordions = document.querySelectorAll('.accordion-btn');
     accordions.forEach(btn => {
       btn.addEventListener('click', () => {

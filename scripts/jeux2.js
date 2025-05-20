@@ -13,7 +13,7 @@ function completer(num, el, couleur) {
   function afficherInfoJeu(topPx, leftPx, data) {
     const infoPanel = document.getElementById("info-panel");
     infoPanel.style.top = `${topPx}px`;
-    infoPanel.style.left = `${leftPx}px`; // <-- AJOUTÉ
+    infoPanel.style.left = `${leftPx}px`; 
   
     document.getElementById("info-theme").textContent = data.theme;
     document.getElementById("info-duree").textContent = data.duree;
@@ -29,12 +29,12 @@ function completer(num, el, couleur) {
   }
 
   // === Étape 1 : Jeu de Liaison (rein3.html) ===
-  const bestScoreJeu1 = localStorage.getItem("bestScoreJeu1"); // sur 10
+  const bestScoreJeu1 = localStorage.getItem("bestScoreJeu1"); 
   const etape1 = document.querySelector(".image-jeu[href*='rein3.html']");
   const ligne1 = document.querySelector(".line.c1");
   
   if (bestScoreJeu1 && etape1 && ligne1 && !ligne1.classList.contains("completed")) {
-    completer(1, etape1, "#66bb6a"); // par exemple vert
+    completer(1, etape1, "#66bb6a"); 
   }
   
   etape1.addEventListener("mouseenter", () => {
@@ -49,7 +49,7 @@ function completer(num, el, couleur) {
   etape1.addEventListener("mouseleave", cacherInfoJeu);
   
 // === Étape 2 : Jeu d'Alimentation (sans score) ===
-const etape2 = document.querySelector(".image-jeu[href*='assiette.html']"); // Adapte le nom du fichier
+const etape2 = document.querySelector(".image-jeu[href*='assiette.html']"); 
 const ligne2 = document.querySelector(".line.c2");
 
 // Marque comme complété si le jeu a été visité (utilisation d'un flag simple)
@@ -59,7 +59,7 @@ if (jeu2Complete && etape2 && ligne2 && !ligne2.classList.contains("completed"))
 }
 
 etape2.addEventListener("mouseenter", () => {
-  afficherInfoJeu(60, 750, {  // Ajuste la position selon ton layout
+  afficherInfoJeu(60, 750, {  
     theme: "Alimentation et Santé",
     duree: "5 min",
     type: "Composition d'un repas",
@@ -70,17 +70,17 @@ etape2.addEventListener("mouseenter", () => {
 etape2.addEventListener("mouseleave", cacherInfoJeu);
   
   // === Étape 3 : Quiz (quiz.html) ===
-  const bestScoreQuiz = localStorage.getItem("bestScoreQuiz"); // Exemple : 7
+  const bestScoreQuiz = localStorage.getItem("bestScoreQuiz"); 
   const maxScoreQuiz = 10;
-  const etape3 = document.getElementById("etape3");            // à ajouter dans ton HTML
-  const ligne3 = document.querySelector(".line.c3");           // ligne 2 → 3 (ajouter class="line c2" dans le SVG si pas encore fait)
+  const etape3 = document.getElementById("etape3");            
+  const ligne3 = document.querySelector(".line.c3");           
   
   if (bestScoreQuiz && maxScoreQuiz && etape3 && ligne3 && !ligne3.classList.contains("completed")) {
     completer(3, etape3, "#66bb6a"); 
   }
   
   etape3.addEventListener("mouseenter", () => {
-    afficherInfoJeu(60, 750, {  // top: 120px, left: 750px
+    afficherInfoJeu(60, 750, {  
       theme: "Causes et Symptômes",
       duree: "5 min",
       type: "Quiz",
@@ -92,7 +92,7 @@ etape2.addEventListener("mouseleave", cacherInfoJeu);
   etape3.addEventListener("mouseleave", cacherInfoJeu);
 
   // === Étape 4 : Jeu de Conseils (conseils.html) ===
-const scoreConseils = localStorage.getItem("scoreConseils"); // sur 20
+const scoreConseils = localStorage.getItem("scoreConseils"); 
 const etape4 = document.querySelector(".image-jeu[href*='conseils.html']");
 const ligne4 = document.querySelector(".line.c4");
 
@@ -112,7 +112,7 @@ etape4.addEventListener("mouseenter", () => {
 etape4.addEventListener("mouseleave", cacherInfoJeu);
 
   // === Étape 5 : Jeu de Mémoire (rein1.html) ===
-const bestScoreJeu5 = localStorage.getItem("bestScoreJeu5"); // sur 12
+const bestScoreJeu5 = localStorage.getItem("bestScoreJeu5"); 
 const etape5 = document.querySelector(".image-jeu[href*='rein1.html']");
 const ligne5 = document.querySelector(".line.c5");
 
@@ -132,11 +132,11 @@ etape5.addEventListener("mouseenter", () => {
 etape5.addEventListener("mouseleave", cacherInfoJeu);
 
 // === Étape 6 : Mini-jeu des menus ===
-const bestScoreMiniJeu6 = localStorage.getItem("bestScoreMiniJeu6"); // On ne prend que le meilleur
+const bestScoreMiniJeu6 = localStorage.getItem("bestScoreMiniJeu6"); 
 const etape6 = document.querySelector(".image-jeu[href*='menu.html']");
 const ligne6 = document.querySelector(".line.c6");
 
-// ➡️ On vérifie le bestScore pour compléter l'étape
+// On vérifie le bestScore pour compléter l'étape
 if (bestScoreMiniJeu6 && etape6 && ligne6 && !ligne6.classList.contains("completed")) {
   completer(6, etape6, "#66bb6a");
 }
@@ -146,7 +146,6 @@ etape6.addEventListener("mouseenter", () => {
     theme: "Menus et Alimentation",
     duree: "5 min",
     type: "Sélection alimentaire",
-    // ➡️ On affiche uniquement le meilleur score (pas de "Non joué" si bestScore existe)
     score: bestScoreMiniJeu6 ? ` ${bestScoreMiniJeu6} / 10` : "Non joué"
   });
 });

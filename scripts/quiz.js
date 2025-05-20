@@ -97,7 +97,7 @@ function showQuestion() {
 
   // Ajouter l'image pour la question
   const questionImage = document.createElement("img");
-  questionImage.src = q.image;  // Utilisation du chemin de l'image
+  questionImage.src = q.image;  
   questionImage.alt = "Image question";
   questionImage.classList.add("question-image");
 
@@ -115,7 +115,7 @@ function showQuestion() {
   questionEl.appendChild(questionContent);
 
   // Ajouter les boutons de réponse
-  answersEl.innerHTML = ""; // Clear previous answers
+  answersEl.innerHTML = ""; 
   q.options.forEach(option => {
     const btn = document.createElement("button");
     btn.textContent = option;
@@ -138,8 +138,8 @@ function checkAnswer(button, isCorrect) {
 
   // Désactiver tous les boutons après la réponse
   Array.from(answersEl.children).forEach(btn => {
-    btn.disabled = true; // Désactive le bouton
-    btn.classList.add("no-hover"); // Applique la classe no-hover pour désactiver l'effet de survol
+    btn.disabled = true; 
+    btn.classList.add("no-hover"); 
     if (btn.textContent === q.answer) {
       btn.classList.add("correct");
     }
@@ -150,16 +150,15 @@ function checkAnswer(button, isCorrect) {
   explanation.textContent = q.explanation;
   explanation.style.marginTop = "20px";
   
-  // Appliquer des styles améliorés à l'explication
-  explanation.style.backgroundColor = "#f9f9f9"; // Fond clair pour contraster
-  explanation.style.padding = "20px"; // Espacement pour un meilleur confort de lecture
-  explanation.style.borderRadius = "10px"; // Coins arrondis
-  explanation.style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.1)"; // Ombre douce pour la profondeur
-  explanation.style.color = "#4a536b"; // Couleur du texte
-  explanation.style.fontSize = "1.1rem"; // Augmenter la taille du texte
-  explanation.style.fontWeight = "bold"; // Gras pour mieux capturer l'attention
-  explanation.style.borderLeft = "5px solid #4CAF50"; // Bordure verte à gauche pour mettre en valeur
-  explanation.style.marginTop = "50px"; // Espacement avant l'explication
+  explanation.style.backgroundColor = "#f9f9f9"; 
+  explanation.style.padding = "20px"; 
+  explanation.style.borderRadius = "10px"; 
+  explanation.style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.1)"; 
+  explanation.style.color = "#4a536b"; 
+  explanation.style.fontSize = "1.1rem"; 
+  explanation.style.fontWeight = "bold"; 
+  explanation.style.borderLeft = "5px solid #4CAF50"; 
+  explanation.style.marginTop = "50px"; 
 
   // Animation d'apparition
   explanation.style.animation = "fadeIn 0.5s ease";
@@ -167,7 +166,7 @@ function checkAnswer(button, isCorrect) {
   // Ajouter l'explication sous les réponses
   answersEl.appendChild(explanation);
 
-  // Animation d'apparition (cléframes)
+  // Animation d'apparition 
   const styleSheet = document.styleSheets[0];
   styleSheet.insertRule(`
     @keyframes fadeIn {
@@ -182,12 +181,12 @@ function checkAnswer(button, isCorrect) {
     }
   `, styleSheet.cssRules.length);
 
-  // Ajouter le bouton "Voir le score"
+
   const nextBtn = document.createElement("button");
   nextBtn.textContent = "Voir le score";
   nextBtn.style.marginTop = "50px";
   nextBtn.onclick = () => {
-    displayScore(); // Afficher le score lorsque le bouton est cliqué
+    displayScore(); 
   };
 
   // Afficher le bouton "Voir le score" seulement après la dernière question
@@ -218,8 +217,8 @@ function displayScore() {
   document.getElementById("quiz-container").classList.add("hidden");
 
   // S'assurer que l'élément pour le score est visible
-  const scoreEl = document.getElementById("score"); // s'assurer que le bon élément est ciblé
-  scoreEl.classList.remove("hidden"); // Retirer la classe hidden pour afficher le score
+  const scoreEl = document.getElementById("score"); 
+  scoreEl.classList.remove("hidden"); 
 
   // Afficher uniquement le score
   scoreEl.textContent = `Votre score : ${score} / ${questions.length}`;
@@ -231,7 +230,7 @@ function displayScore() {
 
   // Ajouter l'événement de redirection
   backToProgressBtn.onclick = () => {
-    window.location.href = "../jeux/quizcorrection.html"; // Modifie ce lien selon ton projet
+    window.location.href = "../jeux/quizcorrection.html";
   };
 
   // Ajouter le bouton au DOM
@@ -253,7 +252,7 @@ function checkAnswer(button, isCorrect) {
   // Désactiver tous les boutons après la réponse
   Array.from(answersEl.children).forEach(btn => {
     btn.disabled = true; // Désactive le bouton
-    btn.classList.add("no-hover"); // Applique la classe no-hover pour désactiver l'effet de survol
+    btn.classList.add("no-hover"); 
     if (btn.textContent === q.answer) {
       btn.classList.add("correct");
     }
@@ -265,15 +264,15 @@ function checkAnswer(button, isCorrect) {
   explanation.style.marginTop = "20px";
   
   // Appliquer des styles améliorés à l'explication
-  explanation.style.backgroundColor = "#f9f9f9"; // Fond clair pour contraster
-  explanation.style.padding = "20px"; // Espacement pour un meilleur confort de lecture
-  explanation.style.borderRadius = "10px"; // Coins arrondis
-  explanation.style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.1)"; // Ombre douce pour la profondeur
-  explanation.style.color = "#4a536b"; // Couleur du texte
-  explanation.style.fontSize = "1.1rem"; // Augmenter la taille du texte
-  explanation.style.fontWeight = "bold"; // Gras pour mieux capturer l'attention
-  explanation.style.borderLeft = "5px solid #4CAF50"; // Bordure verte à gauche pour mettre en valeur
-  explanation.style.marginTop = "50px"; // Espacement avant l'explication
+  explanation.style.backgroundColor = "#f9f9f9"; 
+  explanation.style.padding = "20px"; 
+  explanation.style.borderRadius = "10px"; 
+  explanation.style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.1)"; 
+  explanation.style.color = "#4a536b"; 
+  explanation.style.fontSize = "1.1rem"; 
+  explanation.style.fontWeight = "bold"; 
+  explanation.style.borderLeft = "5px solid #4CAF50"; 
+  explanation.style.marginTop = "50px"; 
 
   // Animation d'apparition
   explanation.style.animation = "fadeIn 0.5s ease";
@@ -281,7 +280,7 @@ function checkAnswer(button, isCorrect) {
   // Ajouter l'explication sous les réponses
   answersEl.appendChild(explanation);
 
-  // Animation d'apparition (cléframes)
+  // Animation d'apparition 
   const styleSheet = document.styleSheets[0];
   styleSheet.insertRule(`
     @keyframes fadeIn {
@@ -296,12 +295,11 @@ function checkAnswer(button, isCorrect) {
     }
   `, styleSheet.cssRules.length);
 
-  // Ajouter le bouton "Voir le score" seulement après la dernière question
   const nextBtn = document.createElement("button");
   nextBtn.textContent = "Voir le score";
   nextBtn.style.marginTop = "50px";
   nextBtn.onclick = () => {
-    displayScore(); // Afficher le score lorsque le bouton est cliqué
+    displayScore(); 
   };
 
   if (currentQuestion === questions.length - 1) {
@@ -323,18 +321,17 @@ function checkAnswer(button, isCorrect) {
 function shuffleQuestions() {
   for (let i = questions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [questions[i], questions[j]] = [questions[j], questions[i]]; // échange les questions
+    [questions[i], questions[j]] = [questions[j], questions[i]]; 
   }
 }
 
-// Affichage du quiz après avoir cliqué sur "Commencer le quiz"
 document.getElementById("start-quiz-btn").onclick = () => {
   // Cacher l'introduction
   document.getElementById("game-introduction").classList.add("hidden");
   // Afficher le quiz
   document.getElementById("quiz-container").classList.remove("hidden");
   
-  shuffleQuestions();  // Mélange les questions avant de commencer
-  showQuestion(); // Afficher la première question
+  shuffleQuestions();  
+  showQuestion(); 
 };
 

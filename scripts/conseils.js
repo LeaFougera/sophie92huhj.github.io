@@ -1,4 +1,4 @@
-// Constantes de conseils pour la partie 1 et 2
+// Conseils pour la partie 1 et 2
 const conseils1 = [
   { good: "Bois de l’eau tout au long de la journée", bad: "Bois quand tu as soif, c’est le meilleur indicateur de besoin" },
   { good: "Réduis ta consommation de sel, même sans problème de tension", bad: "Inutile de réduire le sel si ta tension est stable" },
@@ -100,7 +100,7 @@ const explications = {
 };
 
 
-// DOM
+
 const startZone = document.getElementById("start-zone");
 const countdown = document.getElementById("countdown");
 const timer = document.getElementById("timer");
@@ -126,10 +126,9 @@ let score = 0;
 let scorePartie1 = 0;
 let scorePartie2 = 0;
 let errors = [];
-let phraseZone; // déclaration globale
-let partie = 1; // Partie actuelle
+let phraseZone; 
+let partie = 1; 
 
-// Utilitaires
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
@@ -252,7 +251,7 @@ function handleAnswer(userChoice) {
   const col = userChoice === "good" ? document.getElementById("col-good") : document.getElementById("col-bad");
   col.appendChild(li);
 
-  currentIndex++; // On incrémente l'index après avoir traité l'élément courant
+  currentIndex++; 
 
   // On vérifie maintenant si on a traité tous les éléments
   if (currentIndex >= shuffledItems.length) {
@@ -345,7 +344,7 @@ function showScore() {
   if (errors.length === 0 && partie === 2) {
     document.getElementById("back-home-btn-container").classList.remove("hidden");
     document.getElementById("back-home-btn").onclick = function() {
-      window.location.href = "/pages/jeux2.html"; // Chemin absolu plus fiable
+      window.location.href = "/pages/jeux2.html"; 
     };
   }
 }
@@ -356,10 +355,8 @@ nextErrorBtn.onclick = () => {
 
 
 function handleShowErrors() {
-  // Réinitialiser l'index
   currentErrorIndex = 0;
   
-  // Afficher la première erreur
   if (errors.length > 0) {
     const error = errors[currentErrorIndex];
     errorText.innerHTML = `
@@ -410,7 +407,7 @@ function showNextError() {
       // Afficher le bouton Retour seulement après avoir vu toutes les erreurs
       document.getElementById("back-home-btn-container").classList.remove("hidden");
       document.getElementById("back-home-btn").onclick = function() {
-        window.location.href = "../jeux/conseilscorrection.html"; // Chemin absolu plus fiable
+        window.location.href = "../jeux/conseilscorrection.html"; 
       };
     }
   }
@@ -461,8 +458,8 @@ document.getElementById("next-part-btn").addEventListener("click", () => {
   });
 
   // Initialisation du timer pour 10 secondes
-  countdown.classList.remove("hidden"); // Affiche le bloc contenant le timer
-  let timeLeft = 10;  // La durée des 10 secondes
+  countdown.classList.remove("hidden"); 
+  let timeLeft = 10;  
   const timerEl = document.getElementById("timer");
   timerEl.textContent = timeLeft;
 

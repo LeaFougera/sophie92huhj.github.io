@@ -140,7 +140,7 @@ checkBtn.addEventListener('click', () => {
   // Affiche la fenêtre popup
   document.getElementById("popup").style.display = "flex";
 
-  // 👇 Affichage des scores DANS la popup
+  // Affichage des scores dans la popup
   const proteine = parseInt(localStorage.getItem('score_proteine'), 10) || 0;
   const sel = parseInt(localStorage.getItem('score_sel'), 10) || 0;
 
@@ -162,10 +162,9 @@ checkBtn.addEventListener('click', () => {
     message = 'Assiette correcte, mais peut être améliorée.';
   }
 
-  // Assure-toi que tu as bien un élément avec cet ID dans ta popup :
   document.getElementById('message-feedback').textContent = message;
 
-  // Cacher le bouton valider avec force
+  // Cacher le bouton valider 
   checkBtn.classList.add('hidden');
 
   // Nettoyer après affichage
