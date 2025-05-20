@@ -153,7 +153,7 @@
     max-width: 100%;
     margin: 40px auto 20px auto;
     padding: 25px 30px;
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    background: linear-gradient(145deg, #EDEDE9, #EDEDE9);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-size: 17px;
@@ -173,7 +173,7 @@
     margin-bottom: 15px;
     font-size: 24px;
     color: #2c3e50;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #EDEDE9;
     padding-bottom: 8px;
   }
   

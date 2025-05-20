@@ -207,7 +207,7 @@ ul li {
   font-weight: bold;
   border-radius: 8px;
   background-color: #BDA18A;
-  color: white;
+  color: #4a536b;
   border: none;
   cursor: pointer;
   /*transition: background-color 0.3s ease;*/
@@ -248,13 +248,13 @@ ul li {
 
 
 .game-introduction h1 {
-  color: black;
+  color: #4a536b;
   font-size: 2.2rem;
   margin-bottom: 20px;
 }
 
 .game-introduction p {
-  color: black;
+  color: #4a536b;
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -262,7 +262,7 @@ ul li {
 /* Style du bouton "Commencer le quiz" */
 #start-assiette-btn {
   background-color: #d5bdaf;
-  color: black;
+  color: #4a536b;
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
@@ -298,13 +298,13 @@ ul li {
   align-items: center;           /* centré verticalement */
 
   /*padding-left: 15vw;            /* décale vers la droite */
-  background-color: #fdfaf6;     /* même fond que le reste */
+  background-image: url('../photos/conseil/FondParcours.png');    /* même fond que le reste */
   z-index: 1000;                 /* au-dessus du reste */
 }
 
 .tooltip {
   position: absolute;
-  background-color: #333;
+  background-color: #4a536b;
   color: #fff;
   padding: 6px 10px;
   border-radius: 5px;
@@ -350,7 +350,7 @@ ul li {
   background-color: #d5bdaf;
   padding: 10px 15px;
   border-radius: 8px;
-  color: #333;
+  color: #4a536b;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   transition: background-color 0.3s;

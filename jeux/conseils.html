@@ -10,6 +10,9 @@
     <h1>Mémorise les bons et les faux bons conseils</h1>
     <p>Tu verras pendant 10 secondes des conseils à retenir. Ensuite, tu devras les classer dans la bonne colonne.</p>
 
+    <!-- Bouton retour au parcours -->
+    <a href="../pages/jeux2.html" class="back-button">← Retour au parcours</a>
+
     <div id="start-zone">
       <button id="start-btn">Commencer</button>
     </div>
@@ -38,23 +41,23 @@
       <button id="show-errors-btn">Voir les erreurs</button>
     </div>
 
-   <!-- Modal d’explication -->
-   <div id="error-modal" class="hidden modal-overlay">
-     <div class="modal-content">
-       <p id="error-text"></p>
-       <button id="next-error-btn">Suivant</button>
-     </div>
-   </div>
+    <!-- Modal d’explication -->
+    <div id="error-modal" class="hidden modal-overlay">
+      <div class="modal-content">
+        <p id="error-text"></p>
+        <button id="next-error-btn">Suivant</button>
+      </div>
+    </div>
 
-  </div>
+    <!-- Bouton vers la 2e partie -->
+    <div id="next-part-btn-container" class="hidden">
+      <button id="next-part-btn">C’est parti pour la 2ᵉ partie !</button>
+    </div>
 
-   <!-- Ajout du bouton pour passer à la 2ème partie dans la zone principale -->
-   <div id="next-part-btn-container" class="hidden">
-    <button id="next-part-btn">C’est parti pour la 2ᵉ partie !</button>
-  </div>
-
-  <div id="back-home-btn-container" class="hidden">
-    <button id="back-home-btn">Voir la fiche réflexe</button>
+    <!-- Bouton retour à la fiche -->
+    <div id="back-home-btn-container" class="hidden">
+      <button id="back-home-btn">Voir la fiche réflexe</button>
+    </div>
   </div>
 
   <script src="../scripts/conseils.js"></script>

@@ -13,17 +13,18 @@ body {
 }
 
 .container {
-    position: relative; 
+    position: relative; /* 👈 ajoute ceci */
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
-    background: transparent;
+    background: #f5ebe0;
     border-radius: 10px;
-    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
+    color: #4a536b;
 }
 
 p {
@@ -48,15 +49,7 @@ p {
     text-align: center;
     margin-bottom: 15px;
     color: #4a536b;
-    text-decoration: underline;
 }
-
-.container h1 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #4a536b;
-}
-
 
 .item {
     border: 2px solid #BDA18A;
@@ -307,7 +300,7 @@ button:hover {
     background-color: #d5bdaf;
     padding: 10px 15px;
     border-radius: 8px;
-    color: #333;
+    color: #4a536b;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: background-color 0.3s;
@@ -341,13 +334,13 @@ button:hover {
   
   
   .game-introduction h1 {
-    color: black;
+    color: #4a536b;
     font-size: 2.2rem;
     margin-bottom: 20px;
   }
   
   .game-introduction p {
-    color: black;
+    color: #4a536b;
     font-size: 1.1rem;
     line-height: 1.6;
   }
@@ -355,7 +348,7 @@ button:hover {
   /* Style du bouton "Commencer le quiz" */
   #start-liaison-btn {
     background-color: #d5bdaf;
-    color: black;
+    color: #4a536b;
     padding: 10px 20px;
     border: none;
     border-radius: 6px;
@@ -388,11 +381,25 @@ button:hover {
     align-items: center;           /* centré verticalement */
   
     /*padding-left: 15vw;            /* décale vers la droite */
-    background-color: transparent;     /* même fond que le reste */
+    background-image: url('../photos/conseil/FondParcours.png'); /* ✅ image ajoutée ici */   
     z-index: 1000;                 /* au-dessus du reste */
   }
 
-
-  .container {
-    display: none;
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #d5bdaf;
+    color: #4a536b;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #d5bdaf;
   }

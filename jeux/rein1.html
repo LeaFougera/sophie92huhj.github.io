@@ -7,34 +7,57 @@
   <link rel="stylesheet" href="../styles/rein1.css">
 </head>
 <body>
-<a href="../pages/jeux2.html" class="back-button">← Retour au parcours</a>
-<div id="customModal" class="modal hidden">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h2>Résultat</h2>
-    <div id="modalText"></div>
-    <button id="next-explanation-btn" class="hidden">Suivant</button>
-    <button id="finish-correction-btn" class="hidden">Recommencer le jeu</button>
-  </div>
-</div>
+  <a href="../pages/jeux2.html" class="back-button">← Retour au parcours</a>
 
-<div class="container">
-  <h1>Jeu de Mémoire - Les Reins</h1>
-  <div class="intro">
-    <p>
-      Bienvenue ! Dans ce jeu, ton objectif est d’associer chaque <strong>phrase descriptive</strong> à l’<strong>organe du système urinaire</strong> qui lui correspond.<br>
-      Clique sur une carte pour révéler la phrase, puis sélectionne l’organe correspondant. Plusieurs réponses possibles pour chaque organe. Bonne chance !
-    </p>
+  <!-- ✅ Bloc d’introduction -->
+  <div class="intro-wrapper" id="intro-wrapper">
+    <div class="game-introduction">
+      <h1>Bienvenue !</h1>
+      <p>
+        Dans ce jeu, ton objectif est d’associer chaque <strong>phrase descriptive</strong> à l’<strong>organe du système urinaire</strong> qui lui correspond.
+      </p>
+      <p>
+        Clique sur une carte pour révéler la phrase, puis sélectionne l’organe correspondant. Plusieurs réponses possibles pour chaque organe.
+      </p>
+      <p>Bonne chance !</p>
+      <button id="start-game-btn">Commencer le jeu</button>
+    </div>
   </div>
 
-  <div id="organs-container" class="organs-container"></div>
-  <hr style="margin: 40px auto; width: 60%; border: 1px solid #ccc;">
-  <div id="cards-container" class="cards-container"></div>
+  <!-- ✅ Modale de correction -->
+  <div id="customModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Résultat</h2>
+      <div id="modalText"></div>
+      <button id="next-explanation-btn" class="hidden">Suivant</button>
+      <button id="finish-correction-btn" class="hidden">Recommencer le jeu</button>
+    </div>
+  </div>
 
-  <button id="validate-btn">Valider</button>
-  <button id="see-results-btn" class="hidden">Voir les résultats</button>
-</div>
+  <!-- ✅ Bloc principal du jeu (masqué au départ) -->
+  <div class="container hidden" id="game-container">
+    <h1>Jeu de Mémoire - Les Reins</h1>
+    <div class="intro">
+      <p>
+        Associe chaque phrase à l'organe du système urinaire concerné.
+      </p>
+    </div>
 
-<script src="../scripts/rein1.js"></script>
+    <div id="organs-container" class="organs-container"></div>
+    <hr style="margin: 40px auto; width: 60%; border: 1px solid #ccc;">
+    <div id="cards-container" class="cards-container"></div>
+
+    <button id="validate-btn">Valider</button>
+    <button id="see-results-btn" class="hidden">Voir les résultats</button>
+  </div>
+
+  <script src="../scripts/rein1.js"></script>
+  <script>
+    document.getElementById('start-game-btn').addEventListener('click', () => {
+      document.getElementById('intro-wrapper').style.display = 'none';
+      document.getElementById('game-container').classList.remove('hidden');
+    });
+  </script>
 </body>
 </html>
