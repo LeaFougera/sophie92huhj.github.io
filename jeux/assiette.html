@@ -7,6 +7,29 @@
   <link rel="stylesheet" href="../styles/assiette.css">
 </head>
 <body>
+  <div id="popup" class="popup" style="display:none;">
+    <div class="popup-content">
+      <h2>Bravo !</h2>
+      <p>Tu as terminé ton assiette<br>
+      <div class="score" id="score-proteine"></div>
+      <div class="score" id="score-sel"></div>
+      </p>
+
+      <div id="message-feedback" style="font-weight:bold; margin-top:10px;"></div> 
+
+      <div class="info-message">
+        <h3>Petit rappel utile !</h3>
+        <p>Il est recommandé d’avoir <strong>une source de protéines</strong> et <strong>une source de sel</strong><strong> maximum par jour</strong> pour maintenir un bon équilibre alimentaire.</p>
+        <p>💡 Si ce repas dépasse un peu… pas de panique ! Il suffira simplement <strong>d’ajuster les prochains repas</strong> de la journée.</p>
+        <p>👉 L’important, c’est l’<strong>équilibre sur l’ensemble de la journée</strong>, pas la perfection à chaque bouchée.</p>
+        <p>Besoin d’un résumé rapide ?<br>
+        Consulte la <strong>fiche réflexe</strong> pour faire les bons choix en un clin d’œil ! </p>
+      </div>
+
+      <button class="btn-fiche" onclick="window.location.href='resultat_assiette.html'">Voir la fiche réflexe</button>
+
+    </div>
+  </div>
   
   <a href="../pages/jeux2.html" id="backButton">← Retour au parcours</a>
   <div id="tooltip" class="tooltip"></div>
@@ -109,6 +132,7 @@
   
   
   <div id="step-3" class="step">
+
     <h2>Étape 3 : Choisis un dessert</h2><br>
     <p>Un bon repas se termine par un dessert : choisis-le avant de valider ton assiette !</p><br>
 
