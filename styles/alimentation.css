@@ -459,28 +459,60 @@ body {
   color: #1d3557;
 }
 
-.conseil-alimentaire {
-  background-color: #FFADAD;
-  border-left: 6px solid red;
-  padding: 1em 1.5em;
-  margin: 2em 0;
+
+.flip-card {
+  background-color: transparent;
+  width: 600px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 2em auto;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backface-visibility: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  padding: 1.5em;
   font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-.conseil-alimentaire h2 {
-  margin-top: 0;
-  font-size: 1.5em;
-  color: #2e7d32;
+.flip-card-front {
+  border: 2px solid #f9c74f;
+  background-color: #fffbe0;
 }
 
-.conseil-alimentaire p {
-  font-size: 1.1em;
-  margin: 0.5em 0;
+.flip-card-back {
+  background-color: #fffbe0;
+  color: #333;
+  transform: rotateY(180deg);
 }
 
-.conseil-alimentaire .encouragement {
+.flip-card-back .encouragement {
   font-style: italic;
   color: #555;
+  margin-top: 0.5em;
 }
+
+
+
+
