@@ -1,8 +1,8 @@
 const organs = [
-  { img: "../photos/rein1/rein.png", name: "Rein", count: 0, color: "#4b0082" },      // rose
-  { img: "../photos/rein1/vessie.png", name: "Vessie", count: 0, color: "#ffd200" },   // jaune
-  { img: "../photos/rein1/ureteres.png", name: "Uretères", count: 0, color: "#81d4fa" }, // bleu
-  { img: "../photos/rein1/uretre.png", name: "Urètre", count: 0, color: "#ffa500" }     // orange
+  { img: "../photos/rein1/rein.png", name: "Rein", count: 0, color: "#4b0082" },      
+  { img: "../photos/rein1/vessie.png", name: "Vessie", count: 0, color: "#ffd200" },   
+  { img: "../photos/rein1/ureteres.png", name: "Uretères", count: 0, color: "#81d4fa" }, 
+  { img: "../photos/rein1/uretre.png", name: "Urètre", count: 0, color: "#ffa500" }     
 ];
 
 const phrases = [
@@ -156,7 +156,6 @@ function showModalExplanation(index) {
   } else {
     const correctCount = selections.filter(s => s.correct).length;
   
-    // Ajout ici : enregistrement du meilleur score
     const ancienBest = parseInt(localStorage.getItem("bestScoreJeu5")) || 0;
     if (correctCount > ancienBest) {
       localStorage.setItem("bestScoreJeu5", correctCount);
@@ -207,7 +206,6 @@ document.getElementById("validate-btn").addEventListener("click", () => {
     });
   });
 
-  // 👉 Maintenant on montre un bouton pour "Voir les résultats"
   document.getElementById("see-results-btn").classList.remove("hidden");
   document.getElementById("validate-btn").classList.add("hidden");
 });
@@ -223,10 +221,10 @@ function resetGame() {
   organs.forEach(organ => {
     organ.count = 0;
   });
-// ✅ Cache le bouton "Voir les résultats"
+// Cache le bouton "Voir les résultats"
 document.getElementById("see-results-btn").classList.add("hidden");
 
-// ✅ Réaffiche le bouton "Valider"
+// Réaffiche le bouton "Valider"
 document.getElementById("validate-btn").classList.remove("hidden");
 }
 

@@ -1,5 +1,5 @@
     const checkButton = document.getElementById("checkButton");
-    checkButton.disabled = true;  // Désactive le bouton au début
+    checkButton.disabled = true;  
     shuffleDefinitions("part1");
 
     
@@ -208,7 +208,7 @@
         if (isErreur && erreursAffichage.length > 1) {
             nextErrorButton.style.display = "inline-block";
             if (erreurIndex === 0) {
-                prevErrorButton.style.display = "none"; // Pas de bouton précédent à la première erreur
+                prevErrorButton.style.display = "none"; 
             } else {
                 prevErrorButton.style.display = "inline-block";
             }
@@ -225,11 +225,10 @@
             showModal(erreursAffichage[erreurIndex], true);
 
             if (erreurIndex === erreursAffichage.length - 1) {
-                nextErrorButton.style.display = "none"; // Cache le bouton "suivant" à la dernière erreur
+                nextErrorButton.style.display = "none"; 
             }
             
         } else {
-            // Si on a fini toutes les erreurs
             document.getElementById("customModal").style.display = "none";
             if (canGoToNextPart) {
                 document.getElementById("nextPart").style.display = "block";
@@ -272,7 +271,7 @@
                     // Cacher la partie 1
                     document.querySelectorAll(".part1").forEach(el => el.style.display = "none");
 
-                    document.getElementById("checkButton").disabled = true;  // Désactiver le bouton au début de la partie 2
+                    document.getElementById("checkButton").disabled = true;  
 
                 
                     // Afficher la partie 2
@@ -288,12 +287,10 @@
                     canGoToNextPart = false;
                 });
                 
-// Après la vérification des réponses de la partie 2
 if (currentPart === "part2") {
     if (erreurs.length > 0) {
         showModal(erreurs.join("\n"));
     }
-    //resultDiv.textContent = `Score final : ${score} / 10`;
 
     // Afficher le bouton "Terminer"
     document.getElementById("finishButton").addEventListener("click", function() {
@@ -301,7 +298,6 @@ if (currentPart === "part2") {
     });
     
 } else {
-    // Assurez-vous que la partie 1 est terminée avant de pouvoir aller à la partie suivante
     if (canGoToNextPart) {
         document.getElementById("nextPart").style.display = "block";
     }
@@ -341,7 +337,6 @@ function shuffleDefinitions(partClass) {
         [definitions[i], definitions[j]] = [definitions[j], definitions[i]];
     }
 
-    // Réinsérer dans le DOM dans le nouvel ordre
     definitions.forEach(def => container.appendChild(def));
 }
 

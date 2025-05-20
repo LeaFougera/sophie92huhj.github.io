@@ -131,9 +131,8 @@ function startGame() {
   step = 0;
   userChoices = [];
 
-  // 🧼 Assure que tout est bien réinitialisé
   resultScreen.classList.add("hidden");
-  resultScreen.style.display = ""; // reset display
+  resultScreen.style.display = ""; 
   scoreScreen.classList.add("hidden");
   scoreScreen.style.display = "";
 
@@ -164,7 +163,6 @@ function renderChoices(type, options) {
     btn.className = "choice-button";
     btn.textContent = option.text;
 
-    // Marquer comme sélectionné si déjà choisi
     if (userChoices[type] && userChoices[type].text === option.text) {
       btn.classList.add("selected");
     }
@@ -172,8 +170,6 @@ function renderChoices(type, options) {
     btn.onclick = () => {
       userChoices[type] = { type, ...option };
 
-      // ❗ Supprimer "renderChoices()" ici pour éviter le re-render
-      // ➕ Mettre à jour la sélection manuellement
       [...container.children].forEach(child => child.classList.remove("selected"));
       btn.classList.add("selected");
 
@@ -186,7 +182,7 @@ function renderChoices(type, options) {
 
 function renderSection(type, containerId) {
   const sectionDiv = document.getElementById(containerId);
-  sectionDiv.innerHTML = ""; // reset
+  sectionDiv.innerHTML = "";
 
   restaurants[currentRestaurantIndex].menu[type].forEach(item => {
     const btn = document.createElement("button");
@@ -199,7 +195,7 @@ function renderSection(type, containerId) {
 
     btn.onclick = () => {
       userChoices[type] = { type, ...item };
-      renderSection(type, containerId); // re-render to update selected state
+      renderSection(type, containerId); 
     };
 
     sectionDiv.appendChild(btn);
@@ -248,7 +244,7 @@ function showResults() {
   // Stocke aussi le meilleur score si c'est un nouveau record
   const bestScore = parseInt(localStorage.getItem("bestScoreMiniJeu6")) || 0;
   if (score > bestScore) {
-    localStorage.setItem("bestScoreMiniJeu6", score); // Seul le meilleur est sauvegardé
+    localStorage.setItem("bestScoreMiniJeu6", score);
   }
 
   // Conseil personnalisé
@@ -297,7 +293,6 @@ function showResults() {
   resultScreen.classList.remove("hidden");
   resultScreen.style.display = "flex";
 
-  // ➕ Met à jour le texte du bouton à ce moment-là
   nextBtn.textContent = currentRestaurantIndex === restaurants.length - 1
     ? "Voir les résultats"
     : "Restaurant suivant";
