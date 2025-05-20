@@ -242,6 +242,15 @@ function showResults() {
   let scoreIncrement = badCount === 0 ? 2 : badCount === 1 ? 1 : 0;
   score += scoreIncrement;
 
+    // Stocke le score dans localStorage
+  localStorage.setItem("scoreMiniJeu6", score);
+  
+  // Stocke aussi le meilleur score si c'est un nouveau record
+  const bestScore = parseInt(localStorage.getItem("bestScoreMiniJeu6")) || 0;
+  if (score > bestScore) {
+    localStorage.setItem("bestScoreMiniJeu6", score); // Seul le meilleur est sauvegardé
+  }
+
   // Conseil personnalisé
   const platChoisi = userChoices.plat?.text;
   const tag = {
@@ -312,28 +321,48 @@ nextBtn.onclick = () => {
 };
 
 function showFinalScore() {
+  // Masque les écrans de score et de jeu
   resultScreen.classList.add("hidden");
   scoreScreen.classList.add("hidden");
 
+  // Récupérer le score du mini-jeu 6 et le convertir en entier
+  let scoreMiniJeu6 = parseInt(localStorage.getItem("scoreMiniJeu6")) || 0;
+
+  // Récupérer l'ancien meilleur score du mini-jeu 6
+  const ancienBestScoreMiniJeu6 = parseInt(localStorage.getItem("bestScoreMiniJeu6")) || 0;
+
+  // Vérifier si le score actuel est meilleur que l'ancien meilleur score
+  if (scoreMiniJeu6 > ancienBestScoreMiniJeu6) {
+    localStorage.setItem("bestScoreMiniJeu6", scoreMiniJeu6);  // Mettre à jour le meilleur score dans le localStorage
+  }
+
+  localStorage.setItem("scoreMiniJeu6", scoreMiniJeu6);
+
+
+  // Afficher ce score dans le popup final
   const popup = document.getElementById("final-popup");
- // Popup final affichage
-document.getElementById("final-total").textContent = score;
+  document.getElementById("final-total").textContent = scoreMiniJeu6;
 
-const finalMessage = document.getElementById("final-message");
+  const finalMessage = document.getElementById("final-message");
 
-if (score >= 9) {
-  finalMessage.textContent = "🌟 Excellent !";
-} else if (score >= 7) {
-  finalMessage.textContent = "👏 Bien joué !";
-} else if (score >= 5) {
-  finalMessage.textContent = "👍 Pas mal !";
-} else {
-  finalMessage.textContent = "💡 Continue à t'améliorer !";
-}
+  // Logique d'affichage du message en fonction du score
+  if (scoreMiniJeu6 >= 9) {
+    finalMessage.textContent = "🌟 Excellent !";
+  } else if (scoreMiniJeu6 >= 7) {
+    finalMessage.textContent = "👏 Bien joué !";
+  } else if (scoreMiniJeu6 >= 5) {
+    finalMessage.textContent = "👍 Pas mal !";
+  } else {
+    finalMessage.textContent = "💡 Continue à t'améliorer !";
+  }
 
+  // Affiche le popup avec les résultats
   popup.classList.remove("hidden");
   popup.style.display = "flex";
 }
+
+
+
 
 function restartGame() {
   startGame();

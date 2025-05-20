@@ -135,6 +135,8 @@ checkBtn.addEventListener('click', () => {
   localStorage.setItem('score_proteine', totalProteine);
   localStorage.setItem('score_sel', totalSel);
 
+  localStorage.setItem('jeu2Complete', 'true');
+
   // Affiche la fenêtre popup
   document.getElementById("popup").style.display = "flex";
 
