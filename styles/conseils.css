@@ -115,14 +115,12 @@ button:hover {
 
 .column {
   flex: 1;
-  min-height: 360px; /* ✅ fixe la hauteur visible au début */
-  background: #fefcf9;
-  border-radius: 13px;
-  box-shadow: 0 2px 8px rgba(100,100,100,0.06);
   padding: 18px 12px;
+  border-radius: 13px;
+  background: #fefcf9;
+  box-shadow: 0 2px 8px rgba(100,100,100,0.06);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
 .column h2 {
@@ -549,8 +547,7 @@ li {
 
 #col-good,
 #col-bad {
-  flex: 1;
-  overflow-y: auto;            /* ✅ active scroll si trop de contenu */
+  width: 100%;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -558,6 +555,5 @@ li {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  min-height: 280px;           /* ✅ pour les garder visibles même vides */
-  max-height: 280px;           /* ✅ pour les empêcher de s'étendre */
+  /* ❌ supprime toute height ou max-height */
 }
