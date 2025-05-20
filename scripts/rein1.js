@@ -1,8 +1,8 @@
 const organs = [
-  { img: "../photos/rein1/rein.png", name: "Rein", count: 0 },
-  { img: "../photos/rein1/vessie.png", name: "Vessie", count: 0 },
-  { img: "../photos/rein1/ureteres.png", name: "Uretères", count: 0 },
-  { img: "../photos/rein1/uretre.png", name: "Urètre", count: 0 }
+  { img: "../photos/rein1/rein.png", name: "Rein", count: 0, color: "#4b0082" },      // rose
+  { img: "../photos/rein1/vessie.png", name: "Vessie", count: 0, color: "#ffd200" },   // jaune
+  { img: "../photos/rein1/ureteres.png", name: "Uretères", count: 0, color: "#81d4fa" }, // bleu
+  { img: "../photos/rein1/uretre.png", name: "Urètre", count: 0, color: "#ffa500" }     // orange
 ];
 
 const phrases = [
@@ -56,6 +56,7 @@ function createOrgans() {
     const counter = document.createElement("span");
     counter.classList.add("count-display");
     counter.textContent = organ.count;
+    counter.style.backgroundColor = organ.color;
 
     const box = document.createElement("div");
     box.classList.add("organ-container");
@@ -105,6 +106,8 @@ function selectOrgane(organElement, countDisplay) {
     });
 
     flippedCard.style.backgroundColor = "#f4f4f9";
+    flippedCard.style.border = `3px solid ${organ.color}`;
+    flippedCard.style.boxShadow = `0 0 10px ${organ.color}`;
     flippedCard.classList.remove("card-back");
     flippedCard = null;
 
