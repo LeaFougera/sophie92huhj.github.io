@@ -8,9 +8,9 @@
 body {
     font-family: Arial, sans-serif;
     background : #EDEDE9;
-    background-size: auto; /* taille originale de l’image */
-    background-repeat: repeat; /* évite que l’image se répète */
-    background-position: top left; /* positionne l’image en haut à gauche */
+    background-size: auto; 
+    background-repeat: repeat; 
+    background-position: top left; 
 }
 
 
@@ -68,7 +68,7 @@ body {
 }
 
 /* Carte */
-/* Cartes de ressource */
+
 .resource-card {
     background: #f5ebe0;
     border-radius: 16px;
@@ -76,14 +76,14 @@ body {
     text-align: center;
     text-decoration: none;
     color: #2d3142;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Ombre plus visible */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 2px solid transparent;
 }
 
 .resource-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée au hover */
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25); 
 }
 
 
@@ -119,15 +119,15 @@ body {
 .border-indigo-soft { border-color: #560bad; }
 .border-turquoise { border-color: #00b4d8; }
 
-.bg-green-lime { background-color: #f3fae3; }    /* Vert très pâle */
-.bg-blue-electric { background-color: #e7f1fe; }  /* Bleu clair */
-.bg-red-coral { background-color: #ffecec; }      /* Rouge très clair */
-.bg-purple-bright { background-color: #f3e9fd; }  /* Violet pâle */
-.bg-orange-bold { background-color: #fff3e0; }    /* Orange doux */
-.bg-yellow-safran { background-color: #fffbe0; }  /* Jaune clair */
-.bg-rose-light { background-color: #ffe5ec; }     /* Rose doux (remplace marron) */
-.bg-indigo-soft { background-color: #f0ebfa; }    /* Indigo doux */
-.bg-turquoise { background-color: #e0f7fa; }       /* Bleu turquoise pâle */
+.bg-green-lime { background-color: #f3fae3; }    
+.bg-blue-electric { background-color: #e7f1fe; }  
+.bg-red-coral { background-color: #ffecec; }      
+.bg-purple-bright { background-color: #f3e9fd; }  
+.bg-orange-bold { background-color: #fff3e0; }    
+.bg-yellow-safran { background-color: #fffbe0; }  
+.bg-rose-light { background-color: #ffe5ec; }     
+.bg-indigo-soft { background-color: #f0ebfa; }    
+.bg-turquoise { background-color: #e0f7fa; }       
 
 /* Transition pour les paragraphes */
 .transition-paragraph {

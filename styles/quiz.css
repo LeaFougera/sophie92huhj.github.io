@@ -17,11 +17,11 @@ body {
   min-height: 100vh;
 
   display: flex;
-  justify-content: center;     /* Centrage horizontal */
-  align-items: flex-start;     /* Aligner en haut */
+  justify-content: center;     
+  align-items: flex-start;    
   flex-direction: column;
 
-  padding: 60px 20px 100px;    /* Haut / côtés / bas */
+  padding: 60px 20px 100px;    
   overflow-y: auto;
 }
 
@@ -37,7 +37,7 @@ body {
 
   width: 100%;
   max-width: 700px;
-  margin: 0 auto; /* CENTRE HORIZONTALEMENT */
+  margin: 0 auto; 
 }
 
 
@@ -82,7 +82,7 @@ body {
   color: #4a536b;
   width: 100%;
   max-width: 750px;
-  margin-top: 30px; /* Espacement avant le quiz */
+  margin-top: 30px; 
 }
 
 
@@ -95,32 +95,32 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #e3d5ca; /* Fond doux */
+  background-color: #e3d5ca; 
   transition: background-color 0.3s, transform 0.2s;
   font-weight: bold;
   color: #4a536b;
-  width: 70%; /* Ajuste la largeur pour plus d'uniformité */
+  width: 70%; 
 }
 
 button:hover {
-  background-color: #e3d5ca; /* Légère couleur de fond au survol */
-  transform: scale(1.05);  /* Légère transformation au survol */
+  background-color: #e3d5ca; 
+  transform: scale(1.05);  
 }
 
 button.correct {
-  background-color: #4CAF50; /* Vert pour la réponse correcte */
+  background-color: #4CAF50; 
   color: white;
 }
 
 button.wrong {
-  background-color: #F44336; /* Rouge pour la réponse incorrecte */
+  background-color: #F44336; 
   color: white;
 }
 
 /* Effet de survol spécifique pour les boutons */
 button:hover {
   background-color: #e3d5ca;
-  transform: scale(1.05); /* Gros effet de zoom sur le bouton */
+  transform: scale(1.05); 
 }
 
 /* Masquer les éléments cachés */
@@ -130,7 +130,7 @@ button:hover {
 
 /* Style du score */
 #score {
-  background-color: #e3d5ca; /* Fond doux */
+  background-color: #e3d5ca; 
   padding: 30px;
   font-size: 30px;
   font-weight: bold;
@@ -190,23 +190,23 @@ p {
 
 /* Désactivation complète de l'effet de survol après avoir affiché la correction */
 button.no-hover {
-  background-color: #e3d5ca; /* Rétablir l'arrière-plan initial */
-  transform: none; /* Pas de transformation */
-  pointer-events: none; /* Empêche toute interaction */
+  background-color: #e3d5ca; 
+  transform: none; 
+  pointer-events: none; 
 }
 
 button.correct {
-  background-color: #4CAF50; /* Vert pour la bonne réponse */
+  background-color: #4CAF50; 
 }
 
 button.wrong {
-  background-color: #F44336; /* Rouge pour la mauvaise réponse */
+  background-color: #F44336; 
 }
 
 /* Effet au survol uniquement quand les réponses ne sont pas données */
 button:hover:not(.no-hover) {
   background-color: #e3d5ca;
-  transform: scale(1.05); /* Légère transformation au survol */
+  transform: scale(1.05); 
 }
 
 /* Style du conteneur de la question */
@@ -221,10 +221,10 @@ button:hover:not(.no-hover) {
 }
 
 .question-image {
-  width: 300px;       /* Taille plus grande */
+  width: 300px;       
   height: auto;
   border-radius: 16px;
-  flex-shrink: 0;     /* Empêche l'image de se réduire */
+  flex-shrink: 0;     
 }
 
 
@@ -241,7 +241,7 @@ button:hover:not(.no-hover) {
 /* Conteneur des réponses */
 #answers {
   display: flex;
-  flex-direction: column; /* Placer les réponses verticalement */
+  flex-direction: column; 
   margin-top: 20px;
   text-align: center;
 }

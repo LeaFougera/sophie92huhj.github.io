@@ -89,7 +89,7 @@ h1 {
   max-width: 1000px; /* agrandir la largeur */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   text-align: center;
-  font-size: 18px; /* taille de police de base plus grande */
+  font-size: 18px; 
 }
 
 /* Titres */
@@ -188,17 +188,17 @@ h2 {
   text-align: center;
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 60px; /* plus d'espace sous le titre */
+  margin-bottom: 60px; 
 }
 
 .result-choices {
   text-align: left;
-  margin-bottom: 40px; /* espace avant le score */
+  margin-bottom: 40px; 
 }
 
 .result-block {
-  margin-bottom: 30px;  /* plus de marge entre les blocs */
-  line-height: 1.8;     /* plus d’interligne */
+  margin-bottom: 30px;  
+  line-height: 1.8;    
 }
 
 .result-item {
@@ -207,13 +207,13 @@ h2 {
 }
 
 .result-explanation {
-  margin: 10px 0 0 0;   /* espace avant l'explication */
+  margin: 10px 0 0 0;  
   font-style: italic;
   color: #4a536b;
 }
 
 .result-score {
-  margin-top: 50px;     /* espace avant le bouton */
+  margin-top: 50px;     
   margin-bottom: 30px;
   text-align: center;
   font-weight: bold;
@@ -295,12 +295,12 @@ h2 {
 
 .menu-section {
   flex: 1;
-  min-width: 320px;          /* largeur minimum augmentée */
-  max-width: 420px;          /* largeur max aussi */
+  min-width: 320px;       
+  max-width: 420px;          
   background-color: #e3d5ca;
   border: 1px solid #e0dcd2;
   border-radius: 16px;
-  padding: 40px;             /* plus de padding = plus gros */
+  padding: 40px;            
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
   text-align: center;
   font-size: 22px;  
@@ -409,14 +409,14 @@ h2 {
   background-color: #fff;
   background-size: cover;
   background-position: center;
-  padding: 40px 30px;          /* moins de padding */
+  padding: 40px 30px;         
   border-radius: 16px;
   text-align: center;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
 
   min-width: 300px;
-  max-width: 500px;            /* un peu plus petit */
-  min-height: auto;            /* plus flexible */
+  max-width: 500px;      
+  min-height: auto;      
   display: flex;
   flex-direction: column;
   justify-content: space-between;

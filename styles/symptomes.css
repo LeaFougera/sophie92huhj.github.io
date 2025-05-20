@@ -178,5 +178,5 @@ body {
 }
 
 .teaser-button:hover {
-    transform: scale(1.05);  /* Agrandit légèrement le bouton au survol */
+    transform: scale(1.05);  
 }

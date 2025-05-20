@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-    position: relative; /* 👈 ajoute ceci */
+    position: relative; 
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
@@ -192,13 +192,13 @@ button:hover {
 
 /* Nouveau style pour les messages d'erreur */
 .erreur-item {
-    background-color: #edede9; /* Couleur douce et pastel pour l'arrière-plan */
+    background-color: #edede9; 
     padding: 12px 20px;
     margin-bottom: 16px;
-    margin-top: 3px; /* Remontée de l'élément d'erreur pour qu'il soit plus proche du contenu précédent */
+    margin-top: 3px; 
     border-radius: 10px;
     font-size: 16px;
-    color: #721c24; /* Couleur de texte assortie à l'erreur */
+    color: #721c24; 
     border: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -229,7 +229,7 @@ button:hover {
 #nextPart {
     position: absolute;
     bottom: 20px;
-    right: 20px; /* 👈 plus proche du bord du container */
+    right: 20px; 
     padding: 10px 20px;
     background-color: #d5bdaf;
     color: #4a536b;
@@ -263,12 +263,12 @@ button:hover {
 
 
 .erreur-image {
-    float: left; /* 👈 l'image passe complètement à gauche */
-    margin-right: 10px; /* 👈 petit espace entre l'image et le texte */
+    float: left; 
+    margin-right: 10px; 
 }
 
 .erreur-image img {
-    max-width: 70px; /* 👈 tu peux ajuster la taille ici */
+    max-width: 70px; 
     height: auto;
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -288,7 +288,7 @@ button:hover {
 
 .error-buttons {
     display: flex;
-    justify-content: space-between; /* "Précédent" à gauche, "Suivant" à droite */
+    justify-content: space-between; 
     margin-top: 20px;
 }
 
@@ -377,12 +377,12 @@ button:hover {
     height: 100vh;
   
     display: flex;
-    justify-content: flex-start;   /* aligné à gauche */
-    align-items: center;           /* centré verticalement */
+    justify-content: flex-start;   
+    align-items: center;           
   
-    /*padding-left: 15vw;            /* décale vers la droite */
-    background-image: url('../photos/conseil/FondParcours.png'); /* ✅ image ajoutée ici */   
-    z-index: 1000;                 /* au-dessus du reste */
+    /*padding-left: 15vw;    */
+    background-image: url('../photos/conseil/FondParcours.png'); 
+    z-index: 1000;              
   }
 
   .back-button {
