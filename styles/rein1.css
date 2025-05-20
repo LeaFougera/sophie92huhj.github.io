@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #edede9;
+  background-image: url('../photos/conseil/FondParcours.png');
   color: #4a536b;
 }
 
@@ -248,7 +248,7 @@ button:hover {
 }
 
 .back-button {
-  position: absolute;
+  position: fixed; /* ✅ fixé en haut à gauche, visible partout */
   top: 20px;
   left: 20px;
   background-color: #d5bdaf;
@@ -260,10 +260,11 @@ button:hover {
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  z-index: 2000; /* ✅ plus haut que tout, même l'intro */
 }
 
 .back-button:hover {
-  background-color: #d5bdaf;
+  background-color: #cbb19e;
 }
 
 .my-button {
@@ -274,4 +275,58 @@ button:hover {
   font-size: 1rem;
   cursor: pointer;
   margin-top: 10px;
+}
+
+.intro-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../photos/conseil/FondParcours.png');
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: top left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.game-introduction {
+  background-color: #f5ebe0;
+  padding: 40px 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 700px;
+  width: 90%;
+}
+
+#start-game-btn {
+  background-color: #d5bdaf;
+  color: #4a536b;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 30px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+#start-game-btn:hover {
+  background-color: #cbb19e;
+}
+
+.container {
+  background-color: #f5ebe0;
+  padding: 40px 30px;
+  border-radius: 16px;
+  max-width: 960px;
+  margin: 60px auto;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
