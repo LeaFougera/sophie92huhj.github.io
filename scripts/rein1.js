@@ -157,9 +157,9 @@ function showModalExplanation(index) {
     const correctCount = selections.filter(s => s.correct).length;
   
     // Ajout ici : enregistrement du meilleur score
-    const ancienBest = parseInt(localStorage.getItem("bestScoreJeu4")) || 0;
+    const ancienBest = parseInt(localStorage.getItem("bestScoreJeu5")) || 0;
     if (correctCount > ancienBest) {
-      localStorage.setItem("bestScoreJeu4", correctCount);
+      localStorage.setItem("bestScoreJeu5", correctCount);
     }
   
     modalText.innerHTML = `
