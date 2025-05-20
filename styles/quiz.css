@@ -53,7 +53,6 @@ body {
   line-height: 1.6;
 }
 
-/* Style du bouton "Commencer le quiz" */
 #start-quiz-btn {
   background-color: #d5bdaf;
   color: #4a536b;
@@ -188,7 +187,7 @@ p {
 }
 
 
-/* Désactivation complète de l'effet de survol après avoir affiché la correction */
+
 button.no-hover {
   background-color: #e3d5ca; 
   transform: none; 
