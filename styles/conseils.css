@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* permet de garder le bouton retour en haut */
+  flex-direction: column; 
   background-image: url('../photos/conseil/FondParcours.png');
   background-size: auto;
   background-repeat: repeat;
@@ -58,7 +58,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 12px;
-  justify-content: center; /* centrer les éléments enfants dans le flex */
+  justify-content: center; 
   text-align: center;  
 }
 
@@ -67,7 +67,7 @@ p {
   font-size: 1.05rem;
   margin-bottom: 20px;
   line-height: 1.7;
-  justify-content: center; /* centrer les éléments enfants dans le flex */
+  justify-content: center; 
   text-align: center;  
 }
 
@@ -133,6 +133,7 @@ button:hover {
   box-shadow: 0 2px 8px rgba(100,100,100,0.06);
   display: flex;
   flex-direction: column;
+  
 }
 
 .column h2 {
@@ -192,7 +193,7 @@ li {
 .columns {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* ✅ force les .column à avoir la même hauteur */
+  align-items: stretch; 
   gap: 30px;
   margin-bottom: 28px;
 }
@@ -291,7 +292,7 @@ li {
 }
 
 .choice.dragging {
-  opacity: 1 !important; /* garde bien visible */
+  opacity: 1 !important; 
   transform: scale(1.02);
   background-color: #f0eae1;
   border: 2px solid #4a536b;
@@ -330,9 +331,9 @@ li {
   background: rgba(0, 0, 0, 0.3); /* fond assombri */
   display: flex;
   justify-content: center;
-  align-items: flex-start;      /* 👈 commence en haut */
+  align-items: flex-start;      /*  commence en haut */
   overflow-y: auto;
-  padding: 60px 20px;           /* ✅ marge haut et bas */
+  padding: 60px 20px;           
   box-sizing: border-box;
   z-index: 1000;
 }
@@ -360,7 +361,7 @@ li {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
 
-  margin: 60px auto; /* ✅ ajoute de l’espace en haut et en bas */
+  margin: 60px auto; 
 }
 
 
@@ -473,7 +474,7 @@ li {
   margin: 30px auto;         /* Centre le bloc dans la page */
   text-align: center;        /* Centre le texte dans le bloc */
   font-size: 1.8rem;
-  color: #10003a;            /* Comme dans ta capture */
+  color: #10003a;           
   font-weight: bold;
   letter-spacing: 0.5px;
   display: block;
@@ -495,7 +496,7 @@ li {
   align-items: center;
   gap: 30px;
   margin: 20px 0;
-  flex-wrap: wrap; /* pour que ça passe bien sur petit écran */
+  flex-wrap: wrap; 
 }
 
 .phrase-block {
@@ -567,11 +568,11 @@ li {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  /* ❌ supprime toute height ou max-height */
+  min-height: 180px;
 }
 
 #col-good li,
 #col-bad li {
-  max-width: 100%; /* ✅ Empêche tout dépassement horizontal */
-  word-break: break-word; /* ✅ Coupe si un mot est trop long */
+  max-width: 100%; 
+  word-break: break-word; 
 }
