@@ -58,10 +58,10 @@ body {
 /* Cartes des causes */
 .activity-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* Colonnes flexibles */
-    gap: 70px; /* Espacement réduit au minimum */
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); 
+    gap: 70px; 
     margin: 20px auto 30px;
-    width: fit-content; /* Le conteneur s'adapte au contenu */
+    width: fit-content; 
 }
 
 
@@ -144,7 +144,7 @@ body {
 }
 
 .img-rein {
-    max-width: 20%; /* Réduit la taille de l'image à 20% de son conteneur */
+    max-width: 20%; 
     height: auto;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
@@ -152,13 +152,13 @@ body {
 }
 
 .img-rein:hover {
-    transform: translateY(-5px); /* Décale légèrement l'image vers le haut */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); 
 }
 
 
 .img-conclu {
-    max-width: 35%; /* Réduit la taille de l'image à 70% de son conteneur */
+    max-width: 35%; 
     height: auto;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
@@ -166,8 +166,8 @@ body {
 }
 
 .img-conclu:hover {
-    transform: translateY(-5px); /* Décale légèrement l'image vers le haut */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); 
 }
 
 /* Grille des cartes dans la section des fonctions du rein */
@@ -182,9 +182,9 @@ body {
     color: #264653;
 }
 
-/* Style des cartes de chaque item */
+
 .activity-card {
-    width: 250px; /* Largeur fixe des cartes */
+    width: 250px; 
     background: #f5ebe0;
     border-radius: 12px;
     padding: 10px 8px 15px;
@@ -243,12 +243,12 @@ body {
 
 .activity-border-orange-bold {
   border: 2px solid #f77f00;
-  background-color: #fff3e0; /* Orange doux */
+  background-color: #fff3e0; 
 }
 
 .activity-border-yellow-safran {
   border: 2px solid #f9c74f;
-  background-color: #fffbe0; /* Jaune clair */
+  background-color: #fffbe0; 
 }
 
 .teaser-button {

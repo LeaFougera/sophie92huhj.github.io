@@ -248,7 +248,7 @@ button:hover {
 }
 
 .back-button {
-  position: fixed; /* ✅ fixé en haut à gauche, visible partout */
+  position: fixed; 
   top: 20px;
   left: 20px;
   background-color: #d5bdaf;
@@ -260,7 +260,7 @@ button:hover {
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
-  z-index: 2000; /* ✅ plus haut que tout, même l'intro */
+  z-index: 2000; 
 }
 
 .back-button:hover {

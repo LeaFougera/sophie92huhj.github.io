@@ -58,7 +58,7 @@ body {
 /* Cartes des causes */
 .activity-grid {
   display: grid;
-  grid-template-columns: repeat(2, 220px); /* 3 colonnes fixes à 220px */
+  grid-template-columns: repeat(2, 220px); 
   justify-content: center; /* centre la grille dans le container */
   gap: 30px 60px;
   margin-top: 5px;
@@ -67,8 +67,8 @@ body {
 
 /* Style des cartes de chaque item */
 .activity-card {
-    width: auto; /* ou 100% pour remplir la cellule */
-    max-width: 250px; /* Gardez une limite max si besoin */
+    width: auto; 
+    max-width: 250px; 
     background: #f5ebe0;
     border-radius: 12px;
     padding: 10px 8px 15px;
@@ -109,13 +109,13 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;  /* Centrer les éléments dans chaque cellule de la grille */
-    gap: 30px; /* espacement entre les cartes */
+    justify-items: center;  
+    gap: 30px; 
     margin: 0 auto;
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
-    justify-content: center; /* Centre les cartes horizontalement dans le container */
+    justify-content: center; 
     align-items: center;  
 }
 
@@ -152,53 +152,53 @@ body {
 
 /* Styles spécifiques aux paragraphes de transition */
 .transition-paragraph {
-    font-size: 18px; /* Taille légèrement agrandie pour améliorer la lisibilité */
-    line-height: 1.8; /* Augmente l'espace entre les lignes pour plus de confort */
-    color: #2d3142; /* Couleur sombre et élégante pour le texte */
-    margin-bottom: 20px; /* Espacement sous chaque paragraphe */
-    padding: 20px; /* Un peu plus d'espace à l'intérieur pour aérer */
-    background-color: #f9f9f9; /* Un fond doux gris clair pour un contraste agréable */
-    border-left: 6px solid #d5bdaf; /* Bordure colorée à gauche pour accentuer l'importance */
-    border-radius: 12px; /* Coins arrondis pour un effet moderne et doux */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Une ombre subtile pour donner du relief */
-    transition: all 0.3s ease; /* Ajoute une animation fluide lors du survol */
+    font-size: 18px; 
+    line-height: 1.8; 
+    color: #2d3142; 
+    margin-bottom: 20px; 
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border-left: 6px solid #d5bdaf; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
     text-align: justify;
 }
 
-/* Au survol, un léger effet d'ombrage et d'agrandissement */
+/*  survol */
 .transition-paragraph:hover {
-    transform: translateY(-5px); /* Décale légèrement le paragraphe vers le haut */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
-    background-color: #e3d5ca; /* Change légèrement le fond pour un effet dynamique */
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); 
+    background-color: #e3d5ca; 
 }
 
-/* Style du texte en gras */
+
 .transition-paragraph strong {
-    font-weight: bold; /* Met en évidence les mots en gras */
-    color: #1d3557; /* Utilise une couleur sombre pour plus de contraste */
+    font-weight: bold; 
+    color: #1d3557; 
 }
 
-/* Nouveau visuel pour le paragraphe explicatif */
+
 .explanation-container {
     padding: 30px;
-    background-color: #eef1f7; /* Fond doux et léger */
+    background-color: #eef1f7; 
     border-radius: 12px;
     margin-top: 30px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Ombre douce */
-    text-align: left; /* Justifie le texte à gauche */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+    text-align: left; 
     color: #264653;
 }
 
 .explanation-text {
     font-size: 18px;
     line-height: 1.8;
-    color: #2d3142; /* Couleur sombre pour une meilleure lisibilité */
+    color: #2d3142; 
     margin-bottom: 20px;
 }
 
 .explanation-text strong {
     font-weight: bold;
-    color: #1d3557; /* Sombre pour le texte en gras */
+    color: #1d3557; 
 }
 
 /* Styles pour le schéma des stades */
@@ -226,8 +226,8 @@ body {
 }
 
 .img-stades:hover {
-    transform: translateY(-5px); /* Décale légèrement l'image vers le haut */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); 
 }
 
 
@@ -245,5 +245,5 @@ body {
 }
 
 .teaser-button:hover {
-    transform: scale(1.05);  /* Agrandit légèrement le bouton au survol */
+    transform: scale(1.05);  
 }

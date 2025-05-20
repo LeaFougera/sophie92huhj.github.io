@@ -328,10 +328,10 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* fond assombri */
+  background: rgba(0, 0, 0, 0.3); 
   display: flex;
   justify-content: center;
-  align-items: flex-start;      /*  commence en haut */
+  align-items: flex-start;      
   overflow-y: auto;
   padding: 60px 20px;           
   box-sizing: border-box;
@@ -471,8 +471,8 @@ li {
 #classification-title {
   width: 100%;
   max-width: 800px;
-  margin: 30px auto;         /* Centre le bloc dans la page */
-  text-align: center;        /* Centre le texte dans le bloc */
+  margin: 30px auto;        
+  text-align: center;        
   font-size: 1.8rem;
   color: #10003a;           
   font-weight: bold;

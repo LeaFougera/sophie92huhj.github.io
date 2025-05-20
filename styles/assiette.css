@@ -183,7 +183,7 @@ ul li {
   color: #4a536b;
   border: none;
   cursor: pointer;
-  z-index: 1000; /* Pour qu'il soit au-dessus des autres éléments si besoin */
+  z-index: 1000; 
 }
 
 
@@ -195,7 +195,7 @@ ul li {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000; /* pour s'assurer qu'il reste au-dessus */
+  z-index: 1000; 
 }
 
 .suivant-btn {
@@ -239,7 +239,7 @@ ul li {
 
   width: 100%;
   max-width: 700px;
-  margin: 0 auto; /* CENTRE HORIZONTALEMENT */
+  margin: 0 auto; 
 }
 
 
@@ -283,19 +283,19 @@ ul li {
 }
 
 .intro-wrapper {
-  position: fixed;               /* superposé à tout le reste */
+  position: fixed;             
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
 
   display: flex;
-  justify-content: flex-start;   /* aligné à gauche */
-  align-items: center;           /* centré verticalement */
+  justify-content: flex-start;   
+  align-items: center;          
 
-  /*padding-left: 15vw;            /* décale vers la droite */
-  background-image: url('../photos/conseil/FondParcours.png');    /* même fond que le reste */
-  z-index: 1000;                 /* au-dessus du reste */
+  /*padding-left: 15vw; */
+  background-image: url('../photos/conseil/FondParcours.png');    
+  z-index: 1000;                 
 }
 
 .tooltip {
@@ -325,7 +325,7 @@ ul li {
   padding-bottom: 5px;
 }
 
-/* Nouveau style pour afficher les ingrédients en deux colonnes */
+
 .category-column {
   display: flex;
   flex-direction: column;

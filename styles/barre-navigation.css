@@ -2,9 +2,9 @@
     background-color: #d5bdaf;
     padding: 10px 0;
     overflow-x: auto;         /* Scroll horizontal si nécessaire */
-    white-space: nowrap;      /* Empêche les retours à la ligne */
-    -ms-overflow-style: none; /* Cache la scrollbar IE */
-    scrollbar-width: none;    /* Cache la scrollbar Firefox */
+    white-space: nowrap;      
+    -ms-overflow-style: none; 
+    scrollbar-width: none;    
 }
 
 /* Cache la scrollbar sur WebKit (Chrome, Safari, etc.) */
@@ -32,7 +32,7 @@
     white-space: nowrap;
     border-radius: 20px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    font-weight: bold; /* Ajoute cette ligne pour mettre le texte en gras */
+    font-weight: bold; 
 }
 
 
