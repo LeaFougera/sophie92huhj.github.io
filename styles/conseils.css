@@ -114,15 +114,15 @@ button:hover {
 }
 
 .column {
-  width: 48%;
-  padding: 18px 12px 18px 12px;
-  border-radius: 13px;
-  min-height: 220px;
+  flex: 1;
+  min-height: 360px; /* ✅ fixe la hauteur visible au début */
   background: #fefcf9;
+  border-radius: 13px;
   box-shadow: 0 2px 8px rgba(100,100,100,0.06);
+  padding: 18px 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
 }
 
 .column h2 {
@@ -144,13 +144,13 @@ ul {
 }
 
 li {
-  width: 100%;
+  width: 95%;
   background-color: #f7f7f7;
   padding: 13px 14px;
   border-radius: 8px;
   margin: 8px 0;
   font-weight: 500;
-  font-size: 1.06rem;
+  font-size: 0.96rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   text-align: left;
   transition: background 0.2s, color 0.2s;
@@ -182,9 +182,11 @@ li {
 .columns {
   display: flex;
   justify-content: space-between;
+  align-items: stretch; /* ✅ force les .column à avoir la même hauteur */
   gap: 30px;
   margin-bottom: 28px;
 }
+
 
 .drop-zone {
   background: #fff;
@@ -543,4 +545,19 @@ li {
 
 .back-button:hover {
   background-color: #d5bdaf;
+}
+
+#col-good,
+#col-bad {
+  flex: 1;
+  overflow-y: auto;            /* ✅ active scroll si trop de contenu */
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  min-height: 280px;           /* ✅ pour les garder visibles même vides */
+  max-height: 280px;           /* ✅ pour les empêcher de s'étendre */
 }
