@@ -1,5 +1,7 @@
 /* Reset général */
-html {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -40,14 +42,9 @@ body {
   background: #f5ebe0;
   border-radius: 18px;
   padding: 48px 32px 40px 32px;
+  margin: 40px auto;
   max-width: 960px;
-  width: 90%;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
 }
 
 h1 {
@@ -77,6 +74,7 @@ p {
   color: #4a536b;
   margin-bottom: 22px;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 #start-zone {
@@ -109,8 +107,9 @@ button:hover {
   left: 24px;
   text-decoration: none;
   font-size: 1.07rem;
-  background-color: #ffffffcc;
-  color: #d5bdaf;
+  background-color: #d5bdaf;
+  color: #4a536b;
+  font-weight: bold;
   padding: 9px 16px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
@@ -126,14 +125,15 @@ button:hover {
 }
 
 .column {
-  flex: 1;
-  padding: 18px 12px;
+  width: 48%;
+  padding: 18px 12px 18px 12px;
   border-radius: 13px;
+  min-height: 220px;
   background: #fefcf9;
   box-shadow: 0 2px 8px rgba(100,100,100,0.06);
   display: flex;
   flex-direction: column;
-  
+  align-items: center;
 }
 
 .column h2 {
@@ -155,13 +155,13 @@ ul {
 }
 
 li {
-  width: 95%;
+  width: 100%;
   background-color: #f7f7f7;
   padding: 13px 14px;
   border-radius: 8px;
   margin: 8px 0;
   font-weight: 500;
-  font-size: 0.96rem;
+  font-size: 1.06rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   text-align: left;
   transition: background 0.2s, color 0.2s;
@@ -193,11 +193,9 @@ li {
 .columns {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; 
   gap: 30px;
   margin-bottom: 28px;
 }
-
 
 .drop-zone {
   background: #fff;
@@ -399,7 +397,7 @@ li {
 #next-part-btn,
 #back-home-btn {
   background-color: #d5bdaf;
-  color: #ffffff;
+  color: #4a536b;
   padding: 14px 34px;
   font-size: 1.07rem;
   border: none;
@@ -496,7 +494,7 @@ li {
   align-items: center;
   gap: 30px;
   margin: 20px 0;
-  flex-wrap: wrap; 
+  flex-wrap: wrap; /* pour que ça passe bien sur petit écran */
 }
 
 .phrase-block {
@@ -529,7 +527,7 @@ li {
   font-weight: bold;
   cursor: pointer;
   background-color: #d5bdaf;
-  color: white;
+  color: #4a536b;
   border: none;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: background-color 0.3s ease;
@@ -537,42 +535,4 @@ li {
 
 .btn-group button:hover {
   background-color: #2f364d;
-}
-
-.back-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #d5bdaf;
-  color: #4a536b;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #d5bdaf;
-}
-
-#col-good,
-#col-bad {
-  width: 90%;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  min-height: 180px;
-}
-
-#col-good li,
-#col-bad li {
-  max-width: 100%; 
-  word-break: break-word; 
 }

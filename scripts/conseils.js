@@ -181,21 +181,19 @@ function startClassificationPhase(selectedPairs) {
 
   sortingZone.innerHTML = `
     <h2 id="classification-title">Dans quelle colonne va ce conseil ?</h2>
-    <!-- Affichage du conseil à placer en dessous de la question -->
     <div id="phrase-zone" class="choices"></div>
     <div id="answer-buttons">
       <button id="choose-good">Bon conseil</button>
       <button id="choose-bad">Faux bon conseil</button>
     </div>
     
-    <!-- Colonnes de classement -->
-    <div class="columns">
-      <div class="column" id="good-column">
-        <h3>Bon conseil</h3>
+  <div class="memorisation-columns">
+    <div class="column bon-conseils-container">
+      <h3>Bon conseil ✅</h3>
         <ul id="col-good"></ul>
       </div>
-      <div class="column" id="bad-column">
-        <h3>Faux bon conseil</h3>
+    <div class="column faux-bons-conseils-container">
+      <h3>Faux bon conseil ❌</h3>
         <ul id="col-bad"></ul>
       </div>
     </div>
