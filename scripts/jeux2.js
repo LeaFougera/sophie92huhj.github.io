@@ -111,3 +111,23 @@ etape5.addEventListener("mouseenter", () => {
 });
 
 etape5.addEventListener("mouseleave", cacherInfoJeu);
+
+// === Étape 6 : Mini-jeu des menus (mini-jeux6.html) ===
+const scoreMiniJeu6 = localStorage.getItem("scoreMiniJeu6"); // sur 10
+const etape6 = document.querySelector(".image-jeu[href*='menu.html']");
+const ligne6 = document.querySelector(".line.c6");
+
+if (scoreMiniJeu6 && etape6 && ligne6 && !ligne6.classList.contains("completed")) {
+  completer(6, etape6, "#66bb6a");  // Modifie la couleur selon ta préférence
+}
+
+etape6.addEventListener("mouseenter", () => {
+  afficherInfoJeu(300, 50, { 
+    theme: "Menus et Alimentation",
+    duree: "5 min",
+    type: "Sélection alimentaire",
+    score: scoreMiniJeu6 ? `${scoreMiniJeu6} / 10` : "Non joué"
+  });
+});
+
+etape6.addEventListener("mouseleave", cacherInfoJeu);
