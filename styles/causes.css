@@ -229,3 +229,21 @@ body {
     transform: translateY(-5px); /* Décale légèrement l'image vers le haut */
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
 }
+
+
+.teaser-button {
+    display: inline-block;
+    font-size: 20px;
+    color: black;
+    border: 2px solid #9d4edd;
+    background-color: #f3e9fd; 
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.teaser-button:hover {
+    transform: scale(1.05);  /* Agrandit légèrement le bouton au survol */
+}
