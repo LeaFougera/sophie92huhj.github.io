@@ -242,6 +242,15 @@ function showResults() {
   let scoreIncrement = badCount === 0 ? 2 : badCount === 1 ? 1 : 0;
   score += scoreIncrement;
 
+    // Stocke le score dans localStorage
+  localStorage.setItem("scoreMiniJeu6", score);
+  
+  // Stocke aussi le meilleur score si c'est un nouveau record
+  const bestScore = parseInt(localStorage.getItem("bestScoreMiniJeu6")) || 0;
+  if (score > bestScore) {
+    localStorage.setItem("bestScoreMiniJeu6", score); // Seul le meilleur est sauvegardé
+  }
+
   // Conseil personnalisé
   const platChoisi = userChoices.plat?.text;
   const tag = {

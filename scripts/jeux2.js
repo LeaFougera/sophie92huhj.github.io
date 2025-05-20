@@ -48,7 +48,26 @@ function completer(num, el, couleur) {
   
   etape1.addEventListener("mouseleave", cacherInfoJeu);
   
+// === Étape 2 : Jeu d'Alimentation (sans score) ===
+const etape2 = document.querySelector(".image-jeu[href*='assiette.html']"); // Adapte le nom du fichier
+const ligne2 = document.querySelector(".line.c2");
 
+// Marque comme complété si le jeu a été visité (utilisation d'un flag simple)
+const jeu2Complete = localStorage.getItem("jeu2Complete");
+if (jeu2Complete && etape2 && ligne2 && !ligne2.classList.contains("completed")) {
+  completer(2, etape2, "#66bb6a");
+}
+
+etape2.addEventListener("mouseenter", () => {
+  afficherInfoJeu(60, 750, {  // Ajuste la position selon ton layout
+    theme: "Alimentation et Santé",
+    duree: "5 min",
+    type: "Composition d'un repas",
+    score: jeu2Complete ? "Terminé" : "Non joué" // Pas de score numérique
+  });
+});
+
+etape2.addEventListener("mouseleave", cacherInfoJeu);
   
   // === Étape 3 : Quiz (quiz.html) ===
   const bestScoreQuiz = localStorage.getItem("bestScoreQuiz"); // Exemple : 7
@@ -82,7 +101,7 @@ if (scoreConseils && etape4 && ligne4 && !ligne4.classList.contains("completed")
 }
 
 etape4.addEventListener("mouseenter", () => {
-  afficherInfoJeu(300, 50, {
+  afficherInfoJeu(600, 710, {
     theme: "Hygiène de vie",
     duree: "5 min",
     type: "Mémoire & Tri",
@@ -112,21 +131,23 @@ etape5.addEventListener("mouseenter", () => {
 
 etape5.addEventListener("mouseleave", cacherInfoJeu);
 
-// === Étape 6 : Mini-jeu des menus (mini-jeux6.html) ===
-const scoreMiniJeu6 = localStorage.getItem("scoreMiniJeu6"); // sur 10
+// === Étape 6 : Mini-jeu des menus ===
+const bestScoreMiniJeu6 = localStorage.getItem("bestScoreMiniJeu6"); // On ne prend que le meilleur
 const etape6 = document.querySelector(".image-jeu[href*='menu.html']");
 const ligne6 = document.querySelector(".line.c6");
 
-if (scoreMiniJeu6 && etape6 && ligne6 && !ligne6.classList.contains("completed")) {
-  completer(6, etape6, "#66bb6a");  // Modifie la couleur selon ta préférence
+// ➡️ On vérifie le bestScore pour compléter l'étape
+if (bestScoreMiniJeu6 && etape6 && ligne6 && !ligne6.classList.contains("completed")) {
+  completer(6, etape6, "#66bb6a");
 }
 
 etape6.addEventListener("mouseenter", () => {
-  afficherInfoJeu(300, 50, { 
+  afficherInfoJeu(600, 710, { 
     theme: "Menus et Alimentation",
     duree: "5 min",
     type: "Sélection alimentaire",
-    score: scoreMiniJeu6 ? `${scoreMiniJeu6} / 10` : "Non joué"
+    // ➡️ On affiche uniquement le meilleur score (pas de "Non joué" si bestScore existe)
+    score: bestScoreMiniJeu6 ? ` ${bestScoreMiniJeu6} / 10` : "Non joué"
   });
 });
 
