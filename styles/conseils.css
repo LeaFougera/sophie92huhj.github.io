@@ -1,10 +1,21 @@
 /* Reset général */
-html, body {
-  height: 100%;
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: Arial, sans-serif;
+  background-image: url('../photos/conseil/FondParcours.png');
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: top left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 body {
@@ -36,6 +47,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 
 h1 {
@@ -547,7 +559,7 @@ li {
 
 #col-good,
 #col-bad {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -556,4 +568,10 @@ li {
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   /* ❌ supprime toute height ou max-height */
+}
+
+#col-good li,
+#col-bad li {
+  max-width: 100%; /* ✅ Empêche tout dépassement horizontal */
+  word-break: break-word; /* ✅ Coupe si un mot est trop long */
 }
