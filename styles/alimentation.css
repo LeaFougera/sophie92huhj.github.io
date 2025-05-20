@@ -38,18 +38,18 @@ body {
     flex-wrap: wrap; /* Permet aux cartes de se réorganiser si nécessaire */
     width: 100%;
     padding: 20px;
-    justify-content: space-between; /* Répartit l'espace entre les cartes */
+    justify-content: space-between; 
     box-sizing: border-box;
 }
 
 .card {
-    flex: 1 1 20%; /* Chaque carte fait 20% de la largeur */
+    flex: 1 1 20%; 
     background: #fff;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    min-width: 200px; /* Taille minimale pour chaque carte */
+    min-width: 200px; 
 }
 
 .card:hover {
@@ -71,27 +71,27 @@ body {
 }
 
 .card h3 {
-    font-size: 1.4em; /* ajuste ici */
+    font-size: 1.4em; 
     color: #4a536b;
 }
 
 .card p {
-    font-size: 1em; /* ajuste ici (1em ≈ 16px par défaut) */
-    line-height: 1.6; /* optionnel pour améliorer la lisibilité */
+    font-size: 1em; 
+    line-height: 1.6; 
 }
 
 .encadres-container {
     display: flex;
     gap: 20px;
-    justify-content: center; /* centre les encadrés dans le conteneur */
+    justify-content: center; 
     margin: 40px auto;
-    max-width: 1000px; /* limite la largeur totale */
-    padding: 0 20px; /* marge intérieure si l'écran est petit */
+    max-width: 1000px; 
+    padding: 0 20px; 
 }
 
 
 .encadre {
-    flex: 0 0 45%; /* occupe environ 45% de la largeur */
+    flex: 0 0 45%; 
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -212,10 +212,10 @@ body {
     font-size: 1.15em;
     line-height: 1.7;
     color: #333;
-    text-align: center;         /* centre le texte */
+    text-align: center;         
     display: block;
-    margin: 0 auto;             /* centre le bloc si largeur définie */
-    max-width: 600px;           /* optionnel : limite la largeur */
+    margin: 0 auto;             
+    max-width: 600px;           
 }
 
 
@@ -226,7 +226,7 @@ body {
 
 
 .etiquette-section {
-    background-color: #fefcfb; /* ou un beige clair, ou #fffef5, à ajuster selon ton goût */
+    background-color: #fefcfb; 
     padding: 40px 20px;
     border-radius: 16px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -253,7 +253,7 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    height: 600px; /* hauteur pour avoir la place au dessus et en dessous */
+    height: 600px; 
     background-color: transparent;
     margin-bottom: 200px;
 
@@ -276,12 +276,12 @@ body {
   /* Chaque bloc */
   .timeline-item {
     position: relative;
-    width: 90%;         /* un peu plus large que 30% */
+    width: 90%;         
     background: white;
     border: 2px solid #d5bdaf ;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px 25px; /* un peu moins de padding vertical, plus horizontal */
+    padding: 20px 25px; 
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -289,19 +289,19 @@ body {
     gap: 15px;
     margin-bottom: 150px;
   
-    min-height: 50px;  /* hauteur réduite pour moins de hauteur */
+    min-height: 50px;  
   
   }
   
   .timeline-title{
     font-size: 1.8em;
-    margin-top: 1.5em;   /* ou toute autre valeur selon l'espacement voulu */
+    margin-top: 1.5em;   
     margin-bottom: -3.5em;
     text-align: center;
     color: #4a536b;
 }
   
-  /* Décalage vertical : au-dessus = translateY(-100px), en dessous = translateY(100px) */
+  
   .timeline-item.top {
     transform: translateY(-40px);
   }
@@ -401,15 +401,15 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background-image: url('loupe.svg'); /* ou autre image */
+    background-image: url('loupe.svg');
     background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   .timeline-item.top .icon-loupe {
-    top: 100%; /* juste en dessous du connecteur */
-    margin-top: 80px; /* même taille que le connecteur */
+    top: 100%; 
+    margin-top: 80px; 
   }
   
   .timeline-item.bottom .icon-loupe {
@@ -432,7 +432,7 @@ body {
 }
 
 
-/* Transition pour les paragraphes LE Saviez Vous*/
+
 .transition-paragraph {
   margin-top: 60px;
   font-size: 18px;
@@ -527,7 +527,7 @@ body {
 }
 
 .teaser-button:hover {
-    transform: scale(1.05);  /* Agrandit légèrement le bouton au survol */
+    transform: scale(1.05);  
 }
 
 
