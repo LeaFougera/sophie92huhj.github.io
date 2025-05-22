@@ -349,7 +349,6 @@ body {
 .transition-paragraph:hover {
     transform: translateY(-5px); 
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); 
-    background-color: #e3d5ca; 
 }
 
 /* Style du texte en gras */
